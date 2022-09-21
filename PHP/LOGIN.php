@@ -3,15 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> hello Word </title>
+    <title>Connexion</title>
+    <link rel="stylesheet" href="LOGIN.css" />
 </head>
 
 <body>
+<div class="connexion">
+<form action="" method="post">
+    <p>Identifiant : <input type="text" name="id" /></p>
+    <p>Mot de passe : <input type="text" name="mdp" /></p>
+    <p><input type="submit" value="Confirmer"></p>
+</form>
+</div>
 
-<?php
-echo "Hello word ";
-echo "baptiste c'est un bg";
-?>
 
 </body>
 </html>
