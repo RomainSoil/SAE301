@@ -2,3 +2,34 @@ div.a{
     text-align:center;
     color:red;
 }
+div.f{
+    text-align: center;
+    font-size: 1.2em;
+}
+div.sec{
+    margin:3%;
+    padding:3%;
+    text-align: center;
+    font-size: 1em;
+    color:white;
+    background-color: red;
+    font-weight: bold;
+
+
+
+}
+div.t{
+    margin-left:300px;
+    margin-top:150px;
+    font-size: 1em;
+}
+
+div.compte{
+    text-align: center;
+}
+div.aide{
+    text-align: center;
+}
+div.MDP{
+    text-align: center;
+}
