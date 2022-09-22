@@ -13,12 +13,19 @@
 </header>
 
 <body>
+<form action="Accueil.html" method="post">
 <div class="bouton_retour">
     <input type="submit" value="Retour">
+    <br><br><br><br><br><br>
+    <br>
+
 </div>
+</form>
+
 <div class ="box">
     <div class="connexion">
         <form action="" method="post">
+            <h3>Données personnelles</h3>
             <label for="">Email :</label>
             <br>
             <input type="text" name="mail" placeholder="Entrez votre Email"/>
@@ -27,7 +34,7 @@
             <br>
             <input type="text" name="mdp" placeholder="Entre votre mot de passe"/>
             <br>
-            <label for="">Mot de passe : </label>
+            <label for="">Valider votre Mot de passe : </label>
             <br>
             <input type="text" name="mdp" placeholder="Confirmez mot de passe"/>
             <br>
@@ -39,8 +46,8 @@
 
 </body>
 <footer>
-    <div class="texte_footer">
-        <p>Besoin d'aide ?</p>
+    <div class="aide">
+        <a href="https://cas.uphf.fr/login-help/" style="color:white">Besoin d'aide</a><br><br>
     </div>
 </footer>
 </html>

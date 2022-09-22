@@ -31,3 +31,16 @@ header{
     background-color: #e31616;
     color: aliceblue;
 }
+
+footer {
+    text-align: center;
+    margin:0;
+    padding:3%;
+    position: absolute;
+    bottom: 0;
+    width:93%;
+    font-size: 1em;
+    color:white;
+    background-color: red;
+    font-weight: bold;
+}
