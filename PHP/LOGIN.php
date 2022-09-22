@@ -36,11 +36,10 @@
     </div>
 </div>
 
-
 </body>
 <footer>
     <div class="texte_footer">
-        <p>Besoin d'aide ?</p>
+        <a href="Accueil.html">Besoin d'aide ?</a>
     </div>
 </footer>
 </html>
