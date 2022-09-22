@@ -15,11 +15,14 @@
 </div></header>
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
-<form action="LOGIN.php" method="post">
+<form action="TestConnexion.php" method="post">
+
      <input type="text" name="id" value="Identifiant"><br><br>
     <input type="text" name="mdp" value="Mot de passe"><br><br>
     <input type="submit" value="Confirmer">
 </form>
+
+
 </div>
 <div class="compte">
     <br><br><br>
