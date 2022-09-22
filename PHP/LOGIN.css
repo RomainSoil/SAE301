@@ -2,12 +2,15 @@
     height: 200px;
     text-align: center;
     top:0;
+
 }
 
 header{
     background-color: #e31616;
     text-align: center;
-    color: aliceblue;
+    color: white;
+
+
 }
 
 div.bouton_retour{
@@ -27,7 +30,15 @@ input {
 }
 
 
-header{
-    background-color: #e31616;
-    color: aliceblue;
+footer {
+    text-align: center;
+    margin:0;
+    padding:3%;
+    position: absolute;
+    bottom: 0;
+    width:93%;
+    font-size: 1em;
+    color:white;
+    background-color: red;
+    font-weight: bold;
 }

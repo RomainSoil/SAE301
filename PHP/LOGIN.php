@@ -3,55 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> hello Word </title>
+    <title>Connexion</title>
+    <link rel="stylesheet" href="LOGIN.css" />
 </head>
+<header>
+    <div id ="texte">
+         <h1>Institut de Formation aux Soins Infirmiers</h1>
+    </div>
+</header>
 
 <body>
+<form action="Accueil.html" method="post">
+<div class="bouton_retour">
+    <input type="submit" value="Retour">
+    <br><br><br><br><br><br>
+    <br>
 
-<?php
-echo "Hello word ";
-echo "baptiste c'est un bg";
-?>
+</div>
+</form>
 
-<?php
-
-try {
-    $pdo= new PDO(
-            'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo70','iutinfo70','mh8cvgzj');
-} catch (PDOException $e) {
-    die ('Erreur : ' . $e->getMessage());
-}
-
-
-?>
-
-<!-- Pour Inserer valeurs -->
-<?php
-
-$sql= "INSERT INTO patient (nom, prenom, age, ddn, poids, taille, iep, ipp, sexe, adresse, codepostal)
-      VALUES('X', 'Y', '18', '2020-09-10', 70, 180, 1, 1, 'Male', '1 rue de monsieur X', 59000)";
-
-try {
-    $affected= $pdo->exec($sql);
-} catch (PDOException $e) {
-    die ($e->getMessage());
-}
-?>
-
-<?php
-
-$req= "SELECT * FROM patient";
-
-try{
-    foreach ($pdo->query($req) as $row){
-        echo $row['idpatient'] . "\n";
-    }
-} catch (PDOException $e) {
-    die ($e->getMessage());
-}
-?>
-
+<div class ="box">
+    <div class="connexion">
+        <form action="" method="post">
+            <h3>Données personnelles</h3>
+            <label for="">Email :</label>
+            <br>
+            <input type="text" name="mail" placeholder="Entrez votre Email"/>
+            <br>
+            <label for="">Mot de passe : </label>
+            <br>
+            <input type="text" name="mdp" placeholder="Entre votre mot de passe"/>
+            <br>
+            <label for="">Valider votre Mot de passe : </label>
+            <br>
+            <input type="text" name="mdp" placeholder="Confirmez mot de passe"/>
+            <br>
+            <p><input type="submit" value="Valider"></p>
+        </form>
+    </div>
+</div>
 
 
 </body>
+<footer>
+    <div class="aide">
+        <a href="https://cas.uphf.fr/login-help/" style="color:white">Besoin d'aide</a><br><br>
+    </div>
+</footer>
 </html>
