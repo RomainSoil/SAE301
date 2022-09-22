@@ -5,15 +5,20 @@ div.a{
 div.f{
     text-align: center;
     font-size: 1.2em;
+
 }
 div.sec{
-    margin:3%;
+    margin:0;
     padding:3%;
+    position: absolute;
+    bottom: 0;
+    width:100%;
     text-align: center;
     font-size: 1em;
     color:white;
     background-color: red;
     font-weight: bold;
+
 
 
 
@@ -26,10 +31,7 @@ div.t{
 
 div.compte{
     text-align: center;
-}
-div.aide{
-    text-align: center;
-}
-div.MDP{
-    text-align: center;
+    font-size: 1em;
+
+
 }

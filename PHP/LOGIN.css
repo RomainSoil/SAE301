@@ -1,6 +1,33 @@
-div.connexion{
-    position:center;
+#header.h1{
+    height: 200px;
     text-align: center;
-    border: aqua;
-    border-radius: 10px;
+    top:0;
+}
+
+header{
+    background-color: #e31616;
+    text-align: center;
+    color: aliceblue;
+}
+
+div.bouton_retour{
+    padding-bottom: 10px;
+}
+div.connexion{
+    text-align: center;
+    border:solid;
+}
+
+label{
+    display: inline-block;
+    padding: 10px;
+}
+input {
+    padding: 5px ;
+}
+
+
+header{
+    background-color: #e31616;
+    color: aliceblue;
 }
