@@ -16,8 +16,8 @@
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
 <form action="LOGIN.php" method="post">
-     <input type="text" name="id" placeholder="Identifiant"><br><br>
-    <input type="text" name="mdp" placeholder="Mot de passe"><br><br>
+     <input type="text" name="id" value="Identifiant"><br><br>
+    <input type="text" name="mdp" value="Mot de passe"><br><br>
     <input type="submit" value="Confirmer">
 </form>
 </div>
