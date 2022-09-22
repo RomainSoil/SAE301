@@ -2,12 +2,15 @@
     height: 200px;
     text-align: center;
     top:0;
+
 }
 
 header{
     background-color: #e31616;
     text-align: center;
-    color: aliceblue;
+    color: white;
+
+
 }
 
 div.bouton_retour{
@@ -26,11 +29,6 @@ input {
     padding: 5px ;
 }
 
-
-header{
-    background-color: #e31616;
-    color: aliceblue;
-}
 
 footer {
     text-align: center;
