@@ -83,13 +83,10 @@ function password($mdp, $mdp2)
             echo "il faut un numero";
         }
         else{
-
-            $ok=true;
+            return true;
         }
     }
     echo "<br>";
-    echo $ok;
-    return $ok;
 }
 function email($mail)
 {
@@ -110,6 +107,9 @@ function email($mail)
         } elseif ($esp == true) {
             echo "il y a un espace";
     }
+     else{
+         return true;
+     }
 }
 if(@strlen($_POST['mdp']>1) or @strlen($_POST['mdp']>1) or @strlen($_POST['mail']>1)){
     @password($_POST['mdp'], $_POST['mdp2']);
