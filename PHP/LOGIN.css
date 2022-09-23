@@ -2,12 +2,15 @@
     height: 200px;
     text-align: center;
     top:0;
+
 }
 
 header{
     background-color: #e31616;
     text-align: center;
-    color: aliceblue;
+    color: white;
+
+
 }
 
 div.bouton_retour{
@@ -25,9 +28,33 @@ label{
 input {
     padding: 5px ;
 }
-
-
-header{
-    background-color: #e31616;
-    color: aliceblue;
+div.inscription{
+    text-align: center;
+    font-weight: bold;
+;
 }
+
+.progressbar-wrapper {
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+    text-align:center;
+    alignment: center;
+    margin-left: 25%;
+    margin-right: 25%;
+
+}
+
+footer {
+    text-align: center;
+    margin:0;
+    padding:3%;
+    position: absolute;
+    bottom: 0;
+    width:93%;
+    font-size: 1em;
+    color:white;
+    background-color: red;
+    font-weight: bold;
+}
+

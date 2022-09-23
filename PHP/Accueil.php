@@ -16,17 +16,14 @@
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
 <form action="TestConnexion.php" method="post">
-
-     <input type="text" name="id" value="Identifiant"><br><br>
-    <input type="text" name="mdp" value="Mot de passe"><br><br>
+     <input type="text" name="id" placeholder="Identifiant"><br><br>
+    <input type="text" name="mdp" placeholder="Mot de passe"><br><br>
     <input type="submit" value="Confirmer">
 </form>
-
-
 </div>
 <div class="compte">
     <br><br><br>
-    <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/a">créer un compte</a><br><br>
+    <a href="LOGIN.php">créer un compte</a><br><br>
     <a href="https://sesame.uphf.fr/identifiants.html">Mot de passe oublié</a><br><br>
     <a href="https://cas.uphf.fr/login-help/">Besoin d'aide</a><br><br>
 </div>
