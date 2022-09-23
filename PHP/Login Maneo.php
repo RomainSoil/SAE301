@@ -39,7 +39,7 @@
             </label>
             <button type="button" id="pass2" onclick="changer2()">O</button>
             <br>
-            <p><input type="submit" value="Valider" onclick="valider()" </p>
+            <p><input type="submit" value="Valider" onclick="" </p>
         </form>
     </div>
 </div>
@@ -56,6 +56,7 @@
 <?php
 function password($mdp, $mdp2)
 {
+    $complete= false;
     if ($mdp == null or $mdp2 == null) {
         echo "<span style='color: red' >entrez un mot de passe</span>";
         $_POST['mail'] = "dsf";
@@ -82,10 +83,11 @@ function password($mdp, $mdp2)
             echo "il faut un numero";
         }
         else{
-            return true;
+            $complete= true;
         }
     }
     echo "<br>";
+    return $complete;
 }
 function email($mail)
 {
@@ -139,3 +141,57 @@ if(@strlen($_POST['mdp']>1) or @strlen($_POST['mdp']>1) or @strlen($_POST['mail'
         }
     }
 </script>
+
+<?php
+function signUpBDD(bool $complete,$mail, $mdp){
+    if ($complete){
+
+        try {
+            $pdo= new PDO(
+                'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo70','iutinfo70','mh8cvgzj');
+        } catch (PDOException $e) {
+            die ('Erreur : ' . $e->getMessage());
+        }
+
+        $hash= password_hash($mdp,PASSWORD_DEFAULT);
+        $sql= "INSERT INTO etudiant (email,mdp)
+               VALUES ('$mail','$hash')";
+
+        try {
+            $affected= $pdo->exec($sql);
+        } catch (PDOException $e){
+            die ($e->getMessage());
+
+        }
+    }
+}
+
+
+?>
+
+<?php
+function bdd($mail, $mdp, $mdp2)
+{
+    if (@email($mail) and @password($mdp, $mdp2)) {
+        try {
+            $pdo = new PDO(
+                'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo70', 'iutinfo70', 'mh8cvgzj');
+        } catch (PDOException $e) {
+            die ('Erreur : ' . $e->getMessage());
+        }
+
+        $hash = password_hash($mdp, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO etudiant (email,mdp)
+               VALUES ('$mail','$hash')";
+
+        try {
+            $affected = $pdo->exec($sql);
+        } catch (PDOException $e) {
+            die ($e->getMessage());
+
+        }
+    }
+}
+
+bdd($_POST['mail'],$_POST['mdp'],$_POST['mdp2']);
+?>
