@@ -101,14 +101,14 @@ function email($mail)
             }
         }
     }
-     if ($aro == false) {
-            echo "Il n'y a pas de @";
-        } elseif ($esp == true) {
-            echo "il y a un espace";
+    if ($aro == false) {
+        echo "Il n'y a pas de @";
+    } elseif ($esp == true) {
+        echo "il y a un espace";
     }
-     else{
-         return true;
-     }
+    else{
+        return true;
+    }
 }
 if(@strlen($_POST['mdp']>1) or @strlen($_POST['mdp']>1) or @strlen($_POST['mail']>1)){
     @password($_POST['mdp'], $_POST['mdp2']);
@@ -139,3 +139,4 @@ if(@strlen($_POST['mdp']>1) or @strlen($_POST['mdp']>1) or @strlen($_POST['mail'
         }
     }
 </script>
+
