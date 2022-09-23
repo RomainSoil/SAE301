@@ -8,20 +8,27 @@
 </head>
 <header>
     <div id ="texte">
-         <h1>Institut de Formation aux Soins Infirmiers</h1>
+         <h1>Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     </div>
 </header>
 
 <body>
-<form action="Accueil.html" method="post">
+<form action="Accueil.php" method="post">
 <div class="bouton_retour">
     <input type="submit" value="Retour">
-    <br><br><br><br><br><br>
-    <br>
+    <br><br><br>
 
 </div>
 </form>
+    <div class="progressbar-wrapper">
+        <div title="downloaded" class="progressbar mp4">100%</div>
+    </div>
+<br>
+</div>
 
+<div class="inscription">
+    <h3>INSCRIPTION A L'IFSI</h3>
+</div><br>
 <div class ="box">
     <div class="connexion">
         <form action="" method="post">

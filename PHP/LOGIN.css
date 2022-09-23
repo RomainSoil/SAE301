@@ -28,7 +28,22 @@ label{
 input {
     padding: 5px ;
 }
+div.inscription{
+    text-align: center;
+    font-weight: bold;
+;
+}
 
+.progressbar-wrapper {
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+    text-align:center;
+    alignment: center;
+    margin-left: 25%;
+    margin-right: 25%;
+
+}
 
 footer {
     text-align: center;
@@ -42,3 +57,4 @@ footer {
     background-color: red;
     font-weight: bold;
 }
+
