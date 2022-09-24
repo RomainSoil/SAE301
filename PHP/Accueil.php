@@ -37,3 +37,27 @@
 </footer>
 </body>
 </html>
+
+<?php
+function verifConn(string $ID, string $mdp){
+    $listID= array();
+    try {
+        $pdo = new PDO(
+            'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo70', 'iutinfo70', 'mh8cvgzj');
+    } catch (PDOException $e) {
+        die ('Erreur : ' . $e->getMessage());
+    }
+
+    $req= "SELECT email FROM etudiant";
+
+    try{
+        foreach ($pdo->query($req) as $row){
+            array_push($listID,$row['email']);
+        }
+    } catch (PDOException $e) {
+        die ($e->getMessage());
+    }
+
+}
+
+?>
