@@ -46,7 +46,7 @@ function email($mail, $mdp){
             } catch (PDOException $e) {
                 die ('Erreur : ' . $e->getMessage());
             }
-            $sql = "SELECT * FROM ETUDIANT where email = '$mail'";
+            $sql = "SELECT * FROM etudiant where email = '$mail'";
             try {
                 $affected = $pdo->prepare($sql);
                 $affected->execute();

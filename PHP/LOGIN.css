@@ -16,6 +16,11 @@ header{
 div.bouton_retour{
     padding-bottom: 10px;
 }
+
+div.I{
+    text-align: center;
+
+}
 div.connexion{
     text-align: center;
     border:solid;
@@ -49,12 +54,11 @@ footer {
     text-align: center;
     margin:0;
     padding:3%;
-    position: absolute;
+    position: static;
     bottom: 0;
-    width:93%;
+    width:94%;
     font-size: 1em;
     color:white;
     background-color: red;
     font-weight: bold;
 }
-

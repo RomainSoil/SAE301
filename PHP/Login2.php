@@ -14,15 +14,38 @@
 
 <body>
 <div class="bouton_retour">
-    <input type="submit" value="Retour">
+    <form action="Accueil.php" method="post">
+    <input type="submit" value="<-">
+    </form>
+</div>
+<div class="I">
+    <h2>INSCRIPTION IFSI</h2>
 </div>
 <div class ="box">
     <div class="connexion">
         <form action="" method="post">
+            <label for="">Nom :</label>
+            <br>
+            <label>
+                <input type="text" name="mail" id="mail" placeholder="Entrez votre Nom">
+            </label>
+            <br>
+            <label for="">Prénom :</label>
+            <br>
+            <label>
+                <input type="text" name="mail" id="mail" placeholder="Entrez votre Prenom">
+            </label>
+            <br>
             <label for="">Email :</label>
             <br>
             <label>
                 <input type="text" name="mail" id="mail" placeholder="Entrez votre mail" value="<?php echo @$_POST['mail']?>"/>
+            </label>
+            <br>
+            <label for="">Code Confidentiel :</label>
+            <br>
+            <label>
+                <input type="text" name="mail" id="mail" placeholder="Entrez votre Code">
             </label>
             <br>
             <label for="">Mot de passe : </label>
@@ -39,7 +62,7 @@
             </label>
             <button type="button" id="pass2" onclick="changer2()">O</button>
             <br>
-            <p><input type="submit" value="Valider" </p>
+            <p><input type="submit" value="Valider"   </p>
         </form>
     </div>
 </div>

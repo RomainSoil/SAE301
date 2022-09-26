@@ -17,7 +17,7 @@ echo "baptiste c'est un bg";
 
 try {
     $pdo= new PDO(
-        'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo70','iutinfo70','mh8cvgzj');
+        'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo134','iutinfo134','NuVRPnlV');
 } catch (PDOException $e) {
     die ('Erreur : ' . $e->getMessage());
 }
