@@ -8,7 +8,7 @@
 </head>
 <header>
     <div id ="texte">
-        <h1>Institut de Formation aux Soins Infirmiers</h1>
+        <h1>Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     </div>
 </header>
 

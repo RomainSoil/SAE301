@@ -4,11 +4,16 @@
     top:0;
 
 }
-
+body{
+    background-color: beige;
+}
 header{
-    background-color: #e31616;
+    background-color: #EE401A;
     text-align: center;
     color: white;
+    margin-left: 25%;
+    margin-right: 25%;
+
 
 
 }
@@ -24,6 +29,7 @@ div.I{
 div.connexion{
     text-align: center;
     border:solid;
+
 }
 
 label{
@@ -36,7 +42,7 @@ input {
 div.inscription{
     text-align: center;
     font-weight: bold;
-;
+
 }
 
 .progressbar-wrapper {
@@ -59,6 +65,16 @@ footer {
     width:94%;
     font-size: 1em;
     color:white;
-    background-color: red;
+    background-color: white;
     font-weight: bold;
+}
+div.box{
+    background-color:  #EE401A;
+    margin-left: 25%;
+    margin-right: 25%;
+
+}
+div.I{
+    color: #EE401A;
+    text-align: center;
 }

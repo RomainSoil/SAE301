@@ -1,6 +1,6 @@
 div.a{
     text-align:center;
-    color:red;
+    color:red
 }
 div.f{
     text-align: center;
@@ -8,16 +8,18 @@ div.f{
 
 
 }
+div.img{
+}
 div.sec{
     margin:0;
     padding:3%;
-    position: absolute;
+    position: static;
     bottom: 0;
     width:93%;
     text-align: center;
     font-size: 1em;
     color:white;
-    background-color: red;
+    background-color: #EE401A;
     font-weight: bold;
 
 
@@ -35,4 +37,7 @@ div.compte{
     font-size: 1em;
 
 
+}
+body{
+    background-color: beige;
 }

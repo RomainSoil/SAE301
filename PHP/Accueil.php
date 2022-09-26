@@ -10,9 +10,11 @@
 <header>
 <div class="a">
     <br>
+    <img src="logoIFSI.png" width=10% height=10%/>
     <h2> Institut de Formation aux Soins Infirmiers (IFSI)</h2>
     <br><br><br><br>
-</div></header>
+</div>
+</header>
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
 <form action="" method="post">
