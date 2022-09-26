@@ -15,15 +15,15 @@
 </div></header>
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
-<form action="TestConnexion.php" method="post">
-     <input type="text" name="id" placeholder="Identifiant"><br><br>
+<form action="" method="post">
+     <input type="text" name="id" id="id" placeholder="Identifiant"><br><br>
     <input type="text" name="mdp" placeholder="Mot de passe"><br><br>
     <input type="submit" value="Confirmer">
 </form>
 </div>
 <div class="compte">
     <br><br><br>
-    <a href="LOGIN.php">créer un compte</a><br><br>
+    <a href="Login2.php">créer un compte</a><br><br>
     <a href="https://sesame.uphf.fr/identifiants.html">Mot de passe oublié</a><br><br>
     <a href="https://cas.uphf.fr/login-help/">Besoin d'aide</a><br><br>
 </div>
@@ -37,3 +37,34 @@
 </footer>
 </body>
 </html>
+
+<?php
+function email($mail, $mdp){
+    try {
+                $pdo = new PDO(
+                    'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo134', 'iutinfo134', 'NuVRPnlV');
+            } catch (PDOException $e) {
+                die ('Erreur : ' . $e->getMessage());
+            }
+            $sql = "SELECT * FROM ETUDIANT where email = '$mail'";
+            try {
+                $affected = $pdo->prepare($sql);
+                $affected->execute();
+            } catch (PDOException $e) {
+                die ($e->getMessage());
+
+            }
+            while ($row = $affected->fetch(PDO::FETCH_ASSOC)){
+                echo $row['email'];
+                echo " ";
+                if(password_verify($mdp, $row['mdp']) and $row['email']==$mail){
+                    header('Location: http://localhost:63342/SAE301/PHP/TestConnexion.php?_ijt=v8g6ukbvhf6dap3401h81jkam&_ij_reload=RELOAD_ON_SAVE');
+                    exit();
+                }
+            }
+            echo "12";
+}
+@email($_POST['id'], $_POST['mdp']);
+
+
+?>

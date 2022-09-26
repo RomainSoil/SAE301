@@ -5,11 +5,11 @@ DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Interv
 CREATE Table Etudiant (
     email text primary key,
     mdp text not null,
-    nom text not null,
-    prenom text not null,
-    classe text not null,
-    statut text not null,
-    Annee int not null
+    nom text ,
+    prenom text,
+    classe text,
+    statut text,
+    Annee int
 );
 
 

@@ -39,7 +39,7 @@
             </label>
             <button type="button" id="pass2" onclick="changer2()">O</button>
             <br>
-            <p><input type="submit" value="Valider" onclick="valider()" </p>
+            <p><input type="submit" value="Valider" </p>
         </form>
     </div>
 </div>
@@ -58,16 +58,12 @@ function password($mdp, $mdp2)
 {
     if ($mdp == null or $mdp2 == null) {
         echo "<span style='color: red' >entrez un mot de passe</span>";
-        $_POST['mail'] = "dsf";
     } elseif ($mdp != $mdp2) {
         echo "<span style='color: red' >mots de passes differents</span>";
     }
     elseif ($mdp != null) {
         $maj = false;
         $num = false;
-        if (strlen($mdp) < 8) {
-            echo "Mot de passe trop court";
-        }
         for ($i = 0; $i < strlen($mdp); $i++) {
             if (ord($mdp[$i]) < 91 and ord($mdp[$i]) > 64) {
                 $maj = true;
@@ -76,7 +72,10 @@ function password($mdp, $mdp2)
                 $num = true;
             }
         }
-        if ($maj == false) {
+        if (strlen($mdp) < 8) {
+            echo "Mot de passe trop court";
+        }
+        elseif ($maj == false) {
             echo "Il faut une majuscule";
         } elseif ($num == false) {
             echo "il faut un numero";
@@ -113,6 +112,11 @@ function email($mail)
 if(@strlen($_POST['mdp']>1) or @strlen($_POST['mdp']>1) or @strlen($_POST['mail']>1)){
     @password($_POST['mdp'], $_POST['mdp2']);
     @email($_POST['mail']);
+}
+function bdd($mail, $mdp, $mdp2){
+    if (@mail($mail) and @password($mdp, $mdp2)){
+
+    }
 }
 ?>
 <script>

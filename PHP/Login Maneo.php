@@ -146,7 +146,7 @@ function bdd($mail, $mdp, $mdp2)
         if (@email($mail) and @password($mdp, $mdp2)) {
             try {
                 $pdo = new PDO(
-                    'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo70', 'iutinfo70', 'mh8cvgzj');
+                    'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo134', 'iutinfo134', 'NuVRPnlV');
             } catch (PDOException $e) {
                 die ('Erreur : ' . $e->getMessage());
             }
