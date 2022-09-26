@@ -61,7 +61,7 @@ function password($mdp, $mdp2)
         echo "<span style='color: red' >entrez un mot de passe</span>";
         $_POST['mail'] = "dsf";
     } elseif ($mdp != $mdp2) {
-        echo "<span style='color: red' >mots de passes differents</span>";
+        echo "<span style='color: red ' >mots de passes differents</span>";
     }
     elseif ($mdp != null) {
         $maj = false;
@@ -70,10 +70,12 @@ function password($mdp, $mdp2)
             echo "Mot de passe trop court";
         }
         for ($i = 0; $i < strlen($mdp); $i++) {
-            if (ord($mdp[$i]) < 91 and ord($mdp[$i]) > 64) {
+            if (ord($mdp[$i]) < 91 and ord($mdp[$i]) > 64) /// Vérifie qu 'il y a au moins une majuscule dans le code
+            {
                 $maj = true;
             }
-            if (ord($mdp[$i]) < 58 and ord($mdp[$i]) > 47) {
+            if (ord($mdp[$i]) < 58 and ord($mdp[$i]) > 47) /// Vérifie qu 'il y a au moins un nombre dans le code
+            {
                 $num = true;
             }
         }
@@ -94,17 +96,26 @@ function email($mail)
     $aro = false;
     $esp = false;
     if (strlen($mail)>0){
-        for ($i = 0; $i < strlen($mail); $i++) {
-            if ($mail[$i] == "@") {
+        for ($i = 0; $i < strlen($mail); $i++) /// Vérifie qu 'il y a un @ dans l'email
+        {
+            if ($mail[$i] == "@")
+                if ($aro==true)     /// vérifie qu'il n' y a pas plusieur @ dans le mail
+                {
+                    $aro = false;
+                    break;
+                }
+            {
                 $aro = true;
+
             }
-            if ($mail[$i] == " ") {
+            if ($mail[$i] == " ") ///vérifie qu'il n' y a pas d'espace dans l'adresse mail
+            {
                 $esp = true;
             }
         }
     }
      if ($aro == false) {
-            echo "Il n'y a pas de @";
+            echo "Ceci n'est pas une adresse mail valide";
         } elseif ($esp == true) {
             echo "il y a un espace";
     }
