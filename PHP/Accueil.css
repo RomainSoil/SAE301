@@ -1,19 +1,18 @@
-div.a{
-    text-align:center;
-    color:red
+header{
+    text-align: center;
+    top:0%;
+    color: #EE401A
 }
+
 div.f{
     text-align: center;
     font-size: 1.2em;
-
-
 }
-div.img{
-}
+
 div.sec{
     margin:0;
     padding:3%;
-    position: static;
+    position: absolute;
     bottom: 0;
     width:93%;
     text-align: center;
