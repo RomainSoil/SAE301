@@ -62,7 +62,6 @@ function email($mail, $mdp){
                     exit();
                 }
             }
-            echo "12";
 }
 @email($_POST['id'], $_POST['mdp']);
 
