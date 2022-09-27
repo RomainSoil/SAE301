@@ -4,11 +4,16 @@
     top:0;
 
 }
-
+body{
+    background-color: beige;
+}
 header{
-    background-color: #e31616;
+    background-color: beige;
     text-align: center;
-    color: white;
+    color: #EE401A;
+    margin-left: 25%;
+    margin-right: 25%;
+
 
 
 }
@@ -16,9 +21,15 @@ header{
 div.bouton_retour{
     padding-bottom: 10px;
 }
+
+div.I{
+    text-align: center;
+
+}
 div.connexion{
     text-align: center;
     border:solid;
+
 }
 
 label{
@@ -31,7 +42,7 @@ input {
 div.inscription{
     text-align: center;
     font-weight: bold;
-;
+
 }
 
 .progressbar-wrapper {
@@ -49,12 +60,21 @@ footer {
     text-align: center;
     margin:0;
     padding:3%;
-    position: absolute;
+    position: static;
     bottom: 0;
-    width:93%;
+    width:94%;
     font-size: 1em;
     color:white;
-    background-color: red;
+    background-color: white;
     font-weight: bold;
 }
+div.box{
+    background-color:  #EE401A;
+    margin-left: 25%;
+    margin-right: 25%;
 
+}
+div.I{
+    color: #EE401A;
+    text-align: center;
+}

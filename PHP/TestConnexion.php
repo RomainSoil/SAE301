@@ -15,9 +15,9 @@ echo "Hello word ";
 <?php
 
 
-$dsn= 'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo111';
-$user= 'iutinfo111';
-$passwd= 'xTd9Efc7';
+$dsn= 'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo134';
+$user= 'iutinfo134';
+$passwd= 'NuVRPnlV';
 
 try {
     $pdo = new PDO($dsn, $user, $passwd);

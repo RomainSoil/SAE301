@@ -11,11 +11,10 @@ session_start();
 <body>
 <br><br><br><br>
 <header>
-<div class="a">
-    <br>
-    <h2> Institut de Formation aux Soins Infirmiers (IFSI)</h2>
-    <br><br><br><br>
-</div></header>
+    <img src="logoIFSI.png" width=10% height=10%/>
+    <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
+    <br><br>
+</header>
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
 <form action="" method="post">
@@ -53,7 +52,7 @@ function email($mail, $mdp): void
             } catch (PDOException $e) {
                 die ('Erreur : ' . $e->getMessage());
             }
-            $sql = "SELECT * FROM ETUDIANT where email = '$mail'";
+            $sql = "SELECT * FROM etudiant where email = '$mail'";
             try {
                 $affected = $pdo->prepare($sql);
                 $affected->execute();
