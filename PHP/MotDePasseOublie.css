@@ -1,40 +1,37 @@
 header{
     text-align: center;
-    top:0;
+    top:0%;
     color: #EE401A
 }
 
-div.f{
-    text-align: center;
-    font-size: 1.2em;
+div.mess{
+    color: darkblue;
+    margin-left: 25%;
+    margin-right: 25%;
+
 }
+div.box{
+    background-color:  #EE401A;
+    margin-left: 25%;
+    margin-right: 25%;
+
+}
+
+
+
+
 
 div.sec{
     margin:0;
-    padding:1%;
+    padding:3%;
     position: absolute;
     bottom: 0;
-    width:96%;
+    width:93%;
     text-align: center;
     font-size: 1em;
     color:white;
     background-color: #EE401A;
     font-weight: bold;
-
-
-
-
-}
-div.t{
-    margin-left:300px;
-    margin-top:150px;
-    font-size: 1em;
-}
-
-div.compte{
-    text-align: center;
-    font-size: 1em;
-
 
 }
 body{
