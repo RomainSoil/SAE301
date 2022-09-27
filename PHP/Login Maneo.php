@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="LOGIN.css" />
 </head>
 <header>
-    <div id ="texte">
-        <h1>Institut de Formation aux Soins Infirmiers (IFSI)</h1>
-    </div>
+    <img src="logoIFSI.png" width=10% height=10%/>
+    <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
+    <br><br>
 </header>
 
 <body>

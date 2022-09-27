@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
-    <link rel="stylesheet" href="Accueil.css" />
+    <link rel="stylesheet" href="Accueil.css" >
 </head>
 <body>
-<br><br><br><br>
+<br><br>
 <header>
-    <img src="logoIFSI.png" width=10% height=10%/>
+    <img src="logoIFSI.png" alt="logo" width=150 height=150>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br><br>
 </header>
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
-<form action="" method="post">
+<form action="Login%20Maneo.php" method="post">
      <input type="text" name="id" id="id" placeholder="Identifiant"><br><br>
     <input type="text" name="mdp" placeholder="Mot de passe"><br><br>
     <input type="submit" value="Confirmer">
@@ -23,7 +23,7 @@
 <div class="compte">
     <br><br><br>
     <a href="Login%20Maneo.php">créer un compte</a><br><br>
-    <a href="https://sesame.uphf.fr/identifiants.html">Mot de passe oublié</a><br><br>
+    <a href="MotDePasseOublie.php">Mot de passe oublié</a><br><br>
     <a href="https://cas.uphf.fr/login-help/">Besoin d'aide</a><br><br>
 </div>
 
