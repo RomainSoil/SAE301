@@ -22,7 +22,7 @@
 </div>
 <div class="compte">
     <br><br><br>
-    <a href="Login2.php">créer un compte</a><br><br>
+    <a href="Login%20Maneo.php">créer un compte</a><br><br>
     <a href="https://sesame.uphf.fr/identifiants.html">Mot de passe oublié</a><br><br>
     <a href="https://cas.uphf.fr/login-help/">Besoin d'aide</a><br><br>
 </div>
