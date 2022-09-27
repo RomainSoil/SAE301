@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-session_start();
-?>
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
@@ -18,17 +15,14 @@ session_start();
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
 <form action="" method="post">
-    <label for="id"></label><input type="text" name="id" id="id" placeholder="Identifiant" value="<?php if(isset($_SESSION['user'])){echo $_SESSION['user'];}else{echo 'ya pas';}?>"><br><br>
-    <label>
-        <input type="password" name="mdp" placeholder="Mot de passe" id="mdp">
-        <button type="button" onclick="changer3()">O</button>
-    </label><br><br>
+     <input type="text" name="id" id="id" placeholder="Identifiant"><br><br>
+    <input type="text" name="mdp" placeholder="Mot de passe"><br><br>
     <input type="submit" value="Confirmer">
 </form>
 </div>
 <div class="compte">
     <br><br><br>
-    <a href="http://localhost:63342/SAE301/PHP/Login%20Maneo.php?_ijt=7n0rkma2mjga775ofanok13lvb&_ij_reload=RELOAD_ON_SAVE">créer un compte</a><br><br>
+    <a href="Login2.php">créer un compte</a><br><br>
     <a href="https://sesame.uphf.fr/identifiants.html">Mot de passe oublié</a><br><br>
     <a href="https://cas.uphf.fr/login-help/">Besoin d'aide</a><br><br>
 </div>
@@ -44,8 +38,7 @@ session_start();
 </html>
 
 <?php
-function email($mail, $mdp): void
-{
+function email($mail, $mdp){
     try {
                 $pdo = new PDO(
                     'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo134', 'iutinfo134', 'NuVRPnlV');
@@ -73,16 +66,3 @@ function email($mail, $mdp): void
 
 
 ?>
-<script>
-    j=true;
-    function changer3(){
-        if (j){
-            document.getElementById('mdp').setAttribute('type', 'text')
-            j=false;
-        }
-        else{
-            document.getElementById('mdp').setAttribute('type', 'password')
-            j=true;
-        }
-    }
-</script>
