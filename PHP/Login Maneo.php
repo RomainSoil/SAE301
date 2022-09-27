@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="LOGIN.css" />
 </head>
 <header>
-    <img src="logoIFSI.png" width=10% height=10%/>
+    <a href="Accueil.php">
+        <img src="logoIFSI.png" width=150 height=150/>
+    </a>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br><br>
 </header>
