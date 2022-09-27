@@ -15,9 +15,8 @@
 <body>
 
 <div class="bouton_retour">
-    <form action="Accueil.php" method="post">
-    <input type="submit" value="Retour">
-    </form>
+    <a href="Accueil.php"> <img src="fleche.png"  class="icone"> </a>
+
 </div>
 
 
@@ -45,9 +44,7 @@
 
 </body>
 <footer>
-        <div class="sec">
-            Pour des raisons de sécurité, veuillez vous déconnecter et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.
-            <br>
+        <div class="sec"
             Vos identifiants sont strictement confidentiels et ne doivent en aucun cas être transmis à une tierce personne.
         </div>
 </footer>

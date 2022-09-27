@@ -14,9 +14,8 @@
 
 <body>
 <div class="bouton_retour">
-    <form action="Accueil.php" method="post">
-        <input type="submit" value="<-">
-    </form>
+    <a href="Accueil.php"> <img src="fleche.png"  class="icone"> </a>
+
 </div>
 <div class="I">
     <h2>INSCRIPTION IFSI</h2>
