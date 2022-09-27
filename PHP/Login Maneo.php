@@ -14,7 +14,7 @@
 
 <body>
 <div class="bouton_retour">
-    <input type="submit" value="Retour">
+    <button type="button" onclick="window.location.href = 'http://localhost:63342/SAE301/PHP/Accueil.php?_ijt=hc9rcqul6ohaipakc2nt3pu3k7&_ij_reload=RELOAD_ON_SAVE'">Retour</button>
 </div>
 <div class ="box">
     <div class="connexion">
@@ -28,14 +28,14 @@
             <label for="">Mot de passe : </label>
             <br>
             <label>
-                <input type="password" name="mdp" id="mdp" value="<?php echo @$_POST['mdp']?>" placeholder="Entre votre mot de passe"id="mdp"/>
+                <input type="password" name="mdp" id="mdp" value="<?php echo @$_POST['mdp']?>" placeholder="Entre votre mot de passe"/>
                 <button type="button" id="pass1" onclick="changer1()">O</button>
             </label>
             <br>
             <label for="">Mot de passe : </label>
             <br>
             <label>
-                <input type="password" name="mdp2" id="mdp2" value="<?php echo @$_POST['mdp2']?>" placeholder="Confirmez mot de passe" id="mdp2"/>
+                <input type="password" name="mdp2" id="mdp2" value="<?php echo @$_POST['mdp2']?>" placeholder="Confirmez mot de passe"/>
             </label>
             <button type="button" id="pass2" onclick="changer2()">O</button>
             <br>
@@ -48,13 +48,14 @@
 </body>
 <footer>
     <div class="texte_footer">
-        <button id="pass" onclick="changer()">Besoin d'aide ?</button>
+        <button id="pass">Besoin d'aide ?</button>
     </div>
 </footer>
 </html>
 
 <?php
-function password($mdp, $mdp2)
+session_start();
+function password($mdp, $mdp2): bool
 {
     $complete= false;
     if ($mdp == null or $mdp2 == null) {
@@ -63,7 +64,7 @@ function password($mdp, $mdp2)
     } elseif ($mdp != $mdp2) {
         echo "<span style='color: red' >mots de passes differents</span>";
     }
-    elseif ($mdp != null) {
+    else {
         $maj = false;
         $num = false;
         if (strlen($mdp) < 8) {
@@ -77,9 +78,9 @@ function password($mdp, $mdp2)
                 $num = true;
             }
         }
-        if ($maj == false) {
+        if (!$maj) {
             echo "Il faut une majuscule";
-        } elseif ($num == false) {
+        } elseif (!$num) {
             echo "il faut un numero";
         }
         else{
@@ -89,10 +90,11 @@ function password($mdp, $mdp2)
     echo "<br>";
     return $complete;
 }
-function email($mail)
+function email($mail): bool
 {
     $aro = false;
     $esp = false;
+    $ok = false;
     if (strlen($mail)>0){
         for ($i = 0; $i < strlen($mail); $i++) {
             if ($mail[$i] == "@") {
@@ -103,14 +105,16 @@ function email($mail)
             }
         }
     }
-     if ($aro == false) {
+     if (!$aro) {
             echo "Il n'y a pas de @";
-        } elseif ($esp == true) {
+        } elseif ($esp) {
             echo "il y a un espace";
+
     }
      else{
-         return true;
+         $ok=true;
      }
+     return ($ok);
 }
 ?>
 
@@ -118,13 +122,12 @@ function email($mail)
     e=true;
     f=true;
     function changer1(){
-        if(e){
-            document.getElementById("mdp").setAttribute("type","text");
-            e=false;
-        }
-        else{
-            document.getElementById("mdp").setAttribute("type","password");
-            e=true;
+        if (e) {
+            document.getElementById("mdp").setAttribute("type", "text");
+            e = false;
+        } else {
+            document.getElementById("mdp").setAttribute("type", "password");
+            e = true;
         }
     }
     function changer2(){
@@ -142,7 +145,7 @@ function email($mail)
 <?php
 function bdd($mail, $mdp, $mdp2)
 {
-    if(@strlen($_POST['mdp']>1) or @strlen($_POST['mdp']>1) or @strlen($_POST['mail']>1)) {
+    if(isset($mail) and isset($mdp2) and isset($mdp)) {
         if (@email($mail) and @password($mdp, $mdp2)) {
             try {
                 $pdo = new PDO(
@@ -161,9 +164,11 @@ function bdd($mail, $mdp, $mdp2)
                 die ($e->getMessage());
 
             }
+            @$_SESSION['user']=$_POST['mail'];
+            echo $_SESSION['user'];
+            header('Location: http://localhost:63342/SAE301/PHP/Accueil.php?_ijt=ecfct5prke6lggs6rfp0mp0lov&_ij_reload=RELOAD_ON_SAVE');
         }
     }
 }
-
 bdd(@$_POST['mail'],@$_POST['mdp'],@$_POST['mdp2']);
 ?>
