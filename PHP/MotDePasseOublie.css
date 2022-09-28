@@ -10,30 +10,31 @@ div.mess{
     color: darkblue;
     margin-left: 25%;
     margin-right: 25%;
-
+    font-weight: bold;
 }
 div.box{
-    background-color:  #EE401A;
+    background-color:   #EE401A;
     margin-left: 25%;
     margin-right: 25%;
+    border:solid;
+    text-align: center;
+
 }
 
 
 
 
-
-div.sec{
+footer {
+    text-align: center;
     margin:0;
     padding:3%;
-    position: absolute;
+    position: static;
     bottom: 0;
-    width:93%;
-    text-align: center;
+    width:94%;
     font-size: 1em;
     color:white;
-    background-color: #EE401A;
+    background-color: beige;
     font-weight: bold;
-
 }
 body{
     background-color: beige;
