@@ -1,4 +1,4 @@
-DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Intervenant, Prescription, Diagnostic;
+DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Intervenant, Prescription, Diagnostic, Messages;
 
 
 
@@ -76,4 +76,11 @@ Create table Diagnostic (
     CompteRendu text not null,
     idIntervenant int references Intervenant,
     idPatient int references Patient
-)
+);
+
+CREATE TABLE Messages (
+    id serial primary key,
+    userx text,
+    message text,
+    date date
+);
