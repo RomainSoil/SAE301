@@ -78,79 +78,6 @@
 </body>
 </html>
 
-<?php
-function password($mdp, $mdp2)
-{
-    $complete= false;
-    if ($mdp == null or $mdp2 == null) {
-        echo "<span style='color: red' >entrez un mot de passe</span>";
-        $_POST['mail'] = "dsf";
-    } elseif ($mdp != $mdp2) {
-        echo "<span style='color: red ' >mots de passes differents</span>";
-    }
-    elseif ($mdp != null) {
-        $maj = false;
-        $num = false;
-        if (strlen($mdp) < 8) {
-            echo "Mot de passe trop court";
-        }
-        for ($i = 0; $i < strlen($mdp); $i++) {
-            if (ord($mdp[$i]) < 91 and ord($mdp[$i]) > 64) /// Vérifie qu 'il y a au moins une majuscule dans le code
-            {
-                $maj = true;
-            }
-            if (ord($mdp[$i]) < 58 and ord($mdp[$i]) > 47) /// Vérifie qu 'il y a au moins un nombre dans le code
-            {
-                $num = true;
-            }
-        }
-        if ($maj == false) {
-            echo "Il faut une majuscule";
-        } elseif ($num == false) {
-            echo "il faut un numero";
-        }
-        else{
-            $complete= true;
-        }
-    }
-    echo "<br>";
-    return $complete;
-}
-function email($mail)
-{
-    $valide= false;
-    $aro = false;
-    $esp = false;
-    if (strlen($mail)>0){
-        for ($i = 0; $i < strlen($mail); $i++) /// Vérifie qu 'il y a un @ dans l'email
-        {
-            if ($mail[$i] == "@")
-                if ($aro==true)     /// vérifie qu'il n' y a pas plusieur @ dans le mail
-                {
-                    $aro = false;
-                    break;
-                }
-            {
-                $aro = true;
-
-            }
-            if ($mail[$i] == " ") ///vérifie qu'il n' y a pas d'espace dans l'adresse mail
-            {
-                $esp = true;
-            }
-        }
-    }
-     if ($aro == false) {
-            echo "Ceci n'est pas une adresse mail valide";
-        } elseif ($esp == true) {
-            echo "il y a un espace";
-    }
-     else{
-         $valide= true;
-     }
-     return $valide;
-}
-?>
 
 <script>
     e=true;
@@ -178,13 +105,21 @@ function email($mail)
 </script>
 
 <?php
+
+require('MotDePasse.php');
+require('email.php');
+require('ConnectionBDD.php');
 function bdd($mail, $mdp, $mdp2)
 {
+    $ClassMail = new email();
+    $ClassMDP =new MotDePasse();
+
     if(@strlen($_POST['mdp']>1) or @strlen($_POST['mdp']>1) or @strlen($_POST['mail']>1)) {
-        if (@email($mail) and @password($mdp, $mdp2)) {
+        if ($ClassMail->email($mail) and $ClassMDP->password($mdp, $mdp2)) {
             try {
-                $pdo = new PDO(
-                    'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo134', 'iutinfo134', 'NuVRPnlV');
+                $conn = new ConnectionBDD();
+
+                $pdo = $conn->connexion();
             } catch (PDOException $e) {
                 die ('Erreur : ' . $e->getMessage());
             }
