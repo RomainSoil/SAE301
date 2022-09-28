@@ -6,17 +6,19 @@
     <title>Connexion</title>
     <link rel="stylesheet" href="LOGIN.css" />
 </head>
+
+<body>
 <header>
     <a href="Accueil.php">
-        <img src="logoIFSI.png" width=150 height=150/>
+        <img src="logoIFSI.png" width=150 height=150 alt="" />
     </a>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br><br>
 </header>
 
-<body>
+
 <div class="bouton_retour">
-    <a href="Accueil.php"> <img src="fleche.png"  class="icone"> </a>
+    <a href="Accueil.php"> <img src="fleche.png"  class="icone" alt="" > </a>
 
 </div>
 <div class="I">
@@ -24,57 +26,56 @@
 </div>
 <div class ="box">
     <div class="connexion">
-        <form action="" method="post">
-            <label for="">Nom :</label>
+        <form method="post">
+            <label>Nom :</label>
             <br>
             <label>
-                <input type="text" name="mail" id="mail" placeholder="Entrez votre Nom">
+                <input type="text" name="nom" id="nom" placeholder="Entrez votre Nom">
             </label>
             <br>
-            <label for="">Prénom :</label>
+            <label>Prénom :</label>
             <br>
             <label>
-                <input type="text" name="mail" id="mail" placeholder="Entrez votre Prenom">
+                <input type="text" name="prenom" id="prenom" placeholder="Entrez votre Prenom">
             </label>
             <br>
-            <label for="">Email :</label>
+            <label>Email :</label>
             <br>
             <label>
                 <input type="text" name="mail" id="mail" placeholder="Entrez votre mail" value="<?php echo @$_POST['mail']?>"/>
             </label>
             <br>
-            <label for="">Code Confidentiel :</label>
+            <label>Code Confidentiel :</label>
             <br>
             <label>
-                <input type="text" name="mail" id="mail" placeholder="Entrez votre Code">
+                <input type="text" name="code" id="code" placeholder="Entrez votre Code">
             </label>
             <br>
-            <label for="">Mot de passe : </label>
+            <label>Mot de passe : </label>
             <br>
             <label>
-                <input type="password" name="mdp" id="mdp" value="<?php echo @$_POST['mdp']?>" placeholder="Entre votre mot de passe"id="mdp"/>
-                <button type="button" id="pass1" onclick="changer1()">O</button>
+                <input type="password" name="mdp" id="mdp" value="<?php echo @$_POST['mdp']?>" placeholder="Entrez votre mot de passe" />
             </label>
+            <button type="button" id="pass1" onclick="changer1()">O</button>
             <br>
-            <label for="">Mot de passe : </label>
+            <label>Mot de passe : </label>
             <br>
             <label>
-                <input type="password" name="mdp2" id="mdp2" value="<?php echo @$_POST['mdp2']?>" placeholder="Confirmez mot de passe" id="mdp2"/>
+                <input type="password" name="mdp2" id="mdp2" value="<?php echo @$_POST['mdp2']?>" placeholder="Confirmez mot de passe" />
             </label>
             <button type="button" id="pass2" onclick="changer2()">O</button>
             <br>
-            <p><input type="submit" value="Valider"   </p>
+            <p><input type="submit" value="Valider" />  </p>
         </form>
     </div>
 </div>
-
-
-</body>
 <footer>
     <div class="texte_footer">
         <button id="pass" onclick="changer()">Besoin d'aide ?</button>
     </div>
 </footer>
+
+</body>
 </html>
 
 <?php
@@ -117,6 +118,7 @@ function password($mdp, $mdp2)
 }
 function email($mail)
 {
+    $valide= false;
     $aro = false;
     $esp = false;
     if (strlen($mail)>0){
@@ -144,8 +146,9 @@ function email($mail)
             echo "il y a un espace";
     }
      else{
-         return true;
+         $valide= true;
      }
+     return $valide;
 }
 ?>
 
