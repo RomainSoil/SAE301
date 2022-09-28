@@ -28,14 +28,18 @@ footer {
     text-align: center;
     margin:0;
     padding:3%;
-    position: static;
     bottom: 0;
     width:94%;
     font-size: 1em;
     color:white;
     background-color: beige;
     font-weight: bold;
+    display: inline-block;
 }
 body{
     background-color: beige;
 }
+
+
+
+

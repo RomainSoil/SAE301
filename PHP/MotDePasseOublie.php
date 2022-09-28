@@ -21,8 +21,10 @@
 
 
 <div class="mess">
-<text> Entrez votre Email, vous allez recevoir un mail pour vérifier votre identitée </text>
+<text> Entrez votre Email, <br>
+    vous allez recevoir un mail pour vérifier votre identitée </text>
 </div>
+<br>
 
 <div class ="box">
 
@@ -44,9 +46,12 @@
 
 </body>
 <footer>
-        <div class="sec"
-            Vos identifiants sont strictement confidentiels et ne doivent en aucun cas être transmis à une tierce personne.
-        </div>
+        <form action="Accueil.php" method="post">
+            <input type="submit" value="Besoin d'aide ?">
+        </form> <br>
+    <form action="Login%20Maneo.php" method="post">
+            <input type="submit" value="Créer un compte">
+    </form>
 </footer>
 
 </html>
