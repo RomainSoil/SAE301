@@ -7,16 +7,17 @@
     <link rel="stylesheet" href="LOGIN.css" />
 </head>
 <header>
-    <div id ="texte">
-        <h1>Institut de Formation aux Soins Infirmiers (IFSI)</h1>
-    </div>
+    <a href="Accueil.php">
+        <img src="logoIFSI.png" width=150 height=150/>
+    </a>
+    <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
+    <br><br>
 </header>
 
 <body>
 <div class="bouton_retour">
-    <form action="Accueil.php" method="post">
-        <input type="submit" value="<-">
-    </form>
+    <a href="Accueil.php"> <img src="fleche.png"  class="icone"> </a>
+
 </div>
 <div class="I">
     <h2>INSCRIPTION IFSI</h2>
