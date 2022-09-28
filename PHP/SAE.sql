@@ -1,4 +1,4 @@
-DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Intervenant, Prescription, Diagnostic, Messages;
+DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Intervenant, Prescription, Diagnostic;
 
 
 
@@ -77,10 +77,108 @@ Create table Diagnostic (
     idIntervenant int references Intervenant,
     idPatient int references Patient
 );
-
-CREATE TABLE Messages (
-    id serial primary key,
-    userx text,
-    message text,
-    date date
+Create table Radio (
+    idRadio serial Primary Key,
+     image text not null,
+     idPatient int references Patient
 );
+
+Create TABLE Neuro (
+    date date PRIMARY KEY ,
+    t°c float not null,
+    Glasgow float not null,
+    EVA int not null,
+    AlgoPlus int not null,
+    idPatient int references Patient
+);
+
+CREATE TABLE Mobilite(
+    date date primary key,
+    aideALaMarche boolean not null,
+    aideAuLever boolean not null,
+    aideAuCoucher boolean not null,
+    aideAuFauteil boolean not null,
+    idPatient int references Patient
+);
+
+CREATE table MiseEnSecuite(
+    date date primary key,
+    barriereDeLitPrescrite boolean not null ,
+    barriereDeLitConfort boolean not null ,
+    ServeillanceContention boolean not null ,
+    idPatient int references Patient
+
+);
+
+Create table Elimination(
+    date date primary key,
+    Selles boolean not null ,
+    Gaz boolean not null ,
+    Urines boolean not null ,
+    idPatient int references Patient
+);
+
+Create Table Alimentation(
+    date date primary key ,
+    aJeun boolean not null ,
+    SurveillanceHydratation boolean not null ,
+    SurveillanceAlimentation boolean not null ,
+    regime boolean not null ,
+    AideAuRepas boolean not null ,
+    idPatient int references Patient
+
+);
+
+CREATE table  SoinsRelationnels(
+    date date primary key ,
+    Accueil boolean not null ,
+    EntretienInfirmer boolean not null ,
+    ToucherMassage boolean not null ,
+    idPatient int references Patient
+
+);
+
+Create table Cardio(
+    date date primary key,
+    TA text not null,
+    pls int not null ,
+    ECG text not null ,
+    idPatient int references Patient
+
+);
+
+Create table Respi(
+    date date primary key ,
+    SaO2 int not null ,
+    Fr int not null ,
+    O2 text not null,
+    idPatient int references Patient
+
+);
+
+Create table Hygiene(
+    date date primary key ,
+    Douche boolean not null ,
+    Bain boolean not null ,
+    refectionLit boolean not null ,
+    Change boolean not null ,
+    SoinDeBouche boolean not null ,
+    PreventionDescare boolean not null ,
+    ChangementDePos boolean not null,
+    MatelasAAir boolean not null ,
+    idPatient int references Patient
+
+);
+
+Create table Soins(
+    date date primary key ,
+    /* CatheterVeineuxPeriph not null ,*/
+    SurveillancePerf boolean not null ,
+    Pansement boolean not null,
+    /*SondageUriniaire not null,*/
+    SurveillanceGlycemique float not null ,
+    BasDeContention boolean not null ,
+    Autre text not null ,
+    idPatient int references Patient
+
+)
