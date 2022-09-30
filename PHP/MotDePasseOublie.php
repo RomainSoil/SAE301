@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="MotDePasseOublie.css" />
 </head>
 <header>
-    <a href="Accueil.php">
-        <img src="logoIFSI.png" width=150 height=150/>
-    </a>
+    <img src="logoIFSI.png" width=10% height=10%/>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br><br>
 </header>
@@ -23,8 +21,10 @@
 
 
 <div class="mess">
-<text> Entrez votre Email, vous allez recevoir un mail pour vérifier votre identitée </text>
+<text> Entrez votre Email, <br>
+    vous allez recevoir un mail pour vérifier votre identitée </text>
 </div>
+<br>
 
 <div class ="box">
 
@@ -46,9 +46,39 @@
 
 </body>
 <footer>
-        <div class="sec"
-            Vos identifiants sont strictement confidentiels et ne doivent en aucun cas être transmis à une tierce personne.
-        </div>
+        <form action="Accueil.php" method="post">
+            <input type="submit" value="Besoin d'aide ?">
+        </form> <br>
+    <form action="Login%20Maneo.php" method="post">
+            <input type="submit" value="Créer un compte">
+    </form>
 </footer>
 
 </html>
+
+
+<?php
+require('email.php');
+require ('MotDePasse.php');
+require('ConnectionBDD.php');
+
+    $conn = new ConnectionBDD();
+    $pdo = $conn->connexion();
+
+    if ($_POST["mail"].\Sodium\compare($_POST["mailV2"])==0) {
+        $email = $_POST['mail'];
+        $stmt = $pdo->prepare("SELECT * FROM etudiant WHERE email=?");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+        if ($user != null) {
+           /// envoie mail
+    }
+        else {
+            echo "Vous n'avez pas encore de compte veeuillez en créer un";
+            ///mettre un bouton qui renvoie à la page de création
+        }
+
+
+    }
+
+        ?>
