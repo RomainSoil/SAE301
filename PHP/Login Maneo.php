@@ -70,9 +70,9 @@
     </div>
 </div>
 <footer>
-    <div class="texte_footer">
-        <button id="pass" onclick="changer()">Besoin d'aide ?</button>
-    </div>
+    <form action="Accueil.php" method="post">
+        <input type="submit" value="Besoin d'aide ?">
+    </form>
 </footer>
 
 </body>
