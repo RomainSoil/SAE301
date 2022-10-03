@@ -64,9 +64,8 @@ require('ConnectionBDD.php');
 
     $conn = new ConnectionBDD();
     $pdo = $conn->connexion();
-    echo $_POST['mail'];
-    if (($_POST['mail'].\Sodium\compare($_POST['mailV2']))==0) {
-        $email = $_POST['mail'];
+    if (@strcmp(($_POST['mail']),($_POST['mailV2']))==0 and isset($_POST['mail'])) {
+        @$email = $_POST['mail'];
         $stmt = $pdo->prepare("SELECT * FROM etudiant WHERE email=?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
@@ -74,7 +73,7 @@ require('ConnectionBDD.php');
            /// envoie mail
     }
         else {
-            echo "Vous n'avez pas encore de compte veeuillez en créer un";
+            echo "Vous n'avez pas encore de compte veuillez en créer un";
             ///mettre un bouton qui renvoie à la page de création
         }
 
