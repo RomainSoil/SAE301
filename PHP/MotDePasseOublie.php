@@ -74,7 +74,7 @@ require('ConnectionBDD.php');
     }
         else {
             echo "Vous n'avez pas encore de compte veuillez en créer un";
-            ///mettre un bouton qui renvoie à la page de création
+
         }
 
 
