@@ -26,15 +26,15 @@
 
 <div class ="box">
 
-        <form action="" method="post">
+        <form action="MotDePasseOublie.php" method="post">
 
             <br>
             <label for="">Email :</label>
             <br>
-            <input type="text" name="mail" placeholder="Entrez votre Email"/>
+            <input type="text" name='mail' placeholder="Entrez votre Email"/>
             <br>
             <br>
-            <input type="text" name="mailV2" placeholder="Confirmez votre Email"/>
+            <input type="text" name='mailV2' placeholder="Confirmez votre Email"/>
             <br>
             <p><input type="submit" value="Valider"></p>
         </form>
@@ -59,8 +59,8 @@ require('ConnectionBDD.php');
 
     $conn = new ConnectionBDD();
     $pdo = $conn->connexion();
-
-    if ($_POST["mail"].\Sodium\compare($_POST["mailV2"])==0) {
+    echo $_POST['mail'];
+    if (($_POST['mail'].\Sodium\compare($_POST['mailV2']))==0) {
         $email = $_POST['mail'];
         $stmt = $pdo->prepare("SELECT * FROM etudiant WHERE email=?");
         $stmt->execute([$email]);
