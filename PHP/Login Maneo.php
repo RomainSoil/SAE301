@@ -51,15 +51,17 @@
                 <input type="text" name="code" id="code" placeholder="Entrez votre Code">
             </label>
             <br>
-            <label>Mot de passe : </label>
-            <br>
+                <div>
+                    <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
+                </div>
             <label>
                 <input type="password" name="mdp" id="mdp" value="<?php echo @$_POST['mdp']?>" placeholder="Entrez votre mot de passe" />
             </label>
             <button type="button" id="pass1" onclick="changer1()">O</button>
             <br>
-            <label>Mot de passe : </label>
-            <br>
+            <div>
+                <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
+            </div>
             <label>
                 <input type="password" name="mdp2" id="mdp2" value="<?php echo @$_POST['mdp2']?>" placeholder="Confirmez mot de passe" />
             </label>
@@ -69,6 +71,7 @@
         </form>
     </div>
 </div>
+
 <footer>
     <form action="Accueil.php" method="post">
         <input type="submit" value="Besoin d'aide ?">
