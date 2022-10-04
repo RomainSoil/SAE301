@@ -6,16 +6,7 @@ header{
 body{
     background-color: beige;
 }
-header{
-    background-color: beige;
-    text-align: center;
-    color: #EE401A;
-    margin-left: 25%;
-    margin-right: 25%;
 
-
-
-}
 
 div.bouton_retour{
     padding-bottom: 10px;
@@ -75,4 +66,29 @@ div.box{
 div.I{
     color: #EE401A;
     text-align: center;
+}
+/* lien utilisé :https://openclassrooms.com/forum/sujet/texte-saffiche-au-passage-de-la-souris */
+a.info:hover span {
+    display: inline; /* On affiche l'infobulle. */
+    position: absolute;
+    white-space: nowrap; /* On change la valeur de la propriété white-space pour qu'il n'y ait pas de retour à la ligne non désiré. */
+    top: 30px; /* On positionne notre infobulle. */
+    left: 20px;
+    background: white;
+    color: black;
+    border: solid grey;
+}
+
+a.info {
+    position: relative;
+    color: black;
+}
+
+a.info span {
+    display: none; /* On masque l'infobulle. */
+}
+
+a.info:hover {
+    z-index: 500; /* On définit une valeur pour l'ordre d'affichage. */
+    cursor: help; /* On change le curseur par défaut par un curseur d'aide. */
 }

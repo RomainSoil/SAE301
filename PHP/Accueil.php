@@ -38,31 +38,14 @@
 </html>
 
 <?php
-function email($mail, $mdp){
-    try {
-                $pdo = new PDO(
-                    'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo134', 'iutinfo134', 'NuVRPnlV');
-            } catch (PDOException $e) {
-                die ('Erreur : ' . $e->getMessage());
-            }
-            $sql = "SELECT * FROM etudiant where email = '$mail'";
-            try {
-                $affected = $pdo->prepare($sql);
-                $affected->execute();
-            } catch (PDOException $e) {
-                die ($e->getMessage());
+require('email.php');
+require ('MotDePasse.php');
+require('ConnectionBDD.php');
 
-            }
-            while ($row = $affected->fetch(PDO::FETCH_ASSOC)){
-                echo $row['email'];
-                echo " ";
-                if(password_verify($mdp, $row['mdp']) and $row['email']==$mail){
-                    header('Location: http://localhost:63342/SAE301/PHP/TestConnexion.php?_ijt=v8g6ukbvhf6dap3401h81jkam&_ij_reload=RELOAD_ON_SAVE');
-                    exit();
-                }
-            }
-}
-@email($_POST['id'], $_POST['mdp']);
+$conn = new ConnectionBDD();
+$pdo = $conn->connexion();
+$ClassMail = new email();
+@$ClassMail->email($_POST['id'], $_POST['mdp']);
 
 
 ?>

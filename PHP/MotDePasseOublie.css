@@ -1,6 +1,6 @@
 header{
     text-align: center;
-    top:0%;
+    top:0;
     color: #EE401A
 }
 
@@ -39,6 +39,7 @@ footer {
 body{
     background-color: beige;
 }
+
 
 
 
