@@ -8,14 +8,14 @@ CREATE Table Etudiant (
     nom text ,
     prenom text,
     classe text,
-    statut text,
-    Annee int
+    Annee int,
+    Code text
 );
 
 
 Create Table Prof (
     email text primary key,
-    matiere text not null,
+    matiere text ,
     mdp text not null,
     nom text not null,
     prenom text not null

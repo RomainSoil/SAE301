@@ -116,8 +116,8 @@ function bdd($mail, $mdp, $mdp2)
 {
     $ClassMail = new email();
     $ClassMDP =new MotDePasse();
-
-    if(@strlen($_POST['mdp']>1) or @strlen($_POST['mdp']>1) or @strlen($_POST['mail']>1)) {
+    $condition= false;
+    if (isset($mail) and isset($mdp) and isset($mdp2)){
         if ($ClassMail->email($mail) and $ClassMDP->password($mdp, $mdp2)) {
             try {
                 $conn = new ConnectionBDD();
@@ -128,14 +128,28 @@ function bdd($mail, $mdp, $mdp2)
             }
 
             $hash = password_hash($mdp, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO etudiant (email,mdp)
-                   VALUES ('$mail','$hash')";
+            @$code = $_POST['code'];
+            @$nom = $_POST['nom'];
+            @$prenom =$_POST['prenom'];
+            if ($_POST['code']=="P5165156516516@"){
+            $sql = "INSERT INTO prof (email,mdp,nom,prenom)
+                   VALUES ('$mail','$hash','$nom','$prenom')" ;
+            $condition = true;
+            }
 
+
+            elseif ($_POST['code'][0]=="E"){
+                $sql = "INSERT INTO etudiant (email,mdp,code,nom,prenom)
+                   VALUES ('$mail','$hash','$code','$nom','$prenom')";
+                $condition = true;
+
+            }
+            if ($condition){
             try {
                 $affected = $pdo->exec($sql);
             } catch (PDOException $e) {
                 die ($e->getMessage());
-
+            }
             }
         }
     }
