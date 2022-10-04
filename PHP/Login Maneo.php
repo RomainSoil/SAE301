@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="LOGIN.css" />
+    <link rel="stylesheet" href="LOGIN.css">
 </head>
 
 <body>
 <header>
     <a href="Accueil.php">
-        <img src="logoIFSI.png" width=150 height=150 alt="" />
+        <img src="logoIFSI.png" width=150 height=150 alt="" >
     </a>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br><br>
@@ -42,7 +42,7 @@
             <label>Email :</label>
             <br>
             <label>
-                <input type="text" name="mail" id="mail" placeholder="Entrez votre mail" value="<?php echo @$_POST['mail']?>"/>
+                <input type="text" name="mail" id="mail" placeholder="Entrez votre mail" value="<?php echo @$_POST['mail']?>">
             </label>
             <br>
             <label>Code Confidentiel :</label>
@@ -55,7 +55,7 @@
                     <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
                 </div>
             <label>
-                <input type="password" name="mdp" id="mdp" value="<?php echo @$_POST['mdp']?>" placeholder="Entrez votre mot de passe" />
+                <input type="password" name="mdp" id="mdp" value="<?php echo @$_POST['mdp']?>" placeholder="Entrez votre mot de passe" >
             </label>
             <button type="button" id="pass1" onclick="changer1()">O</button>
             <br>
@@ -63,11 +63,11 @@
                 <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
             </div>
             <label>
-                <input type="password" name="mdp2" id="mdp2" value="<?php echo @$_POST['mdp2']?>" placeholder="Confirmez mot de passe" />
+                <input type="password" name="mdp2" id="mdp2" value="<?php echo @$_POST['mdp2']?>" placeholder="Confirmez mot de passe">
             </label>
             <button type="button" id="pass2" onclick="changer2()">O</button>
             <br>
-            <p><input type="submit" value="Valider" />  </p>
+            <p><input type="submit" value="Valider" >  </p>
         </form>
     </div>
 </div>

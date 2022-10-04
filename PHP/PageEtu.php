@@ -8,7 +8,7 @@
 
 <body>
 
-La page du Etu
+La page du Etudiant
 
 </body>
 </html>

@@ -8,7 +8,7 @@
 
 <body>
 
-La page du prof
+La page du professeur
 
 </body>
 </html>
