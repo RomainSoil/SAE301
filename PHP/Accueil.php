@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
 </header>
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
-<form action="Login%20Maneo.php" method="post">
+<form method="post">
      <input type="text" name="id" id="id" placeholder="Identifiant"><br><br>
     <input type="text" name="mdp" placeholder="Mot de passe"><br><br>
     <input type="submit" value="Confirmer">
@@ -41,11 +42,23 @@
 require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
+require('Connexion.php');
 
 $conn = new ConnectionBDD();
 $pdo = $conn->connexion();
 $ClassMail = new email();
-@$ClassMail->email($_POST['id'], $_POST['mdp']);
+$ClassConn= new Connexion();
+if (@$ClassMail->email($_POST['id'])){
+    if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
+        echo "c bon";
+        header('Location:PageEtu.php');
+        exit;
+
+    }
+    else
+        echo "c pas bon";
+    }
+
 
 
 ?>
