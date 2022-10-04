@@ -3,20 +3,19 @@
 class MotDePasse
 {
 
-function password($mdp, $mdp2)
-{
-    $complete= false;
-    if ($mdp == null or $mdp2 == null) {
-        echo "<span style='color: red' >entrez un mot de passe</span>";
-        $_POST['mail'] = "dsf";
+    function password($mdp, $mdp2)
+    {
+        $complete= false;
+        if ($mdp == null or $mdp2 == null) {
+            echo '<script>alert("Le mot de passe n\'est pas inscrit")</script>';
     } elseif ($mdp != $mdp2) {
-        echo "<span style='color: red ' >mots de passes differents</span>";
+        echo '<script>alert("Les mots de passes ne sont pas identiques")</script>';
     }
-    elseif ($mdp != null) {
-        $maj = false;
-        $num = false;
-        if (strlen($mdp) < 8) {
-            echo "Mot de passe trop court";
+        elseif ($mdp != null) {
+            $maj = false;
+            $num = false;
+            if (strlen($mdp) < 8) {
+                echo '<script>alert("Le mot de passe est trop court")</script>';
         }
         for ($i = 0; $i < strlen($mdp); $i++) {
             if (ord($mdp[$i]) < 91 and ord($mdp[$i]) > 64) /// Vérifie qu 'il y a au moins une majuscule dans le code
@@ -29,9 +28,9 @@ function password($mdp, $mdp2)
             }
         }
         if ($maj == false) {
-            echo "Il faut une majuscule";
+            echo '<script>alert("Le mot de passe ne contiens pas de majuscules")</script>';
         } elseif ($num == false) {
-            echo "il faut un numero";
+                echo '<script>alert("Le mot de passe ncontient pas de chiffre")</script>';
         }
         else{
             $complete= true;
