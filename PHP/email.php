@@ -27,9 +27,9 @@ class email
         }
     }
      if ($aro == false) {
-            echo "Ceci n'est pas une adresse mail valide";
+         echo '<script>alert("L\'adresse mail n\'a pas d\'@")</script>';
         } elseif ($esp == true) {
-            echo "il y a un espace";
+            echo '<script>alert("l\'adresse mail ne doit pas contenir d\'espace")</script>';
     }
      else{
          return true;
