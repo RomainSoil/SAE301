@@ -69,4 +69,23 @@ session_start();
 </body>
 
 </html>
-<?php ?>
+<?php
+require ('Premier.php');
+require('email.php');
+require ('MotDePasse.php');
+require('ConnectionBDD.php');
+function email()
+{
+    $conn = new ConnectionBDD();
+    $pdo = $conn->connexion();
+    $MDP = new MotDePasse();
+
+    if (isset($_POST['mdp']) and isset($_POST['mpd2'])) {
+        if ($MDP->password($_POST['mdp'], $_POST['mdp2']))
+        {
+            //met la classe que tu as crée
+        }
+
+}}
+
+
