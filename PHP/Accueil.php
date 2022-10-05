@@ -50,23 +50,25 @@ require('Connexion.php');
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
 $conn = new ConnectionBDD();
 $pdo = $conn->connexion();
-$ClassMail = new email();
-@$ClassMail->email($_POST['id']);
+@$ClassMail = new email();
 $ClassConn= new Connexion();
-if (@$ClassMail->email($_POST['id'])){
+if (@$ClassMail->demail($_POST['id']) && isset($_POST['id'])){
+    echo "essais etu";
     if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
         header('Location:PageEtu.php');
         exit;}
-
     elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
             header('Location:PageProf.php');
             exit;
-
+    }
+    else{
+        echo '<script>alert("Identifiant ou mot de passe incorrect")</script>';
     }
 
 }
 
 ?>
+
 <script>
     ///Boutton affiche le MDP///
     e=true;
