@@ -46,18 +46,18 @@ require('Connexion.php');
 
 $conn = new ConnectionBDD();
 $pdo = $conn->connexion();
-$ClassMail = new email();
-@$ClassMail->email($_POST['id'], $_POST['mdp']);
+@$ClassMail = new email($_POST['id'], $_POST['mdp']);
 $ClassConn= new Connexion();
-if (@$ClassMail->email($_POST['id'])){
+if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
     if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
         header('Location:PageEtu.php');
         exit;}
-
     elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
             header('Location:PageProf.php');
             exit;
-
+    }
+    else{
+        echo '<script>alert("Identifiant ou mot de passe incorrect")</script>';
     }
 
 }
