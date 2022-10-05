@@ -112,56 +112,86 @@ session_start();
 </script>
 
 <?php
+function premier(){
+    if (isset($_SESSION['premier'])){
+        $_SESSION['premier']=false;
+    }
+    elseif($_SESSION['premier']){
+        $_SESSION['premier']=true;
+    }
+}
 
 require('MotDePasse.php');
 require('email.php');
 require('ConnectionBDD.php');
-function bdd($mail, $mdp, $mdp2)
-{
+function bdd($mail, $mdp, $mdp2){
     $ClassMail = new email();
     $ClassMDP =new MotDePasse();
     $condition= false;
-    if (isset($mail) and isset($mdp) and isset($mdp2)){
-        if ($ClassMail->email($mail) and $ClassMDP->password($mdp, $mdp2)) {
-            try {
-                $conn = new ConnectionBDD();
+    if ($_SESSION['premier']) {
+        if (isset($nom)) {
+            if (isset($prenom)) {
+                if (isset($mail)) {
+                    if (isset($code)){
+                        if (isset($mdp) and isset($mdp2)) {
+                            if ($ClassMail->email($mail) and $ClassMDP->password($mdp, $mdp2)) {
+                                try {
+                                    $conn = new ConnectionBDD();
 
-                $pdo = $conn->connexion();
-            } catch (PDOException $e) {
-                die ('Erreur : ' . $e->getMessage());
-            }
+                                    $pdo = $conn->connexion();
+                                } catch (PDOException $e) {
+                                    die ('Erreur : ' . $e->getMessage());
+                                }
 
-            $hash = password_hash($mdp, PASSWORD_DEFAULT);
-            @$code = $_POST['code'];
-            @$nom = $_POST['nom'];
-            @$prenom =$_POST['prenom'];
-            if ($_POST['code']=="P5165156516516@"){
-            $sql = "INSERT INTO prof (email,mdp,nom,prenom)
-                   VALUES ('$mail','$hash','$nom','$prenom')" ;
-            $condition = true;
-                header('Location: Accueil.php');
-                $_SESSION['page']=true;
-            }
+                                $hash = password_hash($mdp, PASSWORD_DEFAULT);
+                                @$code = $_POST['code'];
+                                @$nom = $_POST['nom'];
+                                @$prenom = $_POST['prenom'];
+                                if ($_POST['code'] == "P5165156516516@") {
+                                    $sql = "INSERT INTO prof (email,mdp,nom,prenom)
+                                       VALUES ('$mail','$hash','$nom','$prenom')";
+                                    $condition = true;
+                                    header('Location: Accueil.php');
+                                    $_SESSION['page'] = true;
+                                } elseif ($_POST['code'][0] == "E") {
+                                    $sql = "INSERT INTO etudiant (email,mdp,code,nom,prenom)
+                                       VALUES ('$mail','$hash','$code','$nom','$prenom')";
+                                    $condition = true;
+                                    header('Location: Accueil.php');
+                                    $_SESSION['page'] = true;
 
-
-            elseif ($_POST['code'][0]=="E"){
-                $sql = "INSERT INTO etudiant (email,mdp,code,nom,prenom)
-                   VALUES ('$mail','$hash','$code','$nom','$prenom')";
-                $condition = true;
-                header('Location: Accueil.php');
-                $_SESSION['page']=true;
-
+                                }
+                                if ($condition) {
+                                    try {
+                                        $affected = $pdo->exec($sql);
+                                    } catch (PDOException $e) {
+                                        die ($e->getMessage());
+                                    }
+                                }
+                            }
+                        }
+                        else{
+                            '<script>alert("Les deux mots de passes doivent être inscrits")</script>';
+                        }
+                    }
+                    else {
+                        echo '<script>alert("Le code n\'est pas inscrit")</script>';
+                    }
+                }
+                else {
+                    echo '<script>alert("l\'email n\'est pas inscrit")</script>';
+                }
             }
-            if ($condition){
-            try {
-                $affected = $pdo->exec($sql);
-            } catch (PDOException $e) {
-                die ($e->getMessage());
+            else {
+                echo '<script>alert("Le prénon n\'est par entré")</script>';
             }
-            }
+        }
+        else {
+            echo '<script>alert("Le nom n\'est pas rentré")</script>';
         }
     }
 }
-
+premier();
 bdd(@$_POST['mail'],@$_POST['mdp'],@$_POST['mdp2']);
+
 ?>
