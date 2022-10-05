@@ -70,29 +70,43 @@ session_start();
 
 
 <?php
+
+require ('Premier.php');
 require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
+function email()
+{
+    $conn = new ConnectionBDD();
+    $pdo = $conn->connexion();
+    $sess = new Premier();
+    $sess->premier('oublie');
+    echo $_SESSION['oublie'];
+    if ($_SESSION['oublie']==2) {
+        if (isset($_POST['mail']) and isset($_POST['mailV2'])) {
+            if (@strcmp(($_POST['mail']), ($_POST['mailV2'])) == 0) {//strcmp sert a comparer les deux chaines de caracteres
+                @$email = $_POST['mail'];
+                $etu = $pdo->prepare("SELECT * FROM etudiant WHERE email=?");
+                $prof = $pdo->prepare("SELECT * FROM prof WHERE email=?");
+                $etu->execute([$email]);
+                $prof->execute([$email]);
+                if ($etu->rowCount() > 0 or $prof->rowCount() > 0) {
+                    /// envoie mail
+                    echo '<script>alert("Vous allez recevoir un email sur votre adresse mail")</script>';
+                } else {
+                    echo '<script>alert("Vous devez vous créer un compte")</script>';
 
-$conn = new ConnectionBDD();
-$pdo = $conn->connexion();
-if (@strcmp(($_POST['mail']),($_POST['mailV2']))==0 and isset($_POST['mail'])) {
-    @$email = $_POST['mail'];
-    $etu = $pdo->prepare("SELECT * FROM etudiant WHERE email=?");
-    $prof = $pdo->prepare("SELECT * FROM prof WHERE email=?");
-    $etu->execute([$email]);
-    $prof->execute([$email]);
-    if ($etu->rowCount()>0 or $prof->rowCount()>0) {
-        /// envoie mail
-        echo '<script>alert("Vous allez recevoir un email sur votre adresse mail")</script>';    }
-    else {
-        echo '<script>alert("Vous devez vous créer un compte")</script>';
+                }
 
+            }
+            else {
+                echo '<script>alert("Les mails sont différents")</script>';
+            }
+        } else {
+            echo '<script>alert("Les champs mail doivent être remplis")</script>';
+        }
     }
 
-
-
-
-    }
-
+}
+@email();
         ?>

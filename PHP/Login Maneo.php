@@ -118,23 +118,17 @@ session_start();
 </script>
 
 <?php
-function premier(){
-    if (isset($_SESSION['premier'])){
-        $_SESSION['premier']=false;
-    }
-    elseif($_SESSION['premier']){
-        $_SESSION['premier']=true;
-    }
-}
-
+require ('Premier.php');
 require('MotDePasse.php');
 require('email.php');
 require('ConnectionBDD.php');
 function bdd($mail, $mdp, $mdp2){
+    $sess = new Premier();
+    $sess->premier('premier');
     $ClassMail = new email();
     $ClassMDP =new MotDePasse();
     $condition= false;
-    if ($_SESSION['premier']) {
+    if ($_SESSION['premier']==2) {
         if (isset($nom)) {
             if (isset($prenom)) {
                 if (isset($mail)) {
@@ -167,6 +161,9 @@ function bdd($mail, $mdp, $mdp2){
                                     $_SESSION['page'] = true;
 
                                 }
+                                else{
+                                    '<script>alert("Le code n\'est pas valide")</script>';
+                                }
                                 if ($condition) {
                                     try {
                                         $affected = $pdo->exec($sql);
@@ -197,7 +194,7 @@ function bdd($mail, $mdp, $mdp2){
         }
     }
 }
-premier();
-bdd(@$_POST['mail'],@$_POST['mdp'],@$_POST['mdp2']);
+@premier();
+@bdd($_POST['mail'],$_POST['mdp'],$_POST['mdp2']);
 
 ?>
