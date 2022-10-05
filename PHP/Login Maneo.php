@@ -135,6 +135,7 @@ function bdd($mail, $mdp, $mdp2)
             $sql = "INSERT INTO prof (email,mdp,nom,prenom)
                    VALUES ('$mail','$hash','$nom','$prenom')" ;
             $condition = true;
+                header('Location: Accueil.php');
             }
 
 
@@ -142,6 +143,7 @@ function bdd($mail, $mdp, $mdp2)
                 $sql = "INSERT INTO etudiant (email,mdp,code,nom,prenom)
                    VALUES ('$mail','$hash','$code','$nom','$prenom')";
                 $condition = true;
+                header('Location: Accueil.php');
 
             }
             if ($condition){
