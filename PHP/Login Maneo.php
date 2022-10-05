@@ -12,6 +12,8 @@ session_start();
 </head>
 
 <body>
+<!--Le haut de la page avec l'image et le titre-->
+
 <header>
     <a href="Accueil.php">
         <img src="logoIFSI.png" width=150 height=150 alt="" >
@@ -20,16 +22,18 @@ session_start();
     <br><br>
 </header>
 
+<!--La fleche pour revenir sur la page accueil-->
 
 <div class="bouton_retour">
     <a href="Accueil.php"> <img src="fleche.png"  class="icone" alt="" > </a>
 
 </div>
+<!--La box de l'inscription-->
+
 <div class="I">
     <h2>INSCRIPTION IFSI</h2>
 </div>
-<div class ="box">
-    <div class="connexion">
+<div class="connexion">
         <form method="post">
             <label>Nom :</label>
             <br>
@@ -51,6 +55,7 @@ session_start();
             <br>
             <label>Code Confidentiel :</label>
             <br>
+            <!--le code peut être commun-->
             <label>
                 <input type="text" name="code" id="code" value="<?php echo @$_POST['code']?>" placeholder="Entrez votre Code">
             </label>
@@ -73,8 +78,9 @@ session_start();
             <br>
             <p><input type="submit" value="Valider" >  </p>
         </form>
-    </div>
 </div>
+
+<!--Le bas de page avec le boutton si on a besoin d'aide-->
 
 <footer>
     <form action="Accueil.php" method="post">

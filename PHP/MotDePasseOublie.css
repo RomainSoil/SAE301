@@ -1,18 +1,22 @@
-/*CSS */
+/*CSS MDP oublié et nouveau MDP*/
+/*  haut page*/
 header{
     text-align: center;
     top:0;
     color: #EE401A
 }
-
-
-
+/* fleche retour*/
+div.bouton_retour{
+    padding-bottom: 10px;
+}
+/* message milieu*/
 div.mess{
     color: darkblue;
     margin-left: 25%;
     margin-right: 25%;
     font-weight: bold;
 }
+/* box milieu*/
 div.box{
     background-color:   #EE401A;
     margin-left: 25%;
@@ -24,7 +28,7 @@ div.box{
 
 
 
-
+/* bas page*/
 footer {
     text-align: center;
     margin:0;
@@ -37,6 +41,7 @@ footer {
     font-weight: bold;
     display: inline-block;
 }
+/* corps page*/
 body{
     background-color: beige;
 }

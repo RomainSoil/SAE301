@@ -10,6 +10,8 @@ session_start();
     <link rel="stylesheet" href="MotDePasseOublie.css">
 </head>
 <body>
+<!--Le haut de la page avec l'image et le titre-->
+
 <header>
     <a href="Accueil.php">
         <img src="logoIFSI.png" width=150 height=150 alt="">
@@ -19,6 +21,7 @@ session_start();
 </header>
 
 
+<!--box de milieu-->
 
 <div class="mess">
     Entrez votre nouveau mot de passe, <br>
@@ -46,6 +49,7 @@ session_start();
 </div>
 
 
+<!--Le bas de la page-->
 
 <footer>
     <form action="Login%20Maneo.php" method="post">
