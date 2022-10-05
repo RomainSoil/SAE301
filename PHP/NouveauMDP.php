@@ -10,6 +10,8 @@ session_start();
     <link rel="stylesheet" href="MotDePasseOublie.css">
 </head>
 <body>
+<!--Le haut de la page avec l'image et le titre-->
+
 <header>
     <a href="Accueil.php">
         <img src="logoIFSI.png" width=150 height=150 alt="">
@@ -19,6 +21,7 @@ session_start();
 </header>
 
 
+<!--box de milieu-->
 
 <div class="mess">
     Entrez votre nouveau mot de passe, <br>
@@ -29,16 +32,20 @@ session_start();
 <div class ="box">
 
     <form action="MotDePasseOublie.php" method="post">
-
+        <br>
+        <label>Email :</label>
+        <br><br>
+        <input type="text" name='email' placeholder="Entrez votre email">
+        <br>
         <br>
         <label>Nouveau Mot de passe :</label>
         <br><br>
-        <input type="text" name='mail' placeholder="Entrez votre nouveau MDP">
+        <input type="text" name='mdp' placeholder="Entrez votre nouveau MDP">
         <br>
         <br>
         <label>Confirmez votre Mot de passe :</label>
         <br><br>
-        <input type="text" name='mailV2' placeholder="Confirmez votre MDP">
+        <input type="text" name='mdp2' placeholder="Confirmez votre MDP">
         <br>
         <p><input type="submit" value="Valider"></p>
     </form>
@@ -46,6 +53,7 @@ session_start();
 </div>
 
 
+<!--Le bas de la page-->
 
 <footer>
     <form action="Login%20Maneo.php" method="post">

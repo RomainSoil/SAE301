@@ -1,3 +1,4 @@
+/* CSS haut de la page*/
 header{
     text-align: center;
     top:0;
@@ -11,40 +12,35 @@ body{
 div.bouton_retour{
     padding-bottom: 10px;
 }
-
+/* titre inscription*/
 div.I{
     text-align: center;
-
+    color: #EE401A;
 }
+
+/* box inscription*/
+
 div.connexion{
     text-align: center;
-    border:solid;
+    border:solid; background-color:  #EE401A;
+    margin-left: 25%;
+    margin-right: 25%;
+
+
 
 }
-
+/* espace label box*/
 label{
     display: inline-block;
     padding: 10px;
 }
+/* taille label*/
 input {
     padding: 5px ;
 }
-div.inscription{
-    text-align: center;
-    font-weight: bold;
 
-}
 
-.progressbar-wrapper {
-    background-color: red;
-    color: white;
-    border-radius: 15px;
-    text-align:center;
-    margin-left: 25%;
-    margin-right: 25%;
-
-}
-
+/* bas de la page*/
 footer{
     text-align: center;
     margin:0;
@@ -57,17 +53,9 @@ footer{
     background-color: beige;
     font-weight: bold;
 }
-div.box{
-    background-color:  #EE401A;
-    margin-left: 25%;
-    margin-right: 25%;
 
-}
-div.I{
-    color: #EE401A;
-    text-align: center;
-}
 /* lien utilisé :https://openclassrooms.com/forum/sujet/texte-saffiche-au-passage-de-la-souris */
+/* message de condition de mdp*/
 a.info:hover span {
     display: inline; /* On affiche l'infobulle. */
     position: absolute;

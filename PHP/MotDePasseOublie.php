@@ -10,6 +10,7 @@ session_start();
     <link rel="stylesheet" href="MotDePasseOublie.css">
 </head>
 <body>
+<!--Le haut de la page avec l'image et le titre-->
 
 <header>
     <a href="Accueil.php">
@@ -25,6 +26,7 @@ session_start();
 
 </div>
 
+<!--box milieu-->
 
 <div class="mess">
     Entrez votre Email, <br>
@@ -51,6 +53,7 @@ session_start();
 
 </div>
 
+<!--Le bas de la page-->
 
 <footer>
     <form action="Login%20Maneo.php" method="post">

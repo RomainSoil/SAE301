@@ -1,3 +1,10 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
@@ -5,7 +12,7 @@
 </head>
 <body>
 <br><br>
-<! Le haut de la page avec l'image et le titre>
+<!--Le haut de la page avec l'image et le titre-->
 <header>
     <a href="Accueil.php">
         <img src="logoIFSI.png" width=150 height=150 alt="" >
@@ -13,7 +20,7 @@
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br><br>
 </header>
-<! Cette classe est le formulaire de connexion au centre de la page>
+<!--Cette classe est le formulaire de connexion au centre de la page-->
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
     <form method="post">
@@ -22,7 +29,7 @@
         <input type="submit" value="Confirmer">
     </form>
 </div>
-<! Lien en dessous de la box connexion>
+<!--Lien en dessous de la box connexion-->
 
 <div class="compte">
     <br><br><br>
@@ -30,7 +37,7 @@
     <a href="MotDePasseOublie.php">Mot de passe oublié</a><br><br>
     <a href="https://cas.uphf.fr/login-help/">Besoin d'aide</a><br><br>
 </div>
-<! Le bas de l'image avec le carré rouge>
+<!--Le bas de l'image avec le carré rouge-->
 <footer>
     <div class="sec">
     Pour des raisons de sécurité, veuillez vous déconnecter et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.
@@ -51,11 +58,13 @@ require('Connexion.php');
 if ($_SESSION['page']){
     echo '<script>alert("Le compte est crée")</script>';
 }
+/* La partie de la validation de connexion qui renvoie la page correspondante*/
+
 $conn = new ConnectionBDD();
 $pdo = $conn->connexion();
 @$ClassMail = new email();
 $ClassConn= new Connexion();
-if (isset($_POST['id'])){
+if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
     if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
         header('Location:PageEtu.php');
         exit;}
