@@ -52,7 +52,11 @@ $ClassConn= new Connexion();
 if (@$ClassMail->email($_POST['id'])){
     if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
         header('Location:PageEtu.php');
-        exit;
+        exit;}
+
+    elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
+            header('Location:PageProf.php');
+            exit;
 
     }
 
