@@ -160,7 +160,6 @@ function bdd($mail, $mdp, $mdp2){
                                     $condition = true;
                                     header('Location: Accueil.php');
                                     $_SESSION['page'] = true;
-
                                 }
                                 else{
                                     '<script>alert("Le code n\'est pas valide")</script>';

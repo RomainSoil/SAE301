@@ -108,10 +108,13 @@ function email(){
                         $mail->Port       = 25;
                         //Recipients
                         $mail->setFrom('xxx@xx.tamere', 'IFSI');
-                        $mail->Body ='hello mother fucker';
+                        $mail->Subject = 'Mot de passe IFSI oublié';
+                        $mail->Body= 'Bonjour,\r\nTu as déclaré avoir oublié ton mot de passe : clique sur le lien ci-dessous pour en définir un nouveau.
+                        <a href = "NouveauMDP.php"> Changer de mot de passe </a>';
                         $mail->addAddress($_POST['mail'], 'Joe User');     //Add a recipient
                         $mail->send();
                         echo 'Message has been sent';
+                        $_SESSION['mail']=$email;
                     } catch (Exception $e) {
                         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                     }

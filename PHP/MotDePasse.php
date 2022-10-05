@@ -39,6 +39,22 @@ class MotDePasse
     echo "<br>";
     return $complete;
 }
+function changement($bdd, $mdp){
+    $hash =password_hash($mdp, PASSWORD_DEFAULT);
+    $mail = $_SESSION['mail'];
+    $conn = new Connexion();
+    if ($conn->Trouveretu($bdd, $_SESSION['mail'])){
+        $sql = "UPDATE etudiant SET mdp='$hash' WHERE email='$mail'";
+    }
+    elseif ($conn->TrouveProf($bdd, $_SESSION['mail'])){
+        $sql = "UPDATE prof SET mdp='$hash' WHERE email='$mail'";
+    }
+    $rep = $bdd->exec($sql);
+    if ($rep){
+        echo 'erwan pu sa grand mere la pute';
+    }
 }
+}
+
 
 ?>

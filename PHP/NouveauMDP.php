@@ -33,19 +33,14 @@ session_start();
 
     <form action="MotDePasseOublie.php" method="post">
         <br>
-        <label>Email :</label>
-        <br><br>
-        <input type="text" name='email' placeholder="Entrez votre email">
-        <br>
-        <br>
         <label>Nouveau Mot de passe :</label>
         <br><br>
-        <input type="text" name='mdp' placeholder="Entrez votre nouveau MDP">
+        <input type="text" name='mdp' id="mdp" placeholder="Entrez votre nouveau MDP">
         <br>
         <br>
         <label>Confirmez votre Mot de passe :</label>
         <br><br>
-        <input type="text" name='mdp2' placeholder="Confirmez votre MDP">
+        <input type="text" name='mdp2' id="mdp2" placeholder="Confirmez votre MDP">
         <br>
         <p><input type="submit" value="Valider"></p>
     </form>
@@ -83,9 +78,9 @@ function email()
     if (isset($_POST['mdp']) and isset($_POST['mpd2'])) {
         if ($MDP->password($_POST['mdp'], $_POST['mdp2']))
         {
-            //met la classe que tu as crée
+            $MDP->changement($pdo, $_POST['mdp']);
         }
 
 }}
 
-
+?>
