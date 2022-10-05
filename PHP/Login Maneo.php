@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -135,6 +139,8 @@ function bdd($mail, $mdp, $mdp2)
             $sql = "INSERT INTO prof (email,mdp,nom,prenom)
                    VALUES ('$mail','$hash','$nom','$prenom')" ;
             $condition = true;
+                header('Location: Accueil.php');
+                $_SESSION['page']=true;
             }
 
 
@@ -142,6 +148,8 @@ function bdd($mail, $mdp, $mdp2)
                 $sql = "INSERT INTO etudiant (email,mdp,code,nom,prenom)
                    VALUES ('$mail','$hash','$code','$nom','$prenom')";
                 $condition = true;
+                header('Location: Accueil.php');
+                $_SESSION['page']=true;
 
             }
             if ($condition){

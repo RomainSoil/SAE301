@@ -3,7 +3,7 @@
 class email
 {
 
-    function demail($mail)
+    function email($mail)
 {
     $aro = false;
     $esp = false;

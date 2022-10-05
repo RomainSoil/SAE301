@@ -48,12 +48,14 @@ require('ConnectionBDD.php');
 require('Connexion.php');
 
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
+if ($_SESSION['page']){
+    echo '<script>alert("Le compte est crée")</script>';
+}
 $conn = new ConnectionBDD();
 $pdo = $conn->connexion();
 @$ClassMail = new email();
 $ClassConn= new Connexion();
-if (@$ClassMail->demail($_POST['id']) && isset($_POST['id'])){
-    echo "essais etu";
+if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
     if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
         header('Location:PageEtu.php');
         exit;}
