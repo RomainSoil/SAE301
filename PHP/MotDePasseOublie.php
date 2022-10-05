@@ -65,23 +65,26 @@ require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
 
-    $conn = new ConnectionBDD();
-    $pdo = $conn->connexion();
-
-    if ($_POST["mail"].\Sodium\compare($_POST["mailV2"])==0) {
-        $email = $_POST['mail'];
-        $stmt = $pdo->prepare("SELECT * FROM etudiant WHERE email=?");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-        if ($user != null) {
-           /// envoie mail
+$conn = new ConnectionBDD();
+$pdo = $conn->connexion();
+if (@strcmp(($_POST['mail']),($_POST['mailV2']))==0 and isset($_POST['mail'])) {
+    @$email = $_POST['mail'];
+    $etu = $pdo->prepare("SELECT * FROM etudiant WHERE email=?");
+    $prof = $pdo->prepare("SELECT * FROM prof WHERE email=?");
+    $etu->execute([$email]);
+    $prof->execute([$email]);
+    if ($etu->rowCount()>0 or $prof->rowCount()>0) {
+        /// envoie mail
+        echo"ton pere le chauve";
     }
-        else {
-            echo "Vous n'avez pas encore de compte veeuillez en créer un";
-            ///mettre un bouton qui renvoie à la page de création
-        }
-
+    else {
+        echo '<script>alert("Vous devez vous créer un compte")</script>';
 
     }
 
-        ?>
+
+
+
+}
+
+?>
