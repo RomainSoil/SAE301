@@ -53,13 +53,14 @@ $ClassMail = new email();
 $ClassConn= new Connexion();
 if (@$ClassMail->email($_POST['id'])){
     if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
-        echo "c bon";
         header('Location:PageEtu.php');
         exit;
-
     }
-    else
-        echo "c pas bon";
+    elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
+        header('Location:PageProf.php');
+        exit;
+    }
+
 }
 
 ?>
