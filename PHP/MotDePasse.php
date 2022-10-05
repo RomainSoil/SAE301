@@ -1,8 +1,6 @@
 <?php
-
 class MotDePasse
 {
-
     function password($mdp, $mdp2)
     {
         $complete= false;
@@ -39,11 +37,10 @@ class MotDePasse
     echo "<br>";
     return $complete;
 }
-function changement($bdd, $mdp){
+function changement($bdd, $mdp, $conn){
     $hash =password_hash($mdp, PASSWORD_DEFAULT);
     $mail = $_SESSION['mail'];
-    $conn = new Connexion();
-    if ($conn->Trouveretu($bdd, $_SESSION['mail'])){
+    if ($conn->TrouveETu($bdd, $_SESSION['mail'])){
         $sql = "UPDATE etudiant SET mdp='$hash' WHERE email='$mail'";
     }
     elseif ($conn->TrouveProf($bdd, $_SESSION['mail'])){
@@ -51,7 +48,7 @@ function changement($bdd, $mdp){
     }
     $rep = $bdd->exec($sql);
     if ($rep){
-        echo 'erwan pu sa grand mere la pute';
+        echo 'mdp changé';
     }
 }
 }

@@ -31,7 +31,7 @@ session_start();
 
 <div class ="box">
 
-    <form action="MotDePasseOublie.php" method="post">
+    <form action="" method="post">
         <br>
         <label>Nouveau Mot de passe :</label>
         <br><br>
@@ -51,13 +51,13 @@ session_start();
 <!--Le bas de la page-->
 
 <footer>
-    <form action="Login%20Maneo.php" method="post">
+    <form action="" method="post">
         <input type="submit" value="Créer un compte">
     </form> <br>
     <form action="Accueil.php" method="post">
         <input type="submit" value="Connexion">
     </form> <br>
-    <form action="Accueil.php" method="post">
+    <form action="" method="post">
         <input type="submit" value="Besoin d'aide ?">
     </form>
 </footer>
@@ -66,21 +66,24 @@ session_start();
 </html>
 <?php
 require ('Premier.php');
+require ('Connexion.php');
 require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
-function email()
+function pdemail()
 {
     $conn = new ConnectionBDD();
     $pdo = $conn->connexion();
     $MDP = new MotDePasse();
+    $co = new Connexion();
 
-    if (isset($_POST['mdp']) and isset($_POST['mpd2'])) {
+    if (isset($_POST['mdp']) or isset($_POST['mpd2'])) {
         if ($MDP->password($_POST['mdp'], $_POST['mdp2']))
         {
-            $MDP->changement($pdo, $_POST['mdp']);
+            $MDP->changement($pdo, $_POST['mdp'], $co);
         }
 
-}}
-
+}else echo $_POST['mdp'], $_POST['mdp2'];
+}
+pdemail();
 ?>

@@ -107,10 +107,12 @@ function email(){
                         $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
                         $mail->Port       = 25;
                         //Recipients
-                        $mail->setFrom('xxx@xx.tamere', 'IFSI');
-                        $mail->Subject = 'Mot de passe IFSI oublié';
-                        $mail->Body= 'Bonjour,\r\nTu as déclaré avoir oublié ton mot de passe : clique sur le lien ci-dessous pour en définir un nouveau.
-                        <a href = "NouveauMDP.php"> Changer de mot de passe </a>';
+                        $mail->setFrom('xxx@xx.tamere', 'IFSI');;
+                        $url="NouveauMDP.php";
+                        $texte_du_lien="Changer de mot de passe";
+                        $mail->setFrom('bulletforce59750@gmail.com', 'IFSI');
+                        $mail->Subject = 'Réinitialisation de ton mot de passe';
+                        $mail->Body=  '<a href="'.$url.'">'.$texte_du_lien.'</a>';
                         $mail->addAddress($_POST['mail'], 'Joe User');     //Add a recipient
                         $mail->send();
                         echo 'Message has been sent';
