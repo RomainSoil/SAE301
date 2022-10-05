@@ -3,11 +3,11 @@
 class email
 {
 
-    function email($mail)
+    function demail($mail)
 {
     $aro = false;
     $esp = false;
-    if (strlen($mail)>0){
+    if (isset($mail)){
         for ($i = 0; $i < strlen($mail); $i++) /// Vérifie qu 'il y a un @ dans l'email
         {
             if ($mail[$i] == "@") {
@@ -28,11 +28,12 @@ class email
         } elseif ($esp == true) {
             echo '<script>alert("l\'adresse mail ne doit pas contenir d\'espace")</script>';
         }
+        else{
+            return true;
+        }
     }
 
-     else{
-         return true;
-     }
+
 }
 
 

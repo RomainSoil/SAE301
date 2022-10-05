@@ -46,9 +46,10 @@ require('Connexion.php');
 
 $conn = new ConnectionBDD();
 $pdo = $conn->connexion();
-@$ClassMail = new email($_POST['id'], $_POST['mdp']);
+@$ClassMail = new email();
 $ClassConn= new Connexion();
-if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
+if (@$ClassMail->demail($_POST['id']) && isset($_POST['id'])){
+    echo "essais etu";
     if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
         header('Location:PageEtu.php');
         exit;}
