@@ -67,18 +67,21 @@ session_start();
 
 
 <?php
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 require ('Premier.php');
 require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
-function email()
-{
+require('includes/Exception.php');
+require('includes/PHPMailer.php');
+require('includes/SMTP.php');
+function email(){
     $conn = new ConnectionBDD();
     $pdo = $conn->connexion();
     $sess = new Premier();
     $sess->premier('oublie');
-    echo $_SESSION['oublie'];
     if ($_SESSION['oublie']==2) {
         if (isset($_POST['mail']) and isset($_POST['mailV2'])) {
             if (@strcmp(($_POST['mail']), ($_POST['mailV2'])) == 0) {//strcmp sert a comparer les deux chaines de caracteres
@@ -88,8 +91,27 @@ function email()
                 $etu->execute([$email]);
                 $prof->execute([$email]);
                 if ($etu->rowCount() > 0 or $prof->rowCount() > 0) {
-                    /// envoie mail
                     echo '<script>alert("Vous allez recevoir un email sur votre adresse mail")</script>';
+                    $mail = new PHPMailer(true);
+                    try {
+                        //Server settings
+                        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                        $mail->isSMTP();                                            //Send using SMTP
+                        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                        $mail->Username   = 'bulletforce59750@gmail.com';                     //SMTP username
+                        $mail->Password   = 'bxwvbwzeuydsgpoa';                               //SMTP password
+                        $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+                        $mail->Port       = 25;
+                        //Recipients
+                        $mail->setFrom('xxx@xx.tamere', 'IFSI');
+                        $mail->Body ='hello mother fucker';
+                        $mail->addAddress($_POST['mail'], 'Joe User');     //Add a recipient
+                        $mail->send();
+                        echo 'Message has been sent';
+                    } catch (Exception $e) {
+                        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                    }
                 } else {
                     echo '<script>alert("Vous devez vous créer un compte")</script>';
 
@@ -106,4 +128,5 @@ function email()
 
 }
 @email();
+
         ?>

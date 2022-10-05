@@ -122,6 +122,10 @@ function bdd($mail, $mdp, $mdp2){
     $ClassMail = new email();
     $ClassMDP =new MotDePasse();
     $condition= false;
+    @$nom = $_POST['nom'];
+    @$prenom = $_POST['prenom'];
+    @$code = $_POST['code'];
+    echo $_SESSION['premier'];
     if ($_SESSION['premier']==2) {
         if (isset($nom)) {
             if (isset($prenom)) {
@@ -138,9 +142,6 @@ function bdd($mail, $mdp, $mdp2){
                                 }
 
                                 $hash = password_hash($mdp, PASSWORD_DEFAULT);
-                                @$code = $_POST['code'];
-                                @$nom = $_POST['nom'];
-                                @$prenom = $_POST['prenom'];
                                 if ($_POST['code'] == "P5165156516516@") {
                                     $sql = "INSERT INTO prof (email,mdp,nom,prenom)
                                        VALUES ('$mail','$hash','$nom','$prenom')";
@@ -188,7 +189,6 @@ function bdd($mail, $mdp, $mdp2){
         }
     }
 }
-@premier();
 @bdd($_POST['mail'],$_POST['mdp'],$_POST['mdp2']);
 
 ?>
