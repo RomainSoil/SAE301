@@ -37,5 +37,39 @@ class Connexion
 
     }
 
+    function TrouveProf ($bdd, $mail ){
+
+
+        $sql="Select * From prof WHERE email = '$mail' ";
+
+        $reponse = $bdd->prepare($sql);
+        $reponse->execute();
+
+
+        if($reponse->rowCount()>0){
+
+            return true;}
+        else
+            return false;
+
+    }
+
+    function TrouveETu ($bdd, $mail ){
+
+
+        $sql="Select * From etudiant WHERE email = '$mail' ";
+
+        $reponse = $bdd->prepare($sql);
+        $reponse->execute();
+
+
+        if($reponse->rowCount()>0){
+
+            return true;}
+        else
+            return false;
+
+    }
+
 
 }
