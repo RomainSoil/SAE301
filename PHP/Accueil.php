@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
@@ -17,17 +15,17 @@
 
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
-<form method="post">
-     <input type="text" name="id" id="id" placeholder="Identifiant"><br><br>
-    <input type="text" name="mdp" placeholder="Mot de passe"><br><br>
-    <input type="submit" value="Confirmer">
-</form>
+    <form method="post">
+        <input type="text" name="id" id="id" placeholder="Identifiant"><br><br>
+        <input type="password" name="mdp" placeholder="Mot de passe"><button type="button" onclick="changer3()">O</button><br><br>
+        <input type="submit" value="Confirmer">
+    </form>
 </div>
 <div class="compte">
     <br><br><br>
     <a href="Login%20Maneo.php">créer un compte</a><br><br>
     <a href="MotDePasseOublie.php">Mot de passe oublié</a><br><br>
-    <a href="https://cas.uphf.fr/login-help/">Besoin d'aide</a><br><br>
+    <a href="https://cas.uphf.fr/login-help/%22%3EBesoin d'aide</a><br><br>
 </div>
 
 <footer>
@@ -35,7 +33,7 @@
     Pour des raisons de sécurité, veuillez vous déconnecter et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.
     <br>
     Vos identifiants sont strictement confidentiels et ne doivent en aucun cas être transmis à une tierce personne.
-    </div>
+</div>
 </footer>
 </body>
 </html>
@@ -55,12 +53,23 @@ if (@$ClassMail->email($_POST['id'])){
     if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
         header('Location:PageEtu.php');
         exit;
-    }
-    elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
-        header('Location:PageProf.php');
-        exit;
+
     }
 
 }
 
 ?>
+
+<script>
+    e=true;
+    function changer3(){
+        if(e){
+            document.getElementById("mdp").setAttribute("type","text");
+            e=false;
+        }
+        else{
+            document.getElementById("mdp").setAttribute("type","password");
+            e=true;
+        }
+    }
+</script>
