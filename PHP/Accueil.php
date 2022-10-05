@@ -46,7 +46,9 @@ require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
 require('Connexion.php');
-
+if ($_SESSION['page']){
+    echo '<script>alert("Le compte est crée")</script>';
+}
 $conn = new ConnectionBDD();
 $pdo = $conn->connexion();
 @$ClassMail = new email();

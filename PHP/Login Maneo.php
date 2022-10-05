@@ -140,6 +140,7 @@ function bdd($mail, $mdp, $mdp2)
                    VALUES ('$mail','$hash','$nom','$prenom')" ;
             $condition = true;
                 header('Location: Accueil.php');
+                $_SESSION['page']=true;
             }
 
 
@@ -148,6 +149,7 @@ function bdd($mail, $mdp, $mdp2)
                    VALUES ('$mail','$hash','$code','$nom','$prenom')";
                 $condition = true;
                 header('Location: Accueil.php');
+                $_SESSION['page']=true;
 
             }
             if ($condition){
