@@ -59,6 +59,7 @@ if (@$ClassMail->email($_POST['id'])){
     elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
         header('Location:PageProf.php');
         exit;
+        //
     }
 
 }
