@@ -30,13 +30,13 @@
             <label>Nom :</label>
             <br>
             <label>
-                <input type="text" name="nom" id="nom" placeholder="Entrez votre Nom">
+                <input type="text" name="nom" id="nom" value="<?php echo @$_POST['nom']?>" placeholder="Entrez votre Nom">
             </label>
             <br>
             <label>Prénom :</label>
             <br>
             <label>
-                <input type="text" name="prenom" id="prenom" placeholder="Entrez votre Prenom">
+                <input type="text" name="prenom" id="prenom" value="<?php echo @$_POST['prenom']?>" placeholder="Entrez votre Prenom">
             </label>
             <br>
             <label>Email :</label>
@@ -48,14 +48,14 @@
             <label>Code Confidentiel :</label>
             <br>
             <label>
-                <input type="text" name="code" id="code" placeholder="Entrez votre Code">
+                <input type="text" name="code" id="code" value="<?php echo @$_POST['code']?>" placeholder="Entrez votre Code">
             </label>
             <br>
                 <div>
                     <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
                 </div>
             <label>
-                <input type="password" name="mdp" id="mdp" value="<?php echo @$_POST['mdp']?>" placeholder="Entrez votre mot de passe" >
+                <input type="password" name="mdp" id="mdp"  placeholder="Entrez votre mot de passe" >
             </label>
             <button type="button" id="pass1" onclick="changer1()">O</button>
             <br>
@@ -63,7 +63,7 @@
                 <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
             </div>
             <label>
-                <input type="password" name="mdp2" id="mdp2" value="<?php echo @$_POST['mdp2']?>" placeholder="Confirmez mot de passe">
+                <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez mot de passe">
             </label>
             <button type="button" id="pass2" onclick="changer2()">O</button>
             <br>
