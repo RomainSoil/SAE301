@@ -7,7 +7,7 @@ if(isset($_POST['valider'])){
     $pseudo2 = $pseudo[0];
     $pseudo2 .=" ";
     $pseudo2.=$pseudo[1];
-    $insertMsg= $bdd->prepare('INSERT INTO messages(userx,message) VALUES(?, ?)');
+    $insertMsg= $bdd->prepare('INSERT INTO message(userx,textmessage) VALUES(?, ?)');
     $insertMsg->execute(array($pseudo2, $message));
 }
 ?>
