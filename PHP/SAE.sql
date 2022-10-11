@@ -1,5 +1,5 @@
-DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Intervenant, Prescription, Diagnostic;
-
+DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Intervenant, Prescription, Diagnostic, Radio, Neuro, Mobilite, MiseEnSecurite, Elimination, Alimentation,
+SoinsRelationnels , Cardio, Respi, Hygiene, Soins Cascade;
 
 
 CREATE Table Etudiant (
@@ -8,14 +8,14 @@ CREATE Table Etudiant (
     nom text ,
     prenom text,
     classe text,
-    statut text,
-    Annee int
+    Annee int,
+    Code text
 );
 
 
 Create Table Prof (
     email text primary key,
-    matiere text not null,
+    matiere text ,
     mdp text not null,
     nom text not null,
     prenom text not null
@@ -84,80 +84,89 @@ Create table Radio (
 );
 
 Create TABLE Neuro (
-    date date PRIMARY KEY ,
+    date date not null ,
     t°c float not null,
     Glasgow float not null,
     EVA int not null,
     AlgoPlus int not null,
-    idPatient int references Patient
+    idPatient int references Patient,
+    primary key (date,idPatient)
 );
 
 CREATE TABLE Mobilite(
-    date date primary key,
+    date date not null,
     aideALaMarche boolean not null,
     aideAuLever boolean not null,
     aideAuCoucher boolean not null,
     aideAuFauteil boolean not null,
-    idPatient int references Patient
+    idPatient int references Patient,
+    primary key (date, idPatient)
+
 );
 
-CREATE table MiseEnSecuite(
-    date date primary key,
+CREATE table MiseEnSecurite(
+    date date not null ,
     barriereDeLitPrescrite boolean not null ,
     barriereDeLitConfort boolean not null ,
     ServeillanceContention boolean not null ,
-    idPatient int references Patient
+    idPatient int references Patient,
+    primary key (date, idPatient)
 
 );
 
 Create table Elimination(
-    date date primary key,
+    date date not null,
     Selles boolean not null ,
     Gaz boolean not null ,
     Urines boolean not null ,
-    idPatient int references Patient
+    idPatient int references Patient,
+    primary key (date, idPatient)
 );
 
 Create Table Alimentation(
-    date date primary key ,
+    date date not null ,
     aJeun boolean not null ,
     SurveillanceHydratation boolean not null ,
     SurveillanceAlimentation boolean not null ,
     regime boolean not null ,
     AideAuRepas boolean not null ,
-    idPatient int references Patient
+    idPatient int references Patient,
+    primary key (date , idPatient)
 
 );
 
 CREATE table  SoinsRelationnels(
-    date date primary key ,
+    date date not null ,
     Accueil boolean not null ,
     EntretienInfirmer boolean not null ,
     ToucherMassage boolean not null ,
-    idPatient int references Patient
+    idPatient int references Patient,
+    primary key (date, idPatient)
 
 );
 
 Create table Cardio(
-    date date primary key,
+    date date not null,
     TA text not null,
     pls int not null ,
     ECG text not null ,
-    idPatient int references Patient
+    idPatient int references Patient,
+    primary key (date,idPatient)
 
 );
 
 Create table Respi(
-    date date primary key ,
+    date date not null ,
     SaO2 int not null ,
     Fr int not null ,
     O2 text not null,
-    idPatient int references Patient
+    idPatient int references Patient,
+    primary key (date, idPatient)
 
 );
 
 Create table Hygiene(
-    date date primary key ,
+    date date not null ,
     Douche boolean not null ,
     Bain boolean not null ,
     refectionLit boolean not null ,
@@ -166,12 +175,13 @@ Create table Hygiene(
     PreventionDescare boolean not null ,
     ChangementDePos boolean not null,
     MatelasAAir boolean not null ,
-    idPatient int references Patient
+    idPatient int references Patient,
+    primary key (date , idPatient)
 
 );
 
 Create table Soins(
-    date date primary key ,
+    date date not null ,
     /* CatheterVeineuxPeriph not null ,*/
     SurveillancePerf boolean not null ,
     Pansement boolean not null,
@@ -179,6 +189,7 @@ Create table Soins(
     SurveillanceGlycemique float not null ,
     BasDeContention boolean not null ,
     Autre text not null ,
-    idPatient int references Patient
+    idPatient int references Patient,
+    primary key (date, idPatient)
 
 )

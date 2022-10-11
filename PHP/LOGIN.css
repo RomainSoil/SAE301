@@ -1,3 +1,4 @@
+/* CSS haut de la page*/
 header{
     text-align: center;
     top:0;
@@ -6,54 +7,40 @@ header{
 body{
     background-color: beige;
 }
-header{
-    background-color: beige;
-    text-align: center;
-    color: #EE401A;
-    margin-left: 25%;
-    margin-right: 25%;
 
-
-
-}
 
 div.bouton_retour{
     padding-bottom: 10px;
 }
-
+/* titre inscription*/
 div.I{
     text-align: center;
-
+    color: #EE401A;
 }
+
+/* box inscription*/
+
 div.connexion{
     text-align: center;
-    border:solid;
+    border:solid; background-color:  #EE401A;
+    margin-left: 25%;
+    margin-right: 25%;
+
+
 
 }
-
+/* espace label box*/
 label{
     display: inline-block;
     padding: 10px;
 }
+/* taille label*/
 input {
     padding: 5px ;
 }
-div.inscription{
-    text-align: center;
-    font-weight: bold;
 
-}
 
-.progressbar-wrapper {
-    background-color: red;
-    color: white;
-    border-radius: 15px;
-    text-align:center;
-    margin-left: 25%;
-    margin-right: 25%;
-
-}
-
+/* bas de la page*/
 footer{
     text-align: center;
     margin:0;
@@ -66,13 +53,30 @@ footer{
     background-color: beige;
     font-weight: bold;
 }
-div.box{
-    background-color:  #EE401A;
-    margin-left: 25%;
-    margin-right: 25%;
 
+/* lien utilisé :https://openclassrooms.com/forum/sujet/texte-saffiche-au-passage-de-la-souris */
+/* message de condition de mdp*/
+a.info:hover span {
+    display: inline; /* On affiche l'infobulle. */
+    position: absolute;
+    white-space: nowrap; /* On change la valeur de la propriété white-space pour qu'il n'y ait pas de retour à la ligne non désiré. */
+    top: 30px; /* On positionne notre infobulle. */
+    left: 20px;
+    background: white;
+    color: black;
+    border: solid grey;
 }
-div.I{
-    color: #EE401A;
-    text-align: center;
+
+a.info {
+    position: relative;
+    color: black;
+}
+
+a.info span {
+    display: none; /* On masque l'infobulle. */
+}
+
+a.info:hover {
+    z-index: 500; /* On définit une valeur pour l'ordre d'affichage. */
+    cursor: help; /* On change le curseur par défaut par un curseur d'aide. */
 }

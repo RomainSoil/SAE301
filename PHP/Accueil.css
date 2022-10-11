@@ -1,18 +1,22 @@
+/* Haut de la page*/
 header{
     text-align: center;
     top:0;
     color: #EE401A
 }
+/* box connexion */
 
 div.f{
     text-align: center;
     font-size: 1.2em;
 }
 
+/* Carre rouge du bas de la page*/
+
 div.sec{
     margin:0;
-    padding:1%;
-    position: absolute;
+    padding:2%;
+    position: relative;
     bottom: 0;
     width:96%;
     text-align: center;
@@ -25,18 +29,16 @@ div.sec{
 
 
 }
-div.t{
-    margin-left:300px;
-    margin-top:150px;
-    font-size: 1em;
-}
 
+
+/* lien en dessous de la box connexion*/
 div.compte{
     text-align: center;
     font-size: 1em;
 
 
 }
+/*page en global*/
 body{
     background-color: beige;
 }
