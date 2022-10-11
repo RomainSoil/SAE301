@@ -24,8 +24,8 @@ session_start();
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
     <form method="post">
-        <input type="text" name="id" id="id" placeholder="Identifiant"><br><br>
-        <input type="password" name="mdp" id="mdp" placeholder="Mot de passe"><button type="button" onclick="changer3()">O</button><br><br>
+        <input type="mail" name="id" id="id" placeholder="Identifiant" required><br><br>
+        <input type="password" name="mdp" id="mdp" placeholder="Mot de passe"required><button type="button" onclick="changer3()">O</button><br><br>
         <input type="submit" value="Confirmer">
     </form>
 </div>
@@ -55,7 +55,7 @@ require('ConnectionBDD.php');
 require('Connexion.php');
 
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
-if ($_SESSION['page']){
+if (@$_SESSION['page']){
     echo '<script>alert("Le compte est crée")</script>';
 }
 /* La partie de la validation de connexion qui renvoie la page correspondante*/

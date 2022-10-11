@@ -38,33 +38,33 @@ session_start();
             <label>Nom :</label>
             <br>
             <label>
-                <input type="text" name="nom" id="nom" value="<?php echo @$_POST['nom']?>" placeholder="Entrez votre Nom">
+                <input type="text" name="nom" id="nom" value="<?php echo @$_POST['nom']?>" placeholder="Entrez votre Nom" required>
             </label>
             <br>
             <label>Prénom :</label>
             <br>
             <label>
-                <input type="text" name="prenom" id="prenom" value="<?php echo @$_POST['prenom']?>" placeholder="Entrez votre Prenom">
+                <input type="text" name="prenom" id="prenom" value="<?php echo @$_POST['prenom']?>" placeholder="Entrez votre Prenom" required>
             </label>
             <br>
             <label>Email :</label>
             <br>
             <label>
-                <input type="text" name="mail" id="mail" placeholder="Entrez votre mail" value="<?php echo @$_POST['mail']?>">
+                <input type="email" name="mail" id="mail" placeholder="Entrez votre mail" value="<?php echo @$_POST['mail']?>" required>
             </label>
             <br>
             <label>Code Confidentiel :</label>
             <br>
             <!--le code peut être commun-->
             <label>
-                <input type="text" name="code" id="code" value="<?php echo @$_POST['code']?>" placeholder="Entrez votre Code">
+                <input type="text" name="code" id="code" value="<?php echo @$_POST['code']?>" placeholder="Entrez votre Code"required>
             </label>
             <br>
                 <div>
                     <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
                 </div>
             <label>
-                <input type="password" name="mdp" id="mdp"  placeholder="Entrez votre mot de passe" >
+                <input type="password" name="mdp" id="mdp"  placeholder="Entrez votre mot de passe" required>
             </label>
             <button type="button" id="pass1" onclick="changer1()">O</button>
             <br>
@@ -72,7 +72,7 @@ session_start();
                 <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
             </div>
             <label>
-                <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez mot de passe">
+                <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez mot de passe"required>
             </label>
             <button type="button" id="pass2" onclick="changer2()">O</button>
             <br>
@@ -131,12 +131,11 @@ function bdd($mail, $mdp, $mdp2){
     @$nom = $_POST['nom'];
     @$prenom = $_POST['prenom'];
     @$code = $_POST['code'];
-    echo $_SESSION['premier'];
     if ($_SESSION['premier']==2) {
         if (isset($nom)) {
             if (isset($prenom)) {
                 if (isset($mail)) {
-                    if (isset($code)){
+                    if (isset($code)) {
                         if (isset($mdp) and isset($mdp2)) {
                             if ($ClassMail->email($mail) and $ClassMDP->password($mdp, $mdp2)) {
                                 try {
@@ -160,9 +159,8 @@ function bdd($mail, $mdp, $mdp2){
                                     $condition = true;
                                     header('Location: Accueil.php');
                                     $_SESSION['page'] = true;
-                                }
-                                else{
-                                    '<script>alert("Le code n\'est pas valide")</script>';
+                                } else {
+                                    echo '<script>alert("Le code n\'est pas valide")</script>';
                                 }
                                 if ($condition) {
                                     try {
@@ -173,24 +171,9 @@ function bdd($mail, $mdp, $mdp2){
                                 }
                             }
                         }
-                        else{
-                            '<script>alert("Les deux mots de passes doivent être inscrits")</script>';
-                        }
-                    }
-                    else {
-                        echo '<script>alert("Le code n\'est pas inscrit")</script>';
                     }
                 }
-                else {
-                    echo '<script>alert("l\'email n\'est pas inscrit")</script>';
-                }
             }
-            else {
-                echo '<script>alert("Le prénon n\'est par entré")</script>';
-            }
-        }
-        else {
-            echo '<script>alert("Le nom n\'est pas rentré")</script>';
         }
     }
 }

@@ -23,9 +23,7 @@ class email
                 $esp = true;
             }
         }
-        if (!$aro) {
-            echo '<script>alert("L\'adresse mail n\'a pas d\'@")</script>';
-        } elseif ($esp == true) {
+        if ($esp == true) {
             echo '<script>alert("l\'adresse mail ne doit pas contenir d\'espace")</script>';
         }
         else{

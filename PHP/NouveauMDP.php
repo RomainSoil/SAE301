@@ -35,12 +35,12 @@ session_start();
         <br>
         <label>Nouveau Mot de passe :</label>
         <br><br>
-        <input type="text" name='mdp' id="mdp" placeholder="Entrez votre nouveau MDP">
+        <input type="password" name='mdp' id="mdp" placeholder="Entrez votre nouveau MDP" required>
         <br>
         <br>
         <label>Confirmez votre Mot de passe :</label>
         <br><br>
-        <input type="text" name='mdp2' id="mdp2" placeholder="Confirmez votre MDP">
+        <input type="password" name='mdp2' id="mdp2" placeholder="Confirmez votre MDP" required>
         <br>
         <p><input type="submit" value="Valider"></p>
     </form>
