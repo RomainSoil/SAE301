@@ -32,3 +32,7 @@ if(isset($_POST['valider'])){
     </script>
 </body>
 </html>
+<?php
+use ConnectionBDD;
+PDO::$a= ConnectionBDD::connexion(new ConnectionBDD());
+?>
