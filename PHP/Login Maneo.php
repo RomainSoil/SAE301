@@ -9,6 +9,8 @@ session_start();
     <meta charset="UTF-8">
     <title>Connexion</title>
     <link rel="stylesheet" href="LOGIN.css">
+    <script type="text/javascript" src="LesFonctionsJS.js"></script>
+
 </head>
 
 <body>
@@ -38,43 +40,43 @@ session_start();
             <label>Nom :</label>
             <br>
             <label>
-                <input type="text" name="nom" id="nom" value="<?php echo @$_POST['nom']?>" placeholder="Entrez votre Nom">
+                <input type="text" name="nom" id="nom" value="<?php echo @$_POST['nom']?>" placeholder="Entrez votre Nom" required>
             </label>
             <br>
             <label>Prénom :</label>
             <br>
             <label>
-                <input type="text" name="prenom" id="prenom" value="<?php echo @$_POST['prenom']?>" placeholder="Entrez votre Prenom">
+                <input type="text" name="prenom" id="prenom" value="<?php echo @$_POST['prenom']?>" placeholder="Entrez votre Prenom" required>
             </label>
             <br>
             <label>Email :</label>
             <br>
             <label>
-                <input type="text" name="mail" id="mail" placeholder="Entrez votre mail" value="<?php echo @$_POST['mail']?>">
+                <input type="email" name="mail" id="mail" placeholder="Entrez votre mail" value="<?php echo @$_POST['mail']?>" required>
             </label>
             <br>
             <label>Code Confidentiel :</label>
             <br>
             <!--le code peut être commun-->
             <label>
-                <input type="text" name="code" id="code" value="<?php echo @$_POST['code']?>" placeholder="Entrez votre Code">
+                <input type="text" name="code" id="code" value="<?php echo @$_POST['code']?>" placeholder="Entrez votre Code"required>
             </label>
             <br>
                 <div>
                     <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
                 </div>
             <label>
-                <input type="password" name="mdp" id="mdp"  placeholder="Entrez votre mot de passe" >
+                <input type="password" name="mdp" id="mdp"  placeholder="Entrez votre mot de passe" required>
             </label>
-            <button type="button" id="pass1" onclick="changer1()">O</button>
+            <button type="button" id="pass1" onclick="changer('mdp')">O</button>
             <br>
             <div>
                 <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
             </div>
             <label>
-                <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez mot de passe">
+                <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez mot de passe"required>
             </label>
-            <button type="button" id="pass2" onclick="changer2()">O</button>
+            <button type="button" id="pass2" onclick="changer('mdp2')">O</button>
             <br>
             <p><input type="submit" value="Valider" >  </p>
         </form>
@@ -92,30 +94,6 @@ session_start();
 </html>
 
 
-<script>
-    e=true;
-    f=true;
-    function changer1(){
-        if(e){
-            document.getElementById("mdp").setAttribute("type","text");
-            e=false;
-        }
-        else{
-            document.getElementById("mdp").setAttribute("type","password");
-            e=true;
-        }
-    }
-    function changer2(){
-        if (f){
-            document.getElementById("mdp2").setAttribute("type","text")
-            f=false;
-        }
-        else{
-            document.getElementById("mdp2").setAttribute("type","password");
-            f=true;
-        }
-    }
-</script>
 
 <?php
 require ('Premier.php');
@@ -135,7 +113,7 @@ function bdd($mail, $mdp, $mdp2){
         if (isset($nom)) {
             if (isset($prenom)) {
                 if (isset($mail)) {
-                    if (isset($code)){
+                    if (isset($code)) {
                         if (isset($mdp) and isset($mdp2)) {
                             if ($ClassMail->email($mail) and $ClassMDP->password($mdp, $mdp2)) {
                                 try {
@@ -147,20 +125,19 @@ function bdd($mail, $mdp, $mdp2){
                                 }
 
                                 $hash = password_hash($mdp, PASSWORD_DEFAULT);
-                                if (@$code == "P5165156516516@") {
+                                if ($_POST['code'] == "P5165156516516@") {
                                     $sql = "INSERT INTO prof (email,mdp,nom,prenom)
                                        VALUES ('$mail','$hash','$nom','$prenom')";
                                     $condition = true;
                                     header('Location: Accueil.php');
                                     $_SESSION['page'] = true;
-                                } elseif (@$code[0] == "E") {
+                                } elseif ($_POST['code'][0] == "E") {
                                     $sql = "INSERT INTO etudiant (email,mdp,code,nom,prenom)
                                        VALUES ('$mail','$hash','$code','$nom','$prenom')";
                                     $condition = true;
                                     header('Location: Accueil.php');
                                     $_SESSION['page'] = true;
-                                }
-                                else{
+                                } else {
                                     echo '<script>alert("Le code n\'est pas valide")</script>';
                                 }
                                 if ($condition) {
@@ -172,24 +149,9 @@ function bdd($mail, $mdp, $mdp2){
                                 }
                             }
                         }
-                        else{
-                            echo '<script>alert("Les deux mots de passes doivent être inscrits")</script>';
-                        }
-                    }
-                    else {
-                        echo '<script>alert("Le code n\'est pas inscrit")</script>';
                     }
                 }
-                else {
-                    echo '<script>alert("l\'email n\'est pas inscrit")</script>';
-                }
             }
-            else {
-                echo '<script>alert("Le prénon n\'est par entré")</script>';
-            }
-        }
-        else {
-            echo '<script>alert("Le nom n\'est pas rentré")</script>';
         }
     }
 }

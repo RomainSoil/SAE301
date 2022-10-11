@@ -41,12 +41,12 @@ session_start();
         <br>
         <label>Email :</label>
         <br><br>
-        <input type="text" name='mail' placeholder="Entrez votre Email">
+        <input type="email" name='mail' placeholder="Entrez votre Email" required>
         <br>
         <br>
         <label>Confirmez votre email :</label>
         <br><br>
-        <input type="text" name='mailV2' placeholder="Confirmez votre Email">
+        <input type="email" name='mailV2' placeholder="Confirmez votre Email" required>
         <br>
         <p><input type="submit" value="Valider"></p>
     </form>
@@ -99,7 +99,7 @@ function email(){
                     try {
                         //Server settings
                         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-                        $mail->isSMTP();                                            //Send using SMTP
+                        $mail->isSMTP();//Send using SMTP
                         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
                         $mail->Username   = 'bulletforce59750@gmail.com';                     //SMTP username
@@ -107,12 +107,12 @@ function email(){
                         $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
                         $mail->Port       = 25;
                         //Recipients
-                        $mail->setFrom('nnn@nn.nnn', 'IFSI');;
                         $mail->CharSet='UTF-8';
                         $mail->setFrom('bulletforce59750@gmail.com', 'IFSI');
                         $mail -> IsHTML(true);
                         $mail->Subject = 'Réinitialisation de ton mot de passe';
-                        $mail ->Body = "<a href='nouveaumdp.php'></a>";//Le contenu au format HTML
+                        $mail->MsgHTML(); 		                //Le contenu au format HTML
+
                         $mail->addAddress($_POST['mail'], 'Joe User');     //Add a recipient
                         $mail->send();
                         echo 'Message has been sent';
@@ -124,12 +124,11 @@ function email(){
                     echo '<script>alert("Vous devez vous créer un compte")</script>';
 
                 }
+
             }
             else {
                 echo '<script>alert("Les mails sont différents")</script>';
             }
-        } else {
-            echo '<script>alert("Les champs mail doivent être remplis")</script>';
         }
     }
 
