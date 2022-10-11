@@ -131,7 +131,6 @@ function bdd($mail, $mdp, $mdp2){
     @$nom = $_POST['nom'];
     @$prenom = $_POST['prenom'];
     @$code = $_POST['code'];
-    echo $_SESSION['premier'];
     if ($_SESSION['premier']==2) {
         if (isset($nom)) {
             if (isset($prenom)) {
@@ -148,13 +147,13 @@ function bdd($mail, $mdp, $mdp2){
                                 }
 
                                 $hash = password_hash($mdp, PASSWORD_DEFAULT);
-                                if ($_POST['code'] == "P5165156516516@") {
+                                if (@$code == "P5165156516516@") {
                                     $sql = "INSERT INTO prof (email,mdp,nom,prenom)
                                        VALUES ('$mail','$hash','$nom','$prenom')";
                                     $condition = true;
                                     header('Location: Accueil.php');
                                     $_SESSION['page'] = true;
-                                } elseif ($_POST['code'][0] == "E") {
+                                } elseif (@$code[0] == "E") {
                                     $sql = "INSERT INTO etudiant (email,mdp,code,nom,prenom)
                                        VALUES ('$mail','$hash','$code','$nom','$prenom')";
                                     $condition = true;
@@ -162,7 +161,7 @@ function bdd($mail, $mdp, $mdp2){
                                     $_SESSION['page'] = true;
                                 }
                                 else{
-                                    '<script>alert("Le code n\'est pas valide")</script>';
+                                    echo '<script>alert("Le code n\'est pas valide")</script>';
                                 }
                                 if ($condition) {
                                     try {
@@ -174,7 +173,7 @@ function bdd($mail, $mdp, $mdp2){
                             }
                         }
                         else{
-                            '<script>alert("Les deux mots de passes doivent être inscrits")</script>';
+                            echo '<script>alert("Les deux mots de passes doivent être inscrits")</script>';
                         }
                     }
                     else {

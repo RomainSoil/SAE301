@@ -107,12 +107,12 @@ function email(){
                         $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
                         $mail->Port       = 25;
                         //Recipients
-                        $mail->setFrom('xxx@xx.tamere', 'IFSI');;
-                        $url="NouveauMDP.php";
-                        $texte_du_lien="Changer de mot de passe";
+                        $mail->setFrom('nnn@nn.nnn', 'IFSI');;
+                        $mail->CharSet='UTF-8';
                         $mail->setFrom('bulletforce59750@gmail.com', 'IFSI');
+                        $mail -> IsHTML(true);
                         $mail->Subject = 'Réinitialisation de ton mot de passe';
-                        $mail->Body=  '<a href="'.$url.'">'.$texte_du_lien.'</a>';
+                        $mail ->Body = "<a href='nouveaumdp.php'></a>";//Le contenu au format HTML
                         $mail->addAddress($_POST['mail'], 'Joe User');     //Add a recipient
                         $mail->send();
                         echo 'Message has been sent';
@@ -124,7 +124,6 @@ function email(){
                     echo '<script>alert("Vous devez vous créer un compte")</script>';
 
                 }
-
             }
             else {
                 echo '<script>alert("Les mails sont différents")</script>';

@@ -47,25 +47,42 @@ session_start();
 </footer>
 </body>
 </html>
+<script>
+    ///Boutton affiche le MDP///
+    e=true;
+    function changer3(){
+        if(e){
+            console.log('text');
+            document.getElementById("mdp").setAttribute("type","text");
+            e=false;
+        }
+        else{
+            document.getElementById("mdp").setAttribute("type","password");
+            e=true;
+        }
+    }
+</script>
 
 <?php
 require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
 require('Connexion.php');
+require('username.php');
 
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
 if ($_SESSION['page']){
     echo '<script>alert("Le compte est crée")</script>';
 }
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
-
 $conn = new ConnectionBDD();
 $pdo = $conn->connexion();
 @$ClassMail = new email();
 $ClassConn= new Connexion();
 if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
     if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
+        $username = new username();
+        $_SESSION['username']=$username->username($_POST['id']);
         header('Location:PageEtu.php');
         exit;}
     elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
@@ -80,17 +97,4 @@ if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
 
 ?>
 
-<script>
-    ///Boutton affiche le MDP///
-    e=true;
-    function changer3(){
-        if(e){
-            document.getElementById("mdp").setAttribute("type","text");
-            e=false;
-        }
-        else{
-            document.getElementById("mdp").setAttribute("type","password");
-            e=true;
-        }
-    }
-</script>
+
