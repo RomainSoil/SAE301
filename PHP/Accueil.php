@@ -9,6 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <title>Accueil</title>
     <link rel="stylesheet" href="Accueil.css" >
+    <script type="text/javascript" src="LesFonctionsJS.js"></script>
 </head>
 <body>
 <br><br>
@@ -25,7 +26,7 @@ session_start();
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
     <form method="post">
         <input type="text" name="id" id="id" placeholder="Identifiant"><br><br>
-        <input type="password" name="mdp" id="mdp" placeholder="Mot de passe"><button type="button" onclick="changer3()">O</button><br><br>
+        <input type="password" name="mdp" id="mdp" placeholder="Mot de passe"><button type="button" onclick="changer('mdp')">O</button><br><br>
         <input type="submit" value="Confirmer">
     </form>
 </div>
@@ -55,7 +56,7 @@ require('ConnectionBDD.php');
 require('Connexion.php');
 
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
-if ($_SESSION['page']){
+if (@$_SESSION['page']){
     echo '<script>alert("Le compte est crée")</script>';
 }
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
@@ -80,17 +81,4 @@ if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
 
 ?>
 
-<script>
-    ///Boutton affiche le MDP///
-    e=true;
-    function changer3(){
-        if(e){
-            document.getElementById("mdp").setAttribute("type","text");
-            e=false;
-        }
-        else{
-            document.getElementById("mdp").setAttribute("type","password");
-            e=true;
-        }
-    }
-</script>
+

@@ -9,6 +9,8 @@ session_start();
     <meta charset="UTF-8">
     <title>Connexion</title>
     <link rel="stylesheet" href="LOGIN.css">
+    <script type="text/javascript" src="LesFonctionsJS.js"></script>
+
 </head>
 
 <body>
@@ -66,7 +68,7 @@ session_start();
             <label>
                 <input type="password" name="mdp" id="mdp"  placeholder="Entrez votre mot de passe" >
             </label>
-            <button type="button" id="pass1" onclick="changer1()">O</button>
+            <button type="button" id="pass1" onclick="changer('mdp')">O</button>
             <br>
             <div>
                 <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
@@ -74,7 +76,7 @@ session_start();
             <label>
                 <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez mot de passe">
             </label>
-            <button type="button" id="pass2" onclick="changer2()">O</button>
+            <button type="button" id="pass2" onclick="changer('mdp2')">O</button>
             <br>
             <p><input type="submit" value="Valider" >  </p>
         </form>
@@ -92,30 +94,6 @@ session_start();
 </html>
 
 
-<script>
-    e=true;
-    f=true;
-    function changer1(){
-        if(e){
-            document.getElementById("mdp").setAttribute("type","text");
-            e=false;
-        }
-        else{
-            document.getElementById("mdp").setAttribute("type","password");
-            e=true;
-        }
-    }
-    function changer2(){
-        if (f){
-            document.getElementById("mdp2").setAttribute("type","text")
-            f=false;
-        }
-        else{
-            document.getElementById("mdp2").setAttribute("type","password");
-            f=true;
-        }
-    }
-</script>
 
 <?php
 require ('Premier.php');
@@ -131,7 +109,6 @@ function bdd($mail, $mdp, $mdp2){
     @$nom = $_POST['nom'];
     @$prenom = $_POST['prenom'];
     @$code = $_POST['code'];
-    echo $_SESSION['premier'];
     if ($_SESSION['premier']==2) {
         if (isset($nom)) {
             if (isset($prenom)) {
