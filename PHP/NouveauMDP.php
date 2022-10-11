@@ -8,6 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <title>Connexion</title>
     <link rel="stylesheet" href="MotDePasseOublie.css">
+    <script src="LesFonctionsJS.js"></script>
 </head>
 <body>
 <!--Le haut de la page avec l'image et le titre-->
@@ -35,12 +36,12 @@ session_start();
         <br>
         <label>Nouveau Mot de passe :</label>
         <br><br>
-        <input type="password" name='mdp' id="mdp" placeholder="Entrez votre nouveau MDP" required>
+        <input type="password" name='mdp' id="mdp" placeholder="Entrez votre nouveau MDP" required ><button type="button" onclick="changer('mdp')">O</button>
         <br>
         <br>
         <label>Confirmez votre Mot de passe :</label>
         <br><br>
-        <input type="password" name='mdp2' id="mdp2" placeholder="Confirmez votre MDP" required>
+        <input type="password" name='mdp2' id="mdp2" placeholder="Confirmez votre MDP" required><button type="button" onclick="changer('mdp2')">O</button>
         <br>
         <p><input type="submit" value="Valider"></p>
     </form>
@@ -83,7 +84,6 @@ function pdemail()
             $MDP->changement($pdo, $_POST['mdp'], $co);
         }
 
-}else echo $_POST['mdp'], $_POST['mdp2'];
-}
+}}
 pdemail();
 ?>
