@@ -25,7 +25,7 @@ session_start();
 <div class="f">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
     <form method="post">
-        <input type="text" name="id" id="id" placeholder="Identifiant"><br><br>
+        <input type="email" name="id" id="id" placeholder="Identifiant" required><br><br>
         <input type="password" name="mdp" id="mdp" placeholder="Mot de passe"><button type="button" onclick="changer('mdp')">O</button><br><br>
         <input type="submit" value="Confirmer">
     </form>
