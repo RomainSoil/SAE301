@@ -100,6 +100,17 @@ session_start()
 </body>
 </html>
 
+    <!--Le bas de page avec le boutton si on a besoin d'aide-->
+
+    <footer>
+        <form action="Accueil.php" method="post">
+            <input type="submit" value="Besoin d'aide ?">
+        </form>
+    </footer>
+
+</body>
+</html>
+
     <?php
 
 
