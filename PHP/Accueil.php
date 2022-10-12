@@ -48,21 +48,7 @@ session_start();
 </footer>
 </body>
 </html>
-<script>
-    ///Boutton affiche le MDP///
-    e=true;
-    function changer3(){
-        if(e){
-            console.log('text');
-            document.getElementById("mdp").setAttribute("type","text");
-            e=false;
-        }
-        else{
-            document.getElementById("mdp").setAttribute("type","password");
-            e=true;
-        }
-    }
-</script>
+
 
 <?php
 require('email.php');
