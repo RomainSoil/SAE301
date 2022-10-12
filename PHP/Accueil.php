@@ -44,7 +44,7 @@ session_start();
     Pour des raisons de sécurité, veuillez vous déconnecter et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.
     <br>
     Vos identifiants sont strictement confidentiels et ne doivent en aucun cas être transmis à une tierce personne.
-</div>
+    </div>
 </footer>
 </body>
 </html>
@@ -56,7 +56,7 @@ require('ConnectionBDD.php');
 require('Connexion.php');
 
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
-if ($_SESSION['page']){
+if (@$_SESSION['page']){
     echo '<script>alert("Le compte est crée")</script>';
 }
 /* La partie de la validation de connexion qui renvoie la page correspondante*/

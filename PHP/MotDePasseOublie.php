@@ -109,9 +109,8 @@ function email(){
                         //Recipients
                         $mail->CharSet='UTF-8';
                         $mail->setFrom('bulletforce59750@gmail.com', 'IFSI');
-                        $mail -> IsHTML(true);
                         $mail->Subject = 'Réinitialisation de ton mot de passe';
-                        $mail->MsgHTML(); 		                //Le contenu au format HTML
+                        $mail->AltBody(""); 		                //Le contenu au format HTML
 
                         $mail->addAddress($_POST['mail'], 'Joe User');     //Add a recipient
                         $mail->send();
