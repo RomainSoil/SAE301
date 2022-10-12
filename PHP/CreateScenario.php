@@ -1,30 +1,46 @@
+<?php
+session_start()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="LOGIN.css">
+    <link rel="stylesheet" href="PageProf.css">
     <script type="text/javascript" src="LesFonctionsJS.js"></script>
 
 </head>
 
 <body>
 <!--Le haut de la page avec l'image et le titre-->
+<div class="fontHead">
+    <header>
+        <a href="Accueil.php">
+            <img src="logoIFSI.png" width=150 height=150 alt="" >
+        </a>
+        <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
+        <br>
+    </header>
+</div>
+<div class="font">
+    <div class="deco">
+        <a href="Accueil.php"> <img src="retour.png"  class="icone" width=50 height=50 alt="" > </a>
+    </div>
+</div>
 
-<header>
-    <a href="Accueil.php">
-        <img src="logoIFSI.png" width=150 height=150 alt="" >
-    </a>
-    <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
-    <br><br>
-</header>
+<div class="font">
+    <div class="btn-group">
+        <button class="button" onclick="document.location='PageProf.php'">Accueil</button>
+        <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
+        <button class="button" onclick="document.location='Correction.php'">Correction</button>
+        <button class="button" onclick="document.location='Note.php'">Note</button>
+        <button class="button" onclick="document.location=">Message </button>
 
-<!--La fleche pour revenir sur la page accueil-->
-
-<div class="bouton_retour">
-    <a href="Accueil.php"> <img src="fleche.png"  class="icone" alt="" > </a>
-
+    </div>
+    <br>
+</div>
 </div>
 <h1> Information sur la patient </h1>
 <form method="post">
@@ -80,9 +96,11 @@
         <input type="int" name="CP" id="CP" value="<?php echo @$_POST['CP']?>" placeholder="Entrez la taille du patient" required>
     </label>
     <br>
+</form>
+</body>
+</html>
 
     <?php
-
 
 
 

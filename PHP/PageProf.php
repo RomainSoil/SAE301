@@ -30,9 +30,9 @@ session_start();
 <div class="font">
 <div class="btn-group">
     <button class="button" onclick="document.location='PageProf.php'">Accueil</button>
-    <button class="button" onclick="document.location=">Scénario</button>
-    <button class="button" onclick="document.location=">Correction</button>
-    <button class="button" onclick="document.location=">Note</button>
+    <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
+    <button class="button" onclick="document.location='Correction.php'">Correction</button>
+    <button class="button" onclick="document.location='Note.php'">Note</button>
     <button class="button" onclick="document.location=">Message </button>
 
 </div>
