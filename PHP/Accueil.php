@@ -44,7 +44,7 @@ session_start();
     Pour des raisons de sécurité, veuillez vous déconnecter et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.
     <br>
     Vos identifiants sont strictement confidentiels et ne doivent en aucun cas être transmis à une tierce personne.
-    </div>
+</div>
 </footer>
 </body>
 </html>
@@ -54,9 +54,10 @@ require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
 require('Connexion.php');
+require('username.php');
 
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
-if (@$_SESSION['page']){
+if (isset($_SESSION['page'])){
     echo '<script>alert("Le compte est crée")</script>';
 }
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
@@ -67,11 +68,15 @@ $pdo = $conn->connexion();
 $ClassConn= new Connexion();
 if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
     if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
+        $username = new username();
+        $_SESSION['username']=$username->username($_POST['id']);
         header('Location:PageEtu.php');
         exit;}
     elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
-            header('Location:PageProf.php');
-            exit;
+        $username = new username();
+        $_SESSION['username']=$username->username($_POST['id']);
+        header('Location:PageProf.php');
+        exit;
     }
     else{
         echo '<script>alert("Identifiant ou mot de passe incorrect")</script>';

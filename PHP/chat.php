@@ -1,11 +1,14 @@
 <?php
+session_start();
 $bdd= new PDO('pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo134', 'iutinfo134', 'NuVRPnlV');
 if(isset($_POST['valider'])){
-    $pseudo= htmlspecialchars($_POST['pseudo']);
+    $pseudo = $_SESSION['username'];
     $message= nl2br(htmlspecialchars($_POST['message']));
-
-    $insertMsg= $bdd->prepare('INSERT INTO messages(userx,message) VALUES(?, ?)');
-    $insertMsg->execute(array($pseudo, $message));
+    $pseudo2 = $pseudo[0];
+    $pseudo2 .=" ";
+    $pseudo2.=$pseudo[1];
+    $insertMsg= $bdd->prepare('INSERT INTO message(userx,textmessage) VALUES(?, ?)');
+    $insertMsg->execute(array($pseudo2, $message));
 }
 ?>
 <html>
@@ -16,8 +19,6 @@ if(isset($_POST['valider'])){
 </head>
 <body>
     <form method="POST" action="" align="center">
-        <input type="text" name="pseudo">
-        <br><br>
         <textarea name="message"></textarea>
         <br>
         <input type="submit" name="valider">
@@ -32,7 +33,3 @@ if(isset($_POST['valider'])){
     </script>
 </body>
 </html>
-<?php
-use ConnectionBDD;
-PDO::$a= ConnectionBDD::connexion(new ConnectionBDD());
-?>
