@@ -44,3 +44,15 @@ div.deco{
 body{
     background-color: beige;
 }
+
+div.typeScenario.button{
+    border: none;
+    background-color: dimgrey;
+    color: white;
+    text-align: center;
+    font-size: 10px;
+    cursor: pointer;
+    width: 19.5%;
+    transition-duration: 0.4s;
+    border-radius: 0px;
+}
