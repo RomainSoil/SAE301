@@ -8,7 +8,7 @@ session_start()
     <head>
         <meta charset="UTF-8">
         <title>Connexion</title>
-        <link rel="stylesheet" href="PageProf.css">
+        <link rel="stylesheet" href="Patient.css">
         <script type="text/javascript" src="../LesFonctionsJS.js"></script>
 
     </head>
@@ -26,11 +26,7 @@ session_start()
     </div>
     <div class="font">
         <div class="deco">
-            <a href="../Accueil.php"> <img src="../retour.png" class="icone" width=50 height=50 alt="" > </a>
-        </div>
-    </div>
-
-    <div class="font">
+            <a href="../Accueil.php"> <img src="../retour.png" class="icone" width=50 height=50 alt="" > </a></div>
         <div class="btn-group">
             <button class="button" onclick="document.location='PageProf.php'">Accueil</button>
             <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
@@ -42,60 +38,49 @@ session_start()
         <br>
     </div>
     </div>
-    <h1> Information sur la patient </h1>
-    <form method="post" action="Securite.php">
-        <label>Nom :</label>
-        <label>
-            <input type="text" name="nom" id="nom" value="<?php echo @$_POST['nom']?>" placeholder="Entrez le Nom du patient " required>
-        </label>
-        <label>Prénom :</label>
-        <label>
-            <input type="text" name="prenom" id="prenom" value="<?php echo @$_POST['prenom']?>" placeholder="Entrez le Prenom du patient" required>
-        </label>
-        <label>Age :</label>
-        <label>
-            <input type="int" name="age" id="age" value="<?php echo @$_POST['age']?>" placeholder="Entrez l' âge du patient" required>
-        </label>
+    <div class="fontHead">
         <br>
-        <label>Date de naissance :</label>
-        <label>
-            <input type="date" name="DDN" id="DDN" value="<?php echo @$_POST['DDN']?>" placeholder="Entrez la date de naissance du patient" required>
-        </label>
-        <label> Poids :</label>
-        <label>
-            <input type="int" name="poids" id="poids" value="<?php echo @$_POST['poids']?>" placeholder="Entrez le poids du patient" required>
-        </label>
-        <label> Taille :</label>
-        <label>
-            <input type="int" name="taille" id="Taille" value="<?php echo @$_POST['taille']?>" placeholder="Entrez la taille du patient" required>
-        </label>
-        <br>
-        <label> IEP :</label>
-        <label>
-            <input type="int" name="IEP" id="IEP" value="<?php echo @$_POST['IEP']?>" placeholder="Entrez le IEP du patient" required>
-        </label>
-        <label> IPP :</label>
-        <label>
-            <input type="int" name="IPP" id="IPP" value="<?php echo @$_POST['IPP']?>" placeholder="Entrez le IPP du patient" required>
-        </label>
+        <div class="btn-scenario">
+            <button class="button_select" onclick="document.location='Patient.php'">Patient</button>
+            <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
+            <button class="button" onclick="document.location='Diagnostic.php'">Diagnostic</button>
+            <button class="button" onclick="document.location='Soins.php'">Soins Relationnel</button>
+            <button class="button" onclick="document.location='Elimination.php'">Elimination </button>
+            <button class="button" onclick="document.location='Cardio.php'">Cardio </button>
+            <button class="button" onclick="document.location='Radio.php'">Radio </button>
+            <button class="button" onclick="document.location='Mobilite.php'">Mobilité </button>
+            <button class="button" onclick="document.location='Hygiene.php'">Hygiène </button>
+            <button class="button" onclick="document.location='Alimentation.php'">Alimentation </button>
+            <button class="button" onclick="document.location='Neuro.php'">Neuro </button>
+        </div>
 
-        <label> Sexe :</label>
-        <select name="sexe" id="sexe">
+    </div>
+    <div class="Titre">
+        <h1> Information sur la patient </h1>
+    </div>
+    <form method="post" action="Securite.php">
+        Nom :<input type="text" name="nom" id="nom" value="<?php echo @$_POST['nom']?>" placeholder="Entrez le Nom du patient " required><br>
+        Prénom :<input type="text" name="prenom" id="prenom" value="<?php echo @$_POST['prenom']?>" placeholder="Entrez le Prenom du patient" required><br><br>
+        Age :<input type="number" name="age" id="age" value="<?php echo @$_POST['age']?>" placeholder="Entrez l' âge du patient" required><br>
+        Date de naissance :<input type="date" name="DDN" id="DDN" value="<?php echo @$_POST['DDN']?>" placeholder="Entrez la date de naissance du patient" required><br><br>
+        Poids :<input type="number" name="poids" id="poids" value="<?php echo @$_POST['poids']?>" placeholder="Entrez le poids du patient" required><br>
+        Taille<input type="number" name="taille" id="Taille" value="<?php echo @$_POST['taille']?>" placeholder="Entrez la taille du patient" required><br><br>
+        <br>
+        IEP :<input type="number" name="IEP" id="IEP" value="<?php echo @$_POST['IEP']?>" placeholder="Entrez le IEP du patient" required><br>
+        IPP :<input type="number" name="IPP" id="IPP" value="<?php echo @$_POST['IPP']?>" placeholder="Entrez le IPP du patient" required><br><br>
+        Sexe :<select name="sexe" id="sexe">
             <option value="">--Veuillez choisir le sexe--</option>
             <option value="Homme">Homme</option>
             <option value="Femme">Femme</option>
-        </select>
-
+        </select><br><br>
         <br>
-        <label> Adresse :</label>
-        <label>
-            <input type="text" name="adresse" id="adresse" value="<?php echo @$_POST['adresse']?>" placeholder="Entrez la taille du patient" >
-        </label>
-        <label> Code postal :</label>
-        <label>
-            <input type="int" name="CP" id="CP" value="<?php echo @$_POST['CP']?>" placeholder="Entrez la taille du patient" >
-        </label>
+        Adresse:<input type="text" name="adresse" id="adresse" value="<?php echo @$_POST['adresse']?>" placeholder="Entrez l'adresse du patient" ><br>
+        Ville :<input type="text" name="ville" id="ville" value="<?php echo @$_POST['ville']?>" placeholder="Entrez la ville du patient" ><br>
+        Code postal :<input type="int" name="CP" id="CP" value="<?php echo @$_POST['CP']?>" placeholder="Entrez le code postal" ><br>
         <br>
+        <div class="button_Suivant">
+            <input type="submit" value="Suivant">
+        </div>
     </form>
     </body>
     </html>
@@ -107,7 +92,6 @@ session_start()
             <input type="submit" value="Besoin d'aide ?">
         </form>
     </footer>
-
     </body>
     </html>
 

@@ -78,7 +78,7 @@ session_start();
             </label>
             <button type="button" id="pass2" onclick="changer('mdp2')">O</button>
             <br>
-            <p><input type="submit" value="Valider" >  </p>
+            <input type="submit" value="Valider" >  </p>
         </form>
 </div>
 

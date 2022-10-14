@@ -8,14 +8,14 @@ session_start();
     <meta charset="UTF-8">
     <title>ConnexionProfesseur</title>
     <link rel="stylesheet" href="Scenario.css" >
-    <script src="LesFonctionsJS.js"></script>
+    <script src="../LesFonctionsJS.js"></script>
 
 </head>
 
 <div class="fontHead">
     <header>
-        <a href="Accueil.php">
-            <img src="logoIFSI.png" width=150 height=150 alt="" >
+        <a href="../Accueil.php">
+            <img src="../logoIFSI.png" width=150 height=150 alt="" >
         </a>
         <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
         <br>
@@ -23,7 +23,7 @@ session_start();
 </div>
 <div class="font">
     <div class="deco">
-        <a href="Accueil.php"> <img src="retour.png"  class="icone" width=50 height=50 alt="" > </a>
+        <a href="../Accueil.php"> <img src="../retour.png" class="icone" width=50 height=50 alt="" > </a>
     </div>
 </div>
 
@@ -47,9 +47,9 @@ session_start();
         <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
         <button class="button" onclick="document.location='Diagnostic.php'">Diagnostic</button>
         <button class="button" onclick="document.location='Soins.php'">Soins Relationnel</button>
-        <button class="button" onclick="document.location='Elimination.php'">Elimination </button>
+        <button class="button_select" onclick="document.location='Elimination.php'">Elimination </button>
         <button class="button" onclick="document.location='Cardio.php'">Cardio </button>
-        <button class="button_select" onclick="document.location='Radio.php'">Radio </button>
+        <button class="button" onclick="document.location='Radio.php'">Radio </button>
         <button class="button" onclick="document.location='Mobilite.php'">Mobilité </button>
         <button class="button" onclick="document.location='Hygiene.php'">Hygiène </button>
         <button class="button" onclick="document.location='Alimentation.php'">Alimentation </button>

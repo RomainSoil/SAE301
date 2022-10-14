@@ -42,24 +42,22 @@ session_start()
     <br>
 </div>
 </div>
-<br><br><br>
-
-<div class="typeScenario">
-    <div class="btn-group">
-        <button class="button" onclick="document.location='Patient.php'">Patient</button>
-        <button class="button" onclick="document.location='CreateScenario.php'">Sécurité</button>
-        <button class="button" onclick="document.location='Correction.php'">Diagnostic</button>
-        <button class="button" onclick="document.location='Note.php'">Soins</button>
-        <button class="button" onclick="document.location=">Elimination </button>
-        <button class="button" onclick="document.location=">Cardio </button>
-        <button class="button" onclick="document.location=">Radio </button>
-        <button class="button" onclick="document.location=">Mobilité </button>
-        <button class="button" onclick="document.location=">Hygiène </button>
-        <button class="button" onclick="document.location=">Alimentation </button>
-        <button class="button" onclick="document.location=">Neuro </button>
-
-    </div>
+<div class="fontHead">
     <br>
+    <div class="btn-scenario">
+        <button class="button" onclick="document.location='Patient.php'">Patient</button>
+        <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
+        <button class="button" onclick="document.location='Diagnostic.php'">Diagnostic</button>
+        <button class="button" onclick="document.location='Soins.php'">Soins Relationnel</button>
+        <button class="button" onclick="document.location='Elimination.php'">Elimination </button>
+        <button class="button" onclick="document.location='Cardio.php'">Cardio </button>
+        <button class="button" onclick="document.location='Radio.php'">Radio </button>
+        <button class="button" onclick="document.location='Mobilite.php'">Mobilité </button>
+        <button class="button" onclick="document.location='Hygiene.php'">Hygiène </button>
+        <button class="button" onclick="document.location='Alimentation.php'">Alimentation </button>
+        <button class="button" onclick="document.location='Neuro.php'">Neuro </button>
+    </div>
+
 </div>
 </body>
 </html>

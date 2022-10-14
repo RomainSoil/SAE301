@@ -54,6 +54,23 @@ if (empty($_POST['CP'])){
     <br>
 </div>
 </div>
+<div class="fontHead">
+    <br>
+    <div class="btn-scenario">
+        <button class="button" onclick="document.location='Patient.php'">Patient</button>
+        <button class="button_select" onclick="document.location='Securite.php'">Sécurité</button>
+        <button class="button" onclick="document.location='Diagnostic.php'">Diagnostic</button>
+        <button class="button" onclick="document.location='Soins.php'">Soins Relationnel</button>
+        <button class="button" onclick="document.location='Elimination.php'">Elimination </button>
+        <button class="button" onclick="document.location='Cardio.php'">Cardio </button>
+        <button class="button" onclick="document.location='Radio.php'">Radio </button>
+        <button class="button" onclick="document.location='Mobilite.php'">Mobilité </button>
+        <button class="button" onclick="document.location='Hygiene.php'">Hygiène </button>
+        <button class="button" onclick="document.location='Alimentation.php'">Alimentation </button>
+        <button class="button" onclick="document.location='Neuro.php'">Neuro </button>
+    </div>
+
+</div>
 <h1> Information sur la patient </h1>
 <form method="post" action="Securite.php">
     Date :
