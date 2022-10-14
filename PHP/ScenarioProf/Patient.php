@@ -43,7 +43,7 @@ session_start()
     </div>
     </div>
     <h1> Information sur la patient </h1>
-    <form method="post">
+    <form method="post" action="Securite.php">
         <label>Nom :</label>
         <label>
             <input type="text" name="nom" id="nom" value="<?php echo @$_POST['nom']?>" placeholder="Entrez le Nom du patient " required>
@@ -89,11 +89,11 @@ session_start()
         <br>
         <label> Adresse :</label>
         <label>
-            <input type="text" name="adresse" id="adresse" value="<?php echo @$_POST['adresse']?>" placeholder="Entrez la taille du patient" required>
+            <input type="text" name="adresse" id="adresse" value="<?php echo @$_POST['adresse']?>" placeholder="Entrez la taille du patient" >
         </label>
         <label> Code postal :</label>
         <label>
-            <input type="int" name="CP" id="CP" value="<?php echo @$_POST['CP']?>" placeholder="Entrez la taille du patient" required>
+            <input type="int" name="CP" id="CP" value="<?php echo @$_POST['CP']?>" placeholder="Entrez la taille du patient" >
         </label>
         <br>
     </form>
