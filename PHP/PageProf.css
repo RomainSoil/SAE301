@@ -22,8 +22,54 @@ div.deco{
     border-radius: 0px;
 }
 
+.btn-group .button {
+    border: none;
+    background-color: dimgrey;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+    width: 19.5%;
+    transition-duration: 0.4s;
+    border-radius: 0px;
+}
 
 .btn-group .button:hover {
+    background-color: #EE401A;
+    color: white;
+}
+
+.btn-scenario .button {
+    border: none;
+    background-color: firebrick;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    width: 8%;
+    transition-duration: 0.4s;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.btn-scenario .button_select {
+    border: none;
+    background-color: beige;
+    color: black;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    width: 8%;
+    transition-duration: 0.4s;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.btn-scenario {
+    margin-left: 10%;
+}
+
+.btn-scenario .button:hover {
     background-color: #EE401A;
     color: white;
 }
@@ -41,6 +87,8 @@ div.deco{
 
     background-color: darkred;
 }
+
+/*page en global*/
 body{
     background-color: beige;
 }
