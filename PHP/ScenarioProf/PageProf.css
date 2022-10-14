@@ -22,17 +22,6 @@ div.deco{
     border-radius: 0px;
 }
 
-.btn-group .button {
-    border: none;
-    background-color: dimgrey;
-    color: white;
-    text-align: center;
-    font-size: 25px;
-    cursor: pointer;
-    width: 19.5%;
-    transition-duration: 0.4s;
-    border-radius: 0px;
-}
 
 .btn-group .button:hover {
     background-color: #EE401A;
