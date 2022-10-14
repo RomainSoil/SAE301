@@ -110,51 +110,47 @@ function bdd($mail, $mdp, $mdp2){
     @$prenom = $_POST['prenom'];
     @$code = $_POST['code'];
     if ($_SESSION['premier']==2) {
-        if (isset($nom)) {
-            if (isset($prenom)) {
-                if (isset($mail)) {
-                    if (isset($code)) {
-                        if (isset($mdp) and isset($mdp2)) {
-                            if ($ClassMail->email($mail) and $ClassMDP->password($mdp, $mdp2)) {
-                                try {
-                                    $conn = new ConnectionBDD();
+        {
+            if ($ClassMail->email($mail) and $ClassMDP->password($mdp, $mdp2)) {
+                try {
+                    $conn = new ConnectionBDD();
 
-                                    $pdo = $conn->connexion();
-                                } catch (PDOException $e) {
-                                    die ('Erreur : ' . $e->getMessage());
-                                }
+                    $pdo = $conn->connexion();
+                } catch (PDOException $e) {
+                    die ('Erreur : ' . $e->getMessage());
+                }
 
-                                $hash = password_hash($mdp, PASSWORD_DEFAULT);
-                                if ($_POST['code'] == "P5165156516516@") {
-                                    $sql = "INSERT INTO prof (email,mdp,nom,prenom)
-                                       VALUES ('$mail','$hash','$nom','$prenom')";
-                                    $condition = true;
-                                    header('Location: Accueil.php');
-                                    $_SESSION['page'] = true;
-                                } elseif ($_POST['code'][0] == "E") {
-                                    $sql = "INSERT INTO etudiant (email,mdp,code,nom,prenom)
-                                       VALUES ('$mail','$hash','$code','$nom','$prenom')";
-                                    $condition = true;
-                                    header('Location: Accueil.php');
-                                    $_SESSION['page'] = true;
-                                } else {
-                                    echo '<script>alert("Le code n\'est pas valide")</script>';
+                $hash = password_hash($mdp, PASSWORD_DEFAULT);
+                if ($_POST['code'] == "P5165156516516@") {
+                    $sql = "INSERT INTO prof (email,mdp,nom,prenom)
+                    VALUES ('$mail','$hash','$nom','$prenom')";
+                    $condition = true;
+                    header('Location: Accueil.php');
+                    $_SESSION['page'] = true;
+                }
+                elseif ($_POST['code'][0] == "E") {
+                    $sql = "INSERT INTO etudiant (email,mdp,code,nom,prenom)
+                            VALUES ('$mail','$hash','$code','$nom','$prenom')";
+                    $condition = true;
+                    header('Location: Accueil.php');
+                    $_SESSION['page'] = true;
                                 }
-                                if ($condition) {
-                                    try {
-                                        $affected = $pdo->exec($sql);
-                                    } catch (PDOException $e) {
+                else {
+                    echo '<script>alert("Le code n\'est pas valide")</script>';
+                                }
+                if ($condition) {
+                    try {
+                        $affected = $pdo->exec($sql);
+                    }
+                    catch (PDOException $e) {
                                         die ($e->getMessage());
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
-            }
-        }
+
+
     }
-}
+
+}}}
 @bdd($_POST['mail'],$_POST['mdp'],$_POST['mdp2']);
 
 ?>
