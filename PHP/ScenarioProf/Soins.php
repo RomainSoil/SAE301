@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>ConnexionProfesseur</title>
-    <link rel="stylesheet" href="Scenario.css" >
+    <link rel="stylesheet" href="Patient.css" >
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -44,8 +44,8 @@ session_start();
     <br>
     <div class="btn-scenario">
         <button class="button" onclick="document.location='Patient.php'">Patient</button>
-        <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
         <button class="button" onclick="document.location='Diagnostic.php'">Diagnostic</button>
+        <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
         <button class="button_select" onclick="document.location='Soins.php'">Soins Relationnel</button>
         <button class="button" onclick="document.location='Elimination.php'">Elimination </button>
         <button class="button" onclick="document.location='Cardio.php'">Cardio </button>

@@ -11,7 +11,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>ConnexionProfesseur</title>
-    <link rel="stylesheet" href="Scenario.css" >
+    <link rel="stylesheet" href="Patient.css" >
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -48,8 +48,8 @@ session_start();
     <br>
     <div class="btn-scenario">
         <button class="button" onclick="document.location='Patient.php'">Patient</button>
-        <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
         <button class="button_select" onclick="document.location='Diagnostic.php'">Diagnostic</button>
+        <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
         <button class="button" onclick="document.location='Soins.php'">Soins Relationnel</button>
         <button class="button" onclick="document.location='Elimination.php'">Elimination </button>
         <button class="button" onclick="document.location='Cardio.php'">Cardio </button>
@@ -60,13 +60,30 @@ session_start();
         <button class="button" onclick="document.location='Neuro.php'">Neuro </button>
     </div>
 </div>
-<Form action="Soins.php">
-    <label>  Créer un intervenant </label> <br><br>
-    Nom :<input type="text" name="nom" id="nom"  placeholder="Entrez le Nom de l'intervenant " required><br>
-    Prénom :<input type="text" name="prenom" id="prenom" placeholder="Entrez le Prenom de l'intervenant" required><br><br>
-    Diagnostic: <input type="text"name="diagnostic" id="diagnostic" placeholder="Entrez le diagnostic" required> <br>
-
+<div class="Titre">
+    <h3>Date du Diagnostic</h3>
+</div>
+<Form action="Securite.php" method="post">
+    Date :
+    <input type="datetime-local" name="date" id="date" required>
+    <div class="Titre">
+        <h3>Intervenant</h3>
+    </div>
+    Nom :<input type="text" name="nom" id="nom"  placeholder="Nom de l'intervenant " required><br>
+    Prénom :<input type="text" name="prenom" id="prenom" placeholder="Prenom de l'intervenant" required><br><br>
+    <div class="Titre"><h3>Diagnostic:</h3></div>
+    <div class="text_area">
+    <textarea name="diagnostic" id="diagnostic" rows="20" cols="80" required> </textarea></div> <br>
+    <div class="button_Suivant">
+        <input type="submit" value="Valider">
+    </div>
 </Form>
+
+<footer>
+    <form action="../Accueil.php" method="post">
+        <input type="submit" value="Besoin d'aide ?">
+    </form>
+</footer>
 </body>
 </html>
 
