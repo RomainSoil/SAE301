@@ -1,0 +1,48 @@
+header{
+    text-align: center;
+    top:0;
+    color: white;
+
+}
+div.fontHead{
+    background-color: blue;
+}
+
+body{
+    background-color: lightblue;
+}
+
+div.info {
+    text-align: center;
+    color: darkblue;
+}
+
+div.Aide {
+    text-align: center;
+    font-size: 1em;
+}
+
+
+
+
+
+.btn-group .button {
+    border: none;
+    background-color: dimgrey;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+    width: 19.5%;
+    transition-duration: 0.4s;
+}
+
+
+.btn-group .button:hover {
+    background-color: blue;
+    color: white;
+}
+div.font{
+
+    background-color: darkblue;
+}

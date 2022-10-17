@@ -8,9 +8,10 @@ $pseudo = $_SESSION['username'];
 $pseudo2 = $pseudo[0];
 $pseudo2 .= " ";
 $pseudo2 .= $pseudo[1];
+$_SESSION['PseudoChat']=$pseudo2;
+
     if (isset($_POST['message'])) {
         $message = nl2br(htmlspecialchars($_POST['message']));
-        $_SESSION['PseudoChat']=$pseudo2;
         $pseudo = $_SESSION['Pseudo'];
         $insertMsg = $bdd->prepare('INSERT INTO message(userx,textmessage, idgroupe, email) VALUES(?, ?, ?, ?)');
         $insertMsg->execute(array($pseudo2, $message, $_SESSION['IdChat'], $pseudo));
@@ -20,37 +21,66 @@ $pseudo2 .= $pseudo[1];
 <head>
     <title>Messagerie</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="chat.css" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+
+<div class="fontHead">
+    <header>
+        <a href="Accueil.php">
+            <img src="logoIFSI.png" width=50 height=50 alt="" >
+        </a>
+        <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
+        <br>
+    </header>
+</div>
 <body>
-<a>Vous êtes <?php echo $_SESSION['PseudoChat']?></a>
+<div class="font">
+    <br>
+    <div class="btn-group">
+        <button class="button" onclick="document.location='PageProf.php'">Accueil</button>
+        <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
+        <button class="button" onclick="document.location='Correction.php'">Correction</button>
+        <button class="button" onclick="document.location='Note.php'">Note</button>
+        <button class="button" onclick="document.location='chat.php'">Message </button>
+
+    </div>
+    <br>
+</div>
+<div class="info">
+<h2>Bonjour, <?php echo $_SESSION['PseudoChat']?></h2>
 <br>
-<a>groupe <?php echo $_SESSION['IdChat'] ?></a>
+<h3>Communication avec groupe <?php echo $_SESSION['IdChat'] ?></h3>
+</div>
+<br>
     <form method="POST" action="" align="center">
-        <textarea name="message"></textarea>
+        <textarea name="message" rows="10" cols="80"></textarea>
         <br>
         <input type="submit" name="valider">
     </form>
     <section id="messages"></section>
-
+<br>
+<div class="Aide">
+    <button href="https://cas.uphf.fr/login-help/">Besoin d'aide</button><br><br>
+</div>
     <script>
         setInterval('load_messages()',500);
         function load_messages(){
             $('#messages').load('loadChat.php');
         }
     </script>
-
+<div class="Aide">
 <button type="submit" name="creer" id="creer" onclick="afficher()">Créer groupe</button>
 <form style="visibility: hidden" id="form" method="post">
-    <input type="text" placeholder="Nom du groupe", id="nomgrp" name="nomgrp">
+    <input type="text" placeholder="Nom du groupe" id="nomgrp" name="nomgrp">
     <input name="valider" id="valider" type="submit" placeholder="Entrez le nom du groupe">
 </form>
-
 <button type="submit" name="inviter" id="inviter" onclick="afficher2()">inviter</button>
 <form style="visibility: hidden" id="invit" method="post">
     <input type="text" placeholder="email", id="nom" name="nom">
     <input name="valider" id="valider" type="submit">
 </form>
+</div>
 <script>
     function afficher(){
         document.getElementById('form').setAttribute('style', 'visibility: visible')
@@ -60,6 +90,7 @@ $pseudo2 .= $pseudo[1];
         document.getElementById('nom').setAttribute('style', 'visibility : visible')
     }
 </script>
+
 </body>
 </html>
 
