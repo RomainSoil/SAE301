@@ -1,5 +1,8 @@
 <?php
 session_start();
+@$_SESSION['urine']=$_POST['urine'];
+@$_SESSION['gaz']=$_POST['gaz'];
+@$_SESSION['selles']=$_POST['selles'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,9 +59,13 @@ session_start();
         <button class="button" onclick="document.location='Neuro.php'">Neuro </button>
     </div>
 </div>
+<form method="post" action="Radio.php">
+    TA : <input type="text" name="TA" id="TA" > <br>
+    pls :<input type ="int" name="pls" id=pls> <br>
+    ECG :<input type="text" name="ECG" id="ECG">
 
-
-</div>
+</form>
+<body>
 </body>
 </html>
 
