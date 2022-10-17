@@ -141,6 +141,8 @@ function bdd($mail, $mdp, $mdp2){
                 if ($condition) {
                     try {
                         $affected = $pdo->exec($sql);
+                        $add = $pdo->prepare("INSERT INTO email values (?)");
+                        $add->execute(array($mail));
                     }
                     catch (PDOException $e) {
                                         die ($e->getMessage());
