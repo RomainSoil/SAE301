@@ -1,5 +1,9 @@
 <?php
 session_start();
+@$_SESSION['massage']=$_POST['massage'];
+@$_SESSION['entretien']=$_POST['entretien'];
+@$_SESSION['accueil']=$_POST['accueil'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +63,22 @@ session_start();
 
 
 </div>
+<body>
+<form action="Cardio.php">
+    Le patient a t-il eu des selles ?:
+    <input type="radio" name="selles" value="oui">oui
+    <input type="radio" name="selles" value="non">non
+    <br>
+    Le patient a t-il eu des gaz ?:
+    <input type="radio" name="gaz" value="oui">oui
+    <input type="radio" name="gaz" value="non">non
+    <br>
+    Le patient a t-il uriner :
+    <input type="radio" name="urine" value="oui">oui
+    <input type="radio" name="urine" value="non">non
+    <br>
+    <br>
+</form>
 </body>
 </html>
 
