@@ -1,5 +1,9 @@
 <?php
 session_start();
+@$_SESSION['Date']=$_POST['date'];
+@$_SESSION['prescrite']=$_POST['prescrite'];
+@$_SESSION['confort']=$_POST['confort'];
+@$_SESSION['surveillance']=$_POST['surveillance'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,11 +60,14 @@ session_start();
         <button class="button" onclick="document.location='Neuro.php'">Neuro </button>
     </div>
 </div>
+<Form action="Soins.php">
+    <label>  Créer un intervenant </label> <br><br>
+    Nom :<input type="text" name="nom" id="nom"  placeholder="Entrez le Nom de l'intervenant " required><br>
+    Prénom :<input type="text" name="prenom" id="prenom" placeholder="Entrez le Prenom de l'intervenant" required><br><br>
+    Diagnostic: <input type="text"name="diagnostic" id="diagnostic" placeholder="Entrez le diagnostic" required> <br>
 
-
-</div>
+</Form>
 </body>
 </html>
 
-<?php
-?>
+
