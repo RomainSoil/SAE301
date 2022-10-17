@@ -16,7 +16,7 @@ session_start();
 <div class="fontHead">
     <header>
         <a href="../Accueil.php">
-            <img src="../logoIFSI.png" width=150 height=150 alt="" >
+            <img src="../logoIFSI.png" width=50 height=50 alt="" >
         </a>
         <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
         <br>

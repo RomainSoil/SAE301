@@ -74,7 +74,7 @@ if (empty($_POST['CP'])){
 <div class="Titre">
 <h1> Information sur la sécurité </h1>
 </div>
-<form method="post" action="">
+<form method="post" action="Soins.php">
     Date :
         <input type="datetime-local" name="date" id="date" required>
 

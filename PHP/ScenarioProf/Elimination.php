@@ -19,7 +19,7 @@ session_start();
 <div class="fontHead">
     <header>
         <a href="../Accueil.php">
-            <img src="../logoIFSI.png" width=150 height=150 alt="" >
+            <img src="../logoIFSI.png" width=50 height=50 alt="" >
         </a>
         <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
         <br>
@@ -64,21 +64,32 @@ session_start();
 
 </div>
 <body>
+<div class="Titre">
+    <h1>Elimination du patient</h1>
+</div>
 <form action="Cardio.php" method="post">
     Le patient a t-il eu des selles ?:
-    <input type="radio" name="selles" value="oui">oui
-    <input type="radio" name="selles" value="non">non
-    <br>
+    <input type="radio" name="selles" value="oui"required>oui
+    <input type="radio" name="selles" value="non"required>non
+    <br><br>
     Le patient a t-il eu des gaz ?:
-    <input type="radio" name="gaz" value="oui">oui
-    <input type="radio" name="gaz" value="non">non
-    <br>
+    <input type="radio" name="gaz" value="oui"required>oui
+    <input type="radio" name="gaz" value="non"required>non
+    <br><br>
     Le patient a t-il uriner :
-    <input type="radio" name="urine" value="oui">oui
-    <input type="radio" name="urine" value="non">non
+    <input type="radio" name="urine" value="oui"required>oui
+    <input type="radio" name="urine" value="non"required>non
     <br>
     <br>
+    <div class="button_Suivant">
+        <input type="submit" value="Valider">
+    </div>
 </form>
+<footer>
+    <form action="../Accueil.php" method="post">
+        <input type="submit" value="Besoin d'aide ?">
+    </form>
+</footer>
 </body>
 </html>
 
