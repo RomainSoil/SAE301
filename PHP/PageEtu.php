@@ -13,6 +13,7 @@ session_start();
 
 La page du Etudiant
 
+<a href="chat.php">Chat</a>
 </body>
 </html>
 
