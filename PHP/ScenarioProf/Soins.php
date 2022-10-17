@@ -1,5 +1,9 @@
 <?php
 session_start();
+@$_SESSION['nomIntervenant']=$_POST['nomIntervenant'];
+@$_SESSION['prenomIntervenant']=$_POST['prenomIntervenant'];
+@$_SESSION['diagnostic']=$_POST['diagnostic'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,9 +60,23 @@ session_start();
         <button class="button" onclick="document.location='Neuro.php'">Neuro </button>
     </div>
 </div>
+<body>
+<form action="Elimination.php">
+    Le patient est-il passé par l'accueil:
+    <input type="radio" name="accueil" value="oui">oui
+    <input type="radio" name="accueil" value="non">non
+    <br>
+    Le patient a t-il eu un entretien avec un infirmier?:
+    <input type="radio" name="entretien" value="oui">oui
+    <input type="radio" name="entretien" value="non">non
+    <br>
+    Le patient a t-il eu un toucher ou un massage :
+    <input type="radio" name="massage" value="oui">oui
+    <input type="radio" name="massage" value="non">non
+    <br>
+    <br>
+</form>
 
-
-</div>
 </body>
 </html>
 
