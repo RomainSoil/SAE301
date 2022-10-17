@@ -1,6 +1,27 @@
 DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Intervenant, Prescription, Diagnostic, Radio, Neuro, Mobilite, MiseEnSecurite, Elimination, Alimentation,
 SoinsRelationnels , Cardio, Respi, Hygiene, Soins Cascade;
 
+insert into groupe values ( DEFAULT , 'tous', 'admin@gmail.com');
+
+drop table if exists message;
+CREATE table message(
+    id serial primary key,
+    email text,
+    userx text,
+    textmessage text,
+    date date,
+    idgroupe int not null ,
+    foreign key (idgroupe, email) references groupe(idgroupe, email)
+);
+
+drop table if exists groupe cascade;
+
+CREATE TABLE Groupe (
+    idGroupe serial,
+    nomGroupe text,
+    email text REFERENCES Etudiant(email),
+    primary key (idGroupe,email)
+);
 
 CREATE Table Etudiant (
     email text primary key,
