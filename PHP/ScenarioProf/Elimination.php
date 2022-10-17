@@ -64,7 +64,7 @@ session_start();
 
 </div>
 <body>
-<form action="Cardio.php">
+<form action="Cardio.php" method="post">
     Le patient a t-il eu des selles ?:
     <input type="radio" name="selles" value="oui">oui
     <input type="radio" name="selles" value="non">non
