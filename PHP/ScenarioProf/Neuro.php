@@ -1,6 +1,10 @@
 <?php
 session_start();
-
+@$_SESSION['alimentaire']=$_POST['alimentaire'];
+@$_SESSION['hydratation']=$_POST['hydratation'];
+@$_SESSION['regime']=$_POST['regime'];
+@$_SESSION['jeun']=$_POST['jeun'];
+@$_SESSION['aideRepas']=$_POST['aideRepas'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

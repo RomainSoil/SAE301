@@ -1,5 +1,8 @@
 <?php
 session_start();
+@$_SESSION['ECG']=$_POST['ECG'];
+@$_SESSION['pls']=$_POST['pls'];
+@$_SESSION['TA']=$_POST['TA'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +61,14 @@ session_start();
 </div>
 
 
-</div>
+<body>
+
+<form method="post" action="Mobilite.php">
+    Veuillez entrez l'url de l'image ?
+<input type="text" nom="radio">
+</form>
+
+
 </body>
 </html>
 
