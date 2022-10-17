@@ -59,7 +59,7 @@ session_start();
             <br>
             <!--le code peut être commun-->
             <label>
-                <input type="text" name="code" id="code" value="<?php echo @$_POST['code']?>" placeholder="Entrez votre Code"required>
+                <input type="text" name="code" id="code" value="<?php echo @$_POST['code']?>" placeholder="Entrez votre Code" required>
             </label>
             <br>
                 <div>
@@ -74,11 +74,11 @@ session_start();
                 <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
             </div>
             <label>
-                <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez mot de passe"required>
+                <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez mot de passe" required>
             </label>
             <button type="button" id="pass2" onclick="changer('mdp2')">O</button>
             <br>
-            <input type="submit" value="Valider" >  </p>
+            <input type="submit" value="Valider" > </p>
         </form>
 </div>
 
