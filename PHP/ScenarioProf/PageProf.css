@@ -1,0 +1,97 @@
+/* Haut de la page*/
+header{
+    text-align: center;
+    top:0;
+    color: white;
+
+}
+
+div.deco{
+    margin-left:94%;
+}
+
+.btn-group .button {
+    border: none;
+    background-color: dimgrey;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+    width: 19.5%;
+    transition-duration: 0.4s;
+}
+
+
+.btn-group .button:hover {
+    background-color: #EE401A;
+    color: white;
+}
+
+
+.btn-scenario .button {
+    border: none;
+    background-color: firebrick;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    width: 8%;
+    transition-duration: 0.4s;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.btn-scenario .button_select {
+    border: none;
+    background-color: beige;
+    color: black;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    width: 8%;
+    transition-duration: 0.4s;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.btn-scenario {
+    margin-left: 10%;
+}
+
+.btn-scenario .button:hover {
+    background-color: #EE401A;
+    color: white;
+}
+.fontHead{
+    background-color: #EE401A;
+}
+div.texte{
+    font-weight: bold;
+    text-align: center;
+    margin-top: 8%;
+    font-size: 25px;
+
+}
+div.font{
+
+    background-color: darkred;
+}
+
+/*page en global*/
+body{
+    background-color: beige;
+}
+
+footer{
+    text-align: center;
+    margin:0;
+    padding:3%;
+    position: static;
+    bottom: 0;
+    width:94%;
+    font-size: 1em;
+    color:white;
+    background-color: beige;
+    font-weight: bold;
+}
+

@@ -174,6 +174,10 @@ class PHPMailer
         self::ICAL_METHOD_COUNTER,
         self::ICAL_METHOD_DECLINECOUNTER,
     ];
+    /**
+     * @var string
+     */
+    public $MsgHTML;
 
     /**
      * The complete compiled MIME message body.

@@ -49,21 +49,7 @@ $_SESSION['IdChat']=1;
 </footer>
 </body>
 </html>
-<script>
-    ///Boutton affiche le MDP///
-    e=true;
-    function changer3(){
-        if(e){
-            console.log('text');
-            document.getElementById("mdp").setAttribute("type","text");
-            e=false;
-        }
-        else{
-            document.getElementById("mdp").setAttribute("type","password");
-            e=true;
-        }
-    }
-</script>
+
 
 <?php
 require('email.php');
@@ -77,6 +63,7 @@ if (isset($_SESSION['page'])){
     echo '<script>alert("Le compte est crée")</script>';
 }
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
+
 $conn = new ConnectionBDD();
 $pdo = $conn->connexion();
 @$ClassMail = new email();
