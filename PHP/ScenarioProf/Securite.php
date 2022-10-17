@@ -20,7 +20,7 @@ if (empty($_POST['CP'])){
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="PageProf.css">
+    <link rel="stylesheet" href="Patient.css">
     <script type="text/javascript" src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -58,8 +58,8 @@ if (empty($_POST['CP'])){
     <br>
     <div class="btn-scenario">
         <button class="button" onclick="document.location='Patient.php'">Patient</button>
-        <button class="button_select" onclick="document.location='Securite.php'">Sécurité</button>
         <button class="button" onclick="document.location='Diagnostic.php'">Diagnostic</button>
+        <button class="button_select" onclick="document.location='Securite.php'">Sécurité</button>
         <button class="button" onclick="document.location='Soins.php'">Soins Relationnel</button>
         <button class="button" onclick="document.location='Elimination.php'">Elimination </button>
         <button class="button" onclick="document.location='Cardio.php'">Cardio </button>
@@ -71,24 +71,29 @@ if (empty($_POST['CP'])){
     </div>
 
 </div>
-<h1> Information sur la patient </h1>
-<form method="post" action="Securite.php">
+<div class="Titre">
+<h1> Information sur la sécurité </h1>
+</div>
+<form method="post" action="">
     Date :
-        <input type="datetime-local" name="date" id="date" value="<?php echo @$_POST['nom']?>" required>
+        <input type="datetime-local" name="date" id="date" required>
 
-    <br>
+    <br><br>
     Une barriere de lit prescrite pour le patient :
-             <input type="radio" name="precrite" value="oui">oui
-            <input type="radio" name="prescrite" value="non">non
-    <br>
+             <input type="radio" name="prescrite" value="oui"required>oui
+            <input type="radio" name="prescrite" value="non"required>non
+    <br><br>
     Une barriere de lit pour le confort du patient :
-    <input type="radio" name="confort" value="oui">oui
-    <input type="radio" name="confort" value="non">non
-    <br>
+    <input type="radio" name="confort" value="oui"required>oui
+    <input type="radio" name="confort" value="non"required>non
+    <br><br>
     Le patient a t-il des surveillances de contentions :
-    <input type="radio" name="surveillacne" value="oui">oui
-    <input type="radio" name="surveillance" value="non">non
-
+    <input type="radio" name="surveillance" value="oui"required>oui
+    <input type="radio" name="surveillance" value="non"required>non
+    <br><br>
+    <div class="button_Suivant">
+        <input type="submit" value="Valider">
+    </div>
 
 
 
@@ -96,8 +101,14 @@ if (empty($_POST['CP'])){
 
 
 </form>
-</body>
 
+<footer>
+    <form action="../Accueil.php" method="post">
+        <input type="submit" value="Besoin d'aide ?">
+    </form>
+</footer>
+</body>
+</html>
 
 
 

@@ -1,5 +1,9 @@
 <?php
 session_start();
+@$_SESSION['massage']=$_POST['massage'];
+@$_SESSION['entretien']=$_POST['entretien'];
+@$_SESSION['accueil']=$_POST['accueil'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +11,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>ConnexionProfesseur</title>
-    <link rel="stylesheet" href="Scenario.css" >
+    <link rel="stylesheet" href="Patient.css" >
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -44,8 +48,8 @@ session_start();
     <br>
     <div class="btn-scenario">
         <button class="button" onclick="document.location='Patient.php'">Patient</button>
-        <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
         <button class="button" onclick="document.location='Diagnostic.php'">Diagnostic</button>
+        <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
         <button class="button" onclick="document.location='Soins.php'">Soins Relationnel</button>
         <button class="button_select" onclick="document.location='Elimination.php'">Elimination </button>
         <button class="button" onclick="document.location='Cardio.php'">Cardio </button>
@@ -59,6 +63,22 @@ session_start();
 
 
 </div>
+<body>
+<form action="Cardio.php" method="post">
+    Le patient a t-il eu des selles ?:
+    <input type="radio" name="selles" value="oui">oui
+    <input type="radio" name="selles" value="non">non
+    <br>
+    Le patient a t-il eu des gaz ?:
+    <input type="radio" name="gaz" value="oui">oui
+    <input type="radio" name="gaz" value="non">non
+    <br>
+    Le patient a t-il uriner :
+    <input type="radio" name="urine" value="oui">oui
+    <input type="radio" name="urine" value="non">non
+    <br>
+    <br>
+</form>
 </body>
 </html>
 

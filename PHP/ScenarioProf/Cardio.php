@@ -1,5 +1,8 @@
 <?php
 session_start();
+@$_SESSION['urine']=$_POST['urine'];
+@$_SESSION['gaz']=$_POST['gaz'];
+@$_SESSION['selles']=$_POST['selles'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +10,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>ConnexionProfesseur</title>
-    <link rel="stylesheet" href="Scenario.css" >
+    <link rel="stylesheet" href="Patient.css" >
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -44,8 +47,8 @@ session_start();
     <br>
     <div class="btn-scenario">
         <button class="button" onclick="document.location='Patient.php'">Patient</button>
-        <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
         <button class="button" onclick="document.location='Diagnostic.php'">Diagnostic</button>
+        <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
         <button class="button" onclick="document.location='Soins.php'">Soins Relationnel</button>
         <button class="button" onclick="document.location='Elimination.php'">Elimination </button>
         <button class="button_select" onclick="document.location='Cardio.php'">Cardio </button>
@@ -56,9 +59,13 @@ session_start();
         <button class="button" onclick="document.location='Neuro.php'">Neuro </button>
     </div>
 </div>
+<form method="post" action="Radio.php">
+    TA : <input type="text" name="TA" id="TA" > <br>
+    pls :<input type ="int" name="pls" id=pls> <br>
+    ECG :<input type="text" name="ECG" id="ECG">
 
-
-</div>
+</form>
+<body>
 </body>
 </html>
 
