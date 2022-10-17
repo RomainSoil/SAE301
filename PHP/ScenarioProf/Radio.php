@@ -1,5 +1,8 @@
 <?php
 session_start();
+@$_SESSION['ECG']=$_POST['ECG'];
+@$_SESSION['pls']=$_POST['pls'];
+@$_SESSION['TA']=$_POST['TA'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +18,7 @@ session_start();
 <div class="fontHead">
     <header>
         <a href="../Accueil.php">
-            <img src="../logoIFSI.png" width=150 height=150 alt="" >
+            <img src="../logoIFSI.png" width=50 height=50 alt="" >
         </a>
         <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
         <br>
@@ -33,7 +36,7 @@ session_start();
         <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
         <button class="button" onclick="document.location='Correction.php'">Correction</button>
         <button class="button" onclick="document.location='Note.php'">Note</button>
-        <button class="button" onclick="document.location=">Message </button>
+        <button class="button" onclick="document.location='../chat.php'">Message </button>
 
     </div>
     <br>
@@ -58,7 +61,14 @@ session_start();
 </div>
 
 
-</div>
+<body>
+
+<form method="post" action="Mobilite.php">
+    Veuillez entrez l'url de l'image ?
+<input type="text" nom="radio">
+</form>
+
+
 </body>
 </html>
 

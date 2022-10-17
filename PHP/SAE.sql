@@ -23,11 +23,6 @@ CREATE TABLE Groupe (
     primary key (idGroupe,email)
 );
 
-delete from prof where nom = 'Soil';
-create TABLE email(
-    email text primary key
-);
-
 CREATE Table Etudiant (
     email text primary key,
     mdp text not null,

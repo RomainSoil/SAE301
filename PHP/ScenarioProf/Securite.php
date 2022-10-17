@@ -48,7 +48,7 @@ if (empty($_POST['CP'])){
         <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
         <button class="button" onclick="document.location='Correction.php'">Correction</button>
         <button class="button" onclick="document.location='Note.php'">Note</button>
-        <button class="button" onclick="document.location=">Message </button>
+        <button class="button" onclick="document.location='../chat.php'">Message </button>
 
     </div>
     <br>
@@ -74,7 +74,7 @@ if (empty($_POST['CP'])){
 <div class="Titre">
 <h1> Information sur la sécurité </h1>
 </div>
-<form method="post" action="">
+<form method="post" action="Soins.php">
     Date :
         <input type="datetime-local" name="date" id="date" required>
 

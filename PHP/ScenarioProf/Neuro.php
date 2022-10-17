@@ -1,6 +1,10 @@
 <?php
 session_start();
-
+@$_SESSION['alimentaire']=$_POST['alimentaire'];
+@$_SESSION['hydratation']=$_POST['hydratation'];
+@$_SESSION['regime']=$_POST['regime'];
+@$_SESSION['jeun']=$_POST['jeun'];
+@$_SESSION['aideRepas']=$_POST['aideRepas'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +20,7 @@ session_start();
 <div class="fontHead">
     <header>
         <a href="../Accueil.php">
-            <img src="../logoIFSI.png" width=150 height=150 alt="" >
+            <img src="../logoIFSI.png" width=50 height=50 alt="" >
         </a>
         <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
         <br>
@@ -34,7 +38,7 @@ session_start();
         <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
         <button class="button" onclick="document.location='Correction.php'">Correction</button>
         <button class="button" onclick="document.location='Note.php'">Note</button>
-        <button class="button" onclick="document.location=">Message </button>
+        <button class="button" onclick="document.location='../chat.php'">Message </button>
 
     </div>
     <br>

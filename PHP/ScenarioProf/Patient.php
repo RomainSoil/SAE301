@@ -32,7 +32,7 @@ session_start()
             <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
             <button class="button" onclick="document.location='Correction.php'">Correction</button>
             <button class="button" onclick="document.location='Note.php'">Note</button>
-            <button class="button" onclick="document.location=">Message </button>
+            <button class="button" onclick="document.location='../chat.php'">Message </button>
 
         </div>
         <br>

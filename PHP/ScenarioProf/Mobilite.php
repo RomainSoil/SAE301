@@ -1,5 +1,6 @@
 <?php
 session_start();
+@$_SESSION['radio']=$_POST['radio'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,7 @@ session_start();
 <div class="fontHead">
     <header>
         <a href="../Accueil.php">
-            <img src="../logoIFSI.png" width=150 height=150 alt="" >
+            <img src="../logoIFSI.png" width=50 height=50 alt="" >
         </a>
         <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
         <br>
@@ -33,7 +34,7 @@ session_start();
         <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
         <button class="button" onclick="document.location='Correction.php'">Correction</button>
         <button class="button" onclick="document.location='Note.php'">Note</button>
-        <button class="button" onclick="document.location=">Message </button>
+        <button class="button" onclick="document.location='../chat.php'">Message </button>
 
     </div>
     <br>
@@ -58,7 +59,25 @@ session_start();
 </div>
 
 
-</div>
+<body>
+<form method="post" action="Hygiene.php">
+Le patient a t-il eu une aide à la marche ?:
+<input type="radio" name="AideMarche" value="oui" required>oui
+<input type="radio" name="AideMarche" value="non" required>non
+<br>
+Le patient a t-il eu une aide au lever ?:
+<input type="radio" name="AideLever" value="oui" required >oui
+<input type="radio" name="AideLever" value="non" required>non
+<br>
+Le patient a t-il eu une aide au coucher :
+<input type="radio" name="AideCoucher" value="oui" required>oui
+<input type="radio" name="AideCoucher" value="non" required>non
+<br>
+Le patient a t-il eu une aide au fauteil :
+<input type="radio" name="AideFauteil" value="oui" required>oui
+<input type="radio" name="AideFauteil" value="non" required>non
+<br>
+</form>
 </body>
 </html>
 
