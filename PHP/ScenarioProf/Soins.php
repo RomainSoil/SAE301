@@ -15,12 +15,12 @@ session_start();
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
-
+<body>
 <?php
 include ('BarreScenario.html');
 include ('Entete.html');
 ?>
-<body>
+
 <div class="Titre">
     <h1>Soins Relationnel du patient</h1>
 </div>

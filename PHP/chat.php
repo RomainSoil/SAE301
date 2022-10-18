@@ -90,7 +90,6 @@ $_SESSION['PseudoChat']=$pseudo2;
         document.getElementById('nom').setAttribute('style', 'visibility : visible')
     }
 </script>
-
 </body>
 </html>
 
