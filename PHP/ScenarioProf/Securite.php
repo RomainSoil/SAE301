@@ -27,50 +27,10 @@ if (empty($_POST['CP'])){
 
 <body>
 <!--Le haut de la page avec l'image et le titre-->
-<div class="fontHead">
-    <header>
-        <a href="../Accueil.php">
-            <img src="../logoIFSI.png" width=50 height=50 alt="" >
-        </a>
-        <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
-        <br>
-    </header>
-</div>
-<div class="font">
-    <div class="deco">
-        <a href="../Accueil.php"> <img src="../retour.png" class="icone" width=50 height=50 alt="" > </a>
-    </div>
-</div>
-
-<div class="font">
-    <div class="btn-group">
-        <button class="button" onclick="document.location='PageProf.php'">Accueil</button>
-        <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
-        <button class="button" onclick="document.location='Correction.php'">Correction</button>
-        <button class="button" onclick="document.location='Note.php'">Note</button>
-        <button class="button" onclick="document.location=">Message </button>
-
-    </div>
-    <br>
-</div>
-</div>
-<div class="fontHead">
-    <br>
-    <div class="btn-scenario">
-        <button class="button" onclick="document.location='Patient.php'">Patient</button>
-        <button class="button" onclick="document.location='Diagnostic.php'">Diagnostic</button>
-        <button class="button_select" onclick="document.location='Securite.php'">Sécurité</button>
-        <button class="button" onclick="document.location='Soins.php'">Soins Relationnel</button>
-        <button class="button" onclick="document.location='Elimination.php'">Elimination </button>
-        <button class="button" onclick="document.location='Cardio.php'">Cardio </button>
-        <button class="button" onclick="document.location='Radio.php'">Radio </button>
-        <button class="button" onclick="document.location='Mobilite.php'">Mobilité </button>
-        <button class="button" onclick="document.location='Hygiene.php'">Hygiène </button>
-        <button class="button" onclick="document.location='Alimentation.php'">Alimentation </button>
-        <button class="button" onclick="document.location='Neuro.php'">Neuro </button>
-    </div>
-
-</div>
+<?php
+include ('BarreScenario.html');
+include ('Entete.html');
+?>
 <div class="Titre">
 <h1> Information sur la sécurité </h1>
 </div>
