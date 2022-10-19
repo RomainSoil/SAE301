@@ -73,11 +73,13 @@ if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
         $username = new username();
         $_SESSION['Pseudo']=$_POST['id'];
         $_SESSION['username']=$username->username($_POST['id']);
+        $_SESSION['fonction']= 'etu';
         header('Location:PageEtu.php');
         exit;}
     elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
         $username = new username();
         $_SESSION['username']=$username->username($_POST['id']);
+        $_SESSION['fonction']= 'prof';
         header('Location:PageProf.php');
         exit;
     }

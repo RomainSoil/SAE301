@@ -37,12 +37,13 @@ $_SESSION['PseudoChat']=$pseudo2;
 <body>
 <div class="font">
     <br>
-    <div class="btn-group">
-        <button class="button" onclick="document.location='ScenarioProf/PageProf.php'">Accueil</button>
-        <button class="button" onclick="document.location='ScenarioProf/CreateScenario.php'">Scénario</button>
-        <button class="button" onclick="document.location='ScenarioProf/Correction.php'">Correction</button>
-        <button class="button" onclick="document.location='ScenarioProf/Note.php'">Note</button>
+    <form method="post" class="btn-group">
+        <button class="submit" name="verif">Accueil</button>
+        <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
+        <button class="button" onclick="document.location='Correction.php'">Correction</button>
+        <button class="button" onclick="document.location='Note.php'">Note</button>
         <button class="button" onclick="document.location='chat.php'">Message </button>
+    </form>
 
     </div>
     <br>
@@ -95,7 +96,7 @@ $_SESSION['PseudoChat']=$pseudo2;
 </html>
 
 <?php
-
+require 'Connexion.php';
 function creergrp($bdd)
 {
     if (isset($_POST['nomgrp']) && $_POST['nomgrp']){
@@ -141,4 +142,14 @@ if (isset($_POST['button'])){
 inviter($bdd);
 creergrp($bdd);
 affichergrp($bdd);
+
+if(isset($_POST['verif'])) {
+    if (isset($_SESSION['fonction'])) {
+        if ($_SESSION['fonction'] == 'etu') {
+            header('Location:PageEtu.php');
+        } elseif ($_SESSION['fonction'] == 'prof') {
+            header('Location:PageProf.php');
+        }
+    }
+}
 ?>
