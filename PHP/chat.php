@@ -1,7 +1,7 @@
 <?php
 session_start();
 require ('ConnectionBDD.php');
-$conn= new ConnectionBDD();
+$conn= ConnectionBDD::getInstance();
 $bdd=$conn->connexion();
 $tous = $bdd->query("SELECT idgroupe FROM groupe");
 $pseudo = $_SESSION['username'];
@@ -96,12 +96,12 @@ $_SESSION['PseudoChat']=$pseudo2;
 </html>
 
 <?php
-require 'Connexion.php';
+
 function creergrp($bdd)
 {
     if (isset($_POST['nomgrp']) && $_POST['nomgrp']){
-    $creer = $bdd->prepare("INSERT INTO groupe(nomgroupe, email) values (?, ?)");
-    $creer->execute(array($_POST['nomgrp'], $_SESSION['Pseudo']));
+    $creer = $bdd->prepare("INSERT INTO groupe(nomgroupe, email, admin) values (?, ?, ?)");
+    $creer->execute(array($_POST['nomgrp'], $_SESSION['Pseudo'], true));
     $newid = $bdd->query("SELECT idgroupe from groupe order by idgroupe desc ");
     $newgrp = $newid->fetch()[0];
     $_SESSION['IdChat']=$newgrp;
@@ -110,15 +110,13 @@ function inviter($bdd){
     if (isset($_POST['nom'])&&$_POST['nom']){
         $getnom = $bdd->prepare("SELECT nomgroupe from groupe where idgroupe=?");;
         $getnom->execute(array($_SESSION['IdChat']));
-        $ajouter = $bdd->prepare("INSERT INTO groupe(idgroupe,nomgroupe, email) values (?, ?, ?)");
+        $ajouter = $bdd->prepare("INSERT INTO groupe(idgroupe,nomgroupe, email, admin) values (?, ?, ?, ?)");
         $noms = $getnom->fetch()[0];
-        $ajouter->execute(array($_SESSION['IdChat'], $noms, $_POST['nom']));
+        $ajouter->execute(array($_SESSION['IdChat'], $noms, $_POST['nom'], 'false'));
         echo "l'utilisateur a été ajouté";
     }
 }
-function idchat($id){
-    $_SESSION['IdChat']=$id;
-}
+
 
 function affichergrp($bdd){
     $grps = $bdd->prepare("SELECT * from groupe where email=?");
@@ -135,13 +133,50 @@ function affichergrp($bdd){
     </form>
 <?php
 }
+
+function afficheruser($bdd){
+    $users = $bdd->prepare("SELECT * FROM groupe where idgroupe=? and email!=?");
+    $users->execute(array($_SESSION['IdChat'], $_SESSION['Pseudo']));
+        while ($user = $users->fetch()){?>
+                <form method="post">
+                    <?php echo $user[2]?>
+                    <button type="submit" name="supprimer" value="<?php echo $user[2]?>">X</button>
+                    <?php if($user[3]==0){?>
+                    <button type="submit" name="admin" value="<?php echo $user[2]?>">admin</button>
+                <?php  }  ?>
+                </form>
+<?php
+
+        }
+}
+
+
 if (isset($_POST['button'])){
-    echo "hellooooooo";
     $_SESSION['IdChat']=$_POST['button'];
 }
+
+function supprimer($bdd){
+    if (isset($_POST['supprimer'])){
+        $supp = $bdd->prepare("DELETE FROM groupe where email=? and idgroupe=?");
+        $supp->execute(array($_POST['supprimer'], $_SESSION['IdChat']));
+    }
+}
+
+function admin($bdd){
+    if (isset($_POST['admin'])){
+        $admin = $bdd->prepare("UPDATE groupe SET admin ='true' where email=? and idgroupe=?");
+        $admin->execute(array($_POST['admin'], $_SESSION['IdChat']));
+    }
+}
+
+
+
 inviter($bdd);
 creergrp($bdd);
 affichergrp($bdd);
+afficheruser($bdd);
+supprimer($bdd);
+admin($bdd);
 
 if(isset($_POST['verif'])) {
     if (isset($_SESSION['fonction'])) {

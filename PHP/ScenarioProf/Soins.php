@@ -1,8 +1,10 @@
 <?php
 session_start();
-@$_SESSION['nomIntervenant']=$_POST['nomIntervenant'];
-@$_SESSION['prenomIntervenant']=$_POST['prenomIntervenant'];
-@$_SESSION['diagnostic']=$_POST['diagnostic'];
+
+@$_SESSION['Date']=$_POST['date'];
+@$_SESSION['prescrite']=$_POST['prescrite'];
+@$_SESSION['confort']=$_POST['confort'];
+@$_SESSION['surveillance']=$_POST['surveillance'];
 
 ?>
 <!DOCTYPE html>
@@ -15,12 +17,12 @@ session_start();
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
-
+<body>
 <?php
 include ('BarreScenario.html');
-include ('Entete.html');
+include ('EnteteV2.html');
 ?>
-<body>
+
 <div class="Titre">
     <h1>Soins Relationnel du patient</h1>
 </div>

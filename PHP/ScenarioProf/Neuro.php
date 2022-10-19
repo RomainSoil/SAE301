@@ -16,17 +16,35 @@ session_start();
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
-
+<body>
 <?php
 include ('BarreScenario.html');
-include ('Entete.html');
+include ('EnteteV2.html');
 ?>
-<form>
-    date :<input type="date" id="start" name="date">
-    temperature : <input type="text" name="temperature">
-    temperature : <input type="text" name="temperature">
-</form>
+<div class="Titre">
+    <h1>Neurologie</h1>
+</div>
+<form action="Respi.php" method="post">
+    <br><br>
+    Temperature : <input type="number" name="temperature">
+    <br><br>
+    Glasgow : <input type="text" name="glasgow">
+    <br><br>
+    EVA : <input type="number" name="EVA">
+    <br><br>
+    AlgoPlus : <input type="text" name="AlgoPlus">
+    <br><br>
+    <div class="button_Suivant">
+        <input type="submit" value="Valider">
+    </div>
 
+
+</form>
+<footer>
+    <form action="../Accueil.php" method="post">
+        <input type="submit" value="Besoin d'aide ?">
+    </form>
+</footer>
 
 </div>
 </body>

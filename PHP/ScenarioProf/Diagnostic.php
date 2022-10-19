@@ -1,9 +1,7 @@
 <?php
 session_start();
-@$_SESSION['Date']=$_POST['date'];
-@$_SESSION['prescrite']=$_POST['prescrite'];
-@$_SESSION['confort']=$_POST['confort'];
-@$_SESSION['surveillance']=$_POST['surveillance'];
+@$_SESSION['radio']=$_POST['radio'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,10 +13,10 @@ session_start();
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
-
+<body>
 <?php
 include ('BarreScenario.html');
-include ('Entete.html')
+include ('EnteteV2.html')
 ?>
 <div class="Titre">
     <h3>Date du Diagnostic</h3>

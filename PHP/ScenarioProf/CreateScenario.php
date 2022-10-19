@@ -14,11 +14,12 @@ session_start()
 </head>
 
 
+
+<body>
 <?php
 include("BarreScenario.html");
-include("Entete.html");
+include("EnteteV2.html");
 ?>
-<body>
 </html>
 
     <!--Le bas de page avec le boutton si on a besoin d'aide-->
@@ -31,7 +32,7 @@ include("Entete.html");
 </body>
 </html>
 
-    <?php
+    <?php ?>
 
 
 

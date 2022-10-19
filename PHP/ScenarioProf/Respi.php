@@ -1,17 +1,10 @@
 <?php
 session_start();
-@$_SESSION['nom']=$_POST['nom'];
-@$_SESSION['prenom']=$_POST['prenom'];
-@$_SESSION['DDN']=$_POST['DDN'];
-@$_SESSION['poids']=$_POST['poids'];
-@$_SESSION['taille']=$_POST['taille'];
-@$_SESSION['IEP']=$_POST['IEP'];
-@$_SESSION['IPP']=$_POST['IPP'];
-@$_SESSION['sexe']=$_POST['sexe'];
-if (empty($_POST['adresse'])){
-    @$_SESSION['adresse']=$_POST['adresse'];}
-if (empty($_POST['CP'])){
-    @$_SESSION['CP']=$_POST['CP'];}
+@$_SESSION['temperature']=$_POST['temperature'];
+@$_SESSION['glasgow']=$_POST['glasgow'];
+@$_SESSION['EVA']=$_POST['EVA'];
+@$_SESSION['AlgoPlus']=$_POST['AlgoPlus'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,18 +21,21 @@ if (empty($_POST['CP'])){
 include ('BarreScenario.html');
 include ('EnteteV2.html');
 ?>
-
-
 <div class="Titre">
-    <h1>Radio</h1>
+    <h1>Respiration</h1>
 </div>
-<form method="post" action="Mobilite.php">
-    Veuillez entrez l'url de l'image ?
-<input type="url" nom="radio">
+<form action="" method="post">
+
+    Sa02 : <input type="number" name="Sa02">
+    <br><br>
+    FR : <input type="number" name="FR">
+    <br><br>
+    02 : <input type="text" name="02">
     <br><br>
     <div class="button_Suivant">
         <input type="submit" value="Valider">
     </div>
+
 
 </form>
 <footer>
@@ -47,9 +43,9 @@ include ('EnteteV2.html');
         <input type="submit" value="Besoin d'aide ?">
     </form>
 </footer>
-
 </body>
 </html>
 
-<?php
-?>
+
+
+
