@@ -11,8 +11,9 @@ session_start();
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
-
+<body>
 <?php
 include("BarreScenario.html");
 ?>
 Page Note
+</body>

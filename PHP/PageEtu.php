@@ -18,4 +18,5 @@ La page du Etudiant
 </html>
 
 <?php
+echo $_SESSION['IdChat'];
 ?>

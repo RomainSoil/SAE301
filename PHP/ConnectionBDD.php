@@ -2,6 +2,7 @@
 
 class ConnectionBDD
 {
+    private static $_instance = null;
     public function __construct()
     {
 
@@ -14,6 +15,15 @@ class ConnectionBDD
         return $pdo;
 
     }
+    public static function getInstance() {
+
+        if(is_null(self::$_instance)) {
+            self::$_instance = new ConnectionBDD();
+        }
+
+        return self::$_instance;
+    }
 
 
 }
+?>

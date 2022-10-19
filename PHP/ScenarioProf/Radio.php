@@ -14,19 +14,30 @@ session_start();
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
-
+<body>
 <?php
 include ('BarreScenario.html');
 include ('EnteteV2.html');
 ?>
 
-<body>
 
+<div class="Titre">
+    <h1>Radio</h1>
+</div>
 <form method="post" action="Mobilite.php">
     Veuillez entrez l'url de l'image ?
-<input type="text" nom="radio">
-</form>
+<input type="url" nom="radio">
+    <br><br>
+    <div class="button_Suivant">
+        <input type="submit" value="Valider">
+    </div>
 
+</form>
+<footer>
+    <form action="../Accueil.php" method="post">
+        <input type="submit" value="Besoin d'aide ?">
+    </form>
+</footer>
 
 </body>
 </html>

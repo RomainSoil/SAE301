@@ -21,12 +21,13 @@ session_start();
 
 </head>
 
+
+
+<body>
 <?php
 include('BarreScenario.html');
 include("EnteteV2.html");
 ?>
-
-<body>
 <form method="post" action="Neuro.php">
     Le patient est-il a jeun ?:
     <input type="radio" name="jeun" value="oui" required>oui
