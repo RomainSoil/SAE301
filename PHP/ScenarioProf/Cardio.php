@@ -14,58 +14,30 @@ session_start();
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
-
-<div class="fontHead">
-    <header>
-        <a href="../Accueil.php">
-            <img src="../logoIFSI.png" width=50 height=50 alt="" >
-        </a>
-        <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
-        <br>
-    </header>
-</div>
-<div class="font">
-    <div class="deco">
-        <a href="../Accueil.php"> <img src="../retour.png" class="icone" width=50 height=50 alt="" > </a>
-    </div>
-</div>
-
-<div class="font">
-    <div class="btn-group">
-        <button class="button" onclick="document.location='PageProf.php'">Accueil</button>
-        <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
-        <button class="button" onclick="document.location='Correction.php'">Correction</button>
-        <button class="button" onclick="document.location='Note.php'">Note</button>
-        <button class="button" onclick="document.location='../chat.php'">Message </button>
-
-    </div>
-    <br>
-</div>
+<body>
 
 
-<div class="fontHead">
-    <br>
-    <div class="btn-scenario">
-        <button class="button" onclick="document.location='Patient.php'">Patient</button>
-        <button class="button" onclick="document.location='Diagnostic.php'">Diagnostic</button>
-        <button class="button" onclick="document.location='Securite.php'">Sécurité</button>
-        <button class="button" onclick="document.location='Soins.php'">Soins Relationnel</button>
-        <button class="button" onclick="document.location='Elimination.php'">Elimination </button>
-        <button class="button_select" onclick="document.location='Cardio.php'">Cardio </button>
-        <button class="button" onclick="document.location='Radio.php'">Radio </button>
-        <button class="button" onclick="document.location='Mobilite.php'">Mobilité </button>
-        <button class="button" onclick="document.location='Hygiene.php'">Hygiène </button>
-        <button class="button" onclick="document.location='Alimentation.php'">Alimentation </button>
-        <button class="button" onclick="document.location='Neuro.php'">Neuro </button>
-    </div>
+    <?php
+    include("BarreScenario.html");
+    include("Entete.html");
+    ?>
+<div class="Titre">
+    <h1>Cardio</h1>
 </div>
 <form method="post" action="Radio.php">
-    TA : <input type="text" name="TA" id="TA" > <br>
-    pls :<input type ="int" name="pls" id=pls> <br>
+    TA : <input type="text" name="TA" id="TA" > <br><br>
+    PLS :<input type ="int" name="pls" id=pls> <br><br>
     ECG :<input type="text" name="ECG" id="ECG">
-
+    <br><br>
+    <div class="button_Suivant">
+        <input type="submit" value="Valider">
+    </div>
 </form>
-<body>
+<footer>
+    <form action="../Accueil.php" method="post">
+        <input type="submit" value="Besoin d'aide ?">
+    </form>
+</footer>
 </body>
 </html>
 
