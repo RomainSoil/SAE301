@@ -1,7 +1,7 @@
 <?php
 session_start();
 require ('ConnectionBDD.php');
-$conn= ConnectionBDD::getpdo();
+$conn= ConnectionBDD::getInstance();
 $bdd=$conn->connexion();
 $tous = $bdd->query("SELECT idgroupe FROM groupe");
 $pseudo = $_SESSION['username'];

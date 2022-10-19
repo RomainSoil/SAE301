@@ -73,7 +73,7 @@ require ('MotDePasse.php');
 require('ConnectionBDD.php');
 function pdemail()
 {
-    $conn = ConnectionBDD::getpdo();
+    $conn = ConnectionBDD::getInstance();
     $pdo = $conn->connexion();
     $MDP = new MotDePasse();
     $co = new Connexion();

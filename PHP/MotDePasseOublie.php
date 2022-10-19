@@ -81,7 +81,7 @@ require('includes/Exception.php');
 require('includes/PHPMailer.php');
 require('includes/SMTP.php');
 function email(){
-    $conn = ConnectionBDD::getpdo();
+    $conn = ConnectionBDD::getInstance();
     $pdo = $conn->connexion();
     $sess = new Premier();
     $sess->premier('oublie');

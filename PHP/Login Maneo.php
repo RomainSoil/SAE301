@@ -113,7 +113,7 @@ function bdd($mail, $mdp, $mdp2){
         {
             if ($ClassMail->email($mail) and $ClassMDP->password($mdp, $mdp2)) {
                 try {
-                    $conn = ConnectionBDD::getpdo();
+                    $conn = ConnectionBDD::getInstance();
 
                     $pdo = $conn->connexion();
                 } catch (PDOException $e) {
