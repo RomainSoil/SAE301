@@ -86,12 +86,23 @@ footer{
     text-align: center;
     margin:0;
     padding:3%;
-    position: static;
-    bottom: 0;
     width:94%;
     font-size: 1em;
     color:white;
     background-color: beige;
     font-weight: bold;
+    position: fixed;
+    bottom:1%;
+    right:1%;
+    z-index:9999;
+}
+
+div.contrainte{
+    margin-left: 15%;
+
+}
+div.Titre{
+    text-align: center;
+    color: #EE401A;
 }
 
