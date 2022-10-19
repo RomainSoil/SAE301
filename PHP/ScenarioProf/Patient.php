@@ -18,11 +18,12 @@ session_start()
     <?php
     include ('BarreScenario.html');
     include ('EnteteV2.html');
+    include ('../ConnectionBDD.php')
     ?>
     <div class="Titre">
         <h1> Information sur la patient </h1>
     </div>
-    <form method="post" action="Diagnostic.php">
+    <form method="post">
         Nom :<input type="text" name="nom" id="nom" placeholder="Entrez le Nom du patient " required><br>
         Prénom :<input type="text" name="prenom" id="prenom" placeholder="Entrez le Prenom du patient" required><br><br>
         Age :<input type="number" name="age" id="age" placeholder="Entrez l' âge du patient" required><br>
@@ -43,11 +44,11 @@ session_start()
         Code postal :<input type="int" name="CP" id="CP" placeholder="Entrez le code postal" ><br>
         <br>
         <div class="button_Suivant">
-            <input type="submit" value="Valider">
+            <input type="submit" value="Valider", name="ValidPatient">
         </div>
     </form>
-    </body>
-    </html>
+
+
 
     <!--Le bas de page avec le boutton si on a besoin d'aide-->
 
@@ -60,4 +61,14 @@ session_start()
     </html>
 
 <?php
+$bdd = ConnectionBDD::getpdo();
+$bdd=$bdd->connexion();
+function creerPatient($bdd){
+    if (isset($_POST['ValidPatient']))
+    $sql = $bdd->prepare("INSERT INTO patient(nom, prenom, age, ddn, poids, taille, iep, ipp, sexe, adresse, ville, codepostal) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $sql->execute(array($_POST['nom'],$_POST['prenom'], $_POST['age'], $_POST['DDN'], $_POST['poids'], $_POST['taille'], $_POST['IEP'], $_POST['IPP'], $_POST['sexe'], $_POST['adresse'], $_POST['ville'], $_POST['CP']));
+    header('Location : Diagnostic.php');
+}
+creerPatient($bdd);
 
+?>
