@@ -26,12 +26,21 @@ include("BarreScenario.html");
     <form action="Radio.php" method="post">
         <input type="submit" value="Ajouter une contrainte" name="Contrainte">
     </form>
-<form action="Patient.php" method="post">
-    <input type="submit" value="Créer un patient" name="Créer">
+    <br>
+<form action="afficheScenario.php" method="post">
+    <input type="submit" value="Afficher le scénario" name="afficheScena">
 </form>
 </div>
+    <br><br>
+
+
+
     <!--Le bas de page avec le boutton si on a besoin d'aide-->
     <footer>
+        <form action="Patient.php" method="post">
+            <input type="submit" value="Créer un patient" name="Créer">
+        </form>
+        <br>
         <form action="../Accueil.php" method="post">
             <input type="submit" value="Besoin d'aide ?">
         </form>
