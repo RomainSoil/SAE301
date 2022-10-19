@@ -29,7 +29,7 @@ if (empty($_POST['CP'])){
 <!--Le haut de la page avec l'image et le titre-->
 <?php
 include ('BarreScenario.html');
-include ('Entete.html');
+include ('EnteteV2.html');
 ?>
 <div class="Titre">
 <h1> Information sur la sécurité </h1>

@@ -19,7 +19,7 @@ session_start();
 
 <?php
 include ('BarreScenario.html');
-include ('Entete.html');
+include ('EnteteV2.html');
 ?>
 <form>
     date :<input type="date" id="start" name="date">

@@ -18,7 +18,7 @@ session_start();
 
     <?php
     include("BarreScenario.html");
-    include("Entete.html");
+    include("EnteteV2.html");
     ?>
 <form method="post" action="Radio.php">
     TA : <input type="text" name="TA" id="TA" > <br>

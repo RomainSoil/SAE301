@@ -17,7 +17,7 @@ session_start();
 </head>
 <?php
 include("BarreScenario.html");
-include("Entete.html");
+include("EnteteV2.html");
 ?>
 <body>
 <div class="Titre">
