@@ -123,15 +123,27 @@ function bdd($mail, $mdp, $mdp2){
                 $hash = password_hash($mdp, PASSWORD_DEFAULT);
                 if ($_POST['code'] == "P5165156516516@") {
                     $sql = "INSERT INTO prof (email,mdp,nom,prenom)
-                    VALUES ('$mail','$hash','$nom','$prenom')";
+                    VALUES (:mail,:hash,:nom,:prenom)";
                     $condition = true;
+                    $req=$pdo->prepare($sql);
+                    $req->bindParam('mail',$mail, PDO::PARAM_STR);
+                    $req->bindParam('hash',$hash, PDO::PARAM_STR);
+                    $req->bindParam('nom',$nom, PDO::PARAM_STR);
+                    $req->bindParam('prenom',$prenom, PDO::PARAM_STR);
+
                     header('Location: Accueil.php');
                     $_SESSION['page'] = true;
                 }
                 elseif ($_POST['code'][0] == "E") {
                     $sql = "INSERT INTO etudiant (email,mdp,code,nom,prenom)
-                            VALUES ('$mail','$hash','$code','$nom','$prenom')";
+                            VALUES (:mail,:hash,:code,:nom,:prenom)";
                     $condition = true;
+                    $req=$pdo->prepare($sql);
+                    $req->bindParam('mail',$mail, PDO::PARAM_STR);
+                    $req->bindParam('hash',$hash, PDO::PARAM_STR);
+                    $req->bindParam('nom',$nom, PDO::PARAM_STR);
+                    $req->bindParam('prenom',$prenom, PDO::PARAM_STR);
+                    $req->bindParam('code',$code, PDO::PARAM_STR);
                     header('Location: Accueil.php');
                     $_SESSION['page'] = true;
                                 }
@@ -140,7 +152,9 @@ function bdd($mail, $mdp, $mdp2){
                                 }
                 if ($condition) {
                     try {
-                        $affected = $pdo->exec($sql);
+                        $req->execute();
+                        $req->setFetchMode(PDO::FETCH_ASSOC);
+
                         $add = $pdo->prepare("INSERT INTO email values (?)");
                         $add->execute(array($mail));
                     }
