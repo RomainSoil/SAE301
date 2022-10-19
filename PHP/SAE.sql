@@ -1,7 +1,7 @@
 DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Intervenant, Prescription, Diagnostic, Radio, Neuro, Mobilite, MiseEnSecurite, Elimination, Alimentation,
 SoinsRelationnels , Cardio, Respi, Hygiene, Soins Cascade;
 
-insert into groupe values ( DEFAULT , 'tous', 'admin@gmail.com');
+insert into groupe values ( 1 , 'tous', 'admin@gmail.com', true);
 
 drop table if exists message;
 CREATE table message(
@@ -20,7 +20,8 @@ CREATE TABLE Groupe (
     idGroupe serial,
     nomGroupe text,
     email text REFERENCES Etudiant(email),
-    primary key (idGroupe,email)
+    primary key (idGroupe,email),
+    admin boolean not null
 );
 
 CREATE Table Etudiant (
