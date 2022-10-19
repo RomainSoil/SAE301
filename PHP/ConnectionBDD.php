@@ -8,6 +8,7 @@ class ConnectionBDD
     {
         self::$pdo = new PDO(
             'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo134', 'iutinfo134', 'NuVRPnlV');
+        self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     public static function getpdo(){

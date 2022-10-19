@@ -59,7 +59,6 @@ div.Titre{
 }
 
 div.button_Suivant{
-    justify-content: flex-end;
     display: flex;
 
 }
