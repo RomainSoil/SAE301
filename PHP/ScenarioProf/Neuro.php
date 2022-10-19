@@ -21,10 +21,12 @@ session_start();
 include ('BarreScenario.html');
 include ('EnteteV2.html');
 ?>
-<form>
-    date :<input type="date" id="start" name="date">
-    temperature : <input type="text" name="temperature">
-    temperature : <input type="text" name="temperature">
+<form action="Repsi.php" method="post">
+
+    temperature : <input type="number" name="temperature">
+    glasgow : <input type="text" name="glasgow">
+    EVA : <input type="number" name="EVA">
+    AlgoPlus : <input type="text" name="AlgoPlus">
 </form>
 
 

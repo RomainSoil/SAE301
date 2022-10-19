@@ -1,8 +1,10 @@
 <?php
 session_start();
-@$_SESSION['nomIntervenant']=$_POST['nomIntervenant'];
-@$_SESSION['prenomIntervenant']=$_POST['prenomIntervenant'];
-@$_SESSION['diagnostic']=$_POST['diagnostic'];
+
+@$_SESSION['Date']=$_POST['date'];
+@$_SESSION['prescrite']=$_POST['prescrite'];
+@$_SESSION['confort']=$_POST['confort'];
+@$_SESSION['surveillance']=$_POST['surveillance'];
 
 ?>
 <!DOCTYPE html>
