@@ -3,11 +3,17 @@
 class ConnectionBDD
 {
     private static $_instance = null;
-    public function __construct()
+    private static $pdo;
+    private function __construct()
     {
-
+        self::$pdo = new PDO(
+            'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo134', 'iutinfo134', 'NuVRPnlV');
     }
 
+    public static function getpdo(){
+
+        return self::$pdo;
+    }
     function connexion()
     {
         $pdo = new PDO(

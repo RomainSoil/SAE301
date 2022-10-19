@@ -1,7 +1,6 @@
 <?php
 session_start();
 $_SESSION['IdChat']=1;
-echo $_SESSION['IdChat'];
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +64,7 @@ if (isset($_SESSION['page'])){
 }
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
 
-$conn = new ConnectionBDD();
+$conn = ConnectionBDD::getInstance();
 $pdo = $conn->connexion();
 @$ClassMail = new email();
 $ClassConn= new Connexion();

@@ -43,6 +43,8 @@ Create Table Prof (
     prenom text not null
 );
 
+drop table if exists Patient cascade ;
+
 Create Table Patient(
     idPatient serial primary key,
     nom text not null,
@@ -55,6 +57,7 @@ Create Table Patient(
     IPP int not null,
     sexe text not null,
     Adresse text not null,
+    Ville text not null,
     CodePostal int not null
 );
 
