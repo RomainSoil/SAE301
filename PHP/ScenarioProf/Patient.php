@@ -17,7 +17,7 @@ session_start()
     <!--Le haut de la page avec l'image et le titre-->
     <?php
     include ('BarreScenario.html');
-    include ('EnteteV2.html');
+    include ('Entete.html');
     include ('../ConnectionBDD.php')
     ?>
     <div class="Titre">
