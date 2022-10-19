@@ -35,7 +35,7 @@ $_SESSION['IdChat']=1;
 
 <div class="compte">
     <br><br><br>
-    <a href="Login%20Maneo.php">créer un compte</a><br><br>
+    <a href="Login.php">créer un compte</a><br><br>
     <a href="MotDePasseOublie.php">Mot de passe oublié</a><br><br>
     <a href="https://cas.uphf.fr/login-help/">Besoin d'aide</a><br><br>
 </div>

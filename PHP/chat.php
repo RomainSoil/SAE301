@@ -54,12 +54,15 @@ $_SESSION['PseudoChat']=$pseudo2;
 <h3>Communication avec groupe <?php echo $_SESSION['IdChat'] ?></h3>
 </div>
 <br>
-    <form method="POST" action="" align="center">
+    <div class="message"
+    <form method="POST" action="" >
         <textarea name="message" rows="10" cols="80"></textarea>
         <br>
         <input type="submit" name="valider">
+        <button type="submit" name="suppmess">Supprimer</button>
     </form>
     <section id="messages"></section>
+</div>
 <br>
 <div class="Aide">
     <button href="https://cas.uphf.fr/login-help/">Besoin d'aide</button><br><br>
@@ -91,7 +94,6 @@ $_SESSION['PseudoChat']=$pseudo2;
         document.getElementById('nom').setAttribute('style', 'visibility : visible')
     }
 </script>
-
 </body>
 </html>
 
@@ -122,24 +124,33 @@ function affichergrp($bdd){
     $grps = $bdd->prepare("SELECT * from groupe where email=?");
     $grps->execute(array($_SESSION['Pseudo']));
     ?>
+
+        <div class="Btn_Groupe">
+            <h3>Groupe :</h3>
     <form method="post">
         <?php
     while ($grp = $grps->fetch()){
         ?>
-    <button type="submit" name="button" value=<?php $grp[0]?>><?php echo $grp[1]?></button>
-
+    <button type="submit" name="button" value="<?php echo $grp[0]?>"><?php echo $grp[1]?></button>
 <?php
+    echo '<br>';
+    echo '<br>';
     }?>
     </form>
+        </div>
+
 <?php
 }
 
 function afficheruser($bdd){
     $users = $bdd->prepare("SELECT * FROM groupe where idgroupe=? and email!=?");
     $users->execute(array($_SESSION['IdChat'], $_SESSION['Pseudo']));
+    $admin = $bdd->prepare("SELECT admin FROM groupe where email=?");
+    $admin = $admin->execute(array($_SESSION['Pseudo']));
         while ($user = $users->fetch()){?>
                 <form method="post">
-                    <?php echo $user[2]?>
+                    <?php echo $user[2] ;
+                    if ($admin==1)?>
                     <button type="submit" name="supprimer" value="<?php echo $user[2]?>">X</button>
                     <?php if($user[3]==0){?>
                     <button type="submit" name="admin" value="<?php echo $user[2]?>">admin</button>
@@ -156,19 +167,37 @@ if (isset($_POST['button'])){
 }
 
 function supprimer($bdd){
-    if (isset($_POST['supprimer'])){
-        $supp = $bdd->prepare("DELETE FROM groupe where email=? and idgroupe=?");
-        $supp->execute(array($_POST['supprimer'], $_SESSION['IdChat']));
+    if (isset($_POST['supprimer'])) {
+        $admin = $bdd->prepare("SELECT admin FROM groupe where email=?");
+        $admin = $admin->execute(array($_SESSION['Pseudo']));
+        if ($admin== 1) {
+            $supp = $bdd->prepare("DELETE FROM groupe where email=? and idgroupe=?");
+            $supp->execute(array($_POST['supprimer'], $_SESSION['IdChat']));
+        }
     }
 }
 
 function admin($bdd){
     if (isset($_POST['admin'])){
-        $admin = $bdd->prepare("UPDATE groupe SET admin ='true' where email=? and idgroupe=?");
-        $admin->execute(array($_POST['admin'], $_SESSION['IdChat']));
+        $admin = $bdd->prepare("SELECT admin FROM groupe where email=?");
+        $admin = $admin->execute(array($_SESSION['Pseudo']));
+        if ($admin == 1) {
+            $admin = $bdd->prepare("UPDATE groupe SET admin ='true' where email=? and idgroupe=?");
+            $admin->execute(array($_POST['admin'], $_SESSION['IdChat']));
+        }
     }
 }
 
+function suppmess($bdd){
+    if (isset($_POST['suppmess'])){
+        $admin = $bdd->prepare("SELECT admin FROM groupe where email=?");
+        $admin = $admin->execute(array($_SESSION['Pseudo']));
+        if ($admin == 1) {
+            $supp =$bdd->prepare("DELETE FROM message where idgroupe=?");
+            $supp->execute(array($_SESSION['IdChat']));
+        }
+    }
+}
 
 
 inviter($bdd);
@@ -177,6 +206,7 @@ affichergrp($bdd);
 afficheruser($bdd);
 supprimer($bdd);
 admin($bdd);
+suppmess($bdd);
 
 if(isset($_POST['verif'])) {
     if (isset($_SESSION['fonction'])) {
@@ -187,4 +217,5 @@ if(isset($_POST['verif'])) {
         }
     }
 }
+
 ?>

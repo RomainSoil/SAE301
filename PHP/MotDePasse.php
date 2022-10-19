@@ -39,13 +39,20 @@ function changement($bdd, $mdp, $conn){
     $hash =password_hash($mdp, PASSWORD_DEFAULT);
     $mail = $_SESSION['mail'];
     if ($conn->TrouveETu($bdd, $_SESSION['mail'])){
-        $sql = "UPDATE etudiant SET mdp='$hash' WHERE email='$mail'";
+        $sql = "UPDATE etudiant SET mdp=:hash WHERE email=:mail";
+        $req=$conn->prepare($sql);
+        $req->bindParam('hash',$hash, PDO::PARAM_STR);
+        $req->bindParam('mail',$mail, PDO::PARAM_STR);
+
     }
     elseif ($conn->TrouveProf($bdd, $_SESSION['mail'])){
         $sql = "UPDATE prof SET mdp='$hash' WHERE email='$mail'";
+        $req=$conn->prepare($sql);
+        $req->bindParam('hash',$hash, PDO::PARAM_STR);
+        $req->bindParam('mail',$mail, PDO::PARAM_STR);
     }
-    $rep = $bdd->exec($sql);
-    if ($rep){
+    $req->execute();
+    if ($req){
         echo 'mdp changé';
     }
 }
