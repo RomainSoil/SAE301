@@ -1,9 +1,7 @@
 <?php
 session_start();
-@$_SESSION['Date']=$_POST['date'];
-@$_SESSION['prescrite']=$_POST['prescrite'];
-@$_SESSION['confort']=$_POST['confort'];
-@$_SESSION['surveillance']=$_POST['surveillance'];
+@$_SESSION['radio']=$_POST['radio'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

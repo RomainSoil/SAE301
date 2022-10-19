@@ -1,6 +1,8 @@
 <?php
 session_start();
-@$_SESSION['radio']=$_POST['radio'];
+@$_SESSION['ECG']=$_POST['ECG'];
+@$_SESSION['pls']=$_POST['pls'];
+@$_SESSION['TA']=$_POST['TA'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
