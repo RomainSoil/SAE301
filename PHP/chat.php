@@ -53,13 +53,15 @@ $_SESSION['PseudoChat']=$pseudo2;
 <h3>Communication avec groupe <?php echo $_SESSION['IdChat'] ?></h3>
 </div>
 <br>
-    <form method="POST" action="" align="center">
+    <div class="message"
+    <form method="POST" action="" >
         <textarea name="message" rows="10" cols="80"></textarea>
         <br>
         <input type="submit" name="valider">
         <button type="submit" name="suppmess">Supprimer</button>
     </form>
     <section id="messages"></section>
+</div>
 <br>
 <div class="Aide">
     <button href="https://cas.uphf.fr/login-help/">Besoin d'aide</button><br><br>
@@ -121,14 +123,21 @@ function affichergrp($bdd){
     $grps = $bdd->prepare("SELECT * from groupe where email=?");
     $grps->execute(array($_SESSION['Pseudo']));
     ?>
+
+        <div class="Btn_Groupe">
+            <h3>Groupe :</h3>
     <form method="post">
         <?php
     while ($grp = $grps->fetch()){
         ?>
     <button type="submit" name="button" value="<?php echo $grp[0]?>"><?php echo $grp[1]?></button>
 <?php
+    echo '<br>';
+    echo '<br>';
     }?>
     </form>
+        </div>
+
 <?php
 }
 

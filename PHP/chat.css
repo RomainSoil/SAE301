@@ -22,7 +22,9 @@ div.Aide {
     font-size: 1em;
 }
 
-
+div.message{
+    text-align: center;
+}
 
 
 
@@ -46,3 +48,15 @@ div.font{
 
     background-color: darkblue;
 }
+
+div.Btn_Groupe{
+    color: darkblue;
+    float: left;
+    padding:1%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    font-weight: bold;
+
+}
+
