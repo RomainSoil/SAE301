@@ -11,7 +11,7 @@ class username
             $res->execute(array($id));
         }
         elseif($classe->TrouveProf($bdd, $id)){
-            $res = $bdd->prepare("SELECT nom, prenom from etudiant where email=?");
+            $res = $bdd->prepare("SELECT nom, prenom from prof where email=?");
             $res->execute(array($id));
         }
         return $res->fetch();

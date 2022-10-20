@@ -40,7 +40,8 @@ $_SESSION['PseudoChat']=$pseudo2;
     <br>
     <div class="btn-group">
     <form method="post" class="btn-group">
-        <button class="submit" name="verif">Accueil</button>
+        <button class="button" type="submit" name="verif">Accueil</button>
+
     </form>
 
     </div>
@@ -52,7 +53,7 @@ $_SESSION['PseudoChat']=$pseudo2;
 <h3>Communication avec groupe <?php echo $_SESSION['IdChat'] ?></h3>
 </div>
 <br>
-    <div class="message"
+    <div class="message">
     <form method="POST" action="" >
         <textarea name="message" rows="10" cols="80"></textarea>
         <br>
@@ -65,6 +66,9 @@ $_SESSION['PseudoChat']=$pseudo2;
 <div class="Aide">
     <button href="https://cas.uphf.fr/login-help/">Besoin d'aide</button><br><br>
 </div>
+<form method="post">
+
+</form>
     <script>
         setInterval('load_messages()',500);
         function load_messages(){
