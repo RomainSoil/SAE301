@@ -8,7 +8,7 @@ session_start()
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="PageProf.css">
+    <link rel="stylesheet" href="../PageProf.css">
     <script type="text/javascript" src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -22,16 +22,14 @@ include("BarreScenario.html");
 <div class="Titre">
     <h1>Création de Scénario</h1>
 </div>
-<div class="contrainte">
-    <form action="Radio.php" method="post">
-        <input type="submit" value="Ajouter une contrainte" name="Contrainte">
-    </form>
-<form action="Patient.php" method="post">
-    <input type="submit" value="Créer un patient" name="Créer">
-</form>
-</div>
+
+
     <!--Le bas de page avec le boutton si on a besoin d'aide-->
     <footer>
+        <form action="Patient.php" method="post">
+            <input type="submit" value="Créer un patient" name="Créer">
+        </form>
+        <br>
         <form action="../Accueil.php" method="post">
             <input type="submit" value="Besoin d'aide ?">
         </form>
@@ -67,6 +65,13 @@ include("BarreScenario.html");
                 </select>
         <input type="submit" value="Ajouter une contrainte" name="Contrainte">
     </form>
+<br>
+<div class="contrainte">
+    <form action="afficheScenario.php" method="post">
+    <input type="submit" value="Afficher le scénario" name="affiche">
+    </form>
+</div>
+
 <?php
 function contrainte(){
     if (isset($_POST['patient']) && $_POST['patient']==1){
