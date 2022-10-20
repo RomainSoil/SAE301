@@ -115,7 +115,7 @@ function bdd($mail, $mdp, $mdp2){
                 try {
                     $conn = ConnectionBDD::getInstance();
 
-                    $pdo = $conn->connexion();
+                    $pdo = $conn::getpdo();
                 } catch (PDOException $e) {
                     die ('Erreur : ' . $e->getMessage());
                 }

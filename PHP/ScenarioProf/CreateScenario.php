@@ -41,7 +41,7 @@ include("BarreScenario.html");
     <?php
     include ('../ConnectionBDD.php');
     $pdo = ConnectionBDD::getInstance();
-    $bdd = $pdo->connexion();
+    $bdd = $pdo::getpdo();
         $patients = $bdd->query("SELECT * FROM patient");
 
         ?>

@@ -65,7 +65,7 @@ if (isset($_SESSION['page'])){
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
 
 $conn = ConnectionBDD::getInstance();
-$pdo = $conn->connexion();
+$pdo = $conn::getpdo();
 @$ClassMail = new email();
 $ClassConn= new Connexion();
 if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
