@@ -82,7 +82,7 @@ require('includes/PHPMailer.php');
 require('includes/SMTP.php');
 function email(){
     $conn = ConnectionBDD::getInstance();
-    $pdo = $conn->connexion();
+    $pdo = $conn::getpdo();
     $sess = new Premier();
     $sess->premier('oublie');
     if ($_SESSION['oublie']==2) {

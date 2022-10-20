@@ -2,7 +2,7 @@
 session_start();
 require ('ConnectionBDD.php');
 $conn= ConnectionBDD::getInstance();
-$bdd=$conn->connexion();
+$bdd=$conn::getpdo();
 $tous = $bdd->query("SELECT idgroupe FROM groupe");
 $idchat = $_SESSION['IdChat'];
 if (1==$_SESSION['IdChat']){
