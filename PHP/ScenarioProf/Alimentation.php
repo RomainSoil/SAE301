@@ -25,8 +25,8 @@ session_start();
 
 <body>
 <?php
-include('BarreScenario.html');
-include("EnteteV2.html");
+include("ScenarioProf/BarreScenario.html");
+include("ScenarioProf/EnteteV2.html");
 ?>
 <div class="Titre">
     <h1>Alimentation du patient</h1>

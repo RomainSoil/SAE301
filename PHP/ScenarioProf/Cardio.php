@@ -18,8 +18,8 @@ session_start();
 
 
     <?php
-    include("BarreScenario.html");
-    include("EnteteV2.html");
+    include("ScenarioProf/BarreScenario.html");
+    include("ScenarioProf/EnteteV2.html");
     ?>
 <div class="Titre">
     <h1>Cardio</h1>

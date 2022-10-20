@@ -8,12 +8,12 @@ session_start();
     <meta charset="UTF-8">
     <title>ConnexionProfesseur</title>
     <link rel="stylesheet" href="PageProf.css" >
-    <script src="../LesFonctionsJS.js"></script>
+    <script src="LesFonctionsJS.js"></script>
 
 </head>
 <body>
 <?php
-include ('BarreScenario.html');
+include('BarreScenarioAccueil.html');
 ?>
 <div class="texte">
     Bienvenue, sur le site de l'IFSI consacré à la création de scénario <br>

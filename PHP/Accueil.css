@@ -16,7 +16,7 @@ div.f{
 div.sec{
     margin:0;
     padding:2%;
-    position: fixed;
+    position:static;
     bottom: 0;
     width:96%;
     text-align: center;

@@ -28,7 +28,7 @@ $_SESSION['PseudoChat']=$pseudo2;
 <div class="fontHead">
     <header>
         <a href="Accueil.php">
-            <img src="logoIFSI.png" width=50 height=50 alt="" >
+            <img src="image/logoIFSI.png" width=50 height=50 alt="" >
         </a>
         <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
         <br>
@@ -36,13 +36,11 @@ $_SESSION['PseudoChat']=$pseudo2;
 </div>
 <body>
 <div class="font">
+
     <br>
+    <div class="btn-group">
     <form method="post" class="btn-group">
         <button class="submit" name="verif">Accueil</button>
-        <button class="button" onclick="document.location='CreateScenario.php'">Scénario</button>
-        <button class="button" onclick="document.location='Correction.php'">Correction</button>
-        <button class="button" onclick="document.location='Note.php'">Note</button>
-        <button class="button" onclick="document.location='chat.php'">Message </button>
     </form>
 
     </div>

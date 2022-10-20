@@ -8,7 +8,7 @@ session_start()
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="PageProf.css">
+    <link rel="stylesheet" href="../PageProf.css">
     <script type="text/javascript" src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -17,7 +17,7 @@ session_start()
 
 <body>
 <?php
-include("BarreScenario.html");
+include("ScenarioProf/BarreScenario.html");
 ?>
 <div class="Titre">
     <h1>Le Scénario</h1>
