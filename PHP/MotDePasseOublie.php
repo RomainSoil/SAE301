@@ -22,7 +22,7 @@ session_start();
 
 
 <div class="bouton_retour">
-    <a href="Accueil.php"> <img src="fleche.png"  class="icone" alt=""> </a>
+    <a href="Accueil.php"> <img src="image/fleche.png" class="icone" alt=""> </a>
 
 </div>
 

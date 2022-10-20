@@ -23,7 +23,7 @@ include ('EnteteV2.html');
     <h1>Mobilité</h1>
 </div>
 
-<body>
+
 <form method="post" action="Hygiene.php">
 Le patient a t-il eu une aide à la marche ?:
 <input type="radio" name="AideMarche" value="oui" required>oui

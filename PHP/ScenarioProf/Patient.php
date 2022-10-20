@@ -27,7 +27,7 @@ session_start()
         Nom :<input type="text" name="nom" id="nom" placeholder="Entrez le Nom du patient " required><br>
         Prénom :<input type="text" name="prenom" id="prenom" placeholder="Entrez le Prenom du patient" required><br><br>
         Age :<input type="number" name="age" id="age" placeholder="Entrez l' âge du patient" required><br>
-        Date de naissance :<input type="date" name="DDN" id="DDN" placeholder="Entrez la date de naissance du patient" required><br><br>
+        Date de naissance :<input type="date" name="DDN" id="DDN" required><br><br>
         Poids :<input type="number" name="poids" id="poids" placeholder="Entrez le poids du patient" required><br>
         Taille<input type="number" name="taille" id="Taille" placeholder="Entrez la taille du patient" required><br><br>
         <br>
@@ -41,10 +41,10 @@ session_start()
         <br>
         Adresse:<input type="text" name="adresse" id="adresse" placeholder="Entrez l'adresse du patient" ><br>
         Ville :<input type="text" name="ville" id="ville" placeholder="Entrez la ville du patient" ><br>
-        Code postal :<input type="int" name="CP" id="CP" placeholder="Entrez le code postal" ><br>
+        Code postal :<input type="number" name="CP" id="CP" placeholder="Entrez le code postal" ><br>
         <br>
         <div class="button_Suivant">
-            <input type="submit" value="Valider", name="ValidPatient">
+            <input type="submit" value="Valider" name="ValidPatient">
         </div>
     </form>
 

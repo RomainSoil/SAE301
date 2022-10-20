@@ -21,6 +21,21 @@ div.Aide {
     text-align: center;
     font-size: 1em;
 }
+footer{
+    text-align: center;
+    margin:0;
+    padding:3%;
+    position: static;
+    bottom: 0;
+    width:94%;
+    font-size: 1em;
+    color:white;
+    background-color: lightblue;
+    font-weight: bold;
+}
+
+
+
 
 div.message{
     text-align: center;

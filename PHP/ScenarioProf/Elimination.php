@@ -26,16 +26,16 @@ include("EnteteV2.html");
 </div>
 <form action="Cardio.php" method="post">
     Le patient a t-il eu des selles ?:
-    <input type="radio" name="selles" value="oui"required>oui
-    <input type="radio" name="selles" value="non"required>non
+    <input type="radio" name="selles" value="oui" required>oui
+    <input type="radio" name="selles" value="non" required>non
     <br><br>
     Le patient a t-il eu des gaz ?:
-    <input type="radio" name="gaz" value="oui"required>oui
-    <input type="radio" name="gaz" value="non"required>non
+    <input type="radio" name="gaz" value="oui" required>oui
+    <input type="radio" name="gaz" value="non" required>non
     <br><br>
     Le patient a t-il uriner :
-    <input type="radio" name="urine" value="oui"required>oui
-    <input type="radio" name="urine" value="non"required>non
+    <input type="radio" name="urine" value="oui" required>oui
+    <input type="radio" name="urine" value="non" required>non
     <br>
     <br>
     <div class="button_Suivant">

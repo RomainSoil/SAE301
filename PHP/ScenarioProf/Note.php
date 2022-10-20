@@ -17,3 +17,4 @@ include("BarreScenario.html");
 ?>
 Page Note
 </body>
+</html>

@@ -34,7 +34,7 @@ include("EnteteV2.html");
 </div>
 <form method="post" action="Mobilite.php">
     Veuillez entrez l'url de l'image ?
-<input type="url" nom="radio">
+<input type="url" name="radio">
     <br><br>
     <div class="button_Suivant">
         <input type="submit" value="Valider">
