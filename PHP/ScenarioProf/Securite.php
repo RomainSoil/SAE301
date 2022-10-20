@@ -26,7 +26,7 @@ include ('EnteteV2.html');
 <div class="Titre">
 <h1> Information sur la sécurité </h1>
 </div>
-<form method="post" action="Soins.php">
+<form method="post" action="ScenarioProf/Soins.php">
     Date :
         <input type="datetime-local" name="date" id="date" required>
 

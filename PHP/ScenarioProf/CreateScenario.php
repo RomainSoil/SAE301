@@ -13,6 +13,8 @@ session_start()
 
 </head>
 
+
+
 <body>
 <?php
 include("BarreScenario.html");
@@ -21,9 +23,11 @@ include("BarreScenario.html");
     <h1>Création de Scénario</h1>
 </div>
 <div class="contrainte">
+    <form action="Radio.php" method="post">
+        <input type="submit" value="Ajouter une contrainte" name="Contrainte">
+    </form>
 <form action="Patient.php" method="post">
     <input type="submit" value="Créer un patient" name="Créer">
-
 </form>
 </div>
     <!--Le bas de page avec le boutton si on a besoin d'aide-->

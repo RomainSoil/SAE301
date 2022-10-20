@@ -17,7 +17,7 @@ $_SESSION['IdChat']=1;
 <!--Le haut de la page avec l'image et le titre-->
 <header>
     <a href="Accueil.php">
-        <img src="logoIFSI.png" width=150 height=150 alt="" >
+        <img src="image/logoIFSI.png" width=150 height=150 alt="" >
     </a>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br><br>
@@ -35,7 +35,7 @@ $_SESSION['IdChat']=1;
 
 <div class="compte">
     <br><br><br>
-    <a href="Login%20Maneo.php">créer un compte</a><br><br>
+    <a href="Login.php">créer un compte</a><br><br>
     <a href="MotDePasseOublie.php">Mot de passe oublié</a><br><br>
     <a href="https://cas.uphf.fr/login-help/">Besoin d'aide</a><br><br>
 </div>
@@ -73,11 +73,13 @@ if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
         $username = new username();
         $_SESSION['Pseudo']=$_POST['id'];
         $_SESSION['username']=$username->username($_POST['id']);
+        $_SESSION['fonction']= 'etu';
         header('Location:PageEtu.php');
         exit;}
     elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
         $username = new username();
         $_SESSION['username']=$username->username($_POST['id']);
+        $_SESSION['fonction']= 'prof';
         header('Location:PageProf.php');
         exit;
     }
@@ -88,5 +90,6 @@ if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
 }
 
 ?>
+
 
 

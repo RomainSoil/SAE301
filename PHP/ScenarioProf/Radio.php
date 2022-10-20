@@ -25,10 +25,9 @@ if (empty($_POST['CP'])){
 </head>
 <body>
 <?php
-include ('BarreScenario.html');
-include ('EnteteV2.html');
+include("BarreScenario.html");
+include("EnteteV2.html");
 ?>
-
 
 <div class="Titre">
     <h1>Radio</h1>

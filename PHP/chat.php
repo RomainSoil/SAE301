@@ -28,7 +28,7 @@ $_SESSION['PseudoChat']=$pseudo2;
 <div class="fontHead">
     <header>
         <a href="Accueil.php">
-            <img src="logoIFSI.png" width=50 height=50 alt="" >
+            <img src="image/logoIFSI.png" width=50 height=50 alt="" >
         </a>
         <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
         <br>
@@ -36,13 +36,12 @@ $_SESSION['PseudoChat']=$pseudo2;
 </div>
 <body>
 <div class="font">
+
     <br>
     <div class="btn-group">
-        <button class="button" onclick="document.location='ScenarioProf/PageProf.php'">Accueil</button>
-        <button class="button" onclick="document.location='ScenarioProf/CreateScenario.php'">Scénario</button>
-        <button class="button" onclick="document.location='ScenarioProf/Correction.php'">Correction</button>
-        <button class="button" onclick="document.location='ScenarioProf/Note.php'">Note</button>
-        <button class="button" onclick="document.location='chat.php'">Message </button>
+    <form method="post" class="btn-group">
+        <button class="submit" name="verif">Accueil</button>
+    </form>
 
     </div>
     <br>
@@ -53,13 +52,15 @@ $_SESSION['PseudoChat']=$pseudo2;
 <h3>Communication avec groupe <?php echo $_SESSION['IdChat'] ?></h3>
 </div>
 <br>
-    <form method="POST" action="" align="center">
+    <div class="message"
+    <form method="POST" action="" >
         <textarea name="message" rows="10" cols="80"></textarea>
         <br>
         <input type="submit" name="valider">
         <button type="submit" name="suppmess">Supprimer</button>
     </form>
     <section id="messages"></section>
+</div>
 <br>
 <div class="Aide">
     <button href="https://cas.uphf.fr/login-help/">Besoin d'aide</button><br><br>
@@ -121,14 +122,21 @@ function affichergrp($bdd){
     $grps = $bdd->prepare("SELECT * from groupe where email=?");
     $grps->execute(array($_SESSION['Pseudo']));
     ?>
+
+        <div class="Btn_Groupe">
+            <h3>Groupe :</h3>
     <form method="post">
         <?php
     while ($grp = $grps->fetch()){
         ?>
     <button type="submit" name="button" value="<?php echo $grp[0]?>"><?php echo $grp[1]?></button>
 <?php
+    echo '<br>';
+    echo '<br>';
     }?>
     </form>
+        </div>
+
 <?php
 }
 
@@ -197,4 +205,16 @@ afficheruser($bdd);
 supprimer($bdd);
 admin($bdd);
 suppmess($bdd);
+
+if(isset($_POST['verif'])) {
+    if (isset($_SESSION['fonction'])) {
+        if ($_SESSION['fonction'] == 'etu') {
+            header('Location:PageEtu.php');
+        } elseif ($_SESSION['fonction'] == 'prof') {
+            header('Location:PageProf.php');
+        }
+    }
+}
+
 ?>
+
