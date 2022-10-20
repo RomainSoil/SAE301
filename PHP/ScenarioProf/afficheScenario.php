@@ -17,7 +17,7 @@ session_start()
 
 <body>
 <?php
-include("ScenarioProf/BarreScenario.html");
+include("BarreScenario.html");
 ?>
 <div class="Titre">
     <h1>Le Scénario</h1>
