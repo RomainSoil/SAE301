@@ -56,7 +56,7 @@ include("BarreScenario.html");
                 $pat.=" ";
                 $pat.=$patient[4];
                 ?>
-            <option value="1"><?php echo $pat?></option>
+            <option value=<?php echo $patient[0]?><?php echo $pat?></option>
     <?php
             }
             ?>
@@ -74,9 +74,10 @@ include("BarreScenario.html");
 </html>
 
 <?php
-function contrainte(){
-    if (isset($_POST['patient']) && $_POST['patient']==1){
+function contrainte($bdd){
+    if (isset($_POST['patient']) && $_POST['patient']!=0){
         if (isset($_POST['Contrainte'])) {
+            $_SESSION['patient']=$_POST['patient'];
             header('Location: Radio.php');
             }
         }

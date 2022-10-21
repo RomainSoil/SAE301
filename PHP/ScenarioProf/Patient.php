@@ -62,11 +62,10 @@ session_start()
 
 <?php
 function creerPatient($bdd){
-    if (isset($_POST['ValidPatient'])){
     $sql = $bdd->prepare("INSERT INTO patient(nom, prenom, age, ddn, poids, taille, iep, ipp, sexe, adresse, ville, codepostal) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $sql->execute(array($_POST['nom'],$_POST['prenom'], $_POST['age'], $_POST['DDN'], $_POST['poids'], $_POST['taille'], $_POST['IEP'], $_POST['IPP'], $_POST['sexe'], $_POST['adresse'], $_POST['ville'], $_POST['CP']));
     header('Location: Diagnostic.php');
-    exit;}
+    exit;
 }
 
 ?>
