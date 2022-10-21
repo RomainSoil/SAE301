@@ -23,7 +23,7 @@ include ('EnteteV2.html');
 <div class="Titre">
     <h1>Prescription</h1>
 </div>
-<form action="" method="post">
+<form action="CreateScenario.php" method="post">
 
     Medicament : <input type="text" name="medicament">
     <br><br>

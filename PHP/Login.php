@@ -27,7 +27,7 @@ session_start();
 <!--La fleche pour revenir sur la page accueil-->
 
 <div class="bouton_retour">
-    <a href="Accueil.php"> <img src="fleche.png"  class="icone" alt="" > </a>
+    <a href="Accueil.php"> <img src="image/fleche.png" class="icone" alt="" > </a>
 
 </div>
 <!--La box de l'inscription-->
@@ -78,7 +78,7 @@ session_start();
             </label>
             <button type="button" id="pass2" onclick="changer('mdp2')">O</button>
             <br>
-            <input type="submit" value="Valider" > </p>
+            <input type="submit" value="Valider" >
         </form>
 </div>
 
@@ -115,7 +115,7 @@ function bdd($mail, $mdp, $mdp2){
                 try {
                     $conn = ConnectionBDD::getInstance();
 
-                    $pdo = $conn->connexion();
+                    $pdo = $conn::getpdo();
                 } catch (PDOException $e) {
                     die ('Erreur : ' . $e->getMessage());
                 }

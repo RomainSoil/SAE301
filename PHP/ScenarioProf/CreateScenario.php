@@ -35,15 +35,13 @@ include("BarreScenario.html");
         </form>
     </footer>
 
-</body>
-</html>
 
 
 
     <?php
     include ('../ConnectionBDD.php');
     $pdo = ConnectionBDD::getInstance();
-    $bdd = $pdo->connexion();
+    $bdd = $pdo::getpdo();
         $patients = $bdd->query("SELECT * FROM patient");
 
         ?>
@@ -71,6 +69,9 @@ include("BarreScenario.html");
     <input type="submit" value="Afficher le scénario" name="affiche">
     </form>
 </div>
+</body>
+
+</html>
 
 <?php
 function contrainte(){

@@ -22,7 +22,7 @@ session_start();
 
 
 <div class="bouton_retour">
-    <a href="Accueil.php"> <img src="fleche.png"  class="icone" alt=""> </a>
+    <a href="Accueil.php"> <img src="image/fleche.png" class="icone" alt=""> </a>
 
 </div>
 
@@ -82,7 +82,7 @@ require('includes/PHPMailer.php');
 require('includes/SMTP.php');
 function email(){
     $conn = ConnectionBDD::getInstance();
-    $pdo = $conn->connexion();
+    $pdo = $conn::getpdo();
     $sess = new Premier();
     $sess->premier('oublie');
     if ($_SESSION['oublie']==2) {

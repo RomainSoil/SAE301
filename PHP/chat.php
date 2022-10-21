@@ -2,7 +2,7 @@
 session_start();
 require ('ConnectionBDD.php');
 $conn= ConnectionBDD::getInstance();
-$bdd=$conn->connexion();
+$bdd=$conn::getpdo();
 $tous = $bdd->query("SELECT idgroupe FROM groupe");
 $pseudo = $_SESSION['username'];
 $pseudo2 = $pseudo[0];
@@ -17,14 +17,16 @@ $_SESSION['PseudoChat']=$pseudo2;
         $insertMsg->execute(array($pseudo2, $message, $_SESSION['IdChat'], $pseudo));
 }
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <title>Messagerie</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="chat.css" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-
+<body>
 <div class="fontHead">
     <header>
         <a href="Accueil.php">
@@ -34,7 +36,7 @@ $_SESSION['PseudoChat']=$pseudo2;
         <br>
     </header>
 </div>
-<body>
+
 <div class="font">
 
     <br>
@@ -54,18 +56,15 @@ $_SESSION['PseudoChat']=$pseudo2;
 </div>
 <br>
     <div class="message">
-    <form method="POST" action="" >
+    <form method="POST" >
         <textarea name="message" rows="10" cols="80"></textarea>
         <br>
         <input type="submit" name="valider">
         <button type="submit" name="suppmess">Supprimer</button>
     </form>
-    <section id="messages"></section>
 </div>
 <br>
-<div class="Aide">
-    <button href="https://cas.uphf.fr/login-help/">Besoin d'aide</button><br><br>
-</div>
+
 <form method="post">
 
 </form>
@@ -79,12 +78,11 @@ $_SESSION['PseudoChat']=$pseudo2;
 <button type="submit" name="creer" id="creer" onclick="afficher()">Créer groupe</button>
 <form style="visibility: hidden" id="form" method="post">
     <input type="text" placeholder="Nom du groupe" id="nomgrp" name="nomgrp">
-    <input name="valider" id="valider" type="submit" placeholder="Entrez le nom du groupe">
+    <input name="valider" id="valider" type="submit">
 </form>
 <button type="submit" name="inviter" id="inviter" onclick="afficher2()">inviter</button>
 <form style="visibility: hidden" id="invit" method="post">
-    <input type="text" placeholder="email", id="nom" name="nom">
-    <input name="valider" id="valider" type="submit">
+    <input type="text" placeholder="email" id="nom" name="nom">
 </form>
 </div>
 <script>
@@ -96,8 +94,7 @@ $_SESSION['PseudoChat']=$pseudo2;
         document.getElementById('nom').setAttribute('style', 'visibility : visible')
     }
 </script>
-</body>
-</html>
+
 
 <?php
 
@@ -221,4 +218,12 @@ if(isset($_POST['verif'])) {
 }
 
 ?>
+<footer>
+    <form action="Accueil.php" method="post">
+        <input type="submit" value="Besoin d'aide ?">
+    </form>
+</footer>
+</body>
+</html>
+
 

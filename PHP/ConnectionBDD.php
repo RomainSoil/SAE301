@@ -15,13 +15,7 @@ class ConnectionBDD
 
         return self::$pdo;
     }
-    function connexion()
-    {
-        $pdo = new PDO(
-            'pgsql:host=iutinfo-sgbd.uphf.fr;dbname=iutinfo134', 'iutinfo134', 'NuVRPnlV');
-        return $pdo;
 
-    }
     public static function getInstance() {
 
         if(is_null(self::$_instance)) {
