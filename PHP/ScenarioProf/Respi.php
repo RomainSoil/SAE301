@@ -24,7 +24,7 @@ include ('EnteteV2.html');
 <div class="Titre">
     <h1>Respiration</h1>
 </div>
-<form action="Prescription.php" method="post">
+<form method="post">
 
     SaO2 : <input type="number" name="SaO2">
     <br><br>
@@ -35,6 +35,8 @@ include ('EnteteV2.html');
     <div class="button_Suivant">
         <input type="submit" value="Valider">
     </div>
+    <h4>Cette validation permet l'enregistrement de toutes les catégories précédentes. </h4>
+
 
 
 </form>

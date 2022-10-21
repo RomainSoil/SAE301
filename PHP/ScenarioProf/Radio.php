@@ -32,7 +32,7 @@ include("EnteteV2.html");
 <div class="Titre">
     <h1>Radio</h1>
 </div>
-<form method="post" action="Mobilite.php">
+<form method="post" action="Diagnostic.php">
     Veuillez entrez l'url de l'image ?
 <input type="url" name="radio">
     <br><br>

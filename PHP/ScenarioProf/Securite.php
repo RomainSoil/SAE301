@@ -26,12 +26,14 @@ include ('EnteteV2.html');
 <div class="Titre">
 <h1> Information sur la sécurité </h1>
 </div>
-<form method="post" action="ScenarioProf/Soins.php">
+
+<form method="post" action="Soins.php">
     Date :
         <input type="datetime-local" name="date" id="date" required>
-
+        <h4>La date sélectionnée sera identique pour les catégories suivantes,
+        vos informations seront enregistrées dans cette dernière catégorie.</h4>
     <br><br>
-    Une barriere de lit prescrite pour le patient :
+    Une barrière de lit prescrite pour le patient :
              <input type="radio" name="prescrite" value="oui" required>oui
             <input type="radio" name="prescrite" value="non" required>non
     <br><br>
@@ -39,7 +41,7 @@ include ('EnteteV2.html');
     <input type="radio" name="confort" value="oui" required>oui
     <input type="radio" name="confort" value="non" required>non
     <br><br>
-    Le patient a t-il des surveillances de contentions :
+    Le patient a-t-il des surveillances de contentions :
     <input type="radio" name="surveillance" value="oui" required>oui
     <input type="radio" name="surveillance" value="non" required>non
     <br><br>

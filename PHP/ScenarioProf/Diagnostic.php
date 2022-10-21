@@ -33,7 +33,7 @@ include ('../ConnectionBDD.php');
     <div class="text_area">
     <textarea name="diagnostic" id="diagnostic" rows="20" cols="80" required> </textarea></div> <br>
     <div class="button_Suivant">
-        <input type="submit" name="Valider">
+        <input type="submit" value="Valider">
     </div>
 </Form>
 
