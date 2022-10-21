@@ -85,13 +85,14 @@ CREATE table Medicament(
     CP int not null,
     prise text not null
 );
-drop table if exists intervenant;
+drop table if exists Prescription;
 
-Create Table Intervenant (
+Create Table Diagnotic (
     idIntervenant serial primary key,
     nom text not null,
     prenom text not null,
-    compteRendu text not null
+    compteRendu text not null,
+    idPatient int references Patient
 );
 
 
@@ -100,7 +101,7 @@ Create table Prescription (
     prise date not null,
     medicament text references Medicament,
     idPatient int references Patient,
-    intervenant int references Intervenant
+    medecin text not null
 );
 
 
