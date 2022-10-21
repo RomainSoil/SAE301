@@ -85,11 +85,13 @@ CREATE table Medicament(
     CP int not null,
     prise text not null
 );
+drop table if exists intervenant;
 
 Create Table Intervenant (
-    idIntervenant int primary key,
+    idIntervenant serial primary key,
     nom text not null,
-    prenom text not null
+    prenom text not null,
+    compteRendu text not null
 );
 
 
@@ -101,12 +103,8 @@ Create table Prescription (
     intervenant int references Intervenant
 );
 
-Create table Diagnostic (
-    idDiag serial primary key,
-    CompteRendu text not null,
-    idIntervenant int references Intervenant,
-    idPatient int references Patient
-);
+
+
 Create table Radio (
     idRadio serial Primary Key,
      image text not null,
