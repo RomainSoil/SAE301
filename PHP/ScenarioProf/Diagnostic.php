@@ -1,6 +1,5 @@
 <?php
 session_start();
-@$_SESSION['radio']=$_POST['radio'];
 
 ?>
 <!DOCTYPE html>
@@ -16,12 +15,13 @@ session_start();
 <body>
 <?php
 include ('BarreScenario.html');
-include ('EnteteV2.html')
+include ('EnteteV2.html');
+include ('../ConnectionBDD.php');
 ?>
 <div class="Titre">
     <h3>Date du Diagnostic</h3>
 </div>
-<Form action="Securite.php" method="post">
+<Form method="post">
     Date :
     <input type="datetime-local" name="date" id="date" required>
     <div class="Titre">
@@ -33,7 +33,7 @@ include ('EnteteV2.html')
     <div class="text_area">
     <textarea name="diagnostic" id="diagnostic" rows="20" cols="80" required> </textarea></div> <br>
     <div class="button_Suivant">
-        <input type="submit" value="Valider">
+        <input type="submit" name="Valider">
     </div>
 </Form>
 
@@ -44,5 +44,19 @@ include ('EnteteV2.html')
 </footer>
 </body>
 </html>
+
+<?php
+
+
+function creerDiagnostic($bdd){
+    if (isset($_POST['Valider'])){
+        $sql = $bdd->prepare("INSERT INTO intervenant (nom,prenom,compterendu) values (?, ?,?)");
+        $sql->execute(array($_POST['nom'],$_POST['prenom'],$_POST['diagnostic']));
+        header(header: 'Location: Securite.php');
+        exit;}
+}
+creerDiagnostic(ConnectionBDD::getInstance()::getpdo());
+
+?>
 
 

@@ -48,7 +48,7 @@ session_start()
         </div>
     </form>
 
-g
+
 
     <!--Le bas de page avec le boutton si on a besoin d'aide-->
 
