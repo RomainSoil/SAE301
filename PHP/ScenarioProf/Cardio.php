@@ -24,7 +24,7 @@ session_start();
 <div class="Titre">
     <h1>Cardio</h1>
 </div>
-<form method="post" action="Radio.php">
+<form method="post" action="Mobilite.php">
     TA : <input type="text" name="TA" id="TA" > <br><br>
     PLS :<input type ="int" name="pls" id=pls> <br><br>
     ECG :<input type="text" name="ECG" id="ECG">

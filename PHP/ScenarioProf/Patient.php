@@ -44,7 +44,7 @@ session_start()
         Code postal :<input type="number" name="CP" id="CP" placeholder="Entrez le code postal" ><br>
         <br>
         <div class="button_Suivant">
-            <input type="submit" value="Valider", name="ValidPatient" onclick="<?php creerPatient($bdd=ConnectionBDD::getInstance()::getpdo());?>">
+            <input type="submit" value="Valider" name="ValidPatient" onclick="<?php creerPatient($bdd=ConnectionBDD::getInstance()::getpdo());?>">
         </div>
     </form>
 
