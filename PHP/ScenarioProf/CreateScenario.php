@@ -24,7 +24,7 @@ include("BarreScenario.html");
 </div>
 
 
-    <!--Le bas de page avec le boutton si on a besoin d'aide-->
+    <!--Le bas de page avec le boutton si on a besoin d'aide et de création d'un nouveau patient-->
     <footer>
         <form action="Patient.php" method="post">
             <input type="submit" value="Créer un patient" name="Créer">
@@ -37,6 +37,7 @@ include("BarreScenario.html");
 
 
 
+<!--selection du patient avec ses options de navigation-->
 
     <?php
     include ('../ConnectionBDD.php');
@@ -62,27 +63,35 @@ include("BarreScenario.html");
             ?>
                 </select>
         <input type="submit" value="Ajouter une contrainte" name="Contrainte" onclick="<?php contrainte();?>">
+        <input type="submit" value="Afficher le scénario" name="affiche" onclick="<?php affiche();?>">
+
     </form>
-<br>
-<div class="contrainte">
-    <form action="afficheScenario.php" method="post">
-    <input type="submit" value="Afficher le scénario" name="affiche">
-    </form>
-</div>
 </body>
 
 </html>
 
 <?php
-function contrainte(){
-    if (isset($_POST['patient']) && $_POST['patient']!=0){
-        if (isset($_POST['Contrainte'])) {
-            $_SESSION['patient']=$_POST['patient'];
-            header('Location: Radio.php');
-            }
-        }
-}
 
+
+function contrainte()
+{
+    if (isset($_POST['patient']) && $_POST['patient'] != 0) {
+        if (isset($_POST['Contrainte'])) {
+            $_SESSION['patient'] = $_POST['patient'];
+            header('Location: Radio.php');
+        }
+    }
+
+}
+function affiche()
+{
+    if (isset($_POST['patient']) && $_POST['patient'] != 0) {
+        if (isset($_POST['affiche'])) {
+            $_SESSION['patient'] = $_POST['patient'];
+            header('Location: afficheScenario.php');
+        }
+    }
+}
 
     ?>
 

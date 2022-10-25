@@ -9,7 +9,7 @@ $_SESSION['IdChat']=1;
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
-    <link rel="stylesheet" href="Accueil.css" >
+    <link rel="stylesheet" href="SiteIFSI.css" >
     <script src="LesFonctionsJS.js"></script>
 
 </head>
@@ -17,7 +17,7 @@ $_SESSION['IdChat']=1;
 <br><br>
 <!--Le haut de la page avec l'image et le titre-->
 <header>
-    <div class="trad">
+    <div class="traduction">
         <form action="Accueil.php" method="post">
             <input type="submit" value="Francais">
         </form>
@@ -29,7 +29,7 @@ $_SESSION['IdChat']=1;
     <br><br>
 </header>
 <!--Cette classe est le formulaire de connexion au centre de la page-->
-<div class="f">
+<div class="Connexion">
     <h3>Enter your login and password</h3> <br>
     <form method="post">
         <input type="email" name="id" id="id" placeholder="login" required><br><br>
@@ -39,7 +39,7 @@ $_SESSION['IdChat']=1;
 </div>
 <!--Lien en dessous de la box connexion-->
 
-<div class="compte">
+<div class="href">
     <br><br><br>
     <a href="Login.php">create an account</a><br><br>
     <a href="MotDePasseOublie.php">forgot password</a><br><br>
@@ -47,7 +47,7 @@ $_SESSION['IdChat']=1;
 </div>
 <!--Le bas de l'image avec le carré rouge-->
 <footer>
-    <div class="sec">
+    <div class="securite">
         For security reasons, please log out and close your browser when you are finished accessing authenticated services.
     <br>
         Your identifiers are strictly confidential and must under no circumstances be transmitted to a third party.

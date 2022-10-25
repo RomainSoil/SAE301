@@ -26,7 +26,7 @@ session_start();
 </div>
 <form method="post" action="Mobilite.php">
     TA : <input type="text" name="TA" id="TA" > <br><br>
-    PLS :<input type ="int" name="pls" id=pls> <br><br>
+    PLS :<input type ="number" name="pls" id=pls> <br><br>
     ECG :<input type="text" name="ECG" id="ECG">
     <br><br>
     <div class="button_Suivant">

@@ -27,7 +27,6 @@ $_SESSION['PseudoChat']=$pseudo2;
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-<div class="fontHead">
     <header>
         <a href="Accueil.php">
             <img src="image/logoIFSI.png" width=50 height=50 alt="" >
@@ -35,9 +34,10 @@ $_SESSION['PseudoChat']=$pseudo2;
         <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
         <br>
     </header>
-</div>
 
-<div class="font">
+<!--Retour-->
+
+<div class="btn-nav">
 
     <br>
     <div class="btn-group">
@@ -49,7 +49,9 @@ $_SESSION['PseudoChat']=$pseudo2;
     </div>
     <br>
 </div>
-<div class="info">
+<!--Zone d'envoie et suppression de message-->
+
+<div class="information">
 <h2>Bonjour, <?php echo $_SESSION['PseudoChat']?></h2>
 <br>
 <h3>Communication avec groupe <?php echo $_SESSION['IdChat'] ?></h3>
@@ -74,17 +76,10 @@ $_SESSION['PseudoChat']=$pseudo2;
             $('#messages').load('loadChat.php');
         }
     </script>
+<!--
 <div class="Aide">
-<button type="submit" name="creer" id="creer" onclick="afficher()">Créer groupe</button>
-<form style="visibility: hidden" id="form" method="post">
-    <input type="text" placeholder="Nom du groupe" id="nomgrp" name="nomgrp">
-    <input name="valider" id="valider" type="submit">
-</form>
-<button type="submit" name="inviter" id="inviter" onclick="afficher2()">inviter</button>
-<form style="visibility: hidden" id="invit" method="post">
-    <input type="text" placeholder="email" id="nom" name="nom">
-</form>
-</div>
+
+</div>-->
 <script>
     function afficher(){
         document.getElementById('form').setAttribute('style', 'visibility: visible')
@@ -123,8 +118,18 @@ function affichergrp($bdd){
     $grps = $bdd->prepare("SELECT * from groupe where email=?");
     $grps->execute(array($_SESSION['Pseudo']));
     ?>
+    <!--Zone groupe-->
 
         <div class="Btn_Groupe">
+            <button type="submit" name="creer" id="creer" onclick="afficher()">Créer groupe</button>
+            <form style="visibility: hidden" id="form" method="post">
+                <input type="text" placeholder="Nom du groupe" id="nomgrp" name="nomgrp">
+                <input name="valider" id="valider" type="submit">
+            </form>
+            <button type="submit" name="inviter" id="inviter" onclick="afficher2()">inviter</button>
+            <form style="visibility: hidden" id="invit" method="post">
+                <input type="text" placeholder="email" id="nom" name="nom">
+            </form>
             <h3>Groupe :</h3>
     <form method="post">
         <?php

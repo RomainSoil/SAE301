@@ -1,9 +1,5 @@
 <?php
 session_start();
-@$_SESSION['temperature']=$_POST['temperature'];
-@$_SESSION['glasgow']=$_POST['glasgow'];
-@$_SESSION['EVA']=$_POST['EVA'];
-@$_SESSION['AlgoPlus']=$_POST['AlgoPlus'];
 
 ?>
 <!DOCTYPE html>
@@ -20,6 +16,7 @@ session_start();
 <?php
 include ('BarreScenario.html');
 include ('EnteteV2.html');
+
 ?>
 <div class="Titre">
     <h1>Respiration</h1>
@@ -34,6 +31,7 @@ include ('EnteteV2.html');
     <br><br>
 
     <input type="submit" value="Valider" name="ValidScenario" >
+    <h4>Cette validation permet l'enregistrement de toutes les catégories précédentes. </h4>
 
 
 </form>
@@ -235,10 +233,10 @@ function AjoutAlaBDD($bdd){
         $sql8 = $bdd->prepare("INSERT into neuro (date, t°c, glasgow, eva,algoplus, idpatient) VALUES 
         (?,?,?,?,?,?)");
         $sql8->bindParam(1, $_SESSION['Date']);
-        $sql8->bindParam(2, $_SESSION['temperature']);
-        $sql8->bindParam(3, $_SESSION['glasgow']);
-        $sql8->bindParam(4, $_SESSION['EVA']);
-        $sql8->bindParam(5, $_SESSION['AlgoPlus']);
+        $sql8->bindParam(2, $_POST['temperature']);
+        $sql8->bindParam(3, $_POST['glasgow']);
+        $sql8->bindParam(4, $_POST['EVA']);
+        $sql8->bindParam(5, $_POST['AlgoPlus']);
         $sql8->bindParam(6, $_SESSION['patient']);
 
 

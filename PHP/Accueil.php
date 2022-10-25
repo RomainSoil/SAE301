@@ -8,7 +8,7 @@ $_SESSION['IdChat']=1;
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
-    <link rel="stylesheet" href="Accueil.css" >
+    <link rel="stylesheet" href="SiteIFSI.css" >
     <script src="LesFonctionsJS.js"></script>
 
 </head>
@@ -16,7 +16,7 @@ $_SESSION['IdChat']=1;
 <br><br>
 <!--Le haut de la page avec l'image et le titre-->
 <header>
-    <div class="trad">
+    <div class="traduction">
         <form action="AccueilAnglais.php" method="post">
             <input type="submit" value="Anglais">
         </form>
@@ -28,7 +28,7 @@ $_SESSION['IdChat']=1;
     <br><br>
 </header>
 <!--Cette classe est le formulaire de connexion au centre de la page-->
-<div class="f">
+<div class="Connexion">
     <h3>Entrez votre identifiant et votre mot de passe</h3> <br>
     <form method="post">
         <input type="email" name="id" id="id" placeholder="Identifiant" required><br><br>
@@ -38,20 +38,18 @@ $_SESSION['IdChat']=1;
 </div>
 <!--Lien en dessous de la box connexion-->
 
-<div class="compte">
+<div class="href">
     <br><br><br>
     <a href="Login.php">créer un compte</a><br><br>
     <a href="MotDePasseOublie.php">Mot de passe oublié</a><br><br>
     <a href="https://cas.uphf.fr/login-help/">Besoin d'aide</a><br><br>
 </div>
 <!--Le bas de l'image avec le carré rouge-->
-<footer>
-    <div class="sec">
+    <div class="securite">
     Pour des raisons de sécurité, veuillez vous déconnecter et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.
     <br>
     Vos identifiants sont strictement confidentiels et ne doivent en aucun cas être transmis à une tierce personne.
 </div>
-</footer>
 </body>
 </html>
 
