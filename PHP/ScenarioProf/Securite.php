@@ -33,15 +33,15 @@ include ('EnteteV2.html');
     <br><br>
     Une barriere de lit prescrite pour le patient :
              <input type="radio" name="prescrite" value="oui" required>oui
-            <input type="radio" name="prescrite" value="non" required>non
+            <input type="radio" name="prescrite" value="non" checked="checked" required>non
     <br><br>
     Une barriere de lit pour le confort du patient :
     <input type="radio" name="confort" value="oui" required>oui
-    <input type="radio" name="confort" value="non" required>non
+    <input type="radio" name="confort" value="non" checked="checked" required>non
     <br><br>
     Le patient a t-il des surveillances de contentions :
     <input type="radio" name="surveillance" value="oui" required>oui
-    <input type="radio" name="surveillance" value="non" required>non
+    <input type="radio" name="surveillance" value="non" checked="checked" required>non
     <br><br>
     <div class="button_Suivant">
         <input type="submit" value="Valider">

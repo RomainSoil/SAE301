@@ -175,20 +175,20 @@ CREATE table  SoinsRelationnels(
 );
 
 Create table Cardio(
-    date date not null,
-    TA text not null,
-    pls int not null ,
-    ECG text not null ,
+    date timestamp not null,
+    TA text ,
+    pls int  ,
+    ECG text  ,
     idPatient int references Patient,
     primary key (date,idPatient)
 
 );
 
 Create table Respi(
-    date date not null ,
-    SaO2 int not null ,
-    Fr int not null ,
-    O2 text not null,
+    date timestamp not null ,
+    SaO2 int  ,
+    Fr int  ,
+    O2 text ,
     idPatient int references Patient,
     primary key (date, idPatient)
 

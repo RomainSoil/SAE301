@@ -57,9 +57,9 @@ function AjoutAlaBDD($bdd){
         (?,?,?,?,?)");
         $sql->bindParam(1, $_SESSION['Date']);
         if ($_SESSION['prescrite'] == "oui") {
-            $sql->bindParam(2, $VarTrue, PDO::PARAM_BOOL);
+            $sql->bindParam(2, $VarTrue);
         } else {
-            $sql->bindParam(2, $VarFalse, PDO::PARAM_BOOL);
+            $sql->bindParam(2, $VarFalse);
         }
         if ($_SESSION['confort'] == "oui") {
             $sql->bindParam(3, $VarTrue);

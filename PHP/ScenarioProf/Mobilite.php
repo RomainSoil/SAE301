@@ -27,19 +27,19 @@ include ('EnteteV2.html');
 <form method="post" action="Hygiene.php">
 Le patient a t-il eu une aide à la marche ?:
 <input type="radio" name="AideMarche" value="oui" required>oui
-<input type="radio" name="AideMarche" value="non" required>non
+<input type="radio" name="AideMarche" value="non" checked="checked" required>non
 <br><br>
 Le patient a t-il eu une aide au lever ?:
 <input type="radio" name="AideLever" value="oui" required >oui
-<input type="radio" name="AideLever" value="non" required>non
+<input type="radio" name="AideLever" value="non" checked="checked" required>non
 <br><br>
 Le patient a t-il eu une aide au coucher :
 <input type="radio" name="AideCoucher" value="oui" required>oui
-<input type="radio" name="AideCoucher" value="non" required>non
+<input type="radio" name="AideCoucher" value="non" checked="checked" required>non
 <br><br>
 Le patient a t-il eu une aide au fauteil :
 <input type="radio" name="AideFauteil" value="oui" required>oui
-<input type="radio" name="AideFauteil" value="non" required>non
+<input type="radio" name="AideFauteil" value="non" checked="checked" required>non
 <br><br>
     <div class="button_Suivant">
         <input type="submit" value="Valider">
