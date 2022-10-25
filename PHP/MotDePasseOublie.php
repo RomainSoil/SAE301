@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="MotDePasseOublie.css">
+    <link rel="stylesheet" href="SiteIFSI.css">
 </head>
 <body>
 <!--Le haut de la page avec l'image et le titre-->
@@ -21,20 +21,18 @@ session_start();
 </header>
 
 
-<div class="bouton_retour">
-    <a href="Accueil.php"> <img src="image/fleche.png" class="icone" alt=""> </a>
+<a href="Accueil.php"> <img src="image/fleche.png" class="icone" alt=""> </a>
 
-</div>
+
 
 <!--box milieu-->
 
-<div class="mess">
-    Entrez votre Email, <br>
+<h3>    Entrez votre Email, <br>
         vous allez recevoir un mail pour vérifier votre identitée
-</div>
+</h3>
 <br>
 
-<div class ="box">
+<div class ="inscription">
 
     <form action="MotDePasseOublie.php" method="post">
 

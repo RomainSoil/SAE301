@@ -34,23 +34,23 @@ include("EnteteV2.html");
 <form method="post" action="Neuro.php">
     Le patient est-il a jeun ?:
     <input type="radio" name="jeun" value="oui" required>oui
-    <input type="radio" name="jeun" value="non" required>non
+    <input type="radio" name="jeun" value="non" checked="checked" required>non
     <br><br>
     Le patient est-il sous surveillance hydratation ?:
     <input type="radio" name="hydratation" value="oui" required >oui
-    <input type="radio" name="hydratation" value="non" required>non
+    <input type="radio" name="hydratation" value="non" checked="checked" required>non
     <br><br>
     Le patient est-il sous surveillance alimentaire :
     <input type="radio" name="alimentaire" value="oui" required>oui
-    <input type="radio" name="alimentaire" value="non" required>non
+    <input type="radio" name="alimentaire" value="non" checked="checked" required>non
     <br><br>
     Le patient suit-il un régime? :
     <input type="radio" name="regime" value="oui" required>oui
-    <input type="radio" name="regime" value="non" required>non
+    <input type="radio" name="regime" value="non" checked="checked" required>non
     <br><br>
     Le patient a t-il eu une aide au repas:
     <input type="radio" name="aideRepas" value="oui" required>oui
-    <input type="radio" name="aideRepas" value="non" required>non
+    <input type="radio" name="aideRepas" value="non" checked="checked" required>non
     <br><br>
     <div class="button_Suivant">
         <input type="submit" value="Valider">

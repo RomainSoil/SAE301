@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="MotDePasseOublie.css">
+    <link rel="stylesheet" href="SiteIFSI.css">
     <script src="LesFonctionsJS.js"></script>
 </head>
 <body>
@@ -24,13 +24,13 @@ session_start();
 
 <!--box de milieu-->
 
-<div class="mess">
+<h3>
     Entrez votre nouveau mot de passe, <br>
         Puis retournez vous connecter.
-</div>
+</h3>
 <br>
 
-<div class ="box">
+<div class ="inscription">
 
     <form action="" method="post">
         <br>

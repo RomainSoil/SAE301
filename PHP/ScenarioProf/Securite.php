@@ -26,22 +26,24 @@ include ('EnteteV2.html');
 <div class="Titre">
 <h1> Information sur la sécurité </h1>
 </div>
+<!--formulaire sur la securite qui sera enregistrer dans la base de donnée apres avoir valide toutes les categories-->
+
 <form method="post" action="Soins.php">
     Date :
         <input type="datetime-local" name="date" id="date" required>
-
+    <h4>La date sélectionnée sera identique pour les catégories suivantes, vos informations seront enregistrées dans cette dernière catégorie.</h4>
     <br><br>
     Une barriere de lit prescrite pour le patient :
              <input type="radio" name="prescrite" value="oui" required>oui
-            <input type="radio" name="prescrite" value="non" required>non
+            <input type="radio" name="prescrite" value="non" checked="checked" required>non
     <br><br>
     Une barriere de lit pour le confort du patient :
     <input type="radio" name="confort" value="oui" required>oui
-    <input type="radio" name="confort" value="non" required>non
+    <input type="radio" name="confort" value="non" checked="checked" required>non
     <br><br>
     Le patient a t-il des surveillances de contentions :
     <input type="radio" name="surveillance" value="oui" required>oui
-    <input type="radio" name="surveillance" value="non" required>non
+    <input type="radio" name="surveillance" value="non" checked="checked" required>non
     <br><br>
     <div class="button_Suivant">
         <input type="submit" value="Valider">

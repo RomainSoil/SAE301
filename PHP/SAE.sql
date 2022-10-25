@@ -1,7 +1,7 @@
 DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Intervenant, Prescription, Diagnostic, Radio, Neuro, Mobilite, MiseEnSecurite, Elimination, Alimentation,
 SoinsRelationnels , Cardio, Respi, Hygiene, Soins Cascade;
 
-insert into groupe values ( 1 , 'tous', 'admin@gmail.com', true);
+
 
 drop table if exists message;
 CREATE table message(
@@ -87,10 +87,12 @@ CREATE table Medicament(
 );
 drop table if exists Prescription;
 
-Create Table Diagnotic (
-    idIntervenant serial primary key,
+Create Table Diagnostic (
+    idDiag serial primary key,
+    idIntervenant int,
     nom text not null,
     prenom text not null,
+    date timestamp not null,
     compteRendu text not null,
     idPatient int references Patient
 );
@@ -114,7 +116,7 @@ Create table Radio (
 );
 
 Create TABLE Neuro (
-    date date not null ,
+    date timestamp not null ,
     t°c float not null,
     Glasgow float not null,
     EVA int not null,
@@ -124,7 +126,7 @@ Create TABLE Neuro (
 );
 
 CREATE TABLE Mobilite(
-    date date not null,
+    date timestamp not null,
     aideALaMarche boolean not null,
     aideAuLever boolean not null,
     aideAuCoucher boolean not null,
@@ -135,7 +137,7 @@ CREATE TABLE Mobilite(
 );
 
 CREATE table MiseEnSecurite(
-    date date not null ,
+    date timestamp not null ,
     barriereDeLitPrescrite boolean not null ,
     barriereDeLitConfort boolean not null ,
     ServeillanceContention boolean not null ,
@@ -145,7 +147,7 @@ CREATE table MiseEnSecurite(
 );
 
 Create table Elimination(
-    date date not null,
+    date timestamp not null,
     Selles boolean not null ,
     Gaz boolean not null ,
     Urines boolean not null ,
@@ -154,7 +156,7 @@ Create table Elimination(
 );
 
 Create Table Alimentation(
-    date date not null ,
+    date timestamp not null ,
     aJeun boolean not null ,
     SurveillanceHydratation boolean not null ,
     SurveillanceAlimentation boolean not null ,
@@ -165,8 +167,9 @@ Create Table Alimentation(
 
 );
 
+
 CREATE table  SoinsRelationnels(
-    date date not null ,
+    date timestamp not null ,
     Accueil boolean not null ,
     EntretienInfirmer boolean not null ,
     ToucherMassage boolean not null ,
@@ -176,27 +179,28 @@ CREATE table  SoinsRelationnels(
 );
 
 Create table Cardio(
-    date date not null,
-    TA text not null,
-    pls int not null ,
-    ECG text not null ,
+    date timestamp not null,
+    TA text ,
+    pls int  ,
+    ECG text  ,
     idPatient int references Patient,
     primary key (date,idPatient)
 
 );
 
 Create table Respi(
-    date date not null ,
-    SaO2 int not null ,
-    Fr int not null ,
-    O2 text not null,
+    date timestamp not null ,
+    SaO2 int  ,
+    Fr int  ,
+    O2 text ,
     idPatient int references Patient,
     primary key (date, idPatient)
 
 );
 
 Create table Hygiene(
-    date date not null ,
+    date timestamp not null ,
+    toilette boolean not null,
     Douche boolean not null ,
     Bain boolean not null ,
     refectionLit boolean not null ,
@@ -211,11 +215,9 @@ Create table Hygiene(
 );
 
 Create table Soins(
-    date date not null ,
-    /* CatheterVeineuxPeriph not null ,*/
+    date timestamp not null ,
     SurveillancePerf boolean not null ,
     Pansement boolean not null,
-    /*SondageUriniaire not null,*/
     SurveillanceGlycemique float not null ,
     BasDeContention boolean not null ,
     Autre text not null ,

@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="LOGIN.css">
+    <link rel="stylesheet" href="SiteIFSI.css">
     <script type="text/javascript" src="LesFonctionsJS.js"></script>
 
 </head>
@@ -26,16 +26,14 @@ session_start();
 
 <!--La fleche pour revenir sur la page accueil-->
 
-<div class="bouton_retour">
-    <a href="Accueil.php"> <img src="image/fleche.png" class="icone" alt="" > </a>
+<a href="Accueil.php"> <img src="image/fleche.png" class="icone" alt="" > </a>
 
-</div>
+
 <!--La box de l'inscription-->
 
-<div class="I">
-    <h2>INSCRIPTION IFSI</h2>
-</div>
-<div class="connexion">
+<h2>INSCRIPTION IFSI</h2>
+
+<div class="inscription">
         <form method="post">
             <label>Nom :</label>
             <br>
@@ -63,7 +61,7 @@ session_start();
             </label>
             <br>
                 <div>
-                    <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
+                    <p><a href="#" class="MDP">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
                 </div>
             <label>
                 <input type="password" name="mdp" id="mdp"  placeholder="Entrez votre mot de passe" required>
@@ -71,7 +69,7 @@ session_start();
             <button type="button" id="pass1" onclick="changer('mdp')">O</button>
             <br>
             <div>
-                <p><a href="#" class="info">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
+                <p><a href="#" class="MDP">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
             </div>
             <label>
                 <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez mot de passe" required>

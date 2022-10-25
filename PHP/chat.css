@@ -2,17 +2,17 @@ header{
     text-align: center;
     top:0;
     color: white;
-
-}
-div.fontHead{
     background-color: blue;
+
+
+
 }
 
 body{
     background-color: lightblue;
 }
 
-div.info {
+div.information {
     text-align: center;
     color: darkblue;
 }
@@ -59,7 +59,7 @@ div.message{
     background-color: blue;
     color: white;
 }
-div.font{
+div.btn-nav{
 
     background-color: darkblue;
 }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo $_SESSION['temperature'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +16,6 @@ echo $_SESSION['temperature'];
 <?php
 include ('BarreScenario.html');
 include ('EnteteV2.html');
-
-echo $_SESSION['temperature'];
-
 ?>
 <div class="Titre">
     <h1>Respiration</h1>
@@ -33,6 +30,7 @@ echo $_SESSION['temperature'];
     <br><br>
 
     <input type="submit" value="Valider" name="ValidScenario" >
+    <h4>Cette validation permet l'enregistrement de toutes les catégories précédentes. </h4>
 
 
 </form>
@@ -46,6 +44,7 @@ echo $_SESSION['temperature'];
 
 <?php
 
+
 function AjoutAlaBDD($bdd){
 
 
@@ -57,9 +56,9 @@ function AjoutAlaBDD($bdd){
         (?,?,?,?,?)");
         $sql->bindParam(1, $_SESSION['Date']);
         if ($_SESSION['prescrite'] == "oui") {
-            $sql->bindParam(2, $VarTrue, PDO::PARAM_BOOL);
+            $sql->bindParam(2, $VarTrue);
         } else {
-            $sql->bindParam(2, $VarFalse, PDO::PARAM_BOOL);
+            $sql->bindParam(2, $VarFalse);
         }
         if ($_SESSION['confort'] == "oui") {
             $sql->bindParam(3, $VarTrue);

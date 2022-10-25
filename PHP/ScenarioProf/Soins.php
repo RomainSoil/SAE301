@@ -29,15 +29,15 @@ include ('EnteteV2.html');
 <form action="Elimination.php" method="post">
     Le patient est-il passé par l'accueil:
     <input type="radio" name="accueil" value="oui" required>oui
-    <input type="radio" name="accueil" value="non" required>non
+    <input type="radio" name="accueil" value="non" checked="checked" required>non
     <br><br>
     Le patient a t-il eu un entretien avec un infirmier?:
     <input type="radio" name="entretien" value="oui" required>oui
-    <input type="radio" name="entretien" value="non" required>non
+    <input type="radio" name="entretien" value="non" checked="checked" required>non
     <br><br>
     Le patient a t-il eu un toucher ou un massage :
     <input type="radio" name="massage" value="oui" required>oui
-    <input type="radio" name="massage" value="non" required>non
+    <input type="radio" name="massage" value="non" checked="checked" required>non
     <br>
     <br>
     <div class="button_Suivant">

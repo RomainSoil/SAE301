@@ -3,10 +3,11 @@ header{
     text-align: center;
     top:0;
     color: white;
+    background-color: #EE401A;
 
 }
 
-div.deco{
+div.deconexion{
     margin-left:94%;
 }
 
@@ -62,9 +63,7 @@ div.deco{
     background-color: #EE401A;
     color: white;
 }
-.fontHead{
-    background-color: #EE401A;
-}
+
 div.texte{
     font-weight: bold;
     text-align: center;
