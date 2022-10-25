@@ -56,7 +56,7 @@ include("BarreScenario.html");
                 $pat.=" ";
                 $pat.=$patient[4];
                 ?>
-            <option value=<?php echo $patient[0]?>><?php echo $pat?></option>
+            <option value=<?php echo $patient[0]?><?php echo $pat?></option>
     <?php
             }
             ?>
@@ -66,7 +66,9 @@ include("BarreScenario.html");
     </form>
 <br>
 <div class="contrainte">
-
+    <form action="afficheScenario.php" method="post">
+    <input type="submit" value="Afficher le scénario" name="affiche">
+    </form>
 </div>
 </body>
 

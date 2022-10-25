@@ -44,7 +44,7 @@ session_start()
         Code postal :<input type="number" name="CP" id="CP" placeholder="Entrez le code postal" ><br>
         <br>
         <div class="button_Suivant">
-            <input type="submit" value="Valider", name="ValidPatient" onclick="<?php creerPatient($bdd=ConnectionBDD::getInstance()::getpdo());?>">
+            <input type="submit" value="Valider" name="ValidPatient" onclick="<?php creerPatient($bdd=ConnectionBDD::getInstance()::getpdo());?>">
         </div>
     </form>
 
@@ -62,10 +62,12 @@ session_start()
 
 <?php
 function creerPatient($bdd){
-    $sql = $bdd->prepare("INSERT INTO patient(nom, prenom, age, ddn, poids, taille, iep, ipp, sexe, adresse, ville, codepostal) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $sql->execute(array($_POST['nom'],$_POST['prenom'], $_POST['age'], $_POST['DDN'], $_POST['poids'], $_POST['taille'], $_POST['IEP'], $_POST['IPP'], $_POST['sexe'], $_POST['adresse'], $_POST['ville'], $_POST['CP']));
-    header('Location: Diagnostic.php');
-    exit;
+    if (isset($_POST['ValidPatient'])) {
+        $sql = $bdd->prepare("INSERT INTO patient(nom, prenom, age, ddn, poids, taille, iep, ipp, sexe, adresse, ville, codepostal) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql->execute(array(@$_POST['nom'], @$_POST['prenom'], @$_POST['age'], @$_POST['DDN'], @$_POST['poids'], @$_POST['taille'], @$_POST['IEP'], @$_POST['IPP'], @$_POST['sexe'], @$_POST['adresse'], @$_POST['ville'], @$_POST['CP']));
+        header('Location: Diagnostic.php');
+        exit;
+    }
 }
 
 ?>
