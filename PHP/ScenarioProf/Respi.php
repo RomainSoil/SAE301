@@ -1,10 +1,6 @@
 <?php
 session_start();
-@$_SESSION['temperature']=$_POST['temperature'];
-@$_SESSION['glasgow']=$_POST['glasgow'];
-@$_SESSION['EVA']=$_POST['EVA'];
-@$_SESSION['AlgoPlus']=$_POST['AlgoPlus'];
-
+echo $_SESSION['temperature'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +16,9 @@ session_start();
 <?php
 include ('BarreScenario.html');
 include ('EnteteV2.html');
+
+echo $_SESSION['temperature'];
+
 ?>
 <div class="Titre">
     <h1>Respiration</h1>
@@ -47,8 +46,8 @@ include ('EnteteV2.html');
 
 <?php
 
-
 function AjoutAlaBDD($bdd){
+
 
     if (isset($_POST['ValidScenario'])) {
         $VarTrue=1;
@@ -232,7 +231,7 @@ function AjoutAlaBDD($bdd){
         }
         $sql7->bindParam(7, $_SESSION['patient']);
 
-        $sql8 = $bdd->prepare("INSERT into neuro (date, t°c, glasgow, eva,algoplus, idpatient) VALUES 
+        $sql8 = $bdd->prepare("INSERT into neuro (date, t°c, glasgow, eva,algoplus, idpatient) VALUES
         (?,?,?,?,?,?)");
         $sql8->bindParam(1, $_SESSION['Date']);
         $sql8->bindParam(2, $_SESSION['temperature']);
@@ -244,11 +243,11 @@ function AjoutAlaBDD($bdd){
 
         $sql9 = $bdd->prepare("INSERT into respi (date, sao2, fr, o2, idpatient) VALUES 
         (?,?,?,?,?)");
-        $sql9->bindParam(1, $_POST['Date']);
+        $sql9->bindParam(1, $_SESSION['Date']);
         $sql9->bindParam(2, $_POST['SaO2']);
         $sql9->bindParam(3, $_POST['FR']);
         $sql9->bindParam(4, $_POST['O2']);
-        $sql9->bindParam(5, $_POST['patient']);
+        $sql9->bindParam(5, $_SESSION['patient']);
 
         $sql->execute();
         $sql2->execute();
