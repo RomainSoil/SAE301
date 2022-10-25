@@ -109,7 +109,7 @@ function creergrp($bdd)
 }}
 function inviter($bdd){
     if (isset($_POST['nom'])&&$_POST['nom']){
-        $getnom = $bdd->prepare("SELECT nomgroupe from groupe where idgroupe=?");;
+        $getnom = $bdd->prepare("SELECT nomgroupe from groupe where idgroupe=?");
         $getnom->execute(array($_SESSION['IdChat']));
         $ajouter = $bdd->prepare("INSERT INTO groupe(idgroupe,nomgroupe, email, admin) values (?, ?, ?, ?)");
         $noms = $getnom->fetch()[0];

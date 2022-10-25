@@ -95,16 +95,17 @@ Create Table Diagnotic (
     idPatient int references Patient
 );
 
-
+drop table if exists prescription;
 Create table Prescription (
-    idPrescription int primary key,
+    idPrescription serial primary key,
     prise date not null,
+    dose int not null ,
     medicament text references Medicament,
     idPatient int references Patient,
     medecin text not null
 );
 
-
+insert into medicament values ('medic', 1, 1);
 
 Create table Radio (
     idRadio serial Primary Key,
