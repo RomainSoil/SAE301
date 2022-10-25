@@ -9,7 +9,7 @@ $pseudo2 = $pseudo[0];
 $pseudo2 .= " ";
 $pseudo2 .= $pseudo[1];
 $_SESSION['PseudoChat']=$pseudo2;
-
+/* ce if sert a permettre d'envoyer des messages*/
     if (isset($_POST['message'])) {
         $message = nl2br(htmlspecialchars($_POST['message']));
         $pseudo = $_SESSION['Pseudo'];
@@ -86,18 +86,39 @@ $_SESSION['PseudoChat']=$pseudo2;
 </form>
 </div>
 <script>
+    e=true;
+    f=true;
+
+    /*permet d'afficher/faire disparaitre les champs de textes d'inviter et de création de groupe*/
     function afficher(){
-        document.getElementById('form').setAttribute('style', 'visibility: visible')
+
+        if(e){
+            document.getElementById('form').setAttribute('style', 'visibility: visible')
+            e=false;
+        }
+        else {
+            document.getElementById('form').setAttribute('style', 'visibility: hidden')
+            e=true;
+        }
+
     }
 
     function afficher2(){
-        document.getElementById('nom').setAttribute('style', 'visibility : visible')
+        if(f){
+            document.getElementById('nom').setAttribute('style', 'visibility: visible')
+            f=false;
+        }
+        else {
+            document.getElementById('nom').setAttribute('style', 'visibility: hidden')
+            f=true;
+        }
+
     }
 </script>
 
 
 <?php
-
+/*cette fonction permet de créer dans la base de donnée un nouveau groupe et de mettre le créateur admin*/
 function creergrp($bdd)
 {
     if (isset($_POST['nomgrp']) && $_POST['nomgrp']){
@@ -107,6 +128,7 @@ function creergrp($bdd)
     $newgrp = $newid->fetch()[0];
     $_SESSION['IdChat']=$newgrp;
 }}
+/*cette fonction permet d'ajouter une personne dans le groupe ou nous sommes*/
 function inviter($bdd){
     if (isset($_POST['nom'])&&$_POST['nom']){
         $getnom = $bdd->prepare("SELECT nomgroupe from groupe where idgroupe=?");
@@ -118,7 +140,7 @@ function inviter($bdd){
     }
 }
 
-
+/* cette fonction permet d'afficher les différents groupes sous forme de boutons, ce qui nous permet de changer de groupes*/
 function affichergrp($bdd){
     $grps = $bdd->prepare("SELECT * from groupe where email=?");
     $grps->execute(array($_SESSION['Pseudo']));
@@ -140,7 +162,7 @@ function affichergrp($bdd){
 
 <?php
 }
-
+/*nous permet d'afficher les différents utilisateurs présents dans le groupe, et de les modifiers/supprimer si nous avons le droit*/
 function afficheruser($bdd){
     $users = $bdd->prepare("SELECT * FROM groupe where idgroupe=? and email!=?");
     $users->execute(array($_SESSION['IdChat'], $_SESSION['Pseudo']));
@@ -164,6 +186,7 @@ function afficheruser($bdd){
 if (isset($_POST['button'])){
     $_SESSION['IdChat']=$_POST['button'];
 }
+/*permet de supprimer l'utilisateur du groupe lorsqu'on appuie sur le bouton*/
 
 function supprimer($bdd){
     if (isset($_POST['supprimer'])) {
@@ -176,6 +199,7 @@ function supprimer($bdd){
     }
 }
 
+/*permet de passer admin l'utilisateur lorsqu'on appuie sur le bouton*/
 function admin($bdd){
     if (isset($_POST['admin'])){
         $admin = $bdd->prepare("SELECT admin FROM groupe where email=?");
@@ -186,6 +210,8 @@ function admin($bdd){
         }
     }
 }
+
+/*permet de supprimer toute la conversation*/
 
 function suppmess($bdd){
     if (isset($_POST['suppmess'])){
@@ -207,6 +233,7 @@ supprimer($bdd);
 admin($bdd);
 suppmess($bdd);
 
+/*permet de rediriger sur la bonne page, si la personne qui clique est un étudiant ou un professeur*/
 if(isset($_POST['verif'])) {
     if (isset($_SESSION['fonction'])) {
         if ($_SESSION['fonction'] == 'etu') {

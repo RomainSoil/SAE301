@@ -80,6 +80,7 @@ require('ConnectionBDD.php');
 require('includes/Exception.php');
 require('includes/PHPMailer.php');
 require('includes/SMTP.php');
+/* permet d'envoyer un mail a la perssonne qui a perdu son mot de passe*/
 function email(){
     $conn = ConnectionBDD::getInstance();
     $pdo = $conn::getpdo();

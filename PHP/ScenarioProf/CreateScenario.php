@@ -42,6 +42,7 @@ include("BarreScenario.html");
     include ('../ConnectionBDD.php');
     $pdo = ConnectionBDD::getInstance();
     $bdd = $pdo::getpdo();
+    /* permet de créer une liste déroulante avec tous les patients*/
         $patients = $bdd->query("SELECT * FROM patient");
 
         ?>
@@ -56,7 +57,7 @@ include("BarreScenario.html");
                 $pat.=" ";
                 $pat.=$patient[4];
                 ?>
-            <option value=<?php echo $patient[0]?><?php echo $pat?></option>
+            <option value=<?php echo $patient[0]?>><?php echo $pat?></option>
     <?php
             }
             ?>
@@ -75,6 +76,7 @@ include("BarreScenario.html");
 </html>
 
 <?php
+/* permet de pouvoir appuyer sur le bouton 'ajouter contraintes' si et seulement si un patient est séléctionné*/
 function contrainte(){
     if (isset($_POST['patient']) && $_POST['patient']!=2){
         if (isset($_POST['Contrainte'])) {
@@ -83,11 +85,9 @@ function contrainte(){
             }
         }
 }
-
+/* permet d'appuyer sur le bouton afficher scénario si et seulement si un patient est séléctionné*/
 function affichersce(){
-    echo '0';
     if (isset($_POST['patient']) && $_POST['patient']!=2){
-        echo '1';
         if (isset($_POST['affiche'])){
             $_SESSION['scenario']=$_POST['patient'];
             header('Location: afficheScenario.php');

@@ -2,7 +2,7 @@
 
 class Connexion
 {
-
+    /* permet de vérifier les données lors de la connection d'un étudiant*/
     function connexionEtu ($bdd, $mail, $mdp ){
 
 
@@ -19,7 +19,7 @@ class Connexion
             return false;
 
     }
-
+    /* permet de vérifier les données lors de la connection d'un professeur*/
     function connexionProf ($bdd, $mail, $mdp ){
 
 
@@ -36,7 +36,7 @@ class Connexion
             return false;
 
     }
-
+    /* permet de savoir si la personne est un prof*/
     function TrouveProf ($bdd, $mail ){
 
 
@@ -53,7 +53,7 @@ class Connexion
             return false;
 
     }
-
+    /*permet de savoir si la personne est un etudiant*/
     function TrouveETu ($bdd, $mail ){
 
 

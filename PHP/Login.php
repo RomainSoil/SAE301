@@ -100,6 +100,7 @@ require ('Premier.php');
 require('MotDePasse.php');
 require('email.php');
 require('ConnectionBDD.php');
+/* permet de créer le nouvel utilisateur(étudiant ou prof) si toutes les données sont valables*/
 function bdd($mail, $mdp, $mdp2){
     $sess = new Premier();
     $sess->premier('premier');

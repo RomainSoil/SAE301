@@ -61,6 +61,7 @@ session_start()
     </html>
 
 <?php
+/* permet de créer un nouveau patient*/
 function creerPatient($bdd){
     if (isset($_POST['ValidPatient'])) {
         $sql = $bdd->prepare("INSERT INTO patient(nom, prenom, age, ddn, poids, taille, iep, ipp, sexe, adresse, ville, codepostal) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");

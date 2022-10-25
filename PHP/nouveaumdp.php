@@ -71,7 +71,8 @@ require ('Connexion.php');
 require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
-function pdemail()
+/* permet de modifier dans la base de données le mot de passe de l'utilisateur*/
+function mdpemail()
 {
     $conn =ConnectionBDD::getInstance();
     $pdo = $conn::getpdo();
@@ -85,5 +86,5 @@ function pdemail()
         }
 
 }}
-pdemail();
+mdpemail();
 ?>

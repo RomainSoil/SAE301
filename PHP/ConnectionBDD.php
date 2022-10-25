@@ -2,6 +2,7 @@
 
 class ConnectionBDD
 {
+    /* permet grâce a un singleton de créer une seule connection a la base de donnée sur toutes les pages*/
     private static $_instance = null;
     private static $pdo;
     private function __construct()

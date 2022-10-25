@@ -63,6 +63,7 @@ include ('EnteteV2.html');
 <?php
 require ('../ConnectionBDD.php');
 $bdd = ConnectionBDD::getInstance()::getpdo();
+/* permet d'ajouter a la base de donnée la prescription du patient*/
 function insert($bdd){
     if (isset($_POST['Valider'])){
         $sql = $bdd->prepare("INSERT INTO prescription(prise, medicament, idpatient, medecin, dose) values (?, ?, ?, ?, ?)");
@@ -71,7 +72,7 @@ function insert($bdd){
 
     }
 }
-
+/* permet de créer un nouveau médicament et le mettre dans la base de données*/
 function creermedic($bdd)
 {
     if (isset($_POST['creermedic'])) {
@@ -85,9 +86,17 @@ creermedic($bdd);
 
 ?>
 <script>
+    /* permet d'afficher ou non la création de médicaments*/
+    e=true;
 function afficher(){
-    document.getElementById('form').setAttribute('style', 'visibility:visible')
-}</script>
+    if (e) {
+        document.getElementById('form').setAttribute('style', 'visibility:visible')
+        e=false;
+    }else {
+        document.getElementById('form').setAttribute('style', 'visibility:hidden')
+        e=true;
+    }
+    }</script>
 </html>
 
 

@@ -47,7 +47,7 @@ include ('../ConnectionBDD.php');
 
 <?php
 
-
+/* permet d'inscrir dans la base de données les informations du diagnostique du patient séléctionné*/
 function creerDiagnostic($bdd){
     if (isset($_POST['Valider'])){
         $sql = $bdd->prepare("INSERT INTO intervenant (nom,prenom,compterendu) values (?, ?,?)");
