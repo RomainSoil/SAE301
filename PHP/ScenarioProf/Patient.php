@@ -8,7 +8,7 @@ session_start()
     <head>
         <meta charset="UTF-8">
         <title>Connexion</title>
-        <link rel="stylesheet" href="Patient.css">
+        <link rel="stylesheet" href="../PageProf.css">
         <script type="text/javascript" src="../LesFonctionsJS.js"></script>
 
     </head>
@@ -20,9 +20,7 @@ session_start()
     include ('Entete.html');
     include ('../ConnectionBDD.php')
     ?>
-    <div class="Titre">
-        <h1> Information sur la patient </h1>
-    </div>
+    <h2> Information sur la patient </h2>
     <form method="post">
         Nom :<input type="text" name="nom" id="nom" placeholder="Entrez le Nom du patient " required><br>
         Prénom :<input type="text" name="prenom" id="prenom" placeholder="Entrez le Prenom du patient" required><br><br>

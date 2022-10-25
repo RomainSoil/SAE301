@@ -19,7 +19,7 @@ if (empty($_POST['CP'])){
 <head>
     <meta charset="UTF-8">
     <title>ConnexionProfesseur</title>
-    <link rel="stylesheet" href="Patient.css" >
+    <link rel="stylesheet" href="../PageProf.css" >
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -29,9 +29,7 @@ include("BarreScenario.html");
 include("EnteteV2.html");
 ?>
 
-<div class="Titre">
-    <h1>Radio</h1>
-</div>
+    <h2>Radio</h2>
 <form method="post" action="Mobilite.php">
     Veuillez entrez l'url de l'image ?
 <input type="url" name="radio">

@@ -11,7 +11,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>ConnexionProfesseur</title>
-    <link rel="stylesheet" href="Patient.css" >
+    <link rel="stylesheet" href="../PageProf.css" >
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -21,9 +21,7 @@ session_start();
 include("BarreScenario.html");
 include("EnteteV2.html");
 ?>
-<div class="Titre">
-    <h1>Hygiène</h1>
-</div>
+    <h2>Hygiène</h2>
 <form action="Alimentation.php" method="post">
     Le patient a t-il eu une toilette ?:
     <input type="radio" name="toilette" value="oui" required>oui
