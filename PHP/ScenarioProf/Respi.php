@@ -16,7 +16,6 @@ session_start();
 <?php
 include ('BarreScenario.html');
 include ('EnteteV2.html');
-
 ?>
 <div class="Titre">
     <h1>Respiration</h1>
@@ -48,6 +47,7 @@ include ('EnteteV2.html');
 
 function AjoutAlaBDD($bdd){
 
+
     if (isset($_POST['ValidScenario'])) {
         $VarTrue=1;
         $VarFalse=0;
@@ -56,9 +56,9 @@ function AjoutAlaBDD($bdd){
         (?,?,?,?,?)");
         $sql->bindParam(1, $_SESSION['Date']);
         if ($_SESSION['prescrite'] == "oui") {
-            $sql->bindParam(2, $VarTrue, PDO::PARAM_BOOL);
+            $sql->bindParam(2, $VarTrue);
         } else {
-            $sql->bindParam(2, $VarFalse, PDO::PARAM_BOOL);
+            $sql->bindParam(2, $VarFalse);
         }
         if ($_SESSION['confort'] == "oui") {
             $sql->bindParam(3, $VarTrue);
@@ -230,23 +230,23 @@ function AjoutAlaBDD($bdd){
         }
         $sql7->bindParam(7, $_SESSION['patient']);
 
-        $sql8 = $bdd->prepare("INSERT into neuro (date, t°c, glasgow, eva,algoplus, idpatient) VALUES 
+        $sql8 = $bdd->prepare("INSERT into neuro (date, t°c, glasgow, eva,algoplus, idpatient) VALUES
         (?,?,?,?,?,?)");
         $sql8->bindParam(1, $_SESSION['Date']);
-        $sql8->bindParam(2, $_POST['temperature']);
-        $sql8->bindParam(3, $_POST['glasgow']);
-        $sql8->bindParam(4, $_POST['EVA']);
-        $sql8->bindParam(5, $_POST['AlgoPlus']);
+        $sql8->bindParam(2, $_SESSION['temperature']);
+        $sql8->bindParam(3, $_SESSION['glasgow']);
+        $sql8->bindParam(4, $_SESSION['EVA']);
+        $sql8->bindParam(5, $_SESSION['AlgoPlus']);
         $sql8->bindParam(6, $_SESSION['patient']);
 
 
         $sql9 = $bdd->prepare("INSERT into respi (date, sao2, fr, o2, idpatient) VALUES 
         (?,?,?,?,?)");
-        $sql9->bindParam(1, $_POST['Date']);
+        $sql9->bindParam(1, $_SESSION['Date']);
         $sql9->bindParam(2, $_POST['SaO2']);
         $sql9->bindParam(3, $_POST['FR']);
         $sql9->bindParam(4, $_POST['O2']);
-        $sql9->bindParam(5, $_POST['patient']);
+        $sql9->bindParam(5, $_SESSION['patient']);
 
         $sql->execute();
         $sql2->execute();

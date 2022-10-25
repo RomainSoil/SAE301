@@ -24,7 +24,7 @@ include ('EnteteV2.html');
 <div class="Titre">
     <h1>Neurologie</h1>
 </div>
-<form action="Respi.php" method="post">
+<form method="post" action="Transition.php" >
     <br><br>
     Temperature : <input type="number" name="temperature">
     <br><br>
@@ -35,7 +35,7 @@ include ('EnteteV2.html');
     AlgoPlus : <input type="text" name="AlgoPlus">
     <br><br>
     <div class="button_Suivant">
-        <input type="submit" value="Valider">
+        <input type="submit" value="Valider" name="Valdider">
     </div>
 
 
@@ -50,7 +50,4 @@ include ('EnteteV2.html');
 </body>
 </html>
 
-<?php
 
-
-?>

@@ -2,7 +2,6 @@ DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Interv
 SoinsRelationnels , Cardio, Respi, Hygiene, Soins Cascade;
 
 
-insert into groupe values ( 1 , 'tous', 'admin@gmail.com', true);
 
 drop table if exists message;
 CREATE table message(
@@ -114,6 +113,7 @@ Create table Radio (
      image text not null,
      idPatient int references Patient
 );
+
 Create TABLE Neuro (
     date timestamp not null ,
     t°c float not null,
@@ -179,9 +179,9 @@ CREATE table  SoinsRelationnels(
 
 Create table Cardio(
     date timestamp not null,
-    TA text not null,
-    pls int not null ,
-    ECG text not null ,
+    TA text ,
+    pls int  ,
+    ECG text  ,
     idPatient int references Patient,
     primary key (date,idPatient)
 
@@ -189,13 +189,14 @@ Create table Cardio(
 
 Create table Respi(
     date timestamp not null ,
-    SaO2 int not null ,
-    Fr int not null ,
-    O2 text not null,
+    SaO2 int  ,
+    Fr int  ,
+    O2 text ,
     idPatient int references Patient,
     primary key (date, idPatient)
 
 );
+
 Create table Hygiene(
     date timestamp not null ,
     toilette boolean not null,
