@@ -15,7 +15,7 @@ session_start();
 
 <header>
     <a href="Accueil.php">
-        <img src="image/logoIFSI.png" width=150 height=150 alt="">
+        <img src="logoIFSI.png" width=150 height=150 alt="">
     </a>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br><br>
@@ -74,8 +74,8 @@ require('ConnectionBDD.php');
 /* permet de modifier dans la base de données le mot de passe de l'utilisateur*/
 function mdpemail()
 {
-    $conn =ConnectionBDD::getInstance();
-    $pdo = $conn::getpdo();
+    $conn = new ConnectionBDD();
+    $pdo = $conn->connexion();
     $MDP = new MotDePasse();
     $co = new Connexion();
 

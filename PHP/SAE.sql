@@ -114,13 +114,13 @@ Create table Radio (
      image text not null,
      idPatient int references Patient
 );
-
+drop table Neuro;
 Create TABLE Neuro (
     date timestamp not null ,
-    t°c float not null,
-    Glasgow float not null,
-    EVA int not null,
-    AlgoPlus int not null,
+    t°c float ,
+    Glasgow float ,
+    EVA int ,
+    AlgoPlus int ,
     idPatient int references Patient,
     primary key (date,idPatient)
 );
