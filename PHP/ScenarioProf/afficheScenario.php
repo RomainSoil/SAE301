@@ -29,7 +29,8 @@ include ('../ConnectionBDD.php');
 
 <?php
 $id = $_SESSION['scenario'];
-$bdd = ConnectionBDD::getInstance()::getpdo();
+$pdo = ConnectionBDD::getInstance();
+$bdd = $pdo::getpdo();
 
 /* permet d'afficher les données du patient séléctionné*/
 function affpatient($bdd, $id){
@@ -37,10 +38,7 @@ function affpatient($bdd, $id){
     $sql->execute(array($id));
     $array = $sql->fetch();
     echo sizeof($array);
-    for ($i=0; $i<sizeof($array);$i++){
-        echo $array[$i];
-        echo " ";
-    }
+    return $array;
     ?><br><?php
 }
 /* permet d'afficher les données de la prescription du patient séléctionné*/
@@ -48,31 +46,25 @@ function affpresc($bdd, $id){
     $sql = $bdd->prepare("SELECT * from prescription where idpatient=?");
     $sql->execute(array($id));
     $array = $sql->fetch();
-    for ($i=0; $i<sizeof($array);$i++){
-        echo $array[$i];
-        echo " ";
-    }
+    return $array;
 ?><br><?php
 }
 /* permet d'afficher les données du diganostique du patient séléctionné*/
 function affdiag($bdd, $id){
     $sql = $bdd->prepare("SELECT * from diagnostic where idpatient=?");
     $sql->execute(array($id));
+    echo gettype($sql->fetch()[0]);
     $array = $sql->fetch();
-    for ($i=0; $i<sizeof($array);$i++){
-        echo $array[$i];
-        echo " ";
-    }
+
+    return $array;
     ?><br><?php
+}
 
 function affsecu($bdd, $id){
     $sql = $bdd->prepare("SELECT * FROM miseensecurite where idpatient=?");
     $sql->execute(array($id));
     $array = $sql->fetch();
-    for($i=0; $i<sizeof($array); $i++){
-        echo $array[$i];
-        echo " ";
-    }
+    return $array;
     ?><br><?php
 }
 
@@ -80,32 +72,16 @@ function affsoinsrel($bdd, $id){
    $sql = $bdd->prepare("SELECT * FROM soinsrelationnels where idpatient=?");
    $sql->execute(array($id));
    $array = $sql->fetch();
-   for($i=0; $i<sizeof($array); $i++){
-       echo $array[$i];
-       echo " ";
-   }
+    return $array;
     ?><br><?php
 }
 
-    function affsecu($bdd, $id){
-        $sql = $bdd->prepare("SELECT * FROM miseensecurite where idpatient=?");
-        $sql->execute(array($id));
-        $array = $sql->fetch();
-        for($i=0; $i<sizeof($array); $i++){
-            echo $array[$i];
-            echo " ";
-        }
-        ?><br><?php
-    }
 
     function affelim($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM elimination where idpatient=?");
         $sql->execute(array($id));
         $array = $sql->fetch();
-        for($i=0; $i<sizeof($array); $i++){
-            echo $array[$i];
-            echo " ";
-        }
+        return $array;
         ?><br><?php
     }
 
@@ -113,10 +89,7 @@ function affsoinsrel($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM cardio where idpatient=?");
         $sql->execute(array($id));
         $array = $sql->fetch();
-        for($i=0; $i<sizeof($array); $i++){
-            echo $array[$i];
-            echo " ";
-        }
+        return $array;
         ?><br><?php
     }
 
@@ -124,10 +97,7 @@ function affsoinsrel($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM mobilite where idpatient=?");
         $sql->execute(array($id));
         $array = $sql->fetch();
-        for($i=0; $i<sizeof($array); $i++){
-            echo $array[$i];
-            echo " ";
-        }
+        return $array;
         ?><br><?php
     }
 
@@ -135,55 +105,55 @@ function affsoinsrel($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM hygiene where idpatient=?");
         $sql->execute(array($id));
         $array = $sql->fetch();
-        for($i=0; $i<sizeof($array); $i++){
-            echo $array[$i];
-            echo " ";
-        }
+        return $array;
         ?><br><?php
     }
     function affalim($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM alimentation where idpatient=?");
         $sql->execute(array($id));
         $array = $sql->fetch();
-        for($i=0; $i<sizeof($array); $i++){
-            echo $array[$i];
-            echo " ";
-        }
+        return $array;
         ?><br><?php
     }
-    function affneuro($bdd, $id){
+    function affneuro($bdd, $id)
+    {
         $sql = $bdd->prepare("SELECT * FROM neuro where idpatient=?");
         $sql->execute(array($id));
         $array = $sql->fetch();
-        for($i=0; $i<sizeof($array); $i++){
-            echo $array[$i];
-            echo " ";
-        }
-        ?><br><?php
+        return $array;
     }
+        ?><br><?php
 
     function affrespi($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM respi where idpatient=?");
         $sql->execute(array($id));
         $array = $sql->fetch();
-        for($i=0; $i<sizeof($array); $i++){
-            echo $array[$i];
-            echo " ";
+        return $array;
         }
-        ?><br><?php
-    }
+?><br><?php
+function affichage($bdd, $id){
+?>
+<table>
+    <thead>
+    <tr>
+        <th colspan="1">numero 1</th>
+        <th colspan"1">numero 2</th>
+        <th colspan"1">numero 3</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>The table body</td>
+        <td>with two columns</td>
+        <td> troisieme colonne</td>
+    </tr>
+    <tr>
+        <td>une nouvelle ligne</td>
+    </tr>
+    </tbody>
+</table>
+<?php
 }
 
-@affdiag($bdd, $id);
-@affpresc($bdd, $id);
-@affpatient($bdd, $id);
-@affsecu($bdd, $id);
-@affsoinsrel($bdd, $id);
-@affelim($bdd, $id);
-@affcardio($bdd, $id);
-@affmobil($bdd, $id);
-@affhyg($bdd, $id);
-@affalim($bdd, $id);
-@affneuro($bdd, $id);
-@affrespi($bdd, $id);
+affichage($bdd, $id);
 ?>
