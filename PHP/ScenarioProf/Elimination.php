@@ -11,7 +11,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>ConnexionProfesseur</title>
-    <link rel="stylesheet" href="Patient.css" >
+    <link rel="stylesheet" href="../PageProf.css" >
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -21,9 +21,9 @@ session_start();
 include("BarreScenario.html");
 include("EnteteV2.html");
 ?>
-<div class="Titre">
-    <h1>Elimination du patient</h1>
-</div>
+
+    <h2>Elimination du patient</h2>
+
 <form action="Cardio.php" method="post">
     Le patient a t-il eu des selles ?:
     <input type="radio" name="selles" value="oui" required>oui

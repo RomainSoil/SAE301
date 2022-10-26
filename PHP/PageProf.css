@@ -81,7 +81,7 @@ body{
     background-color: beige;
 }
 
-footer{
+div.footer-CreateScenario{
     text-align: center;
     margin:0;
     padding:3%;
@@ -100,8 +100,33 @@ div.contrainte{
     margin-left: 14%;
 
 }
-div.Titre{
+
+
+h2{
     text-align: center;
     color: #EE401A;
 }
 
+div.button_Suivant{
+    display: flex;
+
+}
+
+div.Diagnostic{
+    text-align: center;
+}
+footer{
+
+    text-align: center;
+    margin:0;
+    padding:3%;
+    width:94%;
+    font-size: 1em;
+    color:white;
+    background-color: beige;
+    font-weight: bold;
+    position: static;
+    bottom:1%;
+    right:1%;
+    z-index:9999;
+}

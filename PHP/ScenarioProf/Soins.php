@@ -13,7 +13,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>ConnexionProfesseur</title>
-    <link rel="stylesheet" href="Patient.css" >
+    <link rel="stylesheet" href="../PageProf.css" >
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -23,9 +23,7 @@ include ('BarreScenario.html');
 include ('EnteteV2.html');
 ?>
 
-<div class="Titre">
-    <h1>Soins Relationnel du patient</h1>
-</div>
+    <h2>Soins Relationnel du patient</h2>
 <form action="Elimination.php" method="post">
     Le patient est-il passé par l'accueil:
     <input type="radio" name="accueil" value="oui" required>oui

@@ -12,7 +12,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="Patient.css">
+    <link rel="stylesheet" href="../PageProf.css">
     <script type="text/javascript" src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -23,9 +23,7 @@ session_start();
 include ('BarreScenario.html');
 include ('EnteteV2.html');
 ?>
-<div class="Titre">
-<h1> Information sur la sécurité </h1>
-</div>
+<h2> Information sur la sécurité </h2>
 <!--formulaire sur la securite qui sera enregistrer dans la base de donnée apres avoir valide toutes les categories-->
 
 <form method="post" action="Soins.php">

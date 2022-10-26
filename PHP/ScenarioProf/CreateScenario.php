@@ -19,13 +19,11 @@ session_start()
 <?php
 include("BarreScenario.html");
 ?>
-<div class="Titre">
-    <h1>Création de Scénario</h1>
-</div>
+<h2>Création de Scénario</h2>
 
 
     <!--Le bas de page avec le boutton si on a besoin d'aide et de création d'un nouveau patient-->
-    <footer>
+    <div class="footer-CreateScenario">
         <form action="Patient.php" method="post">
             <input type="submit" value="Créer un patient" name="Créer">
         </form>
@@ -33,7 +31,7 @@ include("BarreScenario.html");
         <form action="../Accueil.php" method="post">
             <input type="submit" value="Besoin d'aide ?">
         </form>
-    </footer>
+    </div>
 
 
 
@@ -94,11 +92,7 @@ include("BarreScenario.html");
         <input type="submit" value="Afficher le scénario" name="affiche">
     </form>
 <br>
-<div class="contrainte">
-    <form action="afficheScenario.php" method="post">
-    <input type="submit" value="Afficher le scénario" name="affiche">
-    </form>
-</div>
+
 </body>
 
 </html>

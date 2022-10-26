@@ -19,10 +19,7 @@ session_start();
 include ('BarreScenario.html');
 include ('EnteteV2.html');
 ?>
-
-<div class="Titre">
-    <h1>Prescription</h1>
-</div>
+    <h2>Prescription</h2>
 <form action="" method="post">
 
     Medicament : <input type="text" name="medicament" required>

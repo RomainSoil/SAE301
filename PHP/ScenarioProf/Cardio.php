@@ -10,7 +10,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>ConnexionProfesseur</title>
-    <link rel="stylesheet" href="Patient.css" >
+    <link rel="stylesheet" href="../PageProf.css" >
     <script src="../LesFonctionsJS.js"></script>
 
 </head>
@@ -21,9 +21,7 @@ session_start();
     include("BarreScenario.html");
     include("EnteteV2.html");
     ?>
-<div class="Titre">
-    <h1>Cardio</h1>
-</div>
+    <h2>Cardio</h2>
 <form method="post" action="Mobilite.php">
     TA : <input type="text" name="TA" id="TA" > <br><br>
     PLS :<input type ="number" name="pls" id=pls> <br><br>
