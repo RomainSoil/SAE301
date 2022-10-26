@@ -48,7 +48,7 @@ function creerDiagnostic($bdd){
     if (isset($_POST['Valider'])){
         $sql = $bdd->prepare("INSERT INTO intervenant (nom,prenom,compterendu) values (?, ?,?)");
         $sql->execute(array($_POST['nom'],$_POST['prenom'],$_POST['diagnostic']));
-        header(header: 'Location: Securite.php');
+        header(header: 'Location: Prescription.php');
         exit;}
 }
 creerDiagnostic(ConnectionBDD::getInstance()::getpdo());

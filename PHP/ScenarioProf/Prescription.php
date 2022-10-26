@@ -66,6 +66,7 @@ function insert($bdd){
         $sql = $bdd->prepare("INSERT INTO prescription(prise, medicament, idpatient, medecin, dose) values (?, ?, ?, ?, ?)");
         $sql->execute(array($_POST['prise'], $_POST['medicament'], $_SESSION['patient'], $_POST['nom'], $_POST['dose']));
         echo 'Prescription ajoutée';
+        header(header : 'Location: Securite.php');
 
     }
 }

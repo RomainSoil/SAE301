@@ -74,8 +74,8 @@ require('ConnectionBDD.php');
 /* permet de modifier dans la base de données le mot de passe de l'utilisateur*/
 function mdpemail()
 {
-    $conn = new ConnectionBDD();
-    $pdo = $conn->connexion();
+    $conn =ConnectionBDD::getInstance();
+    $pdo = $conn::getpdo();
     $MDP = new MotDePasse();
     $co = new Connexion();
 
