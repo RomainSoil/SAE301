@@ -52,7 +52,7 @@ $_SESSION['PseudoChat']=$pseudo2;
 <!--Zone d'envoie et suppression de message-->
 
 <div class="information">
-<h2>Bonjour, <?php echo $_SESSION['PseudoChat']?></h2>
+<h2><?php echo $_SESSION['PseudoChat']?></h2>
 <br>
 <h3>Communication avec groupe <?php echo $_SESSION['IdChat'] ?></h3>
 </div>

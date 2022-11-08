@@ -16,9 +16,9 @@ session_start();
 include('BarreScenarioAccueil.html');
 ?>
 <div class="texte">
-    Bienvenue, sur le site de l'IFSI consacré à la création de scénario <br>
-    Vous avez accès à la partie de création de scénario, <br>
-    mais aussi une partie correction et note. <br>
+    Bienvenue,<br> sur le site de l'IFSI consacré à la création de scénario <br>
+    Vous avez accès à la création de scénario, <br>
+    mais aussi aux corrections et notes. <br>
     Vous pouvez également consulter votre messagerie.
 
 

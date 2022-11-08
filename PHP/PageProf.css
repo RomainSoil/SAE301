@@ -3,7 +3,7 @@ header{
     text-align: center;
     top:0;
     color: white;
-    background-color: #EE401A;
+    background-color: dodgerblue;
 
 }
 
@@ -13,8 +13,8 @@ div.deconexion{
 
 .btn-group .button {
     border: none;
-    background-color: dimgrey;
-    color: white;
+    background-color: white;
+    color: black;
     text-align: center;
     font-size: 25px;
     cursor: pointer;
@@ -24,14 +24,14 @@ div.deconexion{
 
 
 .btn-group .button:hover {
-    background-color: #EE401A;
+    background-color:dodgerblue;
     color: white;
 }
 
 
 .btn-scenario .button {
     border: none;
-    background-color: firebrick;
+    background-color: #0c76d9;
     color: white;
     text-align: center;
     font-size: 15px;
@@ -60,7 +60,7 @@ div.deconexion{
 }
 
 .btn-scenario .button:hover {
-    background-color: #EE401A;
+    background-color: #0c76d9;
     color: white;
 }
 
@@ -69,16 +69,17 @@ div.texte{
     text-align: center;
     margin-top: 8%;
     font-size: 25px;
+    color:#0c76d9;
 
 }
 div.font{
 
-    background-color: darkred;
+    background-color: #0c76d9;
 }
 
 /*page en global*/
 body{
-    background-color: beige;
+    background-color: lightblue;
 }
 
 div.footer-CreateScenario{
@@ -88,7 +89,7 @@ div.footer-CreateScenario{
     width:94%;
     font-size: 1em;
     color:white;
-    background-color: beige;
+    background-color: lightblue;
     font-weight: bold;
     position: fixed;
     bottom:1%;
@@ -104,7 +105,7 @@ div.contrainte{
 
 h2{
     text-align: center;
-    color: #EE401A;
+    color:#0c76d9;
 }
 
 div.button_Suivant{
@@ -123,7 +124,7 @@ footer{
     width:94%;
     font-size: 1em;
     color:white;
-    background-color: beige;
+    background-color: lightblue;
     font-weight: bold;
     position: static;
     bottom:1%;

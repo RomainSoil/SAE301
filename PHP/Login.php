@@ -26,7 +26,6 @@ session_start();
 
 <!--La fleche pour revenir sur la page accueil-->
 
-<a href="Accueil.php"> <img src="image/fleche.png" class="icone" alt="" > </a>
 
 
 <!--La box de l'inscription-->

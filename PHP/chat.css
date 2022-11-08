@@ -2,7 +2,7 @@ header{
     text-align: center;
     top:0;
     color: white;
-    background-color: blue;
+    background-color: dodgerblue;
 
 
 
@@ -14,7 +14,7 @@ body{
 
 div.information {
     text-align: center;
-    color: darkblue;
+    color: #0c76d9;
 }
 
 div.Aide {
@@ -56,16 +56,16 @@ div.message{
 
 
 .btn-group .button:hover {
-    background-color: blue;
+    background-color: dodgerblue;
     color: white;
 }
 div.btn-nav{
-
-    background-color: darkblue;
+    text-align: center;
+    background-color: #0c76d9;
 }
 
 div.Btn_Groupe{
-    color: darkblue;
+    color: #0c76d9;
     float: left;
     padding:1%;
     position: fixed;

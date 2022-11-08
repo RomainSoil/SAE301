@@ -21,7 +21,6 @@ session_start();
 </header>
 
 
-<a href="Accueil.php"> <img src="image/fleche.png" class="icone" alt=""> </a>
 
 
 
@@ -109,8 +108,7 @@ function email(){
                         $mail->CharSet='UTF-8';
                         $mail->setFrom('bulletforce59750@gmail.com', 'IFSI');
                         $mail->Subject = 'Réinitialisation de ton mot de passe';
-                        $mail->AltBody(""); 		                //Le contenu au format HTML
-
+                        $mail->AltBody('egeggrgrrg');		                //Le contenu au format HTML
                         $mail->addAddress($_POST['mail'], 'Joe User');     //Add a recipient
                         $mail->send();
                         echo 'Message has been sent';
