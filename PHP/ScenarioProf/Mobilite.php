@@ -23,6 +23,9 @@ include ('EnteteV2.html');
 
 
 <form method="post" action="Hygiene.php">
+    URL Image  ? (Facultatif)
+    <input type="url" name="radio">
+    <br><br>
 Le patient a t-il eu une aide à la marche ?:
 <input type="radio" name="AideMarche" value="oui" required>oui
 <input type="radio" name="AideMarche" value="non" checked="checked" required>non

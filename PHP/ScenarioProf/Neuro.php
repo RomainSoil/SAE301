@@ -23,6 +23,9 @@ include ('EnteteV2.html');
 ?>
     <h2>Neurologie</h2>
 <form method="post" action="Transition.php" >
+    URL Image  ? (Facultatif)
+    <input type="url" name="radio">
+    <br><br>
     <br><br>
     Temperature : <input type="number" name="temperature">
     <br><br>

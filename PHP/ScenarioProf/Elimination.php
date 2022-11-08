@@ -25,6 +25,9 @@ include("EnteteV2.html");
     <h2>Elimination du patient</h2>
 
 <form action="Cardio.php" method="post">
+    URL Image  ? (Facultatif)
+    <input type="url" name="radio">
+    <br><br>
     Le patient a t-il eu des selles ?:
     <input type="radio" name="selles" value="oui" required>oui
     <input type="radio" name="selles" value="non" checked="checked" required>non

@@ -23,6 +23,9 @@ include("EnteteV2.html");
 ?>
     <h2>Hygiène</h2>
 <form action="Alimentation.php" method="post">
+    URL Image  ? (Facultatif)
+    <input type="url" name="radio">
+    <br><br>
     Le patient a t-il eu une toilette ?:
     <input type="radio" name="toilette" value="oui" required>oui
     <input type="radio" name="toilette" value="non" checked="checked" required>non

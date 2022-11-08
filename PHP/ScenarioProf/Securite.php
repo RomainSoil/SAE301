@@ -27,6 +27,9 @@ include ('EnteteV2.html');
 <!--formulaire sur la securite qui sera enregistrer dans la base de donnée apres avoir valide toutes les categories-->
 
 <form method="post" action="Soins.php">
+    URL Image  ? (Facultatif)
+    <input type="url" name="radio">
+    <br><br>
     Date :
         <input type="datetime-local" name="date" id="date" required>
     <h4>La date sélectionnée sera identique pour les catégories suivantes, vos informations seront enregistrées dans cette dernière catégorie.</h4>

@@ -30,6 +30,9 @@ include("EnteteV2.html");
 ?>
 <h2>Alimentation du patient</h2>
 <form method="post" action="Neuro.php">
+    URL Image  ? (Facultatif)
+    <input type="url" name="radio">
+    <br><br>
     Le patient est-il a jeun ?:
     <input type="radio" name="jeun" value="oui" required>oui
     <input type="radio" name="jeun" value="non" checked="checked" required>non

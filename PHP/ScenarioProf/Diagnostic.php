@@ -27,6 +27,9 @@ include ('../ConnectionBDD.php');
     Nom :<input type="text" name="nom" id="nom"  placeholder="Nom de l'intervenant " required><br>
     Prénom :<input type="text" name="prenom" id="prenom" placeholder="Prenom de l'intervenant" required><br><br>
    <h2>Diagnostic:</h2></>
+    URL Image  ? (Facultatif)
+    <input type="url" name="radio">
+    <br><br>
     <div class="Diagnostic">
     <textarea name="diagnostic" id="diagnostic" rows="20" cols="80" required> </textarea></div> <br>
     <div class="button_Suivant">

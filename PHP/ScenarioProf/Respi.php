@@ -19,6 +19,9 @@ include ('EnteteV2.html');
 ?>
     <h2>Respiration</h2>
 <form method="post">
+    URL Image  ? (Facultatif)
+    <input type="url" name="radio">
+    <br><br>
 
     SaO2 : <input type="number" name="SaO2">
     <br><br>

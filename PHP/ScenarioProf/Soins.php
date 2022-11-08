@@ -25,6 +25,9 @@ include ('EnteteV2.html');
 
     <h2>Soins Relationnel du patient</h2>
 <form action="Elimination.php" method="post">
+    URL Image  ? (Facultatif)
+    <input type="url" name="radio">
+    <br><br>
     Le patient est-il passé par l'accueil:
     <input type="radio" name="accueil" value="oui" required>oui
     <input type="radio" name="accueil" value="non" checked="checked" required>non

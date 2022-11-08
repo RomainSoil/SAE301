@@ -21,6 +21,9 @@ include ('EnteteV2.html');
 ?>
     <h2>Prescription</h2>
 <form action="" method="post">
+    URL Image  ? (Facultatif)
+    <input type="url" name="radio">
+    <br><br>
 
     Medicament : <input type="text" name="medicament" required>
     <button type="button" onclick="afficher()">ajouter medicament</button>
