@@ -1,7 +1,7 @@
 
 
 function changer(id){
-    if(document.getElementById(id).getAttribute("type")==="password" ){
+    if(document.getElementById(id).getAttribute("type")=="password" ){
         document.getElementById(id).setAttribute("type","text");
     }
     else{

@@ -47,8 +47,9 @@ function AjoutAlaBDD($bdd){
 
 
     if (isset($_POST['ValidScenario'])) {
-        $VarTrue=1;
-        $VarFalse=0;
+        $VarTrue = 1;
+        $VarFalse = 0;
+        $VarNull = null;
 
         $sql = $bdd->prepare("INSERT into miseensecurite (date, barrieredelitprescrite, barrieredelitconfort, serveillancecontention, idpatient) VALUES 
         (?,?,?,?,?)");
@@ -115,9 +116,21 @@ function AjoutAlaBDD($bdd){
         $sql4 = $bdd->prepare("INSERT into cardio (date, ta, pls, ecg, idpatient) VALUES 
         (?,?,?,?,?)");
         $sql4->bindParam(1, $_SESSION['Date']);
-        $sql4->bindParam(2, $_SESSION['TA']);
-        $sql4->bindParam(3, $_SESSION['pls']);
-        $sql4->bindParam(4, $_SESSION['ECG']);
+        if (!($_SESSION['TA'])) {
+            $sql4->bindParam(2, $VarNull);
+        } else {
+            $sql4->bindParam(2, $_SESSION['TA']);
+        }
+        if (!($_SESSION['pls'])) {
+            $sql4->bindParam(3, $VarNull);
+        } else {
+            $sql4->bindParam(3, $_SESSION['pls']);
+        }
+        if (!($_SESSION['ECG'])) {
+            $sql4->bindParam(4, $VarNull);
+        } else {
+            $sql4->bindParam(4, $_SESSION['ECG']);
+        }
         $sql4->bindParam(5, $_SESSION['patient']);
 
 
@@ -231,20 +244,49 @@ function AjoutAlaBDD($bdd){
         $sql8 = $bdd->prepare("INSERT into neuro (date, t°c, glasgow, eva,algoplus, idpatient) VALUES
         (?,?,?,?,?,?)");
         $sql8->bindParam(1, $_SESSION['Date']);
-        $sql8->bindParam(2, $_SESSION['temperature']);
-        $sql8->bindParam(3, $_SESSION['glasgow']);
-        $sql8->bindParam(4, $_SESSION['EVA']);
-        $sql8->bindParam(5, $_SESSION['AlgoPlus']);
+        if (!($_SESSION['temperature'])) {
+            $sql8->bindParam(2, $VarNull);
+        } else {
+            $sql8->bindParam(2, $_SESSION['temperature']);
+        }
+        if (!($_SESSION['glasgow'])) {
+            $sql8->bindParam(3, $VarNull);
+        } else {
+            $sql8->bindParam(3, $_SESSION['glasgow']);
+        }
+        if (!($_SESSION['EVA'])) {
+            $sql8->bindParam(4, $VarNull);
+        } else {
+            $sql8->bindParam(4, $_SESSION['EVA']);
+        }
+        if (!($_SESSION['AlgoPlus'])) {
+            $sql8->bindParam(5, $VarNull);
+        } else {
+            $sql8->bindParam(5, $_SESSION['AlgoPlus']);
+        }
         $sql8->bindParam(6, $_SESSION['patient']);
 
 
         $sql9 = $bdd->prepare("INSERT into respi (date, sao2, fr, o2, idpatient) VALUES 
         (?,?,?,?,?)");
         $sql9->bindParam(1, $_SESSION['Date']);
-        $sql9->bindParam(2, $_POST['SaO2']);
-        $sql9->bindParam(3, $_POST['FR']);
-        $sql9->bindParam(4, $_POST['O2']);
+        if (!($_POST['SaO2'])) {
+            $sql9->bindParam(2, $VarNull);
+        } else {
+            $sql9->bindParam(2, $_POST['SaO2']);
+        }
+        if (!($_POST['FR'])) {
+            $sql9->bindParam(3, $VarNull);
+        } else {
+            $sql9->bindParam(3, $_POST['FR']);
+        }
+        if (!($_POST['O2'])) {
+            $sql9->bindParam(4, $VarNull);
+        } else {
+            $sql9->bindParam(4, $_POST['O2']);
+        }
         $sql9->bindParam(5, $_SESSION['patient']);
+
 
         $sql->execute();
         $sql2->execute();
@@ -258,7 +300,6 @@ function AjoutAlaBDD($bdd){
 
 
     }
-
 }
 include ('../ConnectionBDD.php');
 AjoutAlaBDD($bdd=ConnectionBDD::getInstance()::getpdo());
