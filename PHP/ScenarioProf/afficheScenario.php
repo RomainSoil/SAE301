@@ -37,7 +37,6 @@ function affpatient($bdd, $id){
     $sql = $bdd->prepare("SELECT * from patient where idpatient=?");
     $sql->execute(array($id));
     $array = $sql->fetch();
-    echo sizeof($array);
     return $array;
     ?><br><?php
 }
@@ -86,10 +85,7 @@ function affsoinsrel($bdd, $id){
     }
 
     function affcardio($bdd, $id){
-        $sql = $bdd->prepare("SELECT * FROM cardio where idpatient=?");
-        $sql->execute(array($id));
-        $array = $sql->fetch();
-        return $array;
+        echo 'bbb';
         ?><br><?php
     }
 
@@ -136,24 +132,68 @@ function affichage($bdd, $id){
 <table>
     <thead>
     <tr>
-        <th colspan="1">numero 1</th>
-        <th colspan"1">numero 2</th>
-        <th colspan"1">numero 3</th>
+        <th colspan"1">Nom</th>
+        <th colspan"1">Prénom</th>
+        <th colspan"1">age</th>
+        <th colspan"1">poids</th>
+        <th colspan"1">date de naissance</th>
+        <th colspan"1">taille</th>
+        <th colspan"1">iep</th>
+        <th colspan"1">ipp</th>
+        <th colspan"1">sexe</th>
+        <th colspan"1">adresse</th>
+        <th colspan"1">ville</th>
+        <th colspan"1">Code Postale</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <td>The table body</td>
-        <td>with two columns</td>
-        <td> troisieme colonne</td>
+        <td><?php echo affpatient($bdd, $id)[1]?></td>
+        <td><?php echo affpatient($bdd, $id)[2]?></td>
+        <td> <?php echo affpatient($bdd, $id)[3]?></td>
+        <td> <?php echo affpatient($bdd, $id)[5]?></td>
+        <td> <?php echo affpatient($bdd, $id)[4]?></td>
+        <td> <?php echo affpatient($bdd, $id)[6]?></td>
+        <td> <?php echo affpatient($bdd, $id)[7]?></td>
+        <td> <?php echo affpatient($bdd, $id)[8]?></td>
+        <td> <?php echo affpatient($bdd, $id)[9]?></td>
+        <td> <?php echo affpatient($bdd, $id)[10]?></td>
+        <td> <?php echo affpatient($bdd, $id)[11]?></td>
+        <td> <?php echo affpatient($bdd, $id)[12]?></td>
+
     </tr>
     <tr>
-        <td>une nouvelle ligne</td>
     </tr>
     </tbody>
 </table>
+    <table>
+        <tbody>
+        <thead>
+
+        <tr>
+            <?php
+            $sql = $bdd->prepare("SELECT * FROM cardio where idpatient=?");
+            if ($sql->execute(array($id))){
+                if ($sql->rowCount()>0){
+                    while ($res = $sql->fetch()){
+                        ?>
+
+                        <th colspan="1"> <?php echo $res[0]?>
+
+                            <?php
+                    }
+                }
+                }?>
+        </tr>
+        <tr><th>nouvelle ligne noire</th>
+            <td>l1</td>
+        </tr>
+
+        <tr><th>nouvelle ligne noire</th></tr>
+        </thead>
+        </tbody>
+    </table>
 <?php
 }
-
 affichage($bdd, $id);
 ?>

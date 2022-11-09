@@ -15,6 +15,7 @@ $_SESSION['PseudoChat']=$pseudo2;
         $pseudo = $_SESSION['Pseudo'];
         $insertMsg = $bdd->prepare('INSERT INTO message(userx,textmessage, idgroupe, email) VALUES(?, ?, ?, ?)');
         $insertMsg->execute(array($pseudo2, $message, $_SESSION['IdChat'], $pseudo));
+        header('Location: chat.php');
 }
 ?>
 <!DOCTYPE html>
@@ -68,14 +69,8 @@ $_SESSION['PseudoChat']=$pseudo2;
 <br>
 
 <form method="post">
-
 </form>
-    <script>
-        setInterval('load_messages()',500);
-        function load_messages(){
-            $('#messages').load('loadChat.php');
-        }
-    </script>
+
 <!--
 <div class="Aide">
 
@@ -122,6 +117,7 @@ function creergrp($bdd)
     $newid = $bdd->query("SELECT idgroupe from groupe order by idgroupe desc ");
     $newgrp = $newid->fetch()[0];
     $_SESSION['IdChat']=$newgrp;
+    header('Location: chat.php');
 }}
 /*cette fonction permet d'ajouter une personne dans le groupe ou nous sommes*/
 function inviter($bdd){
@@ -165,6 +161,13 @@ function affichergrp($bdd){
     </form>
         </div>
 
+    <section id="messages"></section>
+    <script>
+        setInterval('load_messages()',500);
+        function load_messages(){
+            $('#messages').load('loadChat.php');
+        }
+    </script>
 <?php
 }
 /*nous permet d'afficher les différents utilisateurs présents dans le groupe, et de les modifiers/supprimer si nous avons le droit*/
