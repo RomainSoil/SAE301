@@ -25,8 +25,10 @@ include("EnteteV2.html");
     <h2>Elimination du patient</h2>
 
 <form action="Cardio.php" method="post">
-    URL Image  ? (Facultatif)
-    <input type="url" name="radio">
+    <!-- Ce champ caché sert a ne pas faire attendre l'utilisateur même si il upload un fichier trop gros pour php -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+    Image (Facultatif) ?: <input name="userfile" type="file" />
+    <input type="submit" value="Ajouter" />
     <br><br>
     Le patient a t-il eu des selles ?:
     <input type="radio" name="selles" value="oui" required>oui

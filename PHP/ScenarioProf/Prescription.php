@@ -21,10 +21,11 @@ include ('EnteteV2.html');
 ?>
     <h2>Prescription</h2>
 <form action="" method="post">
-    URL Image  ? (Facultatif)
-    <input type="url" name="radio">
+    <!-- Ce champ caché sert a ne pas faire attendre l'utilisateur même si il upload un fichier trop gros pour php -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+    Image (Facultatif) ?: <input name="userfile" type="file" />
+    <input type="submit" value="Ajouter" />
     <br><br>
-
     Medicament : <input type="text" name="medicament" required>
     <button type="button" onclick="afficher()">ajouter medicament</button>
 
