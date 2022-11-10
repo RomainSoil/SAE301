@@ -23,8 +23,10 @@ session_start();
     ?>
     <h2>Cardio</h2>
 <form method="post" action="Mobilite.php">
-    URL Image  ? (Facultatif)
-    <input type="url" name="radio">
+    <!-- Ce champ caché sert a ne pas faire attendre l'utilisateur même si il upload un fichier trop gros pour php -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+    Image  ? (Facultatif) <input name="userfile" type="file" />
+    <input type="submit" value="Ajouter le fichier" />
     <br><br>
     TA : <input type="text" name="TA" id="TA" > <br><br>
     PLS :<input type ="number" name="pls" id=pls> <br><br>

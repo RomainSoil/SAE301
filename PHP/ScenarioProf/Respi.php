@@ -19,10 +19,11 @@ include ('EnteteV2.html');
 ?>
     <h2>Respiration</h2>
 <form method="post">
-    URL Image  ? (Facultatif)
-    <input type="url" name="radio">
+    <!-- Ce champ caché sert a ne pas faire attendre l'utilisateur même si il upload un fichier trop gros pour php -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+    Image  ? (Facultatif) <input name="userfile" type="file" />
+    <input type="submit" value="Ajouter le fichier" />
     <br><br>
-
     SaO2 : <input type="number" name="SaO2">
     <br><br>
     FR : <input type="number" name="FR">

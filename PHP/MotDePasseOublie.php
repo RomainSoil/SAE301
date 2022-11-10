@@ -33,7 +33,7 @@ session_start();
 
 <div class ="inscription">
 
-    <form action="MotDePasseOublie.php" method="post">
+    <form method="post">
 
         <br>
         <label>Email :</label>
@@ -53,7 +53,7 @@ session_start();
 <!--Le bas de la page-->
 
 <footer>
-    <form action="Login%20Maneo.php" method="post">
+    <form action="Login.php" method="post">
         <input type="submit" value="Créer un compte">
     </form> <br>
     <form action="Accueil.php" method="post">
@@ -74,19 +74,20 @@ require ('Premier.php');
 require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
+require ('includes/POP3.php');
 require('includes/Exception.php');
 require('includes/PHPMailer.php');
 require('includes/SMTP.php');
-/* permet d'envoyer un mail a la perssonne qui a perdu son mot de passe*/
+/* permet d'envoyer un mail a la personne qui a perdu son mot de passe*/
 function email(){
     $conn = ConnectionBDD::getInstance();
     $pdo = $conn::getpdo();
     $sess = new Premier();
     $sess->premier('oublie');
-    if ($_SESSION['oublie']==2) {
-        if (isset($_POST['mail']) and isset($_POST['mailV2'])) {
-            if (@strcmp(($_POST['mail']), ($_POST['mailV2'])) == 0) {//strcmp sert a comparer les deux chaines de caracteres
-                @$email = $_POST['mail'];
+    if (@$_SESSION['oublie']==2) {
+        if (@$_POST['mail'] !== null and @$_POST['mailV2'] !== null) {
+            if (@strcmp((@$_POST['mail']), (@$_POST['mailV2'])) == 0) {//strcmp sert a comparer les deux chaines de caracteres
+                @$email = @$_POST['mail'];
                 $etu = $pdo->prepare("SELECT * FROM etudiant WHERE email=?");
                 $prof = $pdo->prepare("SELECT * FROM prof WHERE email=?");
                 $etu->execute([$email]);
@@ -108,10 +109,9 @@ function email(){
                         $mail->CharSet='UTF-8';
                         $mail->setFrom('bulletforce59750@gmail.com', 'IFSI');
                         $mail->Subject = 'Réinitialisation de ton mot de passe';
-                        $mail->AltBody('egeggrgrrg');		                //Le contenu au format HTML
-                        $mail->addAddress($_POST['mail'], 'Joe User');     //Add a recipient
+                        $mail->Body='Bonjour, veuillez copier ce lien pour accéder au site de réinitialisation du mot de passe : http://localhost:63342/SAE301/PHP/nouveaumdp.php?_ijt=h7aqva8cftedg67rtq9qiplklt&_ij_reload=RELOAD_ON_SAVE';
+                        $mail->addAddress($_POST['mail'], 'IFSI');     //Add a recipient
                         $mail->send();
-                        echo 'Message has been sent';
                         $_SESSION['mail']=$email;
                     } catch (Exception $e) {
                         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

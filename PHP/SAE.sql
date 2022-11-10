@@ -87,14 +87,14 @@ CREATE table Medicament(
 );
 drop table if exists Prescription;
 
-Create Table Diagnostic (
-    idDiag serial primary key,
-    idIntervenant int,
-    nom text not null,
-    prenom text not null,
-    date timestamp not null,
-    compteRendu text not null,
-    idPatient int references Patient
+
+Create Table intervenant
+(
+    idIntervenant Serial Primary Key,
+    nom           text      not null,
+    prenom        text      not null,
+    date          timestamp not null,
+    compteRendu   text      not null
 );
 
 drop table if exists prescription;

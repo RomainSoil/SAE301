@@ -22,9 +22,6 @@ session_start()
     ?>
     <h2> Information sur la patient </h2>
     <form method="post">
-        URL Image  ? (Facultatif)
-        <input type="url" name="radio">
-        <br><br>
         Nom :<input type="text" name="nom" id="nom" placeholder="Entrez le Nom du patient " required><br>
         Prénom :<input type="text" name="prenom" id="prenom" placeholder="Entrez le Prenom du patient" required><br><br>
         Age :<input type="number" name="age" id="age" placeholder="Entrez l' âge du patient" required><br>
