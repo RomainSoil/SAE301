@@ -75,7 +75,10 @@ function affsoinsrel($bdd, $id){
     }
 
     function affcardio($bdd, $id){
-        echo 'bbb';
+        $sql = $bdd->prepare("SELECT * FROM cardio where idpatient=? order by date");
+        $sql->execute(array($id));
+        $array = $sql->fetchAll();
+        return $array;
         ?><br><?php
     }
 
@@ -204,7 +207,6 @@ function affichage($bdd, $id){
 
             <td> Barrière de lit de confort </td>
             <?php
-            @$MiseEnSecu=affsecu($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$MiseEnSecu[$i][2] == 0) {?>
                     <td> </td>
@@ -224,7 +226,6 @@ function affichage($bdd, $id){
 
             <td> Surveillance contention </td>
             <?php
-            @$MiseEnSecu=affsecu($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$MiseEnSecu[$i][3] == 0) {?>
                     <td> </td>
@@ -263,7 +264,6 @@ function affichage($bdd, $id){
 
             <td> Entretien Infirmier </td>
             <?php
-            @$MiseEnSoinsRelationnel=affsoinsrel($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$MiseEnSoinsRelationnel[$i][2] == 0) {?>
                     <td> </td>
@@ -283,7 +283,6 @@ function affichage($bdd, $id){
 
             <td> Toucher/massage </td>
             <?php
-            @$MiseEnSoinsRelationnel=affsoinsrel($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$MiseEnSoinsRelationnel[$i][3] == 0) {?>
                     <td> </td>
@@ -296,8 +295,477 @@ function affichage($bdd, $id){
             }
             ?>
 
+        </tr>
+
+        <tr>
+
+            <td> Selle </td>
+            <?php
+            @$Elimination=affelim($bdd, $id);
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Elimination[$i][1] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }
+            ?>
+
 
         </tr>
+        <tr>
+
+            <td> Gaz </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Elimination[$i][2] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }
+            ?>
+
+
+        </tr>
+        <tr>
+
+            <td> Urine </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Elimination[$i][3] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }
+            ?>
+
+
+        </tr>
+        <tr>
+
+            <td> Ta </td>
+            <?php
+            @$Cardio=affcardio($bdd, $id);
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                ?>
+                <td> <?php echo $Cardio[$i][1]?> </td>
+                <?php
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> Pls </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                ?>
+                <td> <?php echo $Cardio[$i][2]?> </td>
+                <?php
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> ECG </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                ?>
+                <td> <?php echo $Cardio[$i][3]?> </td>
+                <?php
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> Aide à la marche </td>
+            <?php
+            @$Mobilite=affmobil($bdd, $id);
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Mobilite[$i][1] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Aide au lever </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Mobilite[$i][2] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Aide au coucher </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Mobilite[$i][3] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Aide au fauteuil </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Mobilite[$i][4] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Toilette </td>
+            <?php
+            @$Hygiene=affhyg($bdd, $id);
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Hygiene[$i][1] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Douche </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Hygiene[$i][2] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Bain </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Hygiene[$i][3] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Refection lit </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Hygiene[$i][4] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Change </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Hygiene[$i][5] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Soin de bouche </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Hygiene[$i][6] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Prévention d'escare </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Hygiene[$i][7] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Changement de position </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Hygiene[$i][8] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Matelas a l'air </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Hygiene[$i][9] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> A jeun </td>
+            <?php
+            @$Alimentation=affhyg($bdd, $id);
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Alimentation[$i][1] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Surveillance hydratation </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Alimentation[$i][2] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Surveillance alimentaire </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Alimentation[$i][3] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Régime </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Alimentation[$i][4] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Aide au repas </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Alimentation[$i][5] == 0) {?>
+                    <td> </td>
+                <?php }
+                else { ?>
+                    <td> <?php echo "X" ?> </td>
+
+                    <?php
+                }
+            }?>
+        </tr>
+        <tr>
+
+            <td> Temperature </td>
+            <?php
+            @$Neuro=affcardio($bdd, $id);
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Neuro[$i][1]!=null) {?>
+                    <td> <?php echo @$Neuro[$i][1]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> Glasgow </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Neuro[$i][2]!=null) {?>
+                    <td> <?php echo @$Neuro[$i][2]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> EVA </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Neuro[$i][3]!=null) {?>
+                    <td> <?php echo @$Neuro[$i][3]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> AlgoPlus </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Neuro[$i][4]!=null) {?>
+                    <td> <?php echo @$Neuro[$i][4]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> SaO2 </td>
+            <?php
+            @$Respi=affrespi($bdd, $id);
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Respi[$i][1]!=null) {?>
+                    <td> <?php echo @$Respi[$i][1]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        <tr>
+
+            <td> FR </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Respi[$i][2]!=null) {?>
+                <td> <?php echo @$Respi[$i][2]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                <?php
+                    }
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> O2 </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Respi[$i][3]!=null) {?>
+                    <td> <?php echo @$Respi[$i][3]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+
 
 
 
