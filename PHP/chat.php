@@ -56,6 +56,7 @@ $_SESSION['PseudoChat']=$pseudo2;
 <h2><?php echo $_SESSION['PseudoChat']?></h2>
 <br>
 <h3>Communication avec groupe <?php echo $_SESSION['IdChat'] ?></h3>
+    <h3>Le sujet est : <?php echo $_SESSION['sujet'] ?></h3>
 </div>
 <br>
     <div class="message">
@@ -112,8 +113,8 @@ $_SESSION['PseudoChat']=$pseudo2;
 function creergrp($bdd)
 {
     if (isset($_POST['nomgrp']) && $_POST['nomgrp']){
-    $creer = $bdd->prepare("INSERT INTO groupe(nomgroupe, email, admin) values (?, ?, ?)");
-    $creer->execute(array($_POST['nomgrp'], $_SESSION['Pseudo'], true));
+    $creer = $bdd->prepare("INSERT INTO groupe(nomgroupe, email, admin, sujet) values (?, ?, ?, ?)");
+    $creer->execute(array($_POST['nomgrp'], $_SESSION['Pseudo'], true, $_POST['sujet']));
     $newid = $bdd->query("SELECT idgroupe from groupe order by idgroupe desc ");
     $newgrp = $newid->fetch()[0];
     $_SESSION['IdChat']=$newgrp;
@@ -142,6 +143,7 @@ function affichergrp($bdd){
             <button type="submit" name="creer" id="creer" onclick="afficher()">Créer groupe</button>
             <form style="visibility: hidden" id="form" method="post">
                 <input type="text" placeholder="Nom du groupe" id="nomgrp" name="nomgrp">
+                <input type="text" placeholder="Sujet du groupe" id="nomgrp" name="sujet">
                 <input name="valider" id="valider" type="submit">
             </form>
             <button type="submit" name="inviter" id="inviter" onclick="afficher2()">inviter</button>
@@ -153,7 +155,7 @@ function affichergrp($bdd){
         <?php
     while ($grp = $grps->fetch()){
         ?>
-    <button type="submit" name="button" value="<?php echo $grp[0]?>"><?php echo $grp[1]?></button>
+    <button type="submit" name="button" value="<?php echo $grp[0]."+".$grp[4]?>"><?php echo $grp[1]?></button>
 <?php
     echo '<br>';
     echo '<br>';
@@ -192,7 +194,24 @@ function afficheruser($bdd){
 
 
 if (isset($_POST['button'])){
-    $_SESSION['IdChat']=$_POST['button'];
+    $but = $_POST['button'];
+    $t = false;
+    $a="";
+    $b="";
+    for ($i=0; $i<strlen($but);$i++){
+        if ($but[$i]=='+'){
+            $t = true;
+        }
+        elseif (!$t){
+            $a = $a.$but[$i];
+        }
+        elseif($t){
+            $b = $b.$but[$i];
+        }
+    }
+    $_SESSION['IdChat']=$a;
+    $_SESSION['sujet']=$b;
+    header('Location: chat.php');
 }
 /*permet de supprimer l'utilisateur du groupe lorsqu'on appuie sur le bouton*/
 
