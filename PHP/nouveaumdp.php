@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="MotDePasseOublie.css">
+    <link rel="stylesheet" href="SiteIFSI.css">
     <script src="LesFonctionsJS.js"></script>
 </head>
 <body>
@@ -15,7 +15,7 @@ session_start();
 
 <header>
     <a href="Accueil.php">
-        <img src="logoIFSI.png" width=150 height=150 alt="">
+        <img src="../PHP/image/logoIFSI.png" width=150 height=150 alt="">
     </a>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br><br>
@@ -71,10 +71,10 @@ require ('Connexion.php');
 require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
-function pdemail()
+function changemail()
 {
-    $conn = new ConnectionBDD();
-    $pdo = $conn->connexion();
+    $conn = ConnectionBDD::getInstance();
+    $pdo = $conn::getpdo();
     $MDP = new MotDePasse();
     $co = new Connexion();
 
@@ -85,5 +85,5 @@ function pdemail()
         }
 
 }}
-pdemail();
+changemail();
 ?>

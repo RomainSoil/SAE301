@@ -48,16 +48,6 @@ function affpresc($bdd, $id){
     return $array;
 ?><br><?php
 }
-/* permet d'afficher les données du diganostique du patient séléctionné*/
-function affdiag($bdd, $id){
-    $sql = $bdd->prepare("SELECT * from diagnostic where idpatient=?");
-    $sql->execute(array($id));
-    echo gettype($sql->fetch()[0]);
-    $array = $sql->fetch();
-
-    return $array;
-    ?><br><?php
-}
 
 function affsecu($bdd, $id){
     $sql = $bdd->prepare("SELECT * FROM miseensecurite where idpatient=?");
