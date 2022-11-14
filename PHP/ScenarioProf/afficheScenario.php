@@ -120,6 +120,12 @@ function affsoinsrel($bdd, $id){
     }
         ?><br><?php
 
+function PourAvoirToutesLesDatesDeLaMatrice($bdd, $id){
+    $sql = $bdd->prepare("SELECT date FROM soinsrelationnels where idpatient=?");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+}
     function affrespi($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM respi where idpatient=?");
         $sql->execute(array($id));
@@ -162,7 +168,18 @@ function affichage($bdd, $id){
         <td> <?php echo affpatient($bdd, $id)[12]?></td>
 
     </tr>
+
+
     <tr>
+    <?php
+    $laListeDeToutesLesDates=PourAvoirToutesLesDatesDeLaMatrice($bdd,$id);
+    for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+        ?>
+    <td> <?php echo $laListeDeToutesLesDates[$i][0]?></td>
+    <?php
+    }
+    ?>
+
     </tr>
     </tbody>
 </table>
