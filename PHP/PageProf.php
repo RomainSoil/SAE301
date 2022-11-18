@@ -22,6 +22,7 @@ include('BarreScenarioAccueil.html');
     Vous pouvez également consulter votre messagerie.
 
 
+
 </div>
 </body>
 </html>
