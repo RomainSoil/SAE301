@@ -137,8 +137,26 @@ td {
     border: 1px solid #333;
 }
 
+
 thead,
 tfoot {
-    background-color: #333;
-    color: #fff;
+    background-color: #333333;
+    color: white;
+}
+
+th{
+    color:white;
+    background-color: #333333;
+}
+
+div.title{
+    color:#333333;
+    background-color: white;
+
+}
+
+button{
+    background-color: dodgerblue;
+    color:white;
+    border-color: #0c76d9;
 }

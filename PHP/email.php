@@ -1,8 +1,14 @@
 <?php
 
+/**
+ *
+ */
 class email
 {
 
+    /**
+     * @param $mail
+     */
     function email($mail)
 {
     $aro = false;

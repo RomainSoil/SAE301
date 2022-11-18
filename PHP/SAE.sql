@@ -1,9 +1,3 @@
-DROP table if exists Etudiant, Prof, Patient, Scenario, Note, Medicament, Intervenant, Prescription, Diagnostic, Radio, Neuro, Mobilite, MiseEnSecurite, Elimination, Alimentation,
-SoinsRelationnels , Cardio, Respi, Hygiene, Soins Cascade;
-
-
-
-drop table if exists message;
 CREATE table message(
     id serial primary key,
     email text,
@@ -14,8 +8,6 @@ CREATE table message(
     foreign key (idgroupe, email) references groupe(idgroupe, email)
 );
 
-drop table if exists groupe cascade;
-
 CREATE TABLE Groupe (
     idGroupe serial,
     nomGroupe text,
@@ -24,7 +16,6 @@ CREATE TABLE Groupe (
     admin boolean not null
 );
 
-delete from prof where nom = 'Soil';
 create TABLE email(
     email text primary key
 );
@@ -47,8 +38,6 @@ Create Table Prof (
     nom text not null,
     prenom text not null
 );
-
-drop table if exists Patient cascade ;
 
 Create Table Patient(
     idPatient serial primary key,
@@ -85,36 +74,30 @@ CREATE table Medicament(
     CP int not null,
     prise text not null
 );
-drop table if exists Prescription;
 
-Create Table Diagnostic (
-    idDiag serial primary key,
-    idIntervenant int,
+Create Table Intervenant(
+    idIntervenant serial PRIMARY KEY ,
     nom text not null,
     prenom text not null,
     date timestamp not null,
-    compteRendu text not null,
-    idPatient int references Patient
+    compteRendu text not null
 );
 
-drop table if exists prescription;
 Create table Prescription (
     idPrescription serial primary key,
-    prise date not null,
+    prise timestamp not null,
     dose int not null ,
-    medicament text references Medicament,
+    medicament text not null,
     idPatient int references Patient,
     medecin text not null
 );
 
-insert into medicament values ('medic', 1, 1);
 
 Create table Radio (
     idRadio serial Primary Key,
      image text not null,
      idPatient int references Patient
 );
-drop table Neuro;
 Create TABLE Neuro (
     date timestamp not null ,
     t°c float ,
@@ -187,7 +170,6 @@ Create table Cardio(
     primary key (date,idPatient)
 
 );
-
 Create table Respi(
     date timestamp not null ,
     SaO2 int  ,
@@ -220,8 +202,11 @@ Create table Soins(
     Pansement boolean not null,
     SurveillanceGlycemique float not null ,
     BasDeContention boolean not null ,
+    catheter text not null,
+    SondageUrinaire text not null,
     Autre text not null ,
     idPatient int references Patient,
     primary key (date, idPatient)
 
-)
+);
+

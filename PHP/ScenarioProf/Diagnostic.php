@@ -49,6 +49,10 @@ Image (Facultatif) ?: <input name="userfile" type="file" />
 <?php
 
 /* permet d'inscrir dans la base de données les informations du diagnostique du patient séléctionné*/
+/**
+ * @param $bdd
+ * @return void
+ */
 function creerDiagnostic($bdd){
     if (isset($_POST['Valider'])){
         $sql = $bdd->prepare("INSERT INTO intervenant (nom,prenom,date,compterendu) values (?,?, ?,?)");

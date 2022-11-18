@@ -110,6 +110,10 @@ $_SESSION['PseudoChat']=$pseudo2;
 
 <?php
 /*cette fonction permet de créer dans la base de donnée un nouveau groupe et de mettre le créateur admin*/
+/**
+ * @param $bdd
+ * @return void
+ */
 function creergrp($bdd)
 {
     if (isset($_POST['nomgrp']) && $_POST['nomgrp']){
@@ -121,6 +125,10 @@ function creergrp($bdd)
     header('Location: chat.php');
 }}
 /*cette fonction permet d'ajouter une personne dans le groupe ou nous sommes*/
+/**
+ * @param $bdd
+ * @return void
+ */
 function inviter($bdd){
     if (isset($_POST['nom'])&&$_POST['nom']){
         $getnom = $bdd->prepare("SELECT nomgroupe from groupe where idgroupe=?");
@@ -133,6 +141,10 @@ function inviter($bdd){
 }
 
 /* cette fonction permet d'afficher les différents groupes sous forme de boutons, ce qui nous permet de changer de groupes*/
+/**
+ * @param $bdd
+ * @return void
+ */
 function affichergrp($bdd){
     $grps = $bdd->prepare("SELECT * from groupe where email=?");
     $grps->execute(array($_SESSION['Pseudo']));
@@ -173,6 +185,10 @@ function affichergrp($bdd){
 <?php
 }
 /*nous permet d'afficher les différents utilisateurs présents dans le groupe, et de les modifiers/supprimer si nous avons le droit*/
+/**
+ * @param $bdd
+ * @return void
+ */
 function afficheruser($bdd){
     $users = $bdd->prepare("SELECT * FROM groupe where idgroupe=? and email!=?");
     $users->execute(array($_SESSION['IdChat'], $_SESSION['Pseudo']));
@@ -215,6 +231,10 @@ if (isset($_POST['button'])){
 }
 /*permet de supprimer l'utilisateur du groupe lorsqu'on appuie sur le bouton*/
 
+/**
+ * @param $bdd
+ * @return void
+ */
 function supprimer($bdd){
     if (isset($_POST['supprimer'])) {
         $admin = $bdd->prepare("SELECT admin FROM groupe where email=?");
@@ -227,6 +247,10 @@ function supprimer($bdd){
 }
 
 /*permet de passer admin l'utilisateur lorsqu'on appuie sur le bouton*/
+/**
+ * @param $bdd
+ * @return void
+ */
 function admin($bdd){
     if (isset($_POST['admin'])){
         $admin = $bdd->prepare("SELECT admin FROM groupe where email=?");
@@ -240,6 +264,10 @@ function admin($bdd){
 
 /*permet de supprimer toute la conversation*/
 
+/**
+ * @param $bdd
+ * @return void
+ */
 function suppmess($bdd){
     if (isset($_POST['suppmess'])){
         $admin = $bdd->prepare("SELECT admin FROM groupe where email=?");

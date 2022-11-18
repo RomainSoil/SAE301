@@ -1,7 +1,13 @@
 <?php
 
+/**
+ *
+ */
 class username
 {
+    /**
+     * @param $id
+     */
     function username($id){
         $classe = new Connexion();
         $bdd= ConnectionBDD::getInstance()::getpdo();

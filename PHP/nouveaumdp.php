@@ -24,13 +24,13 @@ session_start();
 
 <!--box de milieu-->
 
-<div class="mess">
+<h3>
     Entrez votre nouveau mot de passe, <br>
-        Puis retournez vous connecter.
-</div>
+    Puis retournez vous connecter.
+</h3>
 <br>
 
-<div class ="box">
+<div class ="inscription">
 
     <form action="" method="post">
         <br>
@@ -71,6 +71,9 @@ require ('Connexion.php');
 require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
+/**
+ * @return void
+ */
 function changemail()
 {
     $conn = ConnectionBDD::getInstance();
@@ -84,6 +87,6 @@ function changemail()
             $MDP->changement($pdo, $_POST['mdp'], $co);
         }
 
-}}
+    }}
 changemail();
 ?>
