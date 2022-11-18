@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +32,7 @@ include("BarreScenario.html");
             <input type="submit" value="Besoin d'aide ?">
         </form>
     </div>
+
 
 
 
@@ -75,7 +76,9 @@ include("BarreScenario.html");
     $pdo = ConnectionBDD::getInstance();
     $bdd = $pdo::getpdo();
     /* permet de créer une liste déroulante avec tous les patients*/
-        $patients = $bdd->query("SELECT * FROM patient");
+        $patients = $bdd->prepare("SELECT * FROM patient where emailprof=?");
+        $patients->bindParam(1,$_SESSION['email']);
+        $patients->execute();
 
         ?>
     <form method="post">

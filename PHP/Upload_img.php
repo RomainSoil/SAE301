@@ -19,7 +19,7 @@
 function uploadimg()
 {
 
-    $uploaddir = 'C:\Users\coren\PhpstormProjects\SAE301\PHP\img\Radio';
+    $uploaddir = 'C:\Apache24\htdocs\uploadPNG';
     $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 
     echo '<pre>';
