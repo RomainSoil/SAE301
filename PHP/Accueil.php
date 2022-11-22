@@ -62,11 +62,12 @@ require('Connexion.php');
 require('username.php');
 $_SESSION['IdChat']=1;
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
+
 if (isset($_SESSION['page'])){
     echo '<script>alert("Le compte est crée")</script>';
 }
-/* La partie de la validation de connexion qui renvoie la page correspondante*/
 
+/* La partie de la validation de connexion qui renvoie la page correspondante*/
 $conn = ConnectionBDD::getInstance();
 $pdo = $conn::getpdo();
 @$ClassMail = new email();
@@ -74,6 +75,7 @@ $ClassConn= new Connexion();
 if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
     if(@$ClassConn->connexionEtu($pdo,$_POST['id'],$_POST['mdp'])) {
         $username = new username();
+        $_SESSION['email']=$_POST['id'];
         $_SESSION['Pseudo']=$_POST['id'];
         $_SESSION['username']=$username->username($_POST['id']);
         $_SESSION['fonction']= 'etu';
@@ -81,6 +83,7 @@ if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
         exit;}
     elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
         $username = new username();
+        $_SESSION['email']=$_POST['id'];
         $_SESSION['username']=$username->username($_POST['id']);
         $_SESSION['fonction']= 'prof';
         header('Location:PageProf.php');

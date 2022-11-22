@@ -11,7 +11,7 @@ CREATE table message(
     textmessage text,
     date date,
     idgroupe int not null ,
-    foreign key (idgroupe, email) references groupe(idgroupe, email)
+    foreign key (idgroupe, email) references groupe(idgroupe, email) on delete cascade
 );
 
 drop table if exists groupe cascade;
@@ -19,12 +19,11 @@ drop table if exists groupe cascade;
 CREATE TABLE Groupe (
     idGroupe serial,
     nomGroupe text,
-    email text REFERENCES Etudiant(email),
+    email text REFERENCES Etudiant(email) on delete cascade,
     primary key (idGroupe,email),
     admin boolean not null
 );
 
-delete from prof where nom = 'Soil';
 create TABLE email(
     email text primary key
 );
@@ -63,19 +62,20 @@ Create Table Patient(
     sexe text not null,
     Adresse text not null,
     Ville text not null,
-    CodePostal int not null
+    CodePostal int not null,
+    emailprof text references Prof
 );
 
 
 Create table Scenario (
     idScenario int primary key,
-    email text references Prof,
-    idPatient int references Patient
+    email text references Prof on delete cascade,
+    idPatient int references Patient on delete cascade
 );
 
 Create Table Note (
-    email text references Etudiant,
-    idScenario int references Scenario,
+    email text references Etudiant on delete cascade,
+    idScenario int references Scenario on delete cascade,
     note int not null,
     primary key (email, idScenario)
 );
@@ -94,7 +94,7 @@ Create Table Diagnostic (
     prenom text not null,
     date timestamp not null,
     compteRendu text not null,
-    idPatient int references Patient
+    idPatient int references Patient on delete cascade
 );
 
 drop table if exists prescription;
@@ -103,7 +103,7 @@ Create table Prescription (
     prise date not null,
     dose int not null ,
     medicament text references Medicament,
-    idPatient int references Patient,
+    idPatient int references Patient on delete cascade,
     medecin text not null
 );
 
@@ -112,16 +112,15 @@ insert into medicament values ('medic', 1, 1);
 Create table Radio (
     idRadio serial Primary Key,
      image text not null,
-     idPatient int references Patient
+     idPatient int references Patient on delete cascade
 );
-drop table Neuro;
 Create TABLE Neuro (
     date timestamp not null ,
     t°c float ,
     Glasgow float ,
     EVA int ,
     AlgoPlus int ,
-    idPatient int references Patient,
+    idPatient int references Patient on delete cascade,
     primary key (date,idPatient)
 );
 
@@ -131,7 +130,7 @@ CREATE TABLE Mobilite(
     aideAuLever boolean not null,
     aideAuCoucher boolean not null,
     aideAuFauteil boolean not null,
-    idPatient int references Patient,
+    idPatient int references Patient on delete cascade,
     primary key (date, idPatient)
 
 );
@@ -141,7 +140,7 @@ CREATE table MiseEnSecurite(
     barriereDeLitPrescrite boolean not null ,
     barriereDeLitConfort boolean not null ,
     ServeillanceContention boolean not null ,
-    idPatient int references Patient,
+    idPatient int references Patient on delete cascade,
     primary key (date, idPatient)
 
 );
@@ -151,7 +150,7 @@ Create table Elimination(
     Selles boolean not null ,
     Gaz boolean not null ,
     Urines boolean not null ,
-    idPatient int references Patient,
+    idPatient int references Patient on delete cascade,
     primary key (date, idPatient)
 );
 
@@ -162,7 +161,7 @@ Create Table Alimentation(
     SurveillanceAlimentation boolean not null ,
     regime boolean not null ,
     AideAuRepas boolean not null ,
-    idPatient int references Patient,
+    idPatient int references Patient on delete cascade,
     primary key (date , idPatient)
 
 );
@@ -173,7 +172,7 @@ CREATE table  SoinsRelationnels(
     Accueil boolean not null ,
     EntretienInfirmer boolean not null ,
     ToucherMassage boolean not null ,
-    idPatient int references Patient,
+    idPatient int references Patient on delete cascade ,
     primary key (date, idPatient)
 
 );
@@ -183,7 +182,7 @@ Create table Cardio(
     TA text ,
     pls int  ,
     ECG text  ,
-    idPatient int references Patient,
+    idPatient int references Patient on delete cascade,
     primary key (date,idPatient)
 
 );
@@ -193,7 +192,7 @@ Create table Respi(
     SaO2 int  ,
     Fr int  ,
     O2 text ,
-    idPatient int references Patient,
+    idPatient int references Patient on delete cascade,
     primary key (date, idPatient)
 
 );
@@ -209,7 +208,7 @@ Create table Hygiene(
     PreventionDescare boolean not null ,
     ChangementDePos boolean not null,
     MatelasAAir boolean not null ,
-    idPatient int references Patient,
+    idPatient int references Patient on delete cascade,
     primary key (date , idPatient)
 
 );
@@ -221,7 +220,7 @@ Create table Soins(
     SurveillanceGlycemique float not null ,
     BasDeContention boolean not null ,
     Autre text not null ,
-    idPatient int references Patient,
+    idPatient int references Patient on delete cascade,
     primary key (date, idPatient)
 
 )

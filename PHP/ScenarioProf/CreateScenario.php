@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -35,11 +35,27 @@ include("BarreScenario.html");
 
 
 
+
 <!--selection du patient avec ses options de navigation-->
 
     <?php
+    include ('../ConnectionBDD.php');
+    $pdo = ConnectionBDD::getInstance();
+    $bdd = $pdo::getpdo();
 
+    function effacer($bdd){
+    if (isset($_POST['patient']) && $_POST['patient'] != 2) {
+    if (isset($_POST['effacer'])) {
+        $patient = $bdd->prepare("Delete FROM patient where idpatient=?");
+        $patient->bindParam(1,$_POST['patient']);
+        $patient->execute();
+    }
+    }
+    }
     /* permet de pouvoir appuyer sur le bouton 'ajouter contraintes' si et seulement si un patient est séléctionné*/
+    /**
+     * @return void
+     */
     function contrainte()
     {
         if (isset($_POST['patient']) && $_POST['patient'] != 2) {
@@ -51,6 +67,9 @@ include("BarreScenario.html");
     }
 
     /* permet d'appuyer sur le bouton afficher scénario si et seulement si un patient est séléctionné*/
+    /**
+     * @return void
+     */
     function affichersce()
     {
         if (isset($_POST['patient']) && $_POST['patient'] != 2) {
@@ -60,16 +79,16 @@ include("BarreScenario.html");
             }
         }
     }
-
+    effacer($bdd);
     affichersce();
     contrainte();
 
 
-    include ('../ConnectionBDD.php');
-    $pdo = ConnectionBDD::getInstance();
-    $bdd = $pdo::getpdo();
+
     /* permet de créer une liste déroulante avec tous les patients*/
-        $patients = $bdd->query("SELECT * FROM patient");
+        $patients = $bdd->prepare("SELECT * FROM patient where emailprof=?");
+        $patients->bindParam(1,$_SESSION['email']);
+        $patients->execute();
 
         ?>
     <form method="post">
@@ -90,6 +109,7 @@ include("BarreScenario.html");
                 </select>
         <input type="submit" value="Ajouter une contrainte" name="Contrainte">
         <input type="submit" value="Afficher le scénario" name="affiche">
+        <input type="submit" value="Effacer le patient" name = "effacer">
     </form>
 <br>
 
