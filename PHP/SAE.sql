@@ -13,7 +13,8 @@ CREATE TABLE Groupe (
     nomGroupe text,
     email text REFERENCES Etudiant(email) on delete cascade,
     primary key (idGroupe,email),
-    admin boolean not null
+    admin boolean not null,
+    sujet text not null
 );
 
 create TABLE email(
@@ -75,7 +76,6 @@ CREATE table Medicament(
     CP int not null,
     prise text not null
 );
-
 Create table Prescription (
     idPrescription serial primary key,
     prise timestamp not null,
@@ -189,7 +189,6 @@ Create table Hygiene(
     primary key (date , idPatient)
 
 );
-
 Create table Soins(
     date timestamp not null ,
     SurveillancePerf boolean not null ,
@@ -203,6 +202,7 @@ Create table Soins(
     primary key (date, idPatient)
 
 );
+drop table Diagnostic;
 CREATE TABLE Diagnostic
 (
     idDiag      serial Primary Key,
@@ -210,7 +210,7 @@ CREATE TABLE Diagnostic
     Nom         text      not null,
     Prenom      text      not null,
     compteRendu text      not null,
-    idPatient   int references Patient
+    idPatient int references Patient on delete cascade
 
 
 )

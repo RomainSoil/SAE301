@@ -16,11 +16,12 @@ session_start();
 <?php
 include ('BarreScenario.html');
 include ('EnteteV2.html');
-include ('../ConnectionBDD.php');
+require ('../ConnectionBDD.php');
+
 ?>
     <h2>Date du Diagnostic</h2>
 
-<Form action="Prescription.php" method="post">
+<Form action="Diagnostic.php" method="post">
     Date :
     <input type="datetime-local" name="date" id="date" required>
     <h2>Intervenant</h2>
@@ -39,6 +40,10 @@ Image (Facultatif) ?: <input name="userfile" type="file" />
         $bdd = ConnectionBDD::getInstance()::getpdo(); insertDiag($bdd)?>">
     </div>
 </Form>
+<br>
+<form action="Prescription.php" method="post">
+    <input type="submit" name="suivant" value="Suivant">
+</form>
 
 <footer>    <form action="../Accueil.php" method="post">
         <input type="submit" value="Besoin d'aide ?">

@@ -200,6 +200,32 @@ function PourAvoirToutesLesDatesDeLaPresc($bdd, $id){
     $array = $sql->fetchAll();
     return $array;
 }
+
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
+function PourAvoirToutesLesDatesDeLaDiag($bdd, $id){
+    $sql = $bdd->prepare("SELECT date FROM diagnostic where idpatient=? order by date");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+}
+
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
+function affDiag($bdd, $id)
+{
+    $sql = $bdd->prepare("SELECT * FROM diagnostic where idpatient=? order by date");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+}
+?><br><?php
 /**
  * @param $bdd
  * @param $id
@@ -322,7 +348,70 @@ function affichage($bdd, $id){
 
 
 
-    <br><br>
+    <br>
+    <table>
+        <br><br>
+        <thead>
+
+
+        <tr>
+            <th> Date </th>
+
+            <?php
+            $laListeDesDates=PourAvoirToutesLesDatesDeLaDiag($bdd,$id);
+
+            for ($i=0; $i<count( $laListeDesDates); $i++){
+                ?>
+                <th> <?php echo  $laListeDesDates[$i][0]?></th>
+                <?php
+            }
+            ?>
+        </tr>
+        <th><div class="title">Intervenant </div></th>
+
+        <tr>
+            <th> Nom </th>
+            <?php
+            @$Diag=affDiag($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td> <?php echo $Diag[$i][2]?> </td>
+                <?php
+            }
+            ?>
+
+
+        </tr>
+        <tr>
+            <th> Prenom </th>
+            <?php
+            @$Diag=affDiag($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td> <?php echo $Diag[$i][3]?> </td>
+                <?php
+            }
+            ?>
+        </tr>
+        <th><div class="title">Diagnostic </div></th>
+
+        <tr>
+            <th> Compte Rendu </th>
+            <?php
+            @$Diag=affDiag($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td> <?php echo $Diag[$i][4]?> </td>
+                <?php
+            }
+            ?>
+
+
+        </tr>
+        </thead>
+    </table>
+
+<br><br>
     <table>
         <tbody>
         <thead>

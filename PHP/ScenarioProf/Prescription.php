@@ -1,8 +1,5 @@
 <?php
 session_start();
-@$_SESSION['SaO2']=$_POST['SaO2'];
-@$_SESSION['FR']=$_POST['FR'];
-@$_SESSION['O2']=$_POST['O2'];
 
 require ('../ConnectionBDD.php');
 ?>
@@ -61,6 +58,7 @@ include ('EnteteV2.html');
 </footer>
     </body>
 </html>
+
 <?php
     /* permet d'ajouter a la base de donnée la prescription du patient*/
     /**
@@ -69,12 +67,12 @@ include ('EnteteV2.html');
     */
     function insert($bdd){
     if (isset($_POST['creermedic'])){
-    $sql = $bdd->prepare("INSERT INTO prescription(prise, dose, medicament, idpatient, medecin ) values (?, ?, ?, ?, ?)");
-    $sql ->bindParam(1, $_POST['prisemedic']);
-    $sql ->bindParam(2, $_POST['cp']);
-    $sql ->bindParam(3, $_POST['nommedic']);
-    $sql ->bindParam(4, $_SESSION['patient']);
-    $sql ->bindParam(5, $_POST['nom']);
+        $sql = $bdd->prepare("INSERT INTO prescription(prise, dose, medicament, idpatient, medecin ) values (?, ?, ?, ?, ?)");
+        $sql ->bindParam(1, $_POST['prisemedic']);
+        $sql ->bindParam(2, $_POST['cp']);
+        $sql ->bindParam(3, $_POST['nommedic']);
+        $sql ->bindParam(4, $_SESSION['patient']);
+        $sql ->bindParam(5, $_POST['nom']);
 
     $sql ->execute();
     }
