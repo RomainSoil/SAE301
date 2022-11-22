@@ -16,14 +16,21 @@
 </html>
 
 <?php
-function uploadimg()
+require('ConnectionBDD.php');
+$conn=ConnectionBDD::getInstance();
+$bdd= $conn::getpdo();
+
+function uploadimg($bdd)
 {
 
-    $uploaddir = 'C:\Apache24\htdocs\uploadPNG';
+    $uploaddirname= $_FILES['userfile']['name'];
+    $uploaddir = "C:/Apache24/htdocs/";
     $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 
     echo '<pre>';
     if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+        $insertImg= $bdd->prepare('INSERT INTO radio(image, idpatient) VALUES(?,?)');
+        $insertImg->execute(array($uploaddirname,1));
         echo "File is valid, and was successfully uploaded.\n";
     } else {
         echo "Possible file upload attack!\n";
@@ -35,7 +42,7 @@ function uploadimg()
     print "</pre>";
 }
 if(isset($_FILES['userfile'])){
-    uploadimg();
+    uploadimg($bdd);
 }
 
 ?>
