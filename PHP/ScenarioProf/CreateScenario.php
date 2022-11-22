@@ -53,6 +53,9 @@ include("BarreScenario.html");
     }
     }
     /* permet de pouvoir appuyer sur le bouton 'ajouter contraintes' si et seulement si un patient est séléctionné*/
+    /**
+     * @return void
+     */
     function contrainte()
     {
         if (isset($_POST['patient']) && $_POST['patient'] != 2) {
@@ -64,6 +67,9 @@ include("BarreScenario.html");
     }
 
     /* permet d'appuyer sur le bouton afficher scénario si et seulement si un patient est séléctionné*/
+    /**
+     * @return void
+     */
     function affichersce()
     {
         if (isset($_POST['patient']) && $_POST['patient'] != 2) {

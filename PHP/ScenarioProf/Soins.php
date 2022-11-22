@@ -1,6 +1,6 @@
 <?php
-session_start();
 
+session_start();
 @$_SESSION['Date']=date("Y-m-d H:m:s", strtotime($_POST["date"]));
 @$_SESSION['prescrite']=$_POST['prescrite'];
 @$_SESSION['confort']=$_POST['confort'];
@@ -34,11 +34,11 @@ include ('EnteteV2.html');
     <input type="radio" name="accueil" value="oui" required>oui
     <input type="radio" name="accueil" value="non" checked="checked" required>non
     <br><br>
-    Le patient a t-il eu un entretien avec un infirmier?:
+    Le patient a-t-il eu un entretien avec un infirmier?:
     <input type="radio" name="entretien" value="oui" required>oui
     <input type="radio" name="entretien" value="non" checked="checked" required>non
     <br><br>
-    Le patient a t-il eu un toucher ou un massage :
+    Le patient a-t-il eu un toucher ou un massage :
     <input type="radio" name="massage" value="oui" required>oui
     <input type="radio" name="massage" value="non" checked="checked" required>non
     <br>

@@ -21,9 +21,7 @@ include("BarreScenario.html");
 include ('../ConnectionBDD.php');
 
 ?>
-<div class="Titre">
-    <h1>Le Scénario</h1>
-</div>
+    <h2>Le Scénario</h2>
 </body>
 </html>
 
@@ -33,6 +31,11 @@ $pdo = ConnectionBDD::getInstance();
 $bdd = $pdo::getpdo();
 
 /* permet d'afficher les données du patient séléctionné*/
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
 function affpatient($bdd, $id){
     $sql = $bdd->prepare("SELECT * from patient where idpatient=?");
     $sql->execute(array($id));
@@ -41,14 +44,24 @@ function affpatient($bdd, $id){
     ?><br><?php
 }
 /* permet d'afficher les données de la prescription du patient séléctionné*/
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
 function affpresc($bdd, $id){
     $sql = $bdd->prepare("SELECT * from prescription where idpatient=?");
     $sql->execute(array($id));
-    $array = $sql->fetch();
+    $array = $sql->fetchAll();
     return $array;
 ?><br><?php
 }
 
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
 function affsecu($bdd, $id){
     $sql = $bdd->prepare("SELECT * FROM miseensecurite where idpatient=?");
     $sql->execute(array($id));
@@ -57,6 +70,11 @@ function affsecu($bdd, $id){
     ?><br><?php
 }
 
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
 function affsoinsrel($bdd, $id){
    $sql = $bdd->prepare("SELECT * FROM soinsrelationnels where idpatient=? order by date");
    $sql->execute(array($id));
@@ -66,7 +84,26 @@ function affsoinsrel($bdd, $id){
 }
 
 
-    function affelim($bdd, $id){
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
+function affsoins($bdd, $id){
+    $sql = $bdd->prepare("SELECT * FROM soins where idpatient=? order by date");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+    ?><br><?php
+}
+
+
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
+function affelim($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM elimination where idpatient=? order by date");
         $sql->execute(array($id));
         $array = $sql->fetchAll();
@@ -74,7 +111,12 @@ function affsoinsrel($bdd, $id){
         ?><br><?php
     }
 
-    function affcardio($bdd, $id){
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
+function affcardio($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM cardio where idpatient=? order by date");
         $sql->execute(array($id));
         $array = $sql->fetchAll();
@@ -82,7 +124,12 @@ function affsoinsrel($bdd, $id){
         ?><br><?php
     }
 
-    function affmobil($bdd, $id){
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
+function affmobil($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM mobilite where idpatient=? order by date");
         $sql->execute(array($id));
         $array = $sql->fetchAll();
@@ -90,21 +137,38 @@ function affsoinsrel($bdd, $id){
         ?><br><?php
     }
 
-    function affhyg($bdd, $id){
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
+function affhyg($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM hygiene where idpatient=? order by date");
         $sql->execute(array($id));
         $array = $sql->fetchAll();
         return $array;
         ?><br><?php
     }
-    function affalim($bdd, $id){
+
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
+function affalim($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM alimentation where idpatient=? order by date");
         $sql->execute(array($id));
         $array = $sql->fetchAll();
         return $array;
         ?><br><?php
     }
-    function affneuro($bdd, $id)
+
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
+function affneuro($bdd, $id)
     {
         $sql = $bdd->prepare("SELECT * FROM neuro where idpatient=? order by date");
         $sql->execute(array($id));
@@ -113,19 +177,48 @@ function affsoinsrel($bdd, $id){
     }
         ?><br><?php
 
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
 function PourAvoirToutesLesDatesDeLaMatrice($bdd, $id){
     $sql = $bdd->prepare("SELECT date FROM miseensecurite where idpatient=? order by date");
     $sql->execute(array($id));
     $array = $sql->fetchAll();
     return $array;
 }
-    function affrespi($bdd, $id){
+
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
+function PourAvoirToutesLesDatesDeLaPresc($bdd, $id){
+    $sql = $bdd->prepare("SELECT prise FROM prescription where idpatient=? order by prise");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+}
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
+function affrespi($bdd, $id){
         $sql = $bdd->prepare("SELECT * FROM respi where idpatient=? order by date");
         $sql->execute(array($id));
         $array = $sql->fetchAll();
         return $array;
         }
+
+
 ?><br><?php
+/**
+ * @param $bdd
+ * @param $id
+ * @return void
+ */
 function affichage($bdd, $id){
 ?>
 <table>
@@ -162,16 +255,80 @@ function affichage($bdd, $id){
 
     </tr>
 
-
-
     </tbody>
 </table>
+
+    <table>
+        <br><br>
+        <thead>
+
+
+        <tr>
+            <th> Date </th>
+
+            <?php
+            $laListeDesDates=PourAvoirToutesLesDatesDeLaPresc($bdd,$id);
+
+            for ($i=0; $i<count( $laListeDesDates); $i++){
+                ?>
+                <th> <?php echo  $laListeDesDates[$i][0]?></th>
+                <?php
+            }
+            ?>
+        </tr>
+        <th><div class="title">Prescription </div></th>
+
+        <tr>
+            <th> Medicament </th>
+            <?php
+            @$Presc=affpresc($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td> <?php echo $Presc[$i][3]?> </td>
+                <?php
+            }
+            ?>
+
+
+        </tr>
+        <tr>
+        <th> Médecin </th>
+            <?php
+            @$Presc=affpresc($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td> <?php echo $Presc[$i][5]?> </td>
+                <?php
+            }
+            ?>
+        </tr>
+        <tr>
+            <th> Dose </th>
+            <?php
+            @$Presc=affpresc($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td> <?php echo $Presc[$i][2]?> </td>
+                <?php
+            }
+            ?>
+
+
+        </tr>
+        </thead>
+    </table>
+
+
+
+
+
+    <br><br>
     <table>
         <tbody>
         <thead>
 
         <tr>
-        <td> date </td>
+        <td> Date </td>
     <?php
     $laListeDeToutesLesDates=PourAvoirToutesLesDatesDeLaMatrice($bdd,$id);
 
@@ -182,9 +339,9 @@ function affichage($bdd, $id){
             }
             ?>
         </tr>
+        <th><div class="title">Mise en sécurité </div></th>
 
         <tr>
-
             <td> Barrière de lit prescrite </td>
             <?php
             @$MiseEnSecu=affsecu($bdd, $id);
@@ -240,6 +397,7 @@ function affichage($bdd, $id){
 
 
         </tr>
+        <th><div class="title">Soins Relationnels </div></th>
 
         <tr>
 
@@ -280,7 +438,6 @@ function affichage($bdd, $id){
         </tr>
 
         <tr>
-
             <td> Toucher/massage </td>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
@@ -296,6 +453,7 @@ function affichage($bdd, $id){
             ?>
 
         </tr>
+        <th><div class="title">Elimination </div></th>
 
         <tr>
 
@@ -352,6 +510,8 @@ function affichage($bdd, $id){
 
 
         </tr>
+        <th><div class="title">Cardio </div></th>
+
         <tr>
 
             <td> Ta </td>
@@ -386,6 +546,8 @@ function affichage($bdd, $id){
             }
             ?>
         </tr>
+        <th><div class="title">Mobilité </div></th>
+
         <tr>
 
             <td> Aide à la marche </td>
@@ -447,6 +609,8 @@ function affichage($bdd, $id){
                 }
             }?>
         </tr>
+        <th><div class="title">Hygiène </div></th>
+
         <tr>
 
             <td> Toilette </td>
@@ -583,6 +747,8 @@ function affichage($bdd, $id){
                 }
             }?>
         </tr>
+        <th><div class="title">Alimentation </div></th>
+
         <tr>
 
             <td> A jeun </td>
@@ -659,11 +825,121 @@ function affichage($bdd, $id){
                 }
             }?>
         </tr>
+        <th><div class="title">Soins </div></th>
+
+        <tr>
+
+            <td> Surveillance perfusion </td>
+            <?php
+            @$Soins=affsoins($bdd, $id);
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Soins[$i][1]!=null) {?>
+                    <td> <?php echo @$Soins[$i][1]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> Pansement </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Soins[$i][2]!=null) {?>
+                    <td> <?php echo @$Soins[$i][2]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> Surveillance Glycémique (en g/l)  </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Soins[$i][3]!=null) {?>
+                    <td> <?php echo @$Soins[$i][3]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> Bas de contention </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Soins[$i][4]!=null) {?>
+                    <td> <?php echo @$Soins[$i][4]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td>Cathéter veineux périphérique </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Soins[$i][5]!=null) {?>
+                    <td> <?php echo @$Soins[$i][5]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td>Sondage urinaire </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Soins[$i][6]!=null) {?>
+                    <td> <?php echo @$Soins[$i][6]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+        <tr>
+
+            <td> Autre </td>
+            <?php
+            for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
+                if (@$Soins[$i][7]!=null) {?>
+                    <td> <?php echo @$Soins[$i][7]?> </td>
+                <?php } else {
+                    ?>
+                    <td>  </td>
+                    <?php
+                }
+            }
+            ?>
+        </tr>
+        <th><div class="title">Neuro </div></th>
+
         <tr>
 
             <td> Temperature </td>
             <?php
-            @$Neuro=affcardio($bdd, $id);
+            @$Neuro=affneuro($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Neuro[$i][1]!=null) {?>
                     <td> <?php echo @$Neuro[$i][1]?> </td>
@@ -720,6 +996,9 @@ function affichage($bdd, $id){
             }
             ?>
         </tr>
+        <th><div class="title">Respi </div></th>
+
+
         <tr>
 
             <td> SaO2 </td>
@@ -777,3 +1056,5 @@ function affichage($bdd, $id){
 }
 affichage($bdd, $id);
 ?>
+<br><br>
+<button>Retour</button>

@@ -1,8 +1,17 @@
 <?php
 
+/**
+ *
+ */
 class Connexion
 {
     /* permet de vérifier les données lors de la connection d'un étudiant*/
+    /**
+     * @param $bdd
+     * @param $mail
+     * @param $mdp
+     * @return bool
+     */
     function connexionEtu ($bdd, $mail, $mdp ){
 
 
@@ -20,6 +29,12 @@ class Connexion
 
     }
     /* permet de vérifier les données lors de la connection d'un professeur*/
+    /**
+     * @param $bdd
+     * @param $mail
+     * @param $mdp
+     * @return bool
+     */
     function connexionProf ($bdd, $mail, $mdp ){
 
 
@@ -37,6 +52,11 @@ class Connexion
 
     }
     /* permet de savoir si la personne est un prof*/
+    /**
+     * @param $bdd
+     * @param $mail
+     * @return bool
+     */
     function TrouveProf ($bdd, $mail ){
 
 
@@ -54,6 +74,11 @@ class Connexion
 
     }
     /*permet de savoir si la personne est un etudiant*/
+    /**
+     * @param $bdd
+     * @param $mail
+     * @return bool
+     */
     function TrouveETu ($bdd, $mail ){
 
 

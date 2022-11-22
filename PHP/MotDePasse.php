@@ -1,6 +1,15 @@
 <?php
+
+/**
+ *
+ */
 class MotDePasse
 {
+    /**
+     * @param $mdp
+     * @param $mdp2
+     * @return bool
+     */
     function password($mdp, $mdp2)
     {
         $complete= false;
@@ -35,24 +44,31 @@ class MotDePasse
         echo "<br>";
         return $complete;
     }
-function changement($bdd, $mdp, $conn){
-    $hash =password_hash($mdp, PASSWORD_DEFAULT);
-    $mail = $_SESSION['mail'];
-    if ($conn->TrouveETu($bdd, $_SESSION['mail'])){
-        $sql = $bdd->prepare("UPDATE etudiant SET mdp=? WHERE email=?");
-        $req=$sql->execute(array($hash, $mail));
-        echo 'mdp changé';
 
+    /**
+     * @param $bdd
+     * @param $mdp
+     * @param $conn
+     * @return void
+     */
+    function changement($bdd, $mdp, $conn){
+        $hash =password_hash($mdp, PASSWORD_DEFAULT);
+        $mail = $_SESSION['mail'];
+        if ($conn->TrouveETu($bdd, $_SESSION['mail'])){
+            $sql = $bdd->prepare("UPDATE etudiant SET mdp=? WHERE email=?");
+            $req=$sql->execute(array($hash, $mail));
+            echo 'mdp changé';
+
+        }
+        elseif ($conn->TrouveProf($bdd, $_SESSION['mail'])){
+            $sql = $conn->prepare("UPDATE prof SET mdp=? WHERE email=?");
+            $req=$sql->execute(array($hash, $mail));
+            echo 'mdp changé';
+        }
+        else{
+            echo 'mdp pas changé';
+        }
     }
-    elseif ($conn->TrouveProf($bdd, $_SESSION['mail'])){
-        $sql = $conn->prepare("UPDATE prof SET mdp=? WHERE email=?");
-        $req=$sql->execute(array($hash, $mail));
-        echo 'mdp changé';
-    }
-    else{
-        echo 'mdp pas changé';
-    }
-}
 }
 
 

@@ -53,7 +53,7 @@ session_start();
 <!--Le bas de la page-->
 
 <footer>
-    <form action="Login%20Maneo.php" method="post">
+    <form action="Login.php" method="post">
         <input type="submit" value="Créer un compte">
     </form> <br>
     <form action="Accueil.php" method="post">
@@ -78,6 +78,9 @@ require('includes/Exception.php');
 require('includes/PHPMailer.php');
 require('includes/SMTP.php');
 /* permet d'envoyer un mail a la perssonne qui a perdu son mot de passe*/
+/**
+ * @return void
+ */
 function email(){
     $conn = ConnectionBDD::getInstance();
     $pdo = $conn::getpdo();
@@ -108,7 +111,7 @@ function email(){
                         $mail->CharSet='UTF-8';
                         $mail->setFrom('bulletforce59750@gmail.com', 'IFSI');
                         $mail->Subject = 'Réinitialisation de ton mot de passe';
-                        $mail->Body='Copiez ce lien : http://localhost:63342/SAE301/PHP/nouveaumdp.php?_ijt=h7aqva8cftedg67rtq9qiplklt&_ij_reload=RELOAD_ON_SAVE';	                //Le contenu au format HTML
+                        $mail->Body='Changer votre mot de passe : http://localhost:63342/SAE301/PHP/nouveaumdp.php?_ijt=h7aqva8cftedg67rtq9qiplklt&_ij_reload=RELOAD_ON_SAVE';	                //Le contenu au format HTML
                         $mail->addAddress($_POST['mail'], 'Joe User');     //Add a recipient
                         $mail->send();
                         echo 'Message has been sent';
