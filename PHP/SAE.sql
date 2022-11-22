@@ -75,14 +75,6 @@ CREATE table Medicament(
     prise text not null
 );
 
-Create Table Intervenant(
-    idIntervenant serial PRIMARY KEY ,
-    nom text not null,
-    prenom text not null,
-    date timestamp not null,
-    compteRendu text not null
-);
-
 Create table Prescription (
     idPrescription serial primary key,
     prise timestamp not null,
@@ -209,4 +201,14 @@ Create table Soins(
     primary key (date, idPatient)
 
 );
+CREATE TABLE Diagnostic
+(
+    idDiag      serial Primary Key,
+    date        timestamp not null,
+    Nom         text      not null,
+    Prenom      text      not null,
+    compteRendu text      not null,
+    idPatient   int references Patient
 
+
+)

@@ -31,7 +31,7 @@ include ('EnteteV2.html');
     <input type="submit" value="Ajouter" />
     <br><br>
     Medicament :
-    <button type="button" onclick="afficher()">ajouter medicament</button>
+    <button type="button" onclick="afficher()">ajouter médicament</button>
     <br><br>
     <div class="button_Suivant">
         <input type="submit" name="Valider" value="Suivant">

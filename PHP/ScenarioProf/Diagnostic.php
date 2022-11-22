@@ -20,7 +20,7 @@ include ('../ConnectionBDD.php');
 ?>
     <h2>Date du Diagnostic</h2>
 
-<Form method="post">
+<Form action="Prescription.php" method="post">
     Date :
     <input type="datetime-local" name="date" id="date" required>
     <h2>Intervenant</h2>
@@ -35,7 +35,8 @@ Image (Facultatif) ?: <input name="userfile" type="file" />
     <div class="Diagnostic">
     <textarea name="diagnostic" id="diagnostic" rows="20" cols="80" required> </textarea></div> <br>
     <div class="button_Suivant">
-        <input type="submit" name="Valider">
+        <input type="submit" name="Valider" onclick="<?php
+        $bdd = ConnectionBDD::getInstance()::getpdo(); insertDiag($bdd)?>">
     </div>
 </Form>
 
@@ -47,20 +48,23 @@ Image (Facultatif) ?: <input name="userfile" type="file" />
 </html>
 
 <?php
-
-/* permet d'inscrir dans la base de données les informations du diagnostique du patient séléctionné*/
 /**
  * @param $bdd
  * @return void
  */
-function creerDiagnostic($bdd){
+function insertDiag($bdd){
     if (isset($_POST['Valider'])){
-        $sql = $bdd->prepare("INSERT INTO intervenant (nom,prenom,date,compterendu) values (?,?, ?,?)");
-        $sql->execute(array($_POST['nom'],$_POST['prenom'],$_POST['date'],$_POST['diagnostic']));
-        header(header: 'Location: Prescription.php');
-        exit;}
+        $sql = $bdd->prepare("INSERT INTO diagnostic(date,nom,prenom,compterendu, idpatient ) values (?, ?, ?, ?, ?)");
+        $sql ->bindParam(1, $_POST['date']);
+        $sql ->bindParam(2, $_POST['nom']);
+        $sql ->bindParam(3, $_POST['prenom']);
+        $sql ->bindParam(4, $_POST['diagnostic']);
+        $sql ->bindParam(5, $_SESSION['patient']);
+
+        $sql ->execute();
+    }
 }
-creerDiagnostic(ConnectionBDD::getInstance()::getpdo());
+/* permet de créer un nouveau diagnostic et le mettre dans la base de données*/
 
 ?>
 
