@@ -39,7 +39,19 @@ include("BarreScenario.html");
 <!--selection du patient avec ses options de navigation-->
 
     <?php
+    include ('../ConnectionBDD.php');
+    $pdo = ConnectionBDD::getInstance();
+    $bdd = $pdo::getpdo();
 
+    function effacer($bdd){
+    if (isset($_POST['patient']) && $_POST['patient'] != 2) {
+    if (isset($_POST['effacer'])) {
+        $patient = $bdd->prepare("Delete FROM patient where idpatient=?");
+        $patient->bindParam(1,$_POST['patient']);
+        $patient->execute();
+    }
+    }
+    }
     /* permet de pouvoir appuyer sur le bouton 'ajouter contraintes' si et seulement si un patient est séléctionné*/
     function contrainte()
     {
@@ -61,14 +73,12 @@ include("BarreScenario.html");
             }
         }
     }
-
+    effacer($bdd);
     affichersce();
     contrainte();
 
 
-    include ('../ConnectionBDD.php');
-    $pdo = ConnectionBDD::getInstance();
-    $bdd = $pdo::getpdo();
+
     /* permet de créer une liste déroulante avec tous les patients*/
         $patients = $bdd->prepare("SELECT * FROM patient where emailprof=?");
         $patients->bindParam(1,$_SESSION['email']);
@@ -93,6 +103,7 @@ include("BarreScenario.html");
                 </select>
         <input type="submit" value="Ajouter une contrainte" name="Contrainte">
         <input type="submit" value="Afficher le scénario" name="affiche">
+        <input type="submit" value="Effacer le patient" name = "effacer">
     </form>
 <br>
 
