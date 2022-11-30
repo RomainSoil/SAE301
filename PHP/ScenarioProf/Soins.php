@@ -6,6 +6,16 @@ session_start();
 @$_SESSION['confort']=$_POST['confort'];
 @$_SESSION['surveillance']=$_POST['surveillance'];
 
+require ("../ConnectionBDD.php");
+$pdo = ConnectionBDD::getInstance();
+$bdd = $pdo::getpdo();
+require ("../FonctionPhp.php");
+@ajoutDeDonneeAvecLesBooleans($bdd,"Securite",'prescrite');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Securite",'confort');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Securite",'surveillance');
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +39,9 @@ include ('EnteteV2.html');
     <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
     Image (Facultatif) ?: <input name="userfile" type="file" />
     <input type="submit" value="Ajouter" />
+    <br><br>
+    Date :
+    <input type="datetime-local" name="date" id="date" required>
     <br><br>
     Le patient est-il passé par l'accueil:
     <input type="radio" name="accueil" value="oui" required>oui
@@ -56,4 +69,5 @@ include ('EnteteV2.html');
 </html>
 
 <?php
+
 ?>

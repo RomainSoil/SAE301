@@ -1,9 +1,20 @@
 <?php
 session_start();
+@$_SESSION['Date']=date("Y-m-d H:m:s", strtotime($_POST["date"]));
 @$_SESSION['AideMarche']=$_POST['AideMarche'];
 @$_SESSION['AideLever']=$_POST['AideLever'];
 @$_SESSION['AideCoucher']=$_POST['AideCoucher'];
 @$_SESSION['AideFauteil']=$_POST['AideFauteil'];
+require ("../ConnectionBDD.php");
+$pdo = ConnectionBDD::getInstance();
+$bdd = $pdo::getpdo();
+require ("../FonctionPhp.php");
+@ajoutDeDonneeAvecLesBooleans($bdd,"Mobilite",'AideMarche');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Mobilite",'AideLever');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Mobilite",'AideCoucher');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Mobilite",'AideFauteil');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +38,9 @@ include("EnteteV2.html");
     <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
     Image (Facultatif) ?: <input name="userfile" type="file" />
     <input type="submit" value="Ajouter" />
+    <br><br>
+    Date :
+    <input type="datetime-local" name="date" id="date" required>
     <br><br>
     Le patient a t-il eu une toilette ?:
     <input type="radio" name="toilette" value="oui" required>oui
