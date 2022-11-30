@@ -263,8 +263,6 @@ function affichage($bdd, $id){
         <th colspan"1">ville</th>
         <th colspan"1">Code Postale</th>
     </tr>
-    </thead>
-    <tbody>
     <tr>
         <td><?php echo affpatient($bdd, $id)[1]?></td>
         <td><?php echo affpatient($bdd, $id)[2]?></td>
@@ -280,8 +278,9 @@ function affichage($bdd, $id){
         <td> <?php echo affpatient($bdd, $id)[12]?></td>
 
     </tr>
+    </thead>
 
-    </tbody>
+
 </table>
 
     <table>
@@ -417,13 +416,13 @@ function affichage($bdd, $id){
         <thead>
 
         <tr>
-        <td> Date </td>
+            <th> Date </th>
     <?php
     $laListeDeToutesLesDates=PourAvoirToutesLesDatesDeLaMatrice($bdd,$id);
 
     for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 ?>
-                <td> <?php echo $laListeDeToutesLesDates[$i][0]?></td>
+                <th> <?php echo $laListeDeToutesLesDates[$i][0]?></th>
                 <?php
             }
             ?>
@@ -431,7 +430,7 @@ function affichage($bdd, $id){
         <th><div class="title">Mise en sécurité </div></th>
 
         <tr>
-            <td> Barrière de lit prescrite </td>
+            <th> Barrière de lit prescrite </th>
             <?php
             @$MiseEnSecu=affsecu($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
@@ -451,7 +450,7 @@ function affichage($bdd, $id){
 
         <tr>
 
-            <td> Barrière de lit de confort </td>
+            <th> Barrière de lit de confort </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$MiseEnSecu[$i][2] == 0) {?>
@@ -470,7 +469,7 @@ function affichage($bdd, $id){
 
         <tr>
 
-            <td> Surveillance contention </td>
+            <th> Surveillance contention </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$MiseEnSecu[$i][3] == 0) {?>
@@ -490,7 +489,7 @@ function affichage($bdd, $id){
 
         <tr>
 
-            <td> Accueil information </td>
+            <th> Accueil information </th>
             <?php
             @$MiseEnSoinsRelationnel=affsoinsrel($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
@@ -509,7 +508,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Entretien Infirmier </td>
+            <th> Entretien Infirmier </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$MiseEnSoinsRelationnel[$i][2] == 0) {?>
@@ -527,7 +526,7 @@ function affichage($bdd, $id){
         </tr>
 
         <tr>
-            <td> Toucher/massage </td>
+            <th> Toucher/massage </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$MiseEnSoinsRelationnel[$i][3] == 0) {?>
@@ -546,7 +545,7 @@ function affichage($bdd, $id){
 
         <tr>
 
-            <td> Selle </td>
+            <th> Selle </th>
             <?php
             @$Elimination=affelim($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
@@ -565,7 +564,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Gaz </td>
+            <th> Gaz </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Elimination[$i][2] == 0) {?>
@@ -583,7 +582,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Urine </td>
+            <th> Urine </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Elimination[$i][3] == 0) {?>
@@ -603,7 +602,7 @@ function affichage($bdd, $id){
 
         <tr>
 
-            <td> Ta </td>
+            <th> Ta </th>
             <?php
             @$Cardio=affcardio($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
@@ -615,7 +614,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Pls </td>
+            <th> Pls </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 ?>
@@ -626,7 +625,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> ECG </td>
+            <th> ECG </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 ?>
@@ -639,7 +638,7 @@ function affichage($bdd, $id){
 
         <tr>
 
-            <td> Aide à la marche </td>
+            <th> Aide à la marche </th>
             <?php
             @$Mobilite=affmobil($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
@@ -655,7 +654,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Aide au lever </td>
+            <th> Aide au lever </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Mobilite[$i][2] == 0) {?>
@@ -670,7 +669,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Aide au coucher </td>
+            <th> Aide au coucher </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Mobilite[$i][3] == 0) {?>
@@ -685,7 +684,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Aide au fauteuil </td>
+            <th> Aide au fauteuil </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Mobilite[$i][4] == 0) {?>
@@ -702,7 +701,7 @@ function affichage($bdd, $id){
 
         <tr>
 
-            <td> Toilette </td>
+            <th> Toilette </th>
             <?php
             @$Hygiene=affhyg($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
@@ -718,7 +717,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Douche </td>
+            <th> Douche </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Hygiene[$i][2] == 0) {?>
@@ -733,7 +732,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Bain </td>
+            <th> Bain </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Hygiene[$i][3] == 0) {?>
@@ -748,7 +747,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Refection lit </td>
+            <th> Refection lit </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Hygiene[$i][4] == 0) {?>
@@ -763,7 +762,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Change </td>
+            <th> Change </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Hygiene[$i][5] == 0) {?>
@@ -778,7 +777,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Soin de bouche </td>
+            <th> Soin de bouche </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Hygiene[$i][6] == 0) {?>
@@ -793,7 +792,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Prévention d'escare </td>
+            <th> Prévention d'escare </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Hygiene[$i][7] == 0) {?>
@@ -808,7 +807,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Changement de position </td>
+            <th> Changement de position </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Hygiene[$i][8] == 0) {?>
@@ -823,7 +822,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Matelas a l'air </td>
+            <th> Matelas a l'air </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Hygiene[$i][9] == 0) {?>
@@ -840,7 +839,7 @@ function affichage($bdd, $id){
 
         <tr>
 
-            <td> A jeun </td>
+            <th> A jeun </th>
             <?php
             @$Alimentation=affhyg($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
@@ -856,7 +855,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Surveillance hydratation </td>
+            <th> Surveillance hydratation </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Alimentation[$i][2] == 0) {?>
@@ -871,7 +870,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Surveillance alimentaire </td>
+            <th> Surveillance alimentaire </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Alimentation[$i][3] == 0) {?>
@@ -886,7 +885,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Régime </td>
+            <th> Régime </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Alimentation[$i][4] == 0) {?>
@@ -901,7 +900,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Aide au repas </td>
+            <th> Aide au repas </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Alimentation[$i][5] == 0) {?>
@@ -918,7 +917,7 @@ function affichage($bdd, $id){
 
         <tr>
 
-            <td> Surveillance perfusion </td>
+            <th> Surveillance perfusion </th>
             <?php
             @$Soins=affsoins($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
@@ -934,7 +933,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Pansement </td>
+            <th> Pansement </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Soins[$i][2]!=null) {?>
@@ -949,7 +948,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Surveillance Glycémique (en g/l)  </td>
+            <th> Surveillance Glycémique (en g/l)  </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Soins[$i][3]!=null) {?>
@@ -964,7 +963,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Bas de contention </td>
+            <th> Bas de contention </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Soins[$i][4]!=null) {?>
@@ -979,7 +978,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td>Cathéter veineux périphérique </td>
+            <th>Cathéter veineux périphérique </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Soins[$i][5]!=null) {?>
@@ -994,7 +993,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td>Sondage urinaire </td>
+            <th>Sondage urinaire </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Soins[$i][6]!=null) {?>
@@ -1009,7 +1008,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Autre </td>
+            <th> Autre </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Soins[$i][7]!=null) {?>
@@ -1026,7 +1025,7 @@ function affichage($bdd, $id){
 
         <tr>
 
-            <td> Temperature </td>
+            <th> Temperature </th>
             <?php
             @$Neuro=affneuro($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
@@ -1042,7 +1041,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> Glasgow </td>
+            <th> Glasgow </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Neuro[$i][2]!=null) {?>
@@ -1057,7 +1056,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> EVA </td>
+            <th> EVA </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Neuro[$i][3]!=null) {?>
@@ -1072,7 +1071,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> AlgoPlus </td>
+            <th> AlgoPlus </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Neuro[$i][4]!=null) {?>
@@ -1090,7 +1089,7 @@ function affichage($bdd, $id){
 
         <tr>
 
-            <td> SaO2 </td>
+            <th> SaO2 </th>
             <?php
             @$Respi=affrespi($bdd, $id);
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
@@ -1105,7 +1104,7 @@ function affichage($bdd, $id){
             ?>
         <tr>
 
-            <td> FR </td>
+            <th> FR </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Respi[$i][2]!=null) {?>
@@ -1120,7 +1119,7 @@ function affichage($bdd, $id){
         </tr>
         <tr>
 
-            <td> O2 </td>
+            <th> O2 </th>
             <?php
             for ($i=0; $i<count($laListeDeToutesLesDates); $i++){
                 if (@$Respi[$i][3]!=null) {?>

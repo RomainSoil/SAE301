@@ -84,6 +84,7 @@ if (@$ClassMail->email($_POST['id']) && isset($_POST['id'])){
     elseif(@$ClassConn->connexionProf($pdo,$_POST['id'],$_POST['mdp'])) {
         $username = new username();
         $_SESSION['email']=$_POST['id'];
+        $_SESSION['Pseudo']=$_POST['id'];
         $_SESSION['username']=$username->username($_POST['id']);
         $_SESSION['fonction']= 'prof';
         header('Location:PageProf.php');

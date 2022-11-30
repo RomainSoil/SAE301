@@ -158,6 +158,7 @@ function affichergrp($bdd){
                 <input type="text" placeholder="Sujet du groupe" id="nomgrp" name="sujet">
                 <input name="valider" id="valider" type="submit">
             </form>
+            <br>
             <button type="submit" name="inviter" id="inviter" onclick="afficher2()">inviter</button>
             <form style="visibility: hidden" id="invit" method="post">
                 <input type="text" placeholder="email" id="nom" name="nom">

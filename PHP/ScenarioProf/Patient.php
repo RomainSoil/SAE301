@@ -31,7 +31,7 @@ session_start();
         <br>
         IEP :<input type="number" name="IEP" id="IEP" placeholder="Entrez le IEP du patient" required><br>
         IPP :<input type="number" name="IPP" id="IPP" placeholder="Entrez le IPP du patient" required><br><br>
-        Sexe :<select name="sexe" id="sexe">
+        Sexe :<select name="sexe" id="sexe" required>
             <option value="">--Veuillez choisir le sexe--</option>
             <option value="Homme">Homme</option>
             <option value="Femme">Femme</option>

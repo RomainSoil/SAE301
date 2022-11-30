@@ -134,23 +134,23 @@ footer{
 
 table,
 td {
-    border: 1px solid #333;
+    border: 1px solid #0c76d9;
 }
 
 
 thead,
 tfoot {
-    background-color: #333333;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 th{
     color:white;
-    background-color: #333333;
+    background-color: #0c76d9;
 }
 
 div.title{
-    color:#333333;
+    color:dodgerblue;
     background-color: white;
 
 }
@@ -159,4 +159,11 @@ button{
     background-color: dodgerblue;
     color:white;
     border-color: #0c76d9;
+}
+
+div.supprimer{
+    color:red;
+    text-align: center;
+    font-weight: bold;
+
 }

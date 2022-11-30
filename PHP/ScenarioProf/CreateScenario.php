@@ -44,15 +44,14 @@ include("BarreScenario.html");
     $bdd = $pdo::getpdo();
 
     function effacer($bdd){
-    if (isset($_POST['patient']) && $_POST['patient'] != 2) {
-    if (isset($_POST['effacer'])) {
         $patient = $bdd->prepare("Delete FROM patient where idpatient=?");
-        $patient->bindParam(1,$_POST['patient']);
+        $patient->bindParam(1,$_SESSION['patient']);
         $patient->execute();
+        header('CreateScenario.php');
+
+
     }
-    }
-    }
-    /* permet de pouvoir appuyer sur le bouton 'ajouter contraintes' si et seulement si un patient est séléctionné*/
+    /* permet de pouvoir appuyer sur le bouton 'ajouter contraintes' si et seulement si un patient est sélectionné*/
     /**
      * @return void
      */
@@ -79,7 +78,7 @@ include("BarreScenario.html");
             }
         }
     }
-    effacer($bdd);
+
     affichersce();
     contrainte();
 
@@ -93,8 +92,9 @@ include("BarreScenario.html");
         ?>
     <form method="post">
     <select name="patient">
-        <option value="2">Selectionnez un patient</option>
+        <option value="2">Sélectionnez un patient</option>
             <?php
+            $_SESSION['patient']=$_POST['patient'];
             while ($patient = $patients->fetch()){
                 $pat = $patient[1];
                 $pat.=" ";
@@ -106,17 +106,36 @@ include("BarreScenario.html");
     <?php
             }
             ?>
-                </select>
+    </select>
         <input type="submit" value="Ajouter une contrainte" name="Contrainte">
         <input type="submit" value="Afficher le scénario" name="affiche">
-        <input type="submit" value="Effacer le patient" name = "effacer">
+        <input type="button" value="Supprimer le patient" name = "Supprimer" onclick="afficher()">
     </form>
 <br>
 
+<form method="post"  style="visibility: hidden" id="form">
+    <div class="supprimer">
+    Êtes-vous sur de supprimer ce patient ?
+    <input type="submit" name="oui" value="Oui" onclick=<?php effacer($bdd)?>>
+    <input type="button" name="Non" value="Non" onclick="afficher()">
+    </div>
+</form>
 </body>
 
 </html>
 
-
+<script>
+    /* permet d'afficher ou non la création de médicaments*/
+    e=true;
+    function afficher(){
+        if (e) {
+            document.getElementById('form').setAttribute('style', 'visibility:visible')
+            e=false;
+        }else {
+            document.getElementById('form').setAttribute('style', 'visibility:hidden')
+            e=true;
+        }
+    }
+</script>
 
 
