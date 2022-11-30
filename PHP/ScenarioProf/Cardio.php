@@ -1,8 +1,16 @@
 <?php
 session_start();
+@$_SESSION['Date']=date("Y-m-d H:m:s", strtotime($_POST["date"]));
 @$_SESSION['urine']=$_POST['urine'];
 @$_SESSION['gaz']=$_POST['gaz'];
 @$_SESSION['selles']=$_POST['selles'];
+require ("../ConnectionBDD.php");
+$pdo = ConnectionBDD::getInstance();
+$bdd = $pdo::getpdo();
+require ("../FonctionPhp.php");
+@ajoutDeDonneeAvecLesBooleans($bdd,"Elimation",'urine');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Elimation",'gaz');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Elimation",'selles');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,8 +36,10 @@ session_start();
     Image (Facultatif) ?: <input name="userfile" type="file" />
     <input type="submit" value="Ajouter" />
     <br><br>
+    Date :
+    <input type="datetime-local" name="date" id="date" required><br><Br>
     TA : <input type="text" name="TA" id="TA" > <br><br>
-    PLS :<input type ="number" name="pls" id=pls> <br><br>
+    PLS :<input type ="text" name="pls" id=pls> <br><br>
     ECG :<input type="text" name="ECG" id="ECG">
     <br><br>
     <div class="button_Suivant">

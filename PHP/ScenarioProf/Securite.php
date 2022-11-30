@@ -30,9 +30,8 @@ include ('EnteteV2.html');
     Image (Facultatif) ?: <input name="userfile" type="file" />
     <input type="submit" value="Ajouter" />
     <br><br>
-    Date :
-        <input type="datetime-local" name="date" id="date" required>
-    <h4>La date sélectionnée sera identique pour les catégories suivantes, vos informations seront enregistrées dans cette dernière catégorie.</h4>
+        Date :
+            <input type="datetime-local" name="date" id="date" required>
     <br><br>
     Une barriere de lit prescrite pour le patient :
              <input type="radio" name="prescrite" value="oui" required>oui

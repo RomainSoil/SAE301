@@ -213,4 +213,39 @@ CREATE TABLE Diagnostic
     idPatient int references Patient on delete cascade
 
 
-)
+);
+
+
+
+/* nouveau modèle de donnée*/
+
+Create table Categorie(
+    nom text primary key,
+    ordreDePriorite int
+);
+
+Create table Donnee (
+    idDonnee serial primary key,
+    date timestamp not null,
+    nom text not null,
+    donnee text not null,
+    idPatient int references Patient
+);
+Create table CategorieDonnee
+(
+    nom      text references Categorie on delete cascade,
+    idDonnee serial references Donnee on delete cascade,
+    primary key (nom,idDonnee)
+);
+
+Insert into categorie (nom) values ('Securite');
+Insert into categorie (nom) values ('Soins relationnel');
+Insert into categorie (nom) values ('Elimation');
+Insert into categorie (nom) values ('Cardio');
+Insert into categorie (nom) values ('Mobilite');
+Insert into categorie (nom) values ('Hygiene');
+Insert into categorie (nom) values ('Alimentation');
+Insert into categorie (nom) values ('Soins');
+Insert into categorie (nom) values ('Neuro');
+Insert into categorie (nom) values ('Respi');
+

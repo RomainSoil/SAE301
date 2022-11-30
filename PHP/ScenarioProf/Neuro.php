@@ -1,13 +1,25 @@
 <?php
 session_start();
-
+@$_SESSION['Date']=date("Y-m-d H:m:s", strtotime($_POST["date"]));
 @$_SESSION['surveillancePerf']=$_POST['surveillancePerf'];
 @$_SESSION['pansements']=$_POST['pansements'];
-@$_SESSION['glycémique']=$_POST['glycémique'];
+@$_SESSION['glycemique']=$_POST['glycemique'];
 @$_SESSION['contentions']=$_POST['contentions'];
-@$_SESSION['Cathéter']=$_POST['Cathéter'];
+@$_SESSION['Catheter']=$_POST['Catheter'];
 @$_SESSION['sondageurinaire']=$_POST['sondageurinaire'];
 @$_SESSION['autre']=$_POST['autre'];
+
+require ("../ConnectionBDD.php");
+$pdo = ConnectionBDD::getInstance();
+$bdd = $pdo::getpdo();
+require ("../FonctionPhp.php");
+ajoutDeDonneeAvecLesBooleans($bdd,"Soins",'surveillancePerf');
+ajoutDeDonneeAvecLesBooleans($bdd,"Soins",'pansements');
+ajoutDeDonneeSansLesBooleans($bdd,"Soins",'glycemique',$_POST['glycemique']);
+ajoutDeDonneeAvecLesBooleans($bdd,"Soins",'contentions');
+ajoutDeDonneeSansLesBooleans($bdd,"Soins",'Catheter',$_POST['Catheter']);
+ajoutDeDonneeSansLesBooleans($bdd,"Soins",'sondageurinaire',$_POST['sondageurinaire']);
+ajoutDeDonneeSansLesBooleans($bdd,"Soins",'autre',$_POST['autre']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,13 +43,16 @@ include ('EnteteV2.html');
     Image (Facultatif) ?: <input name="userfile" type="file" />
     <input type="submit" value="Ajouter" />
     <br><br>
-    Temperature : <input type="number" step="0.01" name="temperature">
+    Date :
+    <input type="datetime-local" name="date" id="date" required>
     <br><br>
-    Glasgow : <input type="number" step="0.01" name="glasgow">
+    Temperature : <input type="text" name="temperature">
     <br><br>
-    EVA : <input type="number" name="EVA">
+    Glasgow : <input type="text" name="glasgow">
     <br><br>
-    AlgoPlus : <input type="number" name="AlgoPlus">
+    EVA : <input type="text" name="EVA">
+    <br><br>
+    AlgoPlus : <input type="text" name="AlgoPlus">
     <br><br>
     <div class="button_Suivant">
         <input type="submit" value="Valider" name="Valdider">

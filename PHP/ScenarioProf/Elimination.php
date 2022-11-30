@@ -1,8 +1,16 @@
 <?php
 session_start();
+@$_SESSION['Date']=date("Y-m-d H:m:s", strtotime($_POST["date"]));
 @$_SESSION['massage']=$_POST['massage'];
 @$_SESSION['entretien']=$_POST['entretien'];
 @$_SESSION['accueil']=$_POST['accueil'];
+require ("../ConnectionBDD.php");
+$pdo = ConnectionBDD::getInstance();
+$bdd = $pdo::getpdo();
+require ("../FonctionPhp.php");
+@ajoutDeDonneeAvecLesBooleans($bdd,"Soins relationnel",'massage');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Soins relationnel",'entretien');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Soins relationnel",'accueil');
 
 ?>
 <!DOCTYPE html>
@@ -29,6 +37,9 @@ include("EnteteV2.html");
     <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
     Image (Facultatif) ?: <input name="userfile" type="file" />
     <input type="submit" value="Ajouter" />
+    <br><br>
+    Date :
+    <input type="datetime-local" name="date" id="date" required>
     <br><br>
     Le patient a t-il eu des selles ?:
     <input type="radio" name="selles" value="oui" required>oui

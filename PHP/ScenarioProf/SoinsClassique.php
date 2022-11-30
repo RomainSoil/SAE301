@@ -1,10 +1,20 @@
 <?php
 session_start();
+@$_SESSION['Date']=date("Y-m-d H:m:s", strtotime($_POST["date"]));
 @$_SESSION['alimentaire']=$_POST['alimentaire'];
 @$_SESSION['hydratation']=$_POST['hydratation'];
 @$_SESSION['regime']=$_POST['regime'];
 @$_SESSION['jeun']=$_POST['jeun'];
 @$_SESSION['aideRepas']=$_POST['aideRepas'];
+require ("../ConnectionBDD.php");
+$pdo = ConnectionBDD::getInstance();
+$bdd = $pdo::getpdo();
+require ("../FonctionPhp.php");
+@ajoutDeDonneeAvecLesBooleans($bdd,"Alimentation",'alimentaire');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Alimentation",'hydratation');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Alimentation",'regime');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Alimentation",'jeun');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Alimentation",'aideRepas');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +39,9 @@ include ('EnteteV2.html');
     Image (Facultatif) ?: <input name="userfile" type="file" />
     <input type="submit" value="Ajouter" />
     <br><br>
+    Date :
+    <input type="datetime-local" name="date" id="date" required>
+    <br><br>
     Le patient a-t-il une surveillance perf ? :
     <input type="radio" name="surveillancePerf" value="oui" required>oui
     <input type="radio" name="surveillancePerf" value="non" checked="checked" required>non
@@ -38,7 +51,7 @@ include ('EnteteV2.html');
     <input type="radio" name="pansements" value="non" checked="checked" required>non
     <br><br>
     Surveillance Glycémique (en g/l) :
-    <input type="number" step="0.01" name="glycémique" value="oui" required>
+    <input type="text" name="glycemique" value="oui" required>
     <br>
     <br>
     Le patient a-t-il des bas de contentions ? :
@@ -46,7 +59,7 @@ include ('EnteteV2.html');
     <input type="radio" name="contentions" value="non" checked="checked" required>non
     <br><br>
     Cathéter veineux périphérique ? :
-    <input type="text" name="Cathéter" required>
+    <input type="text" name="Catheter" required>
     <br><br>
     Sondage urinaire ? :
     <input type="text" name="sondageurinaire" required>
