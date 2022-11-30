@@ -45,3 +45,14 @@ function ajoutDeDonneeSansLesBooleans($bdd,$categorie,$column,$donnee){
     $sql->bindParam(2,$id);
     $sql->execute();
 }
+
+function AvoirLesDonneeDunPatient ($bdd){
+    $sql=$bdd->prepare("Select c.nom, donnee.donnee, date from donnee join categoriedonnee c on donnee.iddonnee = c.iddonnee join patient p on donnee.idpatient = p.idpatient join categorie c2 on c.nom = c2.nom 
+        where p.idpatient=? order by (c.nom,date)");
+    $sql->bindParam(1,$_SESSION['scenario']);
+    $sql->execute();
+    $array = $sql->fetchAll();
+    return $array;
+
+
+}

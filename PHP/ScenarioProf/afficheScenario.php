@@ -1145,7 +1145,7 @@ function affichage($bdd, $id){
 }
 affichage($bdd, $id);
 ?>
-<br><br>
+<br><br>)
 <a href="CreateScenario.php">
 <button>Retour</button>
 </a>

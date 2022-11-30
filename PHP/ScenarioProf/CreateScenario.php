@@ -75,7 +75,7 @@ include("BarreScenario.html");
         if (isset($_POST['patient']) && $_POST['patient'] != 2) {
             if (isset($_POST['affiche'])) {
                 $_SESSION['scenario'] = $_POST['patient'];
-                header('Location: afficheScenario.php');
+                header('Location: afficheScenario2.php');
             }
         }
     }
