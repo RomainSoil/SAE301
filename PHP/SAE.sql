@@ -57,9 +57,8 @@ Create Table Patient(
     emailprof text references Prof
 );
 
-
 Create table Scenario (
-    idScenario int primary key,
+    idScenario serial primary key,
     email text references Prof on delete cascade,
     idPatient int references Patient on delete cascade
 );
@@ -249,3 +248,22 @@ Insert into categorie (nom) values ('Soins');
 Insert into categorie (nom) values ('Neuro');
 Insert into categorie (nom) values ('Respi');
 
+
+Create table GroupeClasse(
+    idGroupe serial primary key ,
+    nom text not null
+
+);
+Create table GroupeEtudiant(
+    idGroupe int references GroupeScenario,
+    email text references Etudiant,
+    primary key (idGroupe,email)
+
+);
+
+Create table GroupeScenario(
+        idGroupe int references GroupeClasse,
+        idPatient int references Patient,
+        primary key (idGroupe,idPatient)
+
+);

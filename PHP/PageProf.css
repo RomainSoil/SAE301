@@ -85,7 +85,7 @@ body{
 div.footer-CreateScenario{
     text-align: center;
     margin:0;
-    padding:3%;
+    padding:1%;
     width:94%;
     font-size: 1em;
     color:white;
@@ -166,4 +166,9 @@ div.supprimer{
     text-align: center;
     font-weight: bold;
 
+}
+
+h4{
+    color:dodgerblue;
+    text-align: center;
 }
