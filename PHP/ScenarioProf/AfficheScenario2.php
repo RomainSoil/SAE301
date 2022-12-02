@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,6 +43,7 @@ function affpatient($bdd, $id)
     return $array;
     ?><br><?php
 }
+require('../FonctionPhp.php');
 
 function affichage($bdd, $id)
 {
@@ -46,54 +51,26 @@ function affichage($bdd, $id)
     <table>
         <thead>
         <tr>
-            <th colspan
-            "1">Nom</th>
-            <th colspan
-            "1">Prénom</th>
-            <th colspan
-            "1">age</th>
-            <th colspan
-            "1">poids</th>
-            <th colspan
-            "1">date de naissance</th>
-            <th colspan
-            "1">taille</th>
-            <th colspan
-            "1">iep</th>
-            <th colspan
-            "1">ipp</th>
-            <th colspan
-            "1">sexe</th>
-            <th colspan
-            "1">adresse</th>
-            <th colspan
-            "1">ville</th>
-            <th colspan
-            "1">Code Postale</th>
+            <?php $patient = array("Nom", "Prénom", "Age", "Date de naissance", "Poids", "Taille", "IEP", "IPP", "Sexe", "Adresse", "Ville", "Code Postale");
+            for ($i=0; $i<sizeof($patient); $i++){?>
+                <th><?php echo $patient[$i]?></th>
+            <?php }?>
+
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><?php echo affpatient($bdd, $id)[1] ?></td>
-            <td><?php echo affpatient($bdd, $id)[2] ?></td>
-            <td> <?php echo affpatient($bdd, $id)[3] ?></td>
-            <td> <?php echo affpatient($bdd, $id)[5] ?></td>
-            <td> <?php echo affpatient($bdd, $id)[4] ?></td>
-            <td> <?php echo affpatient($bdd, $id)[6] ?></td>
-            <td> <?php echo affpatient($bdd, $id)[7] ?></td>
-            <td> <?php echo affpatient($bdd, $id)[8] ?></td>
-            <td> <?php echo affpatient($bdd, $id)[9] ?></td>
-            <td> <?php echo affpatient($bdd, $id)[10] ?></td>
-            <td> <?php echo affpatient($bdd, $id)[11] ?></td>
-            <td> <?php echo affpatient($bdd, $id)[12] ?></td>
+            <?php for ( $i=0; $i<12; $i++){?>
+                <td onclick="change(<?php echo $i ?>)"><?php echo affpatient($bdd, $id)[$i+1] ?></td>
+            <?php }
+
+            ?>
 
         </tr>
-
         </tbody>
     </table>
-<?php }
+<?php
 
-require('../FonctionPhp.php');
 
 
 $donnee = AvoirLesDonneeDunPatient($bdd);
@@ -102,27 +79,59 @@ $donnee = AvoirLesDonneeDunPatient($bdd);
 $categorie = $donnee[0]['nom'];
 $max = count($donnee);
 $i = 0;
-while ($i <= $max) {
-    ?>
-        <table>
-            <thead>
-    <td> <?php echo $categorie; ?> </td> <?php
-    while ($categorie == $donnee[$i]['nom']) {
+$var=0;
+
+for ($i;$i<$max;$i++){
+    if ($categorie!=$donnee[$i]['nom'] || $var==0){
+        $var=1;
         ?>
+            <table>
         <tr>
-            <td> <?php echo $donnee[$i]['donnee'] ?> </td>
-            <td> <?php echo $donnee[$i]['date'] ?> </td>
+                <th> <?php echo $donnee[$i]['nom']?> </th>
+
+        <?php $nb=AvoirLeNombreDeColoneDuneCategorie($bdd,$categorie)+$i;
+        if ($nb>$max){
+            $nb=$max;
+        }
+        for ($j=$i; $j<$nb; $j++){   ?>
+                <td> <?php echo $donnee[$j]['date']?> </td>
+
+                <?php
+        }
+        ?>
         </tr>
+        <tr>
+        <th> <?php echo ('donnée')?> </th>
         <?php
-        $i = $i+ 1;
+        for ($j=$i; $j<$nb; $j++){   ?>
+                <td> <?php echo $donnee[$j]['donnee']?> </td>
+
+                <?php
+        }
+
     }
+
+
     ?>
-            </thead>
-    </table>
+
+
+
+
+
+        <?php
+        if ($var==1){
+            $categorie=$donnee[$i]['nom'];
+
+            ?>
+            </table>
 <?php
-    $categorie = $donnee[$i]['nom'];
+        }
 }
 
+}
+
+
+affichage($bdd, $id);
 ?>
 
 
