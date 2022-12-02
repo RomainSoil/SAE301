@@ -128,11 +128,11 @@ include("BarreScenario.html");
             $ajout->execute(array($_POST['GroupeScena'],$_POST['patientScena']));
         }}
 
-    if (isset($_POST['affgrp'])) {
-        $_SESSION['grp']=$_POST['grp2'];
-        header('Location: afficheGroupe.php');
-    }
+        if (isset($_POST['affgrp'])) {
+            $_SESSION['grp'] = $_POST['grp2'];
+            header('Location: afficheGroupe.php');
 
+    }
     affichersce();
     contrainte();
     creerGroupe($bdd);
@@ -217,6 +217,7 @@ include("BarreScenario.html");
 
         ?>
     </select>
+    <input type="submit" value="Afficher le groupe" name="affgrp">
 
     <select name="etud">
         <option>Sélectionnez un étudiant</option>
@@ -235,7 +236,6 @@ include("BarreScenario.html");
         ?>
     </select>
     <input type="submit" value="Ajouter" name="ajoutEtu">
-    <input type="submit" value="Afficher le groupe" name="affgrp">
 
     <h4>Envoie du scénario</h4>
     <select name="patientScena">

@@ -267,5 +267,3 @@ Create table GroupeScenario(
         primary key (idGroupe,idPatient)
 
 );
-
-SELECT email FROM groupeetudiant where idgroupe=10;
