@@ -11,7 +11,7 @@ function etugrp($bdd)
     /* permet de créer une liste déroulante avec tous les etudiants des groupes */
     $EtuGroupe = $bdd->prepare("SELECT email FROM groupeetudiant where idgroupe=?");
     $EtuGroupe->execute(array($grpetu));
-    $array = $EtuGroupe->fetch();
+    $array = $EtuGroupe;
     return $array;
 }
 ?>
@@ -33,8 +33,12 @@ Groupe : <?php echo $_SESSION['grp']?>
 <br>
 Étudiants : <br>
 
-<td><?php echo etugrp($bdd)[0]?></td>
-<td><?php echo etugrp($bdd)[1]?></td>
+<?php
+$grp = etugrp($bdd)->fetchAll();
+for($i=0; $i<sizeof($grp); $i++){
+?>
+    <td><?php echo $grp[$i][0]?></td>
+<?php }?>
 
 
 

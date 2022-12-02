@@ -128,7 +128,7 @@ include("BarreScenario.html");
             $ajout->execute(array($_POST['GroupeScena'],$_POST['patientScena']));
         }}
 
-    if (isset($_POST['affgrp'])) {
+    if (isset($_POST['affgrp']) && $_POST['grp2']!='!') {
         $_SESSION['grp']=$_POST['grp2'];
         header('Location: afficheGroupe.php');
     }
@@ -204,7 +204,7 @@ include("BarreScenario.html");
     <br>
     <h4>Ajouter étudiant au groupe</h4>
     <select name="grp2">
-        <option>Sélectionnez un Groupe</option>
+        <option value="!">Sélectionnez un Groupe</option>
         <?php
         while ($groupe = $groupes->fetch()){
             $grp =$groupe[1];

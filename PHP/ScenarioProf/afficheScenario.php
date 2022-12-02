@@ -50,7 +50,7 @@ function affpatient($bdd, $id){
  * @return mixed
  */
 function affpresc($bdd, $id){
-    $sql = $bdd->prepare("SELECT * from prescription where idpatient=?");
+    $sql = $bdd->prepare("SELECT * from prescription where idpatient=? order by prise");
     $sql->execute(array($id));
     $array = $sql->fetchAll();
     return $array;
@@ -250,37 +250,25 @@ function affichage($bdd, $id){
 <table>
     <thead>
     <tr>
-        <th colspan"1">Nom</th>
-        <th colspan"1">Prénom</th>
-        <th colspan"1">age</th>
-        <th colspan"1">poids</th>
-        <th colspan"1">date de naissance</th>
-        <th colspan"1">taille</th>
-        <th colspan"1">iep</th>
-        <th colspan"1">ipp</th>
-        <th colspan"1">sexe</th>
-        <th colspan"1">adresse</th>
-        <th colspan"1">ville</th>
-        <th colspan"1">Code Postale</th>
+        <?php $patient = array("Nom", "Prénom", "Age", "Date de naissance", "Poids", "Taille", "IEP", "IPP", "Sexe", "Adresse", "Ville", "Code Postale");
+        for ($i=0; $i<sizeof($patient); $i++){?>
+            <th><?php echo $patient[$i]?></th>
+        <?php }?>
+
     </tr>
+    </thead>
+    <tbody>
     <tr>
-        <td><?php echo affpatient($bdd, $id)[1]?></td>
-        <td><?php echo affpatient($bdd, $id)[2]?></td>
-        <td> <?php echo affpatient($bdd, $id)[3]?></td>
-        <td> <?php echo affpatient($bdd, $id)[5]?></td>
-        <td> <?php echo affpatient($bdd, $id)[4]?></td>
-        <td> <?php echo affpatient($bdd, $id)[6]?></td>
-        <td> <?php echo affpatient($bdd, $id)[7]?></td>
-        <td> <?php echo affpatient($bdd, $id)[8]?></td>
-        <td> <?php echo affpatient($bdd, $id)[9]?></td>
-        <td> <?php echo affpatient($bdd, $id)[10]?></td>
-        <td> <?php echo affpatient($bdd, $id)[11]?></td>
-        <td> <?php echo affpatient($bdd, $id)[12]?></td>
+        <?php for ( $i=0; $i<12; $i++){?>
+            <td onclick="change(<?php echo $i ?>)"><?php echo affpatient($bdd, $id)[$i+1] ?></td>
+        <?php }
+
+        ?>
 
     </tr>
     </thead>
 
-
+    </tbody>
 </table>
 
     <table>
@@ -309,7 +297,7 @@ function affichage($bdd, $id){
             @$Presc=affpresc($bdd, $id);
             for ($i=0; $i<count($laListeDesDates); $i++){
                 ?>
-                <td> <?php echo $Presc[$i][3]?> </td>
+                <td onclick="change(<?php echo $i+12?>)"> <?php echo $Presc[$i][3]?> </td>
                 <?php
             }
             ?>
@@ -322,7 +310,7 @@ function affichage($bdd, $id){
             @$Presc=affpresc($bdd, $id);
             for ($i=0; $i<count($laListeDesDates); $i++){
                 ?>
-                <td> <?php echo $Presc[$i][5]?> </td>
+                <td onclick="change(<?php echo $i+12+sizeof(PourAvoirToutesLesDatesDeLaPresc($bdd, $id)) ?>)"> <?php echo $Presc[$i][5]?> </td>
                 <?php
             }
             ?>
@@ -333,7 +321,7 @@ function affichage($bdd, $id){
             @$Presc=affpresc($bdd, $id);
             for ($i=0; $i<count($laListeDesDates); $i++){
                 ?>
-                <td> <?php echo $Presc[$i][2]?> </td>
+                <td onclick="change(<?php echo $i+12+(2*sizeof(PourAvoirToutesLesDatesDeLaPresc($bdd, $id))) ?>)"> <?php echo $Presc[$i][2]?> </td>
                 <?php
             }
             ?>
@@ -374,7 +362,7 @@ function affichage($bdd, $id){
             @$Diag=affDiag($bdd, $id);
             for ($i=0; $i<count($laListeDesDates); $i++){
                 ?>
-                <td> <?php echo $Diag[$i][2]?> </td>
+                <td onclick="change(<?php echo $i+12+(3*sizeof(PourAvoirToutesLesDatesDeLaPresc($bdd, $id))) ?>)"> <?php echo $Diag[$i][2]?> </td>
                 <?php
             }
             ?>
@@ -1134,17 +1122,90 @@ function affichage($bdd, $id){
         </tr>
 
 
-
-
-
-        </thead>
-        </tbody>
-    </table>
-<?php
+    </thead>
+    </tbody>
+</table>
+    <?php
 }
+
+function modifdonnees($bdd, $id)
+{
+    $datespres = PourAvoirToutesLesDatesDeLaPresc($bdd,$id);
+    $datesdiag = PourAvoirToutesLesDatesDeLaDiag($bdd, $id);
+    $data = $_SESSION['coo'];
+    if ($data != "") {
+        $nom = $bdd->prepare("update patient set nom = :donnees where idpatient=:idp");
+        $prenom = $bdd->prepare("update patient set prenom = :donnees where idpatient=:idp");
+        $age = $bdd->prepare("update patient set age = :donnees where idpatient=:idp");
+        $ddn = $bdd->prepare("update patient set ddn = :donnees where idpatient=:idp");
+        $poids = $bdd->prepare("update patient set poids = :donnees where idpatient=:idp");
+        $taille = $bdd->prepare("update patient set taille = :donnees where idpatient=:idp");
+        $iep = $bdd->prepare("update patient set iep = :donnees where idpatient=:idp");
+        $ipp = $bdd->prepare("update patient set ipp = :donnees where idpatient=:idp");
+        $sexe = $bdd->prepare("update patient set sexe = :donnees where idpatient=:idp");
+        $adresse = $bdd->prepare("update patient set adresse = :donnees where idpatient=:idp");
+        $ville = $bdd->prepare("update patient set ville = :donnees where idpatient=:idp");
+        $cp = $bdd->prepare("update patient set codepostal = :donnees where idpatient=:idp");
+        $medic = $bdd->prepare("update prescription set medicament = :donnees where idpatient=:idp and prise = :prise");
+        $medecin = $bdd->prepare("update prescription set medecin = :donnees where idpatient=:idp and prise = :prise");
+        $nomme = $bdd->prepare("update diagnostic set nom = :donnees where idpatient=:idp and date = :prise");
+        $prenomme = $bdd->prepare("update diagnostic set prenom = :donnees where idpatient=:idp and date = :prise");
+        $cpt = $bdd->prepare("update diagnostic set compterendu = :donnees where idpatient=:idp and date = :prise");
+        $dose = $bdd->prepare("update prescription set dose=:donnees where idpatient=:idp and prise=:prise");
+        $presc = array($medic, $medecin, $dose);
+        $diag = array($nomme, $prenomme, $cpt);
+        $sql = array($nom, $prenom, $age, $ddn, $poids, $taille, $iep, $ipp, $sexe, $adresse, $ville, $cp);
+        $mots = [$mot, $num] = explode('!', $data);
+        if ($mots[2] < 12) {
+            $actio = $sql[$mots[2]];
+            $actio->bindParam(':donnees', $mots[1]);
+            $actio->bindParam(':idp', $id);
+            $actio->execute();
+            $_SESSION['coo'] = "";
+        } elseif ($mots[2] < 12+sizeof($datespres)) {
+            echo '1';
+            $action = $presc[0];
+            $date = $datespres[$mots[2] - 12];
+        } elseif ($mots[2] < 12 + 2 * sizeof($datespres)) {
+            echo '2';
+            $action = $presc[1];
+            $date = $datespres[$mots[2] - 12 - sizeof($datespres)];
+        } elseif ($mots[2] < 12 + 3 * sizeof($datespres)) {
+            echo '3';
+            $action = $presc[2];
+            $date = $datespres[$mots[2] - 12 - 2 * sizeof($datespres)];
+        }
+        elseif ($mots[2]<12+3 * sizeof($datespres)+sizeof($datesdiag)){
+            echo '4';
+            $action = $diag[0];
+            $date = $datesdiag[$mots[2] - 12 - 3*sizeof($datespres)];
+        }
+        elseif ($mots[2]<12+(3 * sizeof($datespres))+(2*sizeof($datesdiag))){
+            echo '5';
+            $action = $diag[1];
+            $date = $datesdiag[$mots[2] - 12 - 3*sizeof($datespres)-sizeof($datesdiag)];
+        }
+        elseif ($mots[2]<12+(3 * sizeof($datespres))+(3*sizeof($datesdiag))){
+            echo '6';
+            $action = $diag[2];
+            $date = $datesdiag[$mots[2] - 12 - 3*sizeof($datespres)-(2*sizeof($datesdiag))];
+        }
+        if (isset($action)) {
+            $action->bindParam(':donnees', $mots[1]);
+            $action->bindParam(':idp', $id);
+            $action->bindParam(':prise', $date[0]);
+            $action->execute();
+            $_SESSION['coo'] = "";
+        }
+    }
+}
+
+
+@modifdonnees($bdd, $id);
 affichage($bdd, $id);
+
 ?>
-<br><br>
+<br><br>)
 <a href="CreateScenario.php">
 <button>Retour</button>
 </a>
