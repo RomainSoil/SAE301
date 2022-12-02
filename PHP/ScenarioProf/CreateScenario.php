@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -87,10 +89,34 @@ include("BarreScenario.html");
 
 
     }}
+
+    function EstDeJaDansLeGroupe($bdd,$groupe,$mail){
+        $sql = $bdd->prepare("SELECT email FROM groupeetudiant where idgroupe=? ");
+        $sql->bindParam(1,$groupe);
+        $sql->execute();
+        $rep=$sql->fetchAll();
+         foreach ($rep as $i) {
+                if($i['email'] == $mail){
+                    return true;
+                }
+
+}
+         return false;
+    }
     function ajoutEtu($bdd){
-        if (isset($_POST['ajoutEtu'])) {
-            $ajout = $bdd->prepare("INSERT INTO groupeetudiant(idgroupe, email) values (?,?)");
-            $ajout->execute(array($_POST['grp2'],$_POST['etud']));
+        if (isset($_POST['ajoutEtu'])){
+        $groupe=@$_POST['grp2'];
+        $mail=@$_POST['etud'];
+
+           if (EstDeJaDansLeGroupe($bdd,$groupe,$mail)){
+                    echo '<script>alert("Cet étudiant est déjà dans ce groupe")</script>';
+
+            }
+
+                else {
+                    $ajout = $bdd->prepare("INSERT INTO groupeetudiant(idgroupe, email) values (?,?)");
+                    $ajout->execute(array($groupe,$mail));
+                }
 
 
 
@@ -100,28 +126,20 @@ include("BarreScenario.html");
         if (isset($_POST['envoie'])) {
             $ajout = $bdd->prepare("INSERT INTO groupescenario(idgroupe,idpatient) values (?,?)  ");
             $ajout->execute(array($_POST['GroupeScena'],$_POST['patientScena']));
-
-
-
         }}
 
-    /*function erreurGroupe($bdd){
-        $sql = $bdd->prepare("SELECT email FROM groupeetudiant where idgroupe=? ");
-        $sql->bindParam($_POST['grp2']);
-        $sql->execute();
-        if (isset($_POST['ajoutEtu'])) {
-            foreach ($sql as $i) {
-                if($i == $_POST['etud']){
-                    echo '<script>alert("Cet étudiant est déjà dans ce groupe")</script>';
-            }
-
-        }}}*/
+    if (isset($_POST['affgrp'])) {
+        $_SESSION['grp']=$_POST['grp2'];
+        header('Location: afficheGroupe.php');
+    }
 
     affichersce();
     contrainte();
     creerGroupe($bdd);
     ajoutEtu($bdd);
+
     Scenario($bdd);
+
 
     /* permet de créer une liste déroulante avec tous les patients*/
         $patients = $bdd->prepare("SELECT * FROM patient where emailprof=?");
@@ -144,6 +162,7 @@ include("BarreScenario.html");
     /* permet de créer une liste déroulante avec tous les groupesScenario*/
     $groupesScenario = $bdd->prepare("SELECT * FROM groupeclasse");
     $groupesScenario->execute();
+
 
 
     ?>
@@ -194,7 +213,8 @@ include("BarreScenario.html");
             <option value=<?php echo $groupe[0]?>><?php echo $grp?></option>
             <?php
 
-        }
+        }$_SESSION['grp']=$_POST['grp2'];
+
         ?>
     </select>
 
@@ -215,6 +235,8 @@ include("BarreScenario.html");
         ?>
     </select>
     <input type="submit" value="Ajouter" name="ajoutEtu">
+    <input type="submit" value="Afficher le groupe" name="affgrp">
+
     <h4>Envoie du scénario</h4>
     <select name="patientScena">
         <option>Sélectionnez un scénario</option>
@@ -244,7 +266,6 @@ include("BarreScenario.html");
         ?>
     </select>
     <input type="submit" value="Envoyer" name="envoie">
-
 
 
 </form>
