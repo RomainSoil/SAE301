@@ -11,7 +11,6 @@ function nomgrp($bdd)
     $res=$nomgrp->fetch();
     return $res[0];
 
-}
 function etugrp($bdd)
 {
     $grpetu=$_SESSION['grp'];

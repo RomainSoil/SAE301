@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +14,7 @@ session_start();
 <?php
 include("BarreScenario.html");
 include('../ConnectionBDD.php');
+require('../FonctionPhp.php');
 
 ?>
 <h2>Le Scénario</h2>
@@ -43,7 +40,6 @@ function affpatient($bdd, $id)
     return $array;
     ?><br><?php
 }
-require('../FonctionPhp.php');
 
 function affichage($bdd, $id)
 {
@@ -67,69 +63,39 @@ function affichage($bdd, $id)
             ?>
 
         </tr>
+
         </tbody>
     </table>
-<?php
+<?php }
+
+require('../FonctionPhp.php');
 
 
+    $donnee = AvoirLesDonneeDunPatient($bdd, $id);
 
-$donnee = AvoirLesDonneeDunPatient($bdd);
 
-
-$categorie = $donnee[0]['nom'];
-$max = count($donnee);
-$i = 0;
-$var=0;
-
-for ($i;$i<$max;$i++){
-    if ($categorie!=$donnee[$i]['nom'] || $var==0){
-        $var=1;
+    $categorie = $donnee[0]['nom'];
+    $max = count($donnee);
+    $i = 0;
+    while ($i <= $max) {
         ?>
-            <table>
-        <tr>
-                <th> <?php echo $donnee[$i]['nom']?> </th>
-
-        <?php $nb=AvoirLeNombreDeColoneDuneCategorie($bdd,$categorie)+$i;
-        if ($nb>$max){
-            $nb=$max;
-        }
-        for ($j=$i; $j<$nb; $j++){   ?>
-                <td> <?php echo $donnee[$j]['date']?> </td>
-
+        <table>
+            <td> <?php echo $categorie; ?> </td> <?php
+            while ($categorie == $donnee[$i]['nom']) {
+                ?>
+                <tr>
+                    <td> <?php echo $donnee[$i]['donnee'] ?> </td>
+                    <td> <?php echo $donnee[$i]['date'] ?> </td>
+                </tr>
                 <?php
-        }
-        ?>
-        </tr>
-        <tr>
-        <th> <?php echo ('donnée')?> </th>
-        <?php
-        for ($j=$i; $j<$nb; $j++){   ?>
-                <td> <?php echo $donnee[$j]['donnee']?> </td>
-
-                <?php
-        }
-
-    }
-
-
-    ?>
-
-
-
-
-
-        <?php
-        if ($var==1){
-            $categorie=$donnee[$i]['nom'];
-
+                $i = $i+ 1;
+            }
+            $i = $i+ 1;
             ?>
-            </table>
-<?php
-        }
+        </table>
+        <?php
+        $categorie = $donnee[$i]['nom'];
 }
-
-}
-
 
 affichage($bdd, $id);
 ?>

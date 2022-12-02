@@ -27,14 +27,14 @@ include ('EnteteV2.html');
     Date :
     <input type="datetime-local" name="date" id="date" required>
     <br><br>
-    SaO2 : <input type="text" name="SaO2">
+    SaO2 : <input type="text" name="Sa02" required>
     <br><br>
     FR : <input type="text" name="FR">
     <br><br>
     O2 : <input type="text" name="O2">
     <br><br>
 
-    <input type="submit" value="Valider" name="ValidScenario" >
+    <input type="submit" value="Valider" name="ValidScenario" > x
 
 
 
