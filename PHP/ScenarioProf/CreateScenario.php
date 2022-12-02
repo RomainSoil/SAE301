@@ -104,7 +104,7 @@ include("BarreScenario.html");
          return false;
     }
     function ajoutEtu($bdd){
-        if (isset($_POST['ajoutEtu'])){
+        if (isset($_POST['ajoutEtu']) && $_POST['grp2']!='!'&&$_POST['etud']!='!'){
         $groupe=@$_POST['grp2'];
         $mail=@$_POST['etud'];
 
@@ -123,7 +123,7 @@ include("BarreScenario.html");
         }}
 
     function Scenario($bdd){
-        if (isset($_POST['envoie'])) {
+        if (isset($_POST['envoie']) && $_POST['GroupeScena']!="!" && $_POST['patientScena']!="!") {
             $ajout = $bdd->prepare("INSERT INTO groupescenario(idgroupe,idpatient) values (?,?)  ");
             $ajout->execute(array($_POST['GroupeScena'],$_POST['patientScena']));
         }}
@@ -209,6 +209,7 @@ include("BarreScenario.html");
         while ($groupe = $groupes->fetch()){
             $grp =$groupe[1];
             $grp.=" ";
+
             ?>
             <option value=<?php echo $groupe[0]?>><?php echo $grp?></option>
             <?php
@@ -219,7 +220,7 @@ include("BarreScenario.html");
     </select>
 
     <select name="etud">
-        <option>Sélectionnez un étudiant</option>
+        <option value="!">Sélectionnez un étudiant</option>
         <?php
         while ($etudiant = $etudiants->fetch()){
             $etu =$etudiant[2];
@@ -239,7 +240,7 @@ include("BarreScenario.html");
 
     <h4>Envoie du scénario</h4>
     <select name="patientScena">
-        <option>Sélectionnez un scénario</option>
+        <option value="!">Sélectionnez un scénario</option>
         <?php
         while ($patient = $patientsScenario->fetch()){
             $pat = $patient[1];
@@ -254,7 +255,7 @@ include("BarreScenario.html");
         ?>
     </select>
     <select name="GroupeScena">
-        <option>Sélectionnez un Groupe</option>
+        <option value="!">Sélectionnez un Groupe</option>
         <?php
         while ($groupe = $groupesScenario->fetch()){
             $grp =$groupe[1];
