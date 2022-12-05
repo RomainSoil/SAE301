@@ -138,10 +138,12 @@ td {
 }
 
 
-thead,
+table,
 tfoot {
     background-color: white;
     color: black;
+    font-weight: bold;
+
 }
 
 th{

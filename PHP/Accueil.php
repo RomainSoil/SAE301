@@ -63,9 +63,7 @@ require('username.php');
 $_SESSION['IdChat']=1;
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
 
-if (isset($_SESSION['page'])){
-    echo '<script>alert("Le compte est crée")</script>';
-}
+
 
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
 $conn = ConnectionBDD::getInstance();

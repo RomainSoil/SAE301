@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +25,10 @@ include('../ConnectionBDD.php');
 <h2>Le Scénario</h2>
 </body>
 </html>
-
+<a href="CreateScenario.php">
+    <button>Retour</button>
+</a>
+<br><br>
 <?php
 $id = $_SESSION['scenario'];
 $pdo = ConnectionBDD::getInstance();
@@ -41,7 +46,36 @@ function affpatient($bdd, $id)
     $sql->execute(array($id));
     $array = $sql->fetch();
     return $array;
-    ?><br><?php
+
+}
+
+function affDiag($bdd, $id)
+{
+    $sql = $bdd->prepare("SELECT * FROM diagnostic where idpatient=? order by date");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+}
+
+function PourAvoirToutesLesDatesDeLaDiag($bdd, $id){
+    $sql = $bdd->prepare("SELECT date FROM diagnostic where idpatient=? order by date");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+}
+function PourAvoirToutesLesDatesDeLaPresc($bdd, $id){
+    $sql = $bdd->prepare("SELECT prise FROM prescription where idpatient=? order by prise");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+}
+function affpresc($bdd, $id)
+{
+    $sql = $bdd->prepare("SELECT * from prescription where idpatient=? order by prise");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+
 }
 require('../FonctionPhp.php');
 
@@ -69,6 +103,133 @@ function affichage($bdd, $id)
         </tr>
         </tbody>
     </table>
+    <table>
+        <br><br>
+        <thead>
+
+
+        <tr>
+            <th> Date </th>
+
+            <?php
+            $laListeDesDates=PourAvoirToutesLesDatesDeLaPresc($bdd,$id);
+
+            for ($i=0; $i<count( $laListeDesDates); $i++){
+                ?>
+                <th> <?php echo  $laListeDesDates[$i][0]?></th>
+                <?php
+            }
+            ?>
+        </tr>
+        <th><div class="title">Prescription </div></th>
+
+        <tr>
+            <th> Medicament </th>
+            <?php
+            @$Presc=affpresc($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td onclick="change(<?php echo $i+12?>)"> <?php echo $Presc[$i][3]?> </td>
+                <?php
+            }
+            ?>
+
+
+        </tr>
+        <tr>
+            <th> Médecin </th>
+            <?php
+            @$Presc=affpresc($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td onclick="change(<?php echo $i+12+sizeof(PourAvoirToutesLesDatesDeLaPresc($bdd, $id)) ?>)"> <?php echo $Presc[$i][5]?> </td>
+                <?php
+            }
+            ?>
+        </tr>
+        <tr>
+            <th> Dose </th>
+            <?php
+            @$Presc=affpresc($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td onclick="change(<?php echo $i+12+(2*sizeof(PourAvoirToutesLesDatesDeLaPresc($bdd, $id))) ?>)"> <?php echo $Presc[$i][2]?> </td>
+                <?php
+            }
+            ?>
+
+
+        </tr>
+        </thead>
+    </table>
+
+
+
+
+
+    <br>
+    <table>
+        <br><br>
+        <thead>
+
+
+        <tr>
+            <th> Date </th>
+
+            <?php
+            $laListeDesDates=PourAvoirToutesLesDatesDeLaDiag($bdd,$id);
+
+            for ($i=0; $i<count( $laListeDesDates); $i++){
+                ?>
+                <th> <?php echo  $laListeDesDates[$i][0]?></th>
+                <?php
+            }
+            ?>
+        </tr>
+        <th><div class="title">Intervenant </div></th>
+
+        <tr>
+            <th> Nom </th>
+            <?php
+            @$Diag=affDiag($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td onclick="change(<?php echo $i+12+(3*sizeof(PourAvoirToutesLesDatesDeLaPresc($bdd, $id))) ?>)"> <?php echo $Diag[$i][2]?> </td>
+                <?php
+            }
+            ?>
+
+
+        </tr>
+        <tr>
+            <th> Prenom </th>
+            <?php
+            @$Diag=affDiag($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td> <?php echo $Diag[$i][3]?> </td>
+                <?php
+            }
+            ?>
+        </tr>
+        <th><div class="title">Diagnostic </div></th>
+
+        <tr>
+            <th> Compte Rendu </th>
+            <?php
+            @$Diag=affDiag($bdd, $id);
+            for ($i=0; $i<count($laListeDesDates); $i++){
+                ?>
+                <td> <?php echo $Diag[$i][4]?> </td>
+                <?php
+            }
+            ?>
+
+
+        </tr>
+        </thead>
+    </table>
+
     <?php
 
 
@@ -76,7 +237,7 @@ function affichage($bdd, $id)
     $donnee = AvoirLesDonneeDunPatient($bdd);
 
 
-    $categorie = $donnee[0]['nom'];
+    @$categorie = $donnee[0]['nom'];
     $max = count($donnee);
     $i = 0;
     $var=0;
@@ -89,9 +250,9 @@ function affichage($bdd, $id)
             $var=1;
             ?>
             <table>
-            <tr>
-                <th> <?php echo $donnee[$i]['nom']?> </th>
-            </tr>
+            <th><div class="title"><?php echo $donnee[$i]['nom']?> </div></th>
+
+
             <tr>
                 <?php $nomType=$donnee[$i]['type'];
                 $nbType=AvoirLeNombreDeColoneDunType($bdd,$categorie,$nomType);
@@ -151,13 +312,15 @@ function affichage($bdd, $id)
             <?php
         }
 
-    }
 
-}
+
+}}
 
 
 affichage($bdd, $id);
 ?>
+<br><br>
+
 
 
 

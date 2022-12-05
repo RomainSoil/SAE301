@@ -6,11 +6,11 @@ $bdd = $pdo::getpdo();
 function nomgrp($bdd)
 {
     $nomgrp = $bdd->prepare("SELECT nom FROM groupeclasse where idgroupe=?");
-    $nomgrp->bindParam(1,$_SESSION['grp']);
+    $nomgrp->bindParam(1, $_SESSION['grp']);
     $nomgrp->execute();
-    $res=$nomgrp->fetch();
+    $res = $nomgrp->fetch();
     return $res[0];
-
+}
 function etugrp($bdd)
 {
     $grpetu=$_SESSION['grp'];

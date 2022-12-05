@@ -46,11 +46,16 @@ include("BarreScenario.html");
     $bdd = $pdo::getpdo();
 
     function effacer($bdd){
-        $patient = $bdd->prepare("Delete FROM patient where idpatient=?");
-        $patient->bindParam(1,$_SESSION['patient']);
-        $patient->execute();
-        header('CreateScenario.php');
+        if (isset($_POST['Supprimer'])){
+            $Supp=$_POST['patient'];
 
+        }
+        if (isset($_POST['OuiSupp'])) {
+            $patient = $bdd->prepare("Delete FROM patient where idpatient=?");
+            $patient->bindParam(1, $Supp);
+            $patient->execute();
+            header('CreateScenario.php');
+        }
 
     }
     /* permet de pouvoir appuyer sur le bouton 'ajouter contraintes' si et seulement si un patient est sélectionné*/
@@ -138,8 +143,8 @@ include("BarreScenario.html");
     contrainte();
     creerGroupe($bdd);
     ajoutEtu($bdd);
-
     Scenario($bdd);
+    effacer($bdd);
 
 
     /* permet de créer une liste déroulante avec tous les patients*/
@@ -171,7 +176,6 @@ include("BarreScenario.html");
     <select name="patient">
         <option value="2">Sélectionnez un patient</option>
             <?php
-            $_SESSION['patient']=$_POST['patient'];
             while ($patient = $patients->fetch()){
                 $pat = $patient[1];
                 $pat.=" ";
@@ -187,13 +191,14 @@ include("BarreScenario.html");
         <input type="submit" value="Ajouter une contrainte" name="Contrainte">
         <input type="submit" value="Afficher le scénario" name="affiche">
         <input type="button" value="Supprimer le patient" name = "Supprimer" onclick="afficher()">
+
     </form>
 <br>
 
 <form method="post"  style="visibility: hidden" id="form">
     <div class="supprimer">
     Êtes-vous sur de supprimer ce patient ?
-    <input type="submit" name="oui" value="Oui" onclick=<?php effacer($bdd)?>>
+    <input type="submit" name="OuiSupp" value="Oui">
     <input type="button" name="Non" value="Non" onclick="afficher()">
     </div>
 </form>
