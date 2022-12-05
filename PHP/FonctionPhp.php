@@ -47,8 +47,8 @@ function ajoutDeDonneeSansLesBooleans($bdd,$categorie,$column,$donnee){
 }
 
 function AvoirLesDonneeDunPatient ($bdd){
-    $sql=$bdd->prepare("Select c.nom, donnee.donnee, date from donnee join categoriedonnee c on donnee.iddonnee = c.iddonnee join patient p on donnee.idpatient = p.idpatient join categorie c2 on c.nom = c2.nom 
-        where p.idpatient=? order by (c.nom,date)");
+    $sql=$bdd->prepare("Select c.nom, donnee.nom as type, donnee.donnee, date from donnee join categoriedonnee c on donnee.iddonnee = c.iddonnee join patient p on donnee.idpatient = p.idpatient join categorie c2 on c.nom = c2.nom 
+        where p.idpatient=? order by (c.nom,donnee.nom,date)");
     $sql->bindParam(1,$_SESSION['scenario']);
     $sql->execute();
     $array = $sql->fetchAll();
@@ -57,9 +57,9 @@ function AvoirLesDonneeDunPatient ($bdd){
 
 }
 
-function AvoirLeNombreDeColoneDuneCategorie ($bdd,$nomCategorie){
-    $sql=$bdd->prepare("Select c.nom, donnee.donnee, date from donnee join categoriedonnee c on donnee.iddonnee = c.iddonnee join patient p on donnee.idpatient = p.idpatient join categorie c2 on c.nom = c2.nom 
-        where p.idpatient=? and c.nom=? order by (c.nom,date)");
+function AvoirLeNombreDunType ($bdd,$nomCategorie){
+    $sql=$bdd->prepare("Select c.nom from donnee join categoriedonnee c on donnee.iddonnee = c.iddonnee join patient p on donnee.idpatient = p.idpatient join categorie c2 on c.nom = c2.nom 
+        where p.idpatient=? and c.nom=? ");
     $sql->bindParam(1,$_SESSION['scenario']);
     $sql->bindParam(2,$nomCategorie);
     $sql->execute();
@@ -68,3 +68,17 @@ function AvoirLeNombreDeColoneDuneCategorie ($bdd,$nomCategorie){
 
 
 }
+
+function AvoirLeNombreDeColoneDunType ($bdd,$nomCategorie,$nomtype){
+    $sql=$bdd->prepare("Select donnee.nom from donnee join categoriedonnee c on donnee.iddonnee = c.iddonnee join patient p on donnee.idpatient = p.idpatient join categorie c2 on c.nom = c2.nom 
+        where p.idpatient=? and c.nom=? and donnee.nom=?");
+    $sql->bindParam(1,$_SESSION['scenario']);
+    $sql->bindParam(2,$nomCategorie);
+    $sql->bindParam(3,$nomtype);
+    $sql->execute();
+    $array = $sql->fetchAll();
+    return count($array);
+
+
+}
+

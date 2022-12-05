@@ -81,51 +81,76 @@ $max = count($donnee);
 $i = 0;
 $var=0;
 
-for ($i;$i<$max;$i++){
-    if ($categorie!=$donnee[$i]['nom'] || $var==0){
+while ($i<$max){
+    ?>
+    <br>
+    <?php
+    if ($categorie==$donnee[$i]['nom'] || $var==0){
         $var=1;
         ?>
             <table>
         <tr>
                 <th> <?php echo $donnee[$i]['nom']?> </th>
+        </tr>
+        <tr>
+            <?php $nomType=$donnee[$i]['type'];
+                $nbType=AvoirLeNombreDeColoneDunType($bdd,$categorie,$nomType);
 
-        <?php $nb=AvoirLeNombreDeColoneDuneCategorie($bdd,$categorie)+$i;
-        if ($nb>$max){
-            $nb=$max;
-        }
-        for ($j=$i; $j<$nb; $j++){   ?>
-                <td> <?php echo $donnee[$j]['date']?> </td>
 
-                <?php
-        }
         ?>
         </tr>
         <tr>
-        <th> <?php echo ('donnée')?> </th>
-        <?php
-        for ($j=$i; $j<$nb; $j++){   ?>
+            <th> <?php echo $donnee[$i]['type']?> </th>
+
+            <?php
+            for ($j=$i; $j<$i+$nbType; $j++){
+
+                ?>
+                <td> <?php echo $donnee[$j]['date']?> </td>
+
+                <?php
+            }
+            ?>
+            </tr>
+            <tr>
+                <th> <?php echo 'donnée'?> </th>
+                <?php
+        for ($j=$i; $j<$i+$nbType; $j++){   ?>
                 <td> <?php echo $donnee[$j]['donnee']?> </td>
 
                 <?php
-        }
 
+        }
+        ?> </tr> <?php
+        $i = $i+$nbType-1;
+        if ($i>=$max)
+            break;
+    }
+
+    else
+    {
+        ?>
+        </table>
+        <?php
     }
 
 
+
+
     ?>
-
-
-
-
-
         <?php
         if ($var==1){
+            $i=$i+1;
+            if ($i>=$max)
+                break;
             $categorie=$donnee[$i]['nom'];
+
 
             ?>
             </table>
 <?php
         }
+
 }
 
 }
