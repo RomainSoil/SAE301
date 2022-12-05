@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +14,7 @@ session_start();
 <?php
 include("BarreScenario.html");
 include('../ConnectionBDD.php');
+require('../FonctionPhp.php');
 
 ?>
 <h2>Le Scénario</h2>
@@ -43,7 +40,6 @@ function affpatient($bdd, $id)
     return $array;
     ?><br><?php
 }
-require('../FonctionPhp.php');
 
 function affichage($bdd, $id)
 {
@@ -67,94 +63,39 @@ function affichage($bdd, $id)
             ?>
 
         </tr>
+
         </tbody>
     </table>
-<?php
+<?php }
+
+require('../FonctionPhp.php');
 
 
+    $donnee = AvoirLesDonneeDunPatient($bdd, $id);
 
-$donnee = AvoirLesDonneeDunPatient($bdd);
 
-
-$categorie = $donnee[0]['nom'];
-$max = count($donnee);
-$i = 0;
-$var=0;
-
-while ($i<$max){
-    ?>
-    <br>
-    <?php
-    if ($categorie==$donnee[$i]['nom'] || $var==0){
-        $var=1;
+    $categorie = $donnee[0]['nom'];
+    $max = count($donnee);
+    $i = 0;
+    while ($i <= $max) {
         ?>
-            <table>
-        <tr>
-                <th> <?php echo $donnee[$i]['nom']?> </th>
-        </tr>
-        <tr>
-            <?php $nomType=$donnee[$i]['type'];
-                $nbType=AvoirLeNombreDeColoneDunType($bdd,$categorie,$nomType);
-
-
-        ?>
-        </tr>
-        <tr>
-            <th> <?php echo $donnee[$i]['type']?> </th>
-
-            <?php
-            for ($j=$i; $j<$i+$nbType; $j++){
-
+        <table>
+            <td> <?php echo $categorie; ?> </td> <?php
+            while ($categorie == $donnee[$i]['nom']) {
                 ?>
-                <td> <?php echo $donnee[$j]['date']?> </td>
-
+                <tr>
+                    <td> <?php echo $donnee[$i]['donnee'] ?> </td>
+                    <td> <?php echo $donnee[$i]['date'] ?> </td>
+                </tr>
                 <?php
+                $i = $i+ 1;
             }
+            $i = $i+ 1;
             ?>
-            </tr>
-            <tr>
-                <th> <?php echo 'donnée'?> </th>
-                <?php
-        for ($j=$i; $j<$i+$nbType; $j++){   ?>
-                <td> <?php echo $donnee[$j]['donnee']?> </td>
-
-                <?php
-
-        }
-        ?> </tr> <?php
-        $i = $i+$nbType-1;
-        if ($i>=$max)
-            break;
-    }
-
-    else
-    {
-        ?>
         </table>
         <?php
-    }
-
-
-
-
-    ?>
-        <?php
-        if ($var==1){
-            $i=$i+1;
-            if ($i>=$max)
-                break;
-            $categorie=$donnee[$i]['nom'];
-
-
-            ?>
-            </table>
-<?php
-        }
-
+        $categorie = $donnee[$i]['nom'];
 }
-
-}
-
 
 affichage($bdd, $id);
 ?>

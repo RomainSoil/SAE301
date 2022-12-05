@@ -85,7 +85,7 @@ body{
 div.footer-CreateScenario{
     text-align: center;
     margin:0;
-    padding:3%;
+    padding:1%;
     width:94%;
     font-size: 1em;
     color:white;
@@ -134,23 +134,23 @@ footer{
 
 table,
 td {
-    border: 1px solid #333;
+    border: 1px solid #0c76d9;
 }
 
 
 thead,
 tfoot {
-    background-color: #333333;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 th{
     color:white;
-    background-color: #333333;
+    background-color: #0c76d9;
 }
 
 div.title{
-    color:#333333;
+    color:dodgerblue;
     background-color: white;
 
 }
@@ -160,3 +160,16 @@ button{
     color:white;
     border-color: #0c76d9;
 }
+
+div.supprimer{
+    color:red;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+h4{
+    color:dodgerblue;
+    text-align: center;
+}
+

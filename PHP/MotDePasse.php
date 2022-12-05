@@ -61,7 +61,7 @@ class MotDePasse
 
         }
         elseif ($conn->TrouveProf($bdd, $_SESSION['mail'])){
-            $sql = $conn->prepare("UPDATE prof SET mdp=? WHERE email=?");
+            $sql = $bdd->prepare("UPDATE prof SET mdp=? WHERE email=?");
             $req=$sql->execute(array($hash, $mail));
             echo 'mdp changé';
         }
