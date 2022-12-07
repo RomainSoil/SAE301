@@ -23,16 +23,15 @@ include('../ConnectionBDD.php');
 
 ?>
 <h2>Le Scénario</h2>
-</body>
-</html>
-<a href="CreateScenario.php">
-    <button>Retour</button>
-</a>
+<button onclick="window.history.back()">Retour</button>
+
 <br><br>
 <?php
 $id = $_SESSION['scenario'];
 $pdo = ConnectionBDD::getInstance();
 $bdd = $pdo::getpdo();
+
+
 
 /* permet d'afficher les données du patient séléctionné*/
 /**
@@ -40,6 +39,9 @@ $bdd = $pdo::getpdo();
  * @param $id
  * @return mixed
  */
+
+
+
 function affpatient($bdd, $id)
 {
     $sql = $bdd->prepare("SELECT * from patient where idpatient=?");
@@ -425,6 +427,8 @@ function modifdonnees($bdd, $id){
 affichage($bdd, $id);
 ?>
 <br><br>
+</body>
+</html>
 
 
 

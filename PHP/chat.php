@@ -72,10 +72,7 @@ $_SESSION['PseudoChat']=$pseudo2;
 <form method="post">
 </form>
 
-<!--
-<div class="Aide">
 
-</div>-->
 <script>
     e=true;
     f=true;

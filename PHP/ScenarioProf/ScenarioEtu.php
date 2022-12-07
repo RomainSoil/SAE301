@@ -21,7 +21,7 @@ $bdd = $pdo::getpdo();
 
 require('FonctionScenario.php');
 
-$scena = $bdd->prepare("SELECT nom,prenom,DDN from groupescenario join groupeetudiant g on groupescenario.idgroupe = g.idgroupe join patient p on groupescenario.idpatient = p.idpatient  where email=?" );
+$scena = $bdd->prepare("SELECT  nom,prenom,DDN, p.idpatient from groupescenario join groupeetudiant g on groupescenario.idgroupe = g.idgroupe join patient p on groupescenario.idpatient = p.idpatient  where email=?" );
 $scena->bindParam(1,$_SESSION['email']);
 $scena->execute();
 
@@ -41,7 +41,7 @@ affichersce();
 
 <form method="post">
     <select name="patient">
-        <option value="!">Sélectionnez un scénario</option>
+        <option value="2">Sélectionnez un scénario</option>
         <?php
 
         while ($scenario = $scena->fetch()){
@@ -51,7 +51,7 @@ affichersce();
             $sc.=" ";
             $sc.=$scenario[2]
             ?>
-            <option value=<?php echo $scenario[0]?>><?php echo $sc?></option>
+            <option value=<?php echo $scenario[3]?>><?php echo $sc?></option>
             <?php
         }
 
