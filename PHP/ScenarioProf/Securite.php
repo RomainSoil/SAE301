@@ -25,11 +25,7 @@ include ('EnteteV2.html');
 <!--formulaire sur la securite qui sera enregistrer dans la base de donnée apres avoir valide toutes les categories-->
 
 <form method="post" action="Soins.php">
-    <!-- Ce champ caché sert a ne pas faire attendre l'utilisateur même si il upload un fichier trop gros pour php -->
-    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
-    Image (Facultatif) ?: <input name="userfile" type="file" />
-    <input type="submit" value="Ajouter" />
-    <br><br>
+
         Date :
             <input type="datetime-local" name="date" id="date" required>
     <br><br>

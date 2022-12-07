@@ -31,11 +31,7 @@ include ('EnteteV2.html');
 
 
 <form method="post" action="Hygiene.php">
-    <!-- Ce champ caché sert a ne pas faire attendre l'utilisateur même si il upload un fichier trop gros pour php -->
-    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
-    Image (Facultatif) ?: <input name="userfile" type="file" />
-    <input type="submit" value="Ajouter" />
-    <br><br>
+
     Date :
     <input type="datetime-local" name="date" id="date" required>
     <br><br>

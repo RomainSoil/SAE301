@@ -82,3 +82,31 @@ function AvoirLeNombreDeColoneDunType ($bdd,$nomCategorie,$nomtype){
 
 }
 
+function affDiag($bdd, $id)
+{
+    $sql = $bdd->prepare("SELECT * FROM diagnostic where idpatient=? order by date");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+}
+
+function PourAvoirToutesLesDatesDeLaDiag($bdd, $id){
+    $sql = $bdd->prepare("SELECT date FROM diagnostic where idpatient=? order by date");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+}
+function PourAvoirToutesLesDatesDeLaPresc($bdd, $id){
+    $sql = $bdd->prepare("SELECT prise FROM prescription where idpatient=? order by prise");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+}
+function affpresc($bdd, $id)
+{
+    $sql = $bdd->prepare("SELECT * from prescription where idpatient=? order by prise");
+    $sql->execute(array($id));
+    $array = $sql->fetchAll();
+    return $array;
+
+}

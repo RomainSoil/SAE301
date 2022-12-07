@@ -267,3 +267,4 @@ Create table GroupeScenario(
         primary key (idGroupe,idPatient)
 
 );
+SELECT nom,prenom,DDN from groupescenario join groupeetudiant g on groupescenario.idgroupe = g.idgroupe join patient p on groupescenario.idpatient = p.idpatient  where email='mdangreaux11@gmail.com';

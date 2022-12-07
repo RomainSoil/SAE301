@@ -45,97 +45,17 @@ include("BarreScenario.html");
     $pdo = ConnectionBDD::getInstance();
     $bdd = $pdo::getpdo();
 
-    function effacer($bdd){
-        if (isset($_POST['Supprimer'])){
-            $Supp=$_POST['patient'];
+    require('FonctionScenario.php');
 
-        }
-        if (isset($_POST['OuiSupp'])) {
-            $patient = $bdd->prepare("Delete FROM patient where idpatient=?");
-            $patient->bindParam(1, $Supp);
-            $patient->execute();
-            header('CreateScenario.php');
-        }
-
-    }
-    /* permet de pouvoir appuyer sur le bouton 'ajouter contraintes' si et seulement si un patient est sélectionné*/
-    /**
-     * @return void
-     */
-    function contrainte()
-    {
-        if (isset($_POST['patient']) && $_POST['patient'] != 2) {
-            if (isset($_POST['Contrainte'])) {
-                $_SESSION['patient'] = $_POST['patient'];
-                header('Location: Radio.php');
-            }
-        }
-    }
-
-    /* permet d'appuyer sur le bouton afficher scénario si et seulement si un patient est séléctionné*/
-    /**
-     * @return void
-     */
-    function affichersce()
-    {
-        if (isset($_POST['patient']) && $_POST['patient'] != 2) {
-            if (isset($_POST['affiche'])) {
-                $_SESSION['scenario'] = $_POST['patient'];
-                header('Location: afficheScenario2.php');
-            }
-        }
-    }
-    function creerGroupe($bdd){
-    if (isset($_POST['Creer'])) {
-        $creer = $bdd->prepare("INSERT INTO groupeclasse(nom) values (?)");
-        $creer->execute(array($_POST['grp']));
-        header('Location: CreateScenario.php');
-
-
-
-    }}
-
-    function EstDeJaDansLeGroupe($bdd,$groupe,$mail){
-        $sql = $bdd->prepare("SELECT email FROM groupeetudiant where idgroupe=? ");
-        $sql->bindParam(1,$groupe);
-        $sql->execute();
-        $rep=$sql->fetchAll();
-         foreach ($rep as $i) {
-                if($i['email'] == $mail){
-                    return true;
-                }
-
-}
-         return false;
-    }
-    function ajoutEtu($bdd){
-        if (isset($_POST['ajoutEtu']) && $_POST['grp2']!='!'&&$_POST['etud']!='!'){
-        $groupe=@$_POST['grp2'];
-        $mail=@$_POST['etud'];
-
-           if (EstDeJaDansLeGroupe($bdd,$groupe,$mail)){
-                    echo '<script>alert("Cet étudiant est déjà dans ce groupe")</script>';
-
-            }
-
-                else {
-                    $ajout = $bdd->prepare("INSERT INTO groupeetudiant(idgroupe, email) values (?,?)");
-                    $ajout->execute(array($groupe,$mail));
-                }
-
-
-
-        }}
-
-    function Scenario($bdd){
-        if (isset($_POST['envoie']) && $_POST['GroupeScena']!="!" && $_POST['patientScena']!="!") {
-            $ajout = $bdd->prepare("INSERT INTO groupescenario(idgroupe,idpatient) values (?,?)  ");
-            $ajout->execute(array($_POST['GroupeScena'],$_POST['patientScena']));
-        }}
 
     if (isset($_POST['affgrp']) && $_POST['grp2']!='!') {
         $_SESSION['grp']=$_POST['grp2'];
         header('Location: afficheGroupe.php');
+
+
+    }
+    if (isset($_POST['patient']) && $_POST['patient']!='2') {
+        header('Location: Supprimer.php');
 
 
     }
@@ -144,7 +64,6 @@ include("BarreScenario.html");
     creerGroupe($bdd);
     ajoutEtu($bdd);
     Scenario($bdd);
-    effacer($bdd);
 
 
     /* permet de créer une liste déroulante avec tous les patients*/
@@ -176,6 +95,7 @@ include("BarreScenario.html");
     <select name="patient">
         <option value="2">Sélectionnez un patient</option>
             <?php
+
             while ($patient = $patients->fetch()){
                 $pat = $patient[1];
                 $pat.=" ";
@@ -185,23 +105,18 @@ include("BarreScenario.html");
                 ?>
             <option value=<?php echo $patient[0]?>><?php echo $pat?></option>
     <?php
-            }
+            }             $_SESSION['patient']=$_POST['patient'];
+
             ?>
     </select>
         <input type="submit" value="Ajouter une contrainte" name="Contrainte">
         <input type="submit" value="Afficher le scénario" name="affiche">
-        <input type="button" value="Supprimer le patient" name = "Supprimer" onclick="afficher()">
+        <input type="submit" value="Supprimer le patient" name = "Supprimer">
 
     </form>
 <br>
 
-<form method="post"  style="visibility: hidden" id="form">
-    <div class="supprimer">
-    Êtes-vous sur de supprimer ce patient ?
-    <input type="submit" name="OuiSupp" value="Oui">
-    <input type="button" name="Non" value="Non" onclick="afficher()">
-    </div>
-</form>
+
 
 <form method="post">
     <h4>Créer un groupe</h4>
@@ -281,18 +196,5 @@ include("BarreScenario.html");
 
 </html>
 
-<script>
-    /* permet d'afficher ou non la création de médicaments*/
-    e=true;
-    function afficher(){
-        if (e) {
-            document.getElementById('form').setAttribute('style', 'visibility:visible')
-            e=false;
-        }else {
-            document.getElementById('form').setAttribute('style', 'visibility:hidden')
-            e=true;
-        }
-    }
-</script>
 
 

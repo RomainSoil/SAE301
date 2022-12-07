@@ -27,12 +27,7 @@ require ('../ConnectionBDD.php');
     <h2>Intervenant</h2>
     Nom :<input type="text" name="nom" id="nom"  placeholder="Nom de l'intervenant " required><br>
     Prénom :<input type="text" name="prenom" id="prenom" placeholder="Prenom de l'intervenant" required><br><br>
-   <h2>Diagnostic:</h2></>
-<!-- Ce champ caché sert a ne pas faire attendre l'utilisateur même si il upload un fichier trop gros pour php -->
-<input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
-Image (Facultatif) ?: <input name="userfile" type="file" />
-<input type="submit" value="Ajouter" />
-<br><br>
+   <h2>Diagnostic:</h2>
     <div class="Diagnostic">
     <textarea name="diagnostic" id="diagnostic" rows="20" cols="80" required> </textarea></div> <br>
     <div class="button_Suivant">
