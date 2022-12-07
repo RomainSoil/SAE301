@@ -56,11 +56,8 @@ function affichage($bdd, $id)
 {
     ?>
 
-    <form method="post" name="form">
-        <input type="text" name="input" id="essais" value="">
-        <input type="button" name="accept" onclick="$a = controle(form)">
-    </form>
 <script>
+
 
     document.cookie = 'valid = '+""
     function recupererCookie(nom) {
@@ -82,6 +79,7 @@ function affichage($bdd, $id)
     }
 
     function change($i, $date, $do) {
+        var $a = prompt("Quelle donnée voulez vous mettre?")
     var l = "";
     document.getElementsByTagName("td")[$i].innerHTML = $a;
     l=l+"!";
