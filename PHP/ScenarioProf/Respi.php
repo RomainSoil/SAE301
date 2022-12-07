@@ -30,7 +30,7 @@ include ('EnteteV2.html');
     O2 : <input type="text" name="O2">
     <br><br>
 
-    <input type="submit" value="Valider" name="ValidScenario" > x
+    <input type="submit" value="Valider" name="ValidScenario" >
 
 
 

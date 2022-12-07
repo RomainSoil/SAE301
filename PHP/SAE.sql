@@ -261,7 +261,7 @@ Create table GroupeEtudiant(
 
 );
 
-Create table GroupeScenario(
+        Create table GroupeScenario(
         idGroupe int references GroupeClasse,
         idPatient int references Patient,
         primary key (idGroupe,idPatient)

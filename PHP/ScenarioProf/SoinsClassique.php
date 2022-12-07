@@ -1,20 +1,23 @@
 <?php
 session_start();
-@$_SESSION['Date']=date("Y-m-d H:m:s", strtotime($_POST["date"]));
-@$_SESSION['alimentaire']=$_POST['alimentaire'];
-@$_SESSION['hydratation']=$_POST['hydratation'];
-@$_SESSION['regime']=$_POST['regime'];
-@$_SESSION['jeun']=$_POST['jeun'];
-@$_SESSION['aideRepas']=$_POST['aideRepas'];
-require ("../ConnectionBDD.php");
-$pdo = ConnectionBDD::getInstance();
-$bdd = $pdo::getpdo();
-require ("../FonctionPhp.php");
-@ajoutDeDonneeAvecLesBooleans($bdd,"Alimentation",'alimentaire');
-@ajoutDeDonneeAvecLesBooleans($bdd,"Alimentation",'hydratation');
-@ajoutDeDonneeAvecLesBooleans($bdd,"Alimentation",'regime');
-@ajoutDeDonneeAvecLesBooleans($bdd,"Alimentation",'jeun');
-@ajoutDeDonneeAvecLesBooleans($bdd,"Alimentation",'aideRepas');
+
+if (isset($_POST['Valider'])) {
+    @$_SESSION['Date'] = date("Y-m-d H:m:s", strtotime($_POST["date"]));
+    @$_SESSION['alimentaire'] = $_POST['alimentaire'];
+    @$_SESSION['hydratation'] = $_POST['hydratation'];
+    @$_SESSION['regime'] = $_POST['regime'];
+    @$_SESSION['jeun'] = $_POST['jeun'];
+    @$_SESSION['aideRepas'] = $_POST['aideRepas'];
+    require("../ConnectionBDD.php");
+    $pdo = ConnectionBDD::getInstance();
+    $bdd = $pdo::getpdo();
+    require("../FonctionPhp.php");
+    @ajoutDeDonneeAvecLesBooleans($bdd, "Alimentation", 'alimentaire');
+    @ajoutDeDonneeAvecLesBooleans($bdd, "Alimentation", 'hydratation');
+    @ajoutDeDonneeAvecLesBooleans($bdd, "Alimentation", 'regime');
+    @ajoutDeDonneeAvecLesBooleans($bdd, "Alimentation", 'jeun');
+    @ajoutDeDonneeAvecLesBooleans($bdd, "Alimentation", 'aideRepas');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+
+if (isset($_POST['Valider'])){
 @$_SESSION['Date']=date("Y-m-d H:m:s", strtotime($_POST["date"]));
 @$_SESSION['prescrite']=$_POST['prescrite'];
 @$_SESSION['confort']=$_POST['confort'];
@@ -14,7 +16,7 @@ require ("../FonctionPhp.php");
 @ajoutDeDonneeAvecLesBooleans($bdd,"Securite",'confort');
 @ajoutDeDonneeAvecLesBooleans($bdd,"Securite",'surveillance');
 
-
+}
 
 ?>
 <!DOCTYPE html>
