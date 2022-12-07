@@ -124,7 +124,17 @@ function bdd($mail, $mdp, $mdp2){
                 } catch (PDOException $e) {
                     die ('Erreur : ' . $e->getMessage());
                 }
-
+                $aro = false;
+                for ($i=0; $i<strlen($mail);$i++){
+                    if ($mail[$i]=='@'){
+                        $aro = true;
+                    }
+                    if (!$aro){
+                        if (ord($mail[$i])>64 and ord($mail[$i])<91){
+                            $mail[$i] = chr(ord($mail[$i])+32);
+                        }
+                    }
+                }
                 $hash = password_hash($mdp, PASSWORD_DEFAULT);
                 if ($_POST['code'] == "P5165156516516@") {
                     $sql = "INSERT INTO prof (email,mdp,nom,prenom)
