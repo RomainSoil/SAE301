@@ -267,4 +267,12 @@ Create table GroupeEtudiant(
         primary key (idGroupe,idPatient)
 
 );
+
+CREATE table BesoinDaide
+(
+    idBA  serial primary key,
+    sujet text not null,
+    email text not null
+);
+
 SELECT nom,prenom,DDN from groupescenario join groupeetudiant g on groupescenario.idgroupe = g.idgroupe join patient p on groupescenario.idpatient = p.idpatient  where email='mdangreaux11@gmail.com';
