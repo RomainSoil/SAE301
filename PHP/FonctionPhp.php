@@ -36,7 +36,7 @@ function ajoutDeDonneeSansLesBooleans($bdd,$categorie,$column,$donnee){
     $sql=$bdd->prepare("Insert into donnee (date, nom, donnee,idpatient) VALUES (?,?,?,?)");
     $sql->bindParam(1,$_SESSION['Date']);
     $sql->bindParam(2, $column);
-    $sql->bindParam(3,$donnee );
+    $sql->bindParam(3,$donnee);
     $sql->bindParam(4,$_SESSION['patient']);
     $sql->execute();
     $id=PourConnaitreLeIdDeLaDonnee($bdd);
