@@ -28,9 +28,9 @@ $categorie->execute();
 ?>
 <h2>Création d'une nouvelle catégorie</h2>
 
-<form method="post">
+<form method="post" action="PageAjoutCategorie.php">
 
-    <input name="text" value="Nom de la nouvelle catégorie" required>
+    <input type="text" placeholder="Nom de la nouvelle catégorie" name="cat" required>
     <input type="submit" name="valider">
 
 </form>
@@ -38,7 +38,7 @@ $categorie->execute();
     Nouvelle donnée
 </h3>
 
-<form method="post"action="Transition3.php">
+<form method="post" action="Transition3.php">
     <select name="categorie">
         <option value="2">Sélectionnez une catégorie</option>
         <?php
@@ -57,6 +57,9 @@ $categorie->execute();
         <input name="date" type="datetime-local" required>
     <input type="submit" value="valider">
 </form>
+</body>
+</html>
+
 
 
 

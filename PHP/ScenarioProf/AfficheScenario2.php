@@ -109,9 +109,9 @@ function affichage($bdd, $id)
     <p id="idp"></p>
 
     <?php
-    $_SESSION['coo'] = $_COOKIE['valid'];
-    $_SESSION['date']= $_COOKIE['date'];
-    $_SESSION['do'] = $_COOKIE['do'];
+    @$_SESSION['coo'] = $_COOKIE['valid'];
+    @$_SESSION['date']= $_COOKIE['date'];
+    @$_SESSION['do'] = $_COOKIE['do'];
     ?>
     <table>
         <thead>
