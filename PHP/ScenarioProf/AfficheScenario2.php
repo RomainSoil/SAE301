@@ -276,11 +276,12 @@ function affichage($bdd, $id)
     while ($i<$max){
         ?>
         <br>
+        <table>
         <?php
         if ($categorie==$donnee[$i]['nom'] || $var==0){
             $var=1;
             ?>
-            <table>
+
             <th><div class="title"><?php echo $donnee[$i]['nom']?> </div></th>
 
 
@@ -303,16 +304,16 @@ function affichage($bdd, $id)
                     <?php
                 }
                 ?>
-            </tr>
+            </tr><?php for ($j=$i; $j<$i+$nbType; $j++){?>
             <tr>
                 <th> <?php echo 'donnée'?> </th>
-                <?php
-                for ($j=$i; $j<$i+$nbType; $j++){   ?>
-                    <td onclick= "change(<?php echo ($i+12+(3*sizeof(PourAvoirToutesLesDatesDeLaPresc($bdd, $id)))+3*(sizeof(PourAvoirToutesLesDatesDeLaDiag($bdd, $id)))+$j+$nbType)?>, '<?php echo $donnee[$i]['date']?>', '<?php echo $donnee[$i]['type']?>')" > <?php echo $donnee[$j]['donnee']?> </td>
+
+                    <td onclick= "change(<?php echo ($i+12+(3*sizeof(PourAvoirToutesLesDatesDeLaPresc($bdd, $id)))+3*(sizeof(PourAvoirToutesLesDatesDeLaDiag($bdd, $id)))+$j+$nbType)?>, '<?php echo $donnee[$i]['date']?>', '<?php echo $donnee[$i]['type']?>')" > <?php echo $donnee[$i]['donnee']?> </td>
                     <?php
 
-                }
                 ?> </tr> <?php
+                }
+
             $i = $i+$nbType-1;
             if ($i>=$max)
                 break;
@@ -337,11 +338,11 @@ function affichage($bdd, $id)
             $categorie=$donnee[$i]['nom'];
 
 
-            ?>
-            </table>
-            <?php
-        }
 
+        }
+        ?>
+        </table>
+        <?php
 
 
 }}
