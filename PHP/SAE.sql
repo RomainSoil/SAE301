@@ -8,6 +8,17 @@ CREATE table message(
     foreign key (idgroupe, email) references groupe(idgroupe, email) on delete cascade
 );
 
+CREATE table messageAide(
+                        id serial primary key,
+                        email text,
+                        userx text,
+                        textmessage text,
+                        date date,
+                        idgroupe int not null ,
+                        foreign key (idgroupe) references besoindaide(idba) on delete cascade,
+                        foreign key (email) references email(email)
+);
+
 CREATE TABLE Groupe (
     idGroupe serial,
     nomGroupe text,

@@ -13,7 +13,7 @@ $_SESSION['PseudoChat']=$pseudo2;
 if (isset($_POST['message'])) {
     $message = nl2br(htmlspecialchars($_POST['message']));
     $pseudo = $_SESSION['Pseudo'];
-    $insertMsg = $bdd->prepare('INSERT INTO message(userx,textmessage, idgroupe, email) VALUES(?, ?, ?, ?)');
+    $insertMsg = $bdd->prepare('INSERT INTO messageaide(userx,textmessage, idgroupe, email) VALUES(?, ?, ?, ?)');
     $insertMsg->execute(array($pseudo2, $message, $_SESSION['IdChat'], $pseudo));
     header('Location: BesoinAide.php');
 }
@@ -142,7 +142,7 @@ function affichergrp($bdd){
     <script>
         setInterval('load_messages()',500);
         function load_messages(){
-            $('#messages').load('loadChat.php');
+            $('#messages').load('loadAide.php');
         }
     </script>
     <?php
