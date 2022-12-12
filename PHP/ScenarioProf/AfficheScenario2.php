@@ -16,9 +16,18 @@ session_start();
 </head>
 
 
-<body>
+<body>  <!--Le haut de la page avec l'image et le titre-->
+<header>
+    <a href="../Accueil.php">
+        <img src="../image/logoIFSI.png" width=50 height=50 alt="leLogo" >
+    </a>
+    <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
+    <br>
+</header>
+
+
 <?php
-include("BarreScenario.html");
+
 include('../ConnectionBDD.php');
 
 ?>

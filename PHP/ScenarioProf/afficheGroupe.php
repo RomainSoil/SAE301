@@ -11,7 +11,7 @@ require('FonctionScenario.php');
 
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
+    <title>GroupeScenario</title>
     <link rel="stylesheet" href="../PageProf.css">
     <script type="text/javascript" src="../LesFonctionsJS.js"></script>
 
