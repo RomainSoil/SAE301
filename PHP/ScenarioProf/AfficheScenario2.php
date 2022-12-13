@@ -69,52 +69,52 @@ function affichage($bdd, $id)
 {
     ?>
 
-<script>
+    <script>
 
 
-    document.cookie = 'valid = '+""
-    function recupererCookie(nom) {
-    nom = nom + "=";
-    var liste = document.cookie.split(';');
-    for (var i = 0; i < liste.length; i++) {
-    var c = liste[i];
-    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-    if (c.indexOf(nom) == 0) return c.substring(nom.length, c.length);
-    }
-    return null;
-    }
+        document.cookie = 'valid = '+""
+        function recupererCookie(nom) {
+            nom = nom + "=";
+            var liste = document.cookie.split(';');
+            for (var i = 0; i < liste.length; i++) {
+                var c = liste[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nom) == 0) return c.substring(nom.length, c.length);
+            }
+            return null;
+        }
 
 
-    function controle() {
-        const test = document.form.input.value;
-        document.cookie = "case = " + test;
-        return test;
-    }
+        function controle() {
+            const test = document.form.input.value;
+            document.cookie = "case = " + test;
+            return test;
+        }
 
-    function change($i, $date, $do) {
-        var $a = prompt("Quelle donnée voulez vous mettre?")
-    var l = "";
-    document.getElementsByTagName("td")[$i].innerHTML = $a;
-    l=l+"!";
-    l=l+$a;
-    l=l+"!";
-    l=l+$i;
-    console.log(l);
-    document.cookie = "valid = " + l;
-    document.cookie = "date = "+$date;
-    document.cookie = "do = "+$do;
-    return l;
+        function change($i, $date, $do) {
+            var $a = prompt("Quelle donnée voulez vous mettre?")
+            var l = "";
+            document.getElementsByTagName("td")[$i].innerHTML = $a;
+            l=l+"!";
+            l=l+$a;
+            l=l+"!";
+            l=l+$i;
+            console.log(l);
+            document.cookie = "valid = " + l;
+            document.cookie = "date = "+$date;
+            document.cookie = "do = "+$do;
+            return l;
 
-    }
+        }
     </script>
 
     <p id="idp"></p>
 
-    <?php
-    @$_SESSION['coo'] = $_COOKIE['valid'];
-    @$_SESSION['date']= $_COOKIE['date'];
-    @$_SESSION['do'] = $_COOKIE['do'];
-    ?>
+<?php
+@$_SESSION['coo'] = $_COOKIE['valid'];
+@$_SESSION['date']= $_COOKIE['date'];
+@$_SESSION['do'] = $_COOKIE['do'];
+?>
     <table>
         <thead>
         <tr>
@@ -263,88 +263,87 @@ function affichage($bdd, $id)
         </thead>
     </table>
 
+<?php
+
+
+
+$donnee = AvoirLesDonneeDunPatient($bdd);
+
+
+@$categorie = $donnee[0]['nom'];
+$max = count($donnee);
+$i = 0;
+$var=0;
+
+while ($i<$max){
+?>
+<br>
     <?php
+if ($categorie==$donnee[$i]['nom'] || $var==0){
+    $var=1;
+    ?>
+    <table>
+    <th><div class="title"><?php echo $donnee[$i]['nom']?> </div></th>
 
 
+    <tr>
+        <?php $nomType=$donnee[$i]['type'];
+        $nbType=AvoirLeNombreDeColoneDunType($bdd,$categorie,$nomType);
 
-    $donnee = AvoirLesDonneeDunPatient($bdd);
 
-
-    @$categorie = $donnee[0]['nom'];
-    $max = count($donnee);
-    $i = 0;
-    $var=0;
-
-    while ($i<$max){
         ?>
-        <br>
-        <table>
+    </tr>
+    <tr>
+        <th> <?php echo $donnee[$i]['type']?> </th>
+
         <?php
-        if ($categorie==$donnee[$i]['nom'] || $var==0){
-            $var=1;
+        for ($j=$i; $j<$i+$nbType; $j++){
+
             ?>
+            <td> <?php echo $donnee[$j]['date']?> </td>
 
-            <th><div class="title"><?php echo $donnee[$i]['nom']?> </div></th>
-
-
-            <tr>
-                <?php $nomType=$donnee[$i]['type'];
-                $nbType=AvoirLeNombreDeColoneDunType($bdd,$categorie,$nomType);
-
-
-                ?>
-            </tr>
-            <tr>
-                <th> <?php echo $donnee[$i]['type']?> </th>
-
-                <?php
-                for ($j=$i; $j<$i+$nbType; $j++){
-
-                    ?>
-                    <td> <?php echo $donnee[$j]['date']?> </td>
-
-                    <?php
-                }
-                ?>
-            </tr><?php for ($j=$i; $j<$i+$nbType; $j++){?>
-            <tr>
-                <th> <?php echo 'donnée'?> </th>
-
-                    <td onclick= "change(<?php echo ($i+12+(3*sizeof(PourAvoirToutesLesDatesDeLaPresc($bdd, $id)))+3*(sizeof(PourAvoirToutesLesDatesDeLaDiag($bdd, $id)))+$j+$nbType)?>, '<?php echo $donnee[$i]['date']?>', '<?php echo $donnee[$i]['type']?>')" > <?php echo $donnee[$i]['donnee']?> </td>
-                    <?php
-
-                ?> </tr> <?php
-                }
-
-            $i = $i+$nbType-1;
-            if ($i>=$max)
-                break;
-        }
-
-        else
-        {
-            ?>
-            </table>
             <?php
         }
-
-
-
-
         ?>
+    </tr>
+    <tr>
+        <th> <?php echo 'donnée'?> </th>
         <?php
-        if ($var==1){
-            $i=$i+1;
-            if ($i>=$max)
-                break;
-            $categorie=$donnee[$i]['nom'];
-
-
+        for ($j=$i; $j<$i+$nbType; $j++){   ?>
+            <td onclick= "change(<?php echo ($i+12+(3*sizeof(PourAvoirToutesLesDatesDeLaPresc($bdd, $id)))+3*(sizeof(PourAvoirToutesLesDatesDeLaDiag($bdd, $id)))+$j+$nbType)?>, '<?php echo $donnee[$i]['date']?>', '<?php echo $donnee[$i]['type']?>')" > <?php echo $donnee[$j]['donnee']?> </td>
+            <?php
 
         }
-        ?>
-        </table>
-        <?php
+        ?> </tr> <?php
+    $i = $i+$nbType-1;
+    if ($i>=$max)
+        break;
+}
+
+else
+{
+    ?>
+    </table>
+    <?php
+}
+
+
+
+
+    ?>
+    <?php
+if ($var==1){
+    $i=$i+1;
+    if ($i>=$max)
+        break;
+    $categorie=$donnee[$i]['nom'];
+
+
+    ?>
+    </table>
+    <?php
+}
+
 
 
 }}
