@@ -33,6 +33,8 @@ include('../ConnectionBDD.php');
 ?>
 <h2>Le Scénario</h2>
 <button onclick="window.history.back()">Retour</button>
+<br>
+<button name="redirect" value="Annoter le scénario" onclick="location.href='../NoteEtu.php'">Annoter</button>
 
 <br><br>
 <?php

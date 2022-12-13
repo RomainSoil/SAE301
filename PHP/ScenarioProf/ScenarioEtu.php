@@ -1,17 +1,17 @@
 <?php
 session_start();
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>ScenarioEtudiant </title>
-        <link rel="stylesheet" href="../PageProf.css" >
-        <script src="../LesFonctionsJS.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>ScenarioEtudiant </title>
+    <link rel="stylesheet" href="../PageProf.css" >
+    <script src="../LesFonctionsJS.js"></script>
 
-    </head>
-    <body>
+</head>
+<body>
 <?php
 include('BarreScenarioEtu.html');
 
@@ -58,11 +58,13 @@ affichersce();
         ?>
     </select>
     <input type="submit" value="Afficher le scénario" name="affiche">
-
-
 </form>
-    </body>
+
+</body>
 </html>
 
-
-
+<?php
+if(isset($_POST['patient'])) {
+    $_SESSION['patient'] = $_POST['patient'];
+}
+?>
