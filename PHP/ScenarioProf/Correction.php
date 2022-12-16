@@ -16,5 +16,8 @@ session_start();
 include ("BarreScenario.html");
 ?>
 Page Correction
+
+
+<?php ?>
 </body>
 </html>
