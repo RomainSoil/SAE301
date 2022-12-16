@@ -42,7 +42,7 @@ include ('EnteteV2.html');
     <input type="radio" name="surveillance" value="non" checked="checked" required>non
     <br><br>
     <div class="button_Suivant">
-        <input type="submit" value="Valider">
+        <input type="submit" value="Valider" name="Valider">
     </div>
 
 

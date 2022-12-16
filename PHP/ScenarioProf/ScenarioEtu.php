@@ -63,7 +63,12 @@ affichersce();
     </form>
 </div>
     </body>
+
+</body>
 </html>
 
-
-
+<?php
+if(isset($_POST['patient'])) {
+    $_SESSION['patient'] = $_POST['patient'];
+}
+?>

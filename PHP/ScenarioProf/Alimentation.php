@@ -1,6 +1,7 @@
 <?php
 session_start();
-@$_SESSION['Date']=date("Y-m-d H:m:s", strtotime($_POST["date"]));
+if (isset($_POST['Valider'])) {
+    @$_SESSION['Date'] = date("Y-m-d H:m:s", strtotime($_POST["date"]));
 
 @$_SESSION['toilette']=$_POST['toilette'];
 @$_SESSION['douche']=$_POST['douche'];
