@@ -66,7 +66,7 @@ include ('EnteteV2.html');
     <input type="text" name="autre" required>
     <br><br>
     <div class="button_Suivant">
-        <input type="submit" value="Valider">
+        <input type="submit" value="Valider" name="Valider">
     </div>
 </form>
 <footer>

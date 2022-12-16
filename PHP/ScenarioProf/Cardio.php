@@ -42,7 +42,7 @@ if (isset($_POST['Valider'])) {
     ECG :<input type="text" name="ECG" id="ECG">
     <br><br>
     <div class="button_Suivant">
-        <input type="submit" value="Valider">
+        <input type="submit" value="Valider" name="Valider">
     </div>
 </form>
 <footer>

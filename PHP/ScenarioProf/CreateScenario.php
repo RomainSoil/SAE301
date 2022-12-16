@@ -109,6 +109,7 @@ include("BarreScenario.html");
 
             ?>
     </select>
+
         <input type="submit" value="Ajouter une contrainte" name="Contrainte">
         <input type="submit" value="Afficher le scénario" name="affiche">
         <input type="submit" value="Supprimer le patient" name = "Supprimer">
