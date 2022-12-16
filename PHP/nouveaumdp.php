@@ -6,7 +6,7 @@ session_start();
 
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
+    <title>Nouveau MDP</title>
     <link rel="stylesheet" href="SiteIFSI.css">
     <script src="LesFonctionsJS.js"></script>
 </head>

@@ -1,32 +1,30 @@
 <?php
 session_start();
-if (isset($_POST['valider'])) {
-
+if (isset($_POST['Valider'])) {
     @$_SESSION['Date'] = date("Y-m-d H:m:s", strtotime($_POST["date"]));
 
-    @$_SESSION['toilette'] = $_POST['toilette'];
-    @$_SESSION['douche'] = $_POST['douche'];
-    @$_SESSION['bain'] = $_POST['bain'];
-    @$_SESSION['refectionLit'] = $_POST['refectionLit'];
-    @$_SESSION['change'] = $_POST['change'];
-    @$_SESSION['soinBouche'] = $_POST['soinBouche'];
-    @$_SESSION['escare'] = $_POST['escare'];
-    @$_SESSION['position'] = $_POST['position'];
-    @$_SESSION['matelas'] = $_POST['matelas'];
-    require("../ConnectionBDD.php");
-    $pdo = ConnectionBDD::getInstance();
-    $bdd = $pdo::getpdo();
-    require("../FonctionPhp.php");
-    @ajoutDeDonneeAvecLesBooleans($bdd, "Hygiene", 'toilette');
-    @ajoutDeDonneeAvecLesBooleans($bdd, "Hygiene", 'douche');
-    @ajoutDeDonneeAvecLesBooleans($bdd, "Hygiene", 'bain');
-    @ajoutDeDonneeAvecLesBooleans($bdd, "Hygiene", 'refectionLit');
-    @ajoutDeDonneeAvecLesBooleans($bdd, "Hygiene", 'soinBouche');
-    @ajoutDeDonneeAvecLesBooleans($bdd, "Hygiene", 'escare');
-    @ajoutDeDonneeAvecLesBooleans($bdd, "Hygiene", 'position');
-    @ajoutDeDonneeAvecLesBooleans($bdd, "Hygiene", 'matelas');
+@$_SESSION['toilette']=$_POST['toilette'];
+@$_SESSION['douche']=$_POST['douche'];
+@$_SESSION['bain']=$_POST['bain'];
+@$_SESSION['refectionLit']=$_POST['refectionLit'];
+@$_SESSION['change']=$_POST['change'];
+@$_SESSION['soinBouche']=$_POST['soinBouche'];
+@$_SESSION['escare']=$_POST['escare'];
+@$_SESSION['position']=$_POST['position'];
+@$_SESSION['matelas']=$_POST['matelas'];
+require ("../ConnectionBDD.php");
+$pdo = ConnectionBDD::getInstance();
+$bdd = $pdo::getpdo();
+require ("../FonctionPhp.php");
+@ajoutDeDonneeAvecLesBooleans($bdd,"Hygiene",'toilette');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Hygiene",'douche');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Hygiene",'bain');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Hygiene",'refectionLit');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Hygiene",'soinBouche');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Hygiene",'escare');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Hygiene",'position');
+@ajoutDeDonneeAvecLesBooleans($bdd,"Hygiene",'matelas');
 
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,11 +74,11 @@ include("EnteteV2.html");
         <input type="submit" value="Valider">
     </div>
 </form>
-<footer>
-    <form action="../Accueil.php" method="post">
-        <input type="submit" value="Besoin d'aide ?">
+<div class="footer-CreateScenario">
+    <form action="../BesoinAide.php" method="post">
+        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
     </form>
-</footer>
+</div>
 </body>
 </html>
 

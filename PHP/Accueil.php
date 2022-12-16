@@ -22,7 +22,7 @@ $_SESSION['IdChat']=1;
         </form>
     </div>
     <a href="Accueil.php">
-        <img src="image/logoIFSI.png" width=150 height=150 alt="" >
+        <img src="image/logoIFSI.png" width=234 height=125 alt="" >
     </a>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br><br>
@@ -42,7 +42,7 @@ $_SESSION['IdChat']=1;
     <br><br><br>
     <a href="Login.php">créer un compte</a><br><br>
     <a href="MotDePasseOublie.php">Mot de passe oublié</a><br><br>
-    <a href="https://cas.uphf.fr/login-help/">Besoin d'aide</a><br><br>
+    <a href="BesoinAide.php">Besoin d'aide</a><br><br>
 </div>
 <!--Le bas de l'image avec le carré rouge-->
     <div class="securite">

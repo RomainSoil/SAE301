@@ -30,7 +30,7 @@ $_SESSION['PseudoChat']=$pseudo2;
 <body>
     <header>
         <a href="Accueil.php">
-            <img src="image/logoIFSI.png" width=50 height=50 alt="" >
+            <img src="image/logoIFSI.png" width=234 height=125 alt="" >
         </a>
         <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
         <br>
@@ -43,9 +43,10 @@ $_SESSION['PseudoChat']=$pseudo2;
     <br>
     <div class="btn-group">
     <form method="post" class="btn-group">
-        <button class="button" type="submit" name="verif">Accueil</button>
+        <button class="button-57" type="submit" name="verif" ><span class="text">Accueil</span><span>Accueil</span></button>
 
     </form>
+
 
     </div>
     <br>
@@ -63,8 +64,9 @@ $_SESSION['PseudoChat']=$pseudo2;
     <form method="POST" >
         <textarea name="message" rows="10" cols="80"></textarea>
         <br>
-        <input type="submit" name="valider">
-        <button type="submit" name="suppmess">Supprimer</button>
+        <button class="button-90" role="button" type="submit" name="valider">Envoyer</button>
+        <button class="button-90" role="button" type="submit" name="suppmess">Supprimer</button>
+
     </form>
 </div>
 <br>
@@ -149,14 +151,15 @@ function affichergrp($bdd){
     <!--Zone groupe-->
 
         <div class="Btn_Groupe">
-            <button type="submit" name="creer" id="creer" onclick="afficher()">Créer groupe</button>
+            <button class="button-90" role="button" type="submit" name="creer" id="creer" onclick="afficher()">Créer groupe</button>
             <form style="visibility: hidden" id="form" method="post">
+
                 <input type="text" placeholder="Nom du groupe" id="nomgrp" name="nomgrp">
                 <input type="text" placeholder="Sujet du groupe" id="nomgrp" name="sujet">
                 <input name="valider" id="valider" type="submit">
             </form>
             <br>
-            <button type="submit" name="inviter" id="inviter" onclick="afficher2()">inviter</button>
+            <button class="button-90" role="button" type="submit" name="inviter" id="inviter" onclick="afficher2()">Inviter</button>
             <form style="visibility: hidden" id="invit" method="post">
                 <input type="text" placeholder="email" id="nom" name="nom">
             </form>
@@ -297,12 +300,11 @@ if(isset($_POST['verif'])) {
     }
 }
 
-?>
-<footer>
-    <form action="Accueil.php" method="post">
-        <input type="submit" value="Besoin d'aide ?">
-    </form>
-</footer>
+?><div class="footer-CreateScenario">
+        <form action="BesoinAide.php" method="post">
+            <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+        </form>
+    </div>
 </body>
 </html>
 

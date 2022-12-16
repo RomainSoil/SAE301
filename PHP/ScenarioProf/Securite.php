@@ -9,7 +9,7 @@ session_start();
 
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
+    <title>Sécurité</title>
     <link rel="stylesheet" href="../PageProf.css">
     <script type="text/javascript" src="../LesFonctionsJS.js"></script>
 
@@ -42,7 +42,7 @@ include ('EnteteV2.html');
     <input type="radio" name="surveillance" value="non" checked="checked" required>non
     <br><br>
     <div class="button_Suivant">
-        <input type="submit" value="Valider">
+        <input type="submit" value="Valider" name="Valider">
     </div>
 
 
@@ -52,11 +52,11 @@ include ('EnteteV2.html');
 
 </form>
 
-<footer>
-    <form action="../Accueil.php" method="post">
-        <input type="submit" value="Besoin d'aide ?">
+<div class="footer-CreateScenario">
+    <form action="../BesoinAide.php" method="post">
+        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
     </form>
-</footer>
+</div>
 </body>
 </html>
 

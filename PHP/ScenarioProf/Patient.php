@@ -7,7 +7,7 @@ session_start();
 
     <head>
         <meta charset="UTF-8">
-        <title>Connexion</title>
+        <title>Patient</title>
         <link rel="stylesheet" href="../PageProf.css">
         <script type="text/javascript" src="../LesFonctionsJS.js"></script>
 
@@ -50,11 +50,11 @@ session_start();
 
     <!--Le bas de page avec le boutton si on a besoin d'aide-->
 
-    <footer>
-        <form action="../Accueil.php" method="post">
-            <input type="submit" value="Besoin d'aide ?">
+    <div class="footer-CreateScenario">
+        <form action="../BesoinAide.php" method="post">
+            <button class="button-28" role="button" type="submit">Besoin d'aide</button>
         </form>
-    </footer>
+    </div>
     </body>
     </html>
 

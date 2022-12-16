@@ -1,17 +1,17 @@
 <?php
 session_start();
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>ScenarioEtudiant </title>
-    <link rel="stylesheet" href="../PageProf.css" >
-    <script src="../LesFonctionsJS.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <title>ScenarioEtudiant </title>
+        <link rel="stylesheet" href="../PageProf.css" >
+        <script src="../LesFonctionsJS.js"></script>
 
-</head>
-<body>
+    </head>
+    <body>
 <?php
 include('BarreScenarioEtu.html');
 
@@ -33,11 +33,6 @@ affichersce();
 ?>
 
 <h2>Scénario</h2>
-<div class="footer-CreateScenario">
-    <form action="../Accueil.php" method="post">
-        <input type="submit" value="Besoin d'aide ?">
-    </form>
-</div>
 
 <form method="post">
     <select name="patient">
@@ -57,8 +52,17 @@ affichersce();
 
         ?>
     </select>
-    <input type="submit" value="Afficher le scénario" name="affiche">
+    <button class="button-90" role="button" type="submit" name="affiche">Afficher le scénario</button>
+
+
+
 </form>
+<div class="footer-CreateScenario">
+    <form action="../BesoinAide.php" method="post">
+        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+    </form>
+</div>
+    </body>
 
 </body>
 </html>

@@ -8,7 +8,7 @@ $_SESSION['IdChat']=1;
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Accueil</title>
+    <title>AccueilAnglais</title>
     <link rel="stylesheet" href="SiteIFSI.css" >
     <script src="LesFonctionsJS.js"></script>
 

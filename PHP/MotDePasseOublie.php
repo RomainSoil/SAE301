@@ -6,7 +6,7 @@ session_start();
 
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
+    <title>MDP oublié</title>
     <link rel="stylesheet" href="SiteIFSI.css">
 </head>
 <body>
