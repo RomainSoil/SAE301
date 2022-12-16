@@ -41,8 +41,8 @@ $pdo = ConnectionBDD::getInstance();
 $bdd = $pdo::getpdo();
 
 
-if ($_COOKIE['reload']==1){
-    $_COOKIE['reload']=0;
+if (@$_COOKIE['reload']==1){
+    @$_COOKIE['reload']=0;
     header('Refresh:0');
 }
 

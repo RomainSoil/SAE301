@@ -18,6 +18,12 @@ include ("BarreScenario.html");
 Page Correction
 
 
-<?php ?>
+
+
+<?php
+/**
+function affichage($bdd, $id){
+    $sql = $bdd->prepare("select * from noteetu where idpatient=? and email=?");
+    $sql -> execute(array())}**/?>
 </body>
 </html>

@@ -61,6 +61,7 @@ require('ConnectionBDD.php');
 require('Connexion.php');
 require('username.php');
 $_SESSION['IdChat']=1;
+$_SESSION['sujet'] = "Général";
 /* La partie de la validation de connexion qui renvoie la page correspondante*/
 
 
