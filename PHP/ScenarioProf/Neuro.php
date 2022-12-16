@@ -30,7 +30,7 @@ if (isset($_POST['Valider'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>ConnexionProfesseur</title>
+    <title>Neurologie</title>
     <link rel="stylesheet" href="../PageProf.css" >
     <script src="../LesFonctionsJS.js"></script>
 
@@ -60,11 +60,11 @@ include ('EnteteV2.html');
 
 
 </form>
-<footer>
-    <form action="../Accueil.php" method="post">
-        <input type="submit" value="Besoin d'aide ?">
+<div class="footer-CreateScenario">
+    <form action="../BesoinAide.php" method="post">
+        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
     </form>
-</footer>
+</div>
 
 </div>
 </body>

@@ -33,11 +33,6 @@ affichersce();
 ?>
 
 <h2>Scénario</h2>
-<div class="footer-CreateScenario">
-    <form action="../Accueil.php" method="post">
-        <input type="submit" value="Besoin d'aide ?">
-    </form>
-</div>
 
 <form method="post">
     <select name="patient">
@@ -57,10 +52,16 @@ affichersce();
 
         ?>
     </select>
-    <input type="submit" value="Afficher le scénario" name="affiche">
+    <button class="button-90" role="button" type="submit" name="affiche">Afficher le scénario</button>
+
 
 
 </form>
+<div class="footer-CreateScenario">
+    <form action="../BesoinAide.php" method="post">
+        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+    </form>
+</div>
     </body>
 </html>
 

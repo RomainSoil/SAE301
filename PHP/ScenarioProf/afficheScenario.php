@@ -7,7 +7,7 @@ session_start();
 
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
+    <title>Scenario</title>
     <link rel="stylesheet" href="../PageProf.css">
     <script type="text/javascript" src="../LesFonctionsJS.js"></script>
 

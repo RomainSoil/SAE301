@@ -73,11 +73,11 @@ include("EnteteV2.html");
         <input type="submit" value="Valider">
     </div>
 </form>
-<footer>
-    <form action="../Accueil.php" method="post">
-        <input type="submit" value="Besoin d'aide ?">
+<div class="footer-CreateScenario">
+    <form action="../BesoinAide.php" method="post">
+        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
     </form>
-</footer>
+</div>
 </body>
 </html>
 

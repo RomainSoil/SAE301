@@ -10,7 +10,7 @@ $bdd = $pdo::getpdo();
 
 <head>
     <meta charset="UTF-8">
-    <title>ConnexionProfesseur</title>
+    <title>autre</title>
     <link rel="stylesheet" href="../PageProf.css" >
     <script src="../LesFonctionsJS.js"></script>
 
@@ -34,9 +34,9 @@ $categorie->execute();
     <input type="submit" name="valider">
 
 </form>
-<h3>
+<h4>
     Nouvelle donnée
-</h3>
+</h4>
 
 <form method="post" action="Transition3.php">
     <select name="categorie">
@@ -57,6 +57,11 @@ $categorie->execute();
         <input name="date" type="datetime-local" required>
     <input type="submit" value="valider">
 </form>
+<div class="footer-CreateScenario">
+    <form action="../BesoinAide.php" method="post">
+        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+    </form>
+</div>
 </body>
 </html>
 

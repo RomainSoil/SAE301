@@ -9,7 +9,7 @@ session_start();
 
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
+    <title>Scenario</title>
     <link rel="stylesheet" href="../PageProf.css">
     <script type="text/javascript" src="../LesFonctionsJS.js"></script>
 
@@ -32,7 +32,7 @@ include('../ConnectionBDD.php');
 
 ?>
 <h2>Le Scénario</h2>
-<button onclick="window.history.back()">Retour</button>
+<button class="button-90" onclick="window.history.back()">Retour</button>
 
 <br><br>
 <?php

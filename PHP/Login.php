@@ -34,58 +34,45 @@ session_start();
 
 <div class="inscription">
         <form method="post">
-            <label>Nom :</label>
+            <label>NOM</label>
             <br>
-            <label>
-                <input type="text" name="nom" id="nom" value="<?php echo @$_POST['nom']?>" placeholder="Entrez votre Nom" required>
-            </label>
+            <input type="text" name="nom" id="nom" value="<?php echo @$_POST['nom']?>"  required>
             <br>
-            <label>Prénom :</label>
+            <label>PRENOM </label>
             <br>
-            <label>
-                <input type="text" name="prenom" id="prenom" value="<?php echo @$_POST['prenom']?>" placeholder="Entrez votre Prenom" required>
-            </label>
+            <input type="text" name="prenom" id="prenom" value="<?php echo @$_POST['prenom']?>" required>
             <br>
-            <label>Email :</label>
+            <label>EMAIL</label>
             <br>
-            <label>
-                <input type="email" name="mail" id="mail" placeholder="Entrez votre mail" value="<?php echo @$_POST['mail']?>" required>
-            </label>
+            <input type="email" name="mail" id="mail"  value="<?php echo @$_POST['mail']?>" required>
             <br>
-            <label>Code Confidentiel :</label>
+            <label>CODE</label>
             <br>
             <!--le code peut être commun-->
-            <label>
-                <input type="text" name="code" id="code" value="<?php echo @$_POST['code']?>" placeholder="Entrez votre Code" required>
-            </label>
+            <input type="text" name="code" id="code" value="<?php echo @$_POST['code']?>"  required>
             <br>
                 <div>
-                    <p><a href="#" class="MDP">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
+                    <p><a href="#" class="MDP">MOT DE PASSE<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
                 </div>
             <label>
-                <input type="password" name="mdp" id="mdp"  placeholder="Entrez votre mot de passe" required>
+                <input type="password" name="mdp" id="mdp" required>
             </label>
             <button type="button" id="pass1" onclick="changer('mdp')">O</button>
             <br>
             <div>
-                <p><a href="#" class="MDP">Mot de passe :<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
+                <p><a href="#" class="MDP">CONFIRMATION<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
             </div>
             <label>
-                <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez mot de passe" required>
+                <input type="password" name="mdp2" id="mdp2" required>
             </label>
             <button type="button" id="pass2" onclick="changer('mdp2')">O</button>
             <br>
+
             <input type="submit" value="Valider" >
         </form>
 </div>
 
-<!--Le bas de page avec le boutton si on a besoin d'aide-->
 
-<footer>
-    <form action="Accueil.php" method="post">
-        <input type="submit" value="Besoin d'aide ?">
-    </form>
-</footer>
 
 </body>
 </html>
