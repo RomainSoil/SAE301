@@ -444,9 +444,3 @@ affichage($bdd, $id);
 <br><br>
 </body>
 </html>
-
-
-
-
-
-

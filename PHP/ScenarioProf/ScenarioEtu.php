@@ -28,7 +28,10 @@ $scena->execute();
 affichersce();
 
 
+if(isset($_POST["reponse"])){
+    header('Location:ReponseEtu.php ');
 
+}
 
 ?>
 
@@ -53,6 +56,8 @@ affichersce();
         ?>
     </select>
     <button class="button-90" role="button" type="submit" name="affiche">Afficher le scénario</button>
+    <button class="button-90" role="button" type="submit" name="reponse">Répondre au scénario</button>
+
 
 
 
