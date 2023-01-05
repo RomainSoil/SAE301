@@ -27,11 +27,11 @@ $scena->execute();
 
 affichersce();
 
-
-if(isset($_POST["reponse"])){
+if (isset($_POST['patient']) && $_POST['patient'] != 2) {
+    if(isset($_POST["reponse"])){
     header('Location:ReponseEtu.php ');
 
-}
+}}
 
 ?>
 
