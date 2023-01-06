@@ -106,6 +106,21 @@ function etugrp($bdd)
     return $array;
 }
 
+function AvoirLaNoteDunEtu($bdd,$mail){
+    $sql = $bdd->prepare("Select note from note where idpatient=? and email=?");
+    $sql->bindParam(1,$_SESSION['patient']);
+    $sql->bindParam(2,$mail);
+    $sql->execute();
+    $note =$sql->fetch();
+    $note=@$note[0];
+    if ($note==null)
+        $note= '~';
+
+
+    return $note;
+
+}
+
 
 
 ?>

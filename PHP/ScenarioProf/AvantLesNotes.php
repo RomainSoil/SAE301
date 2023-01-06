@@ -42,7 +42,7 @@ $patients->execute();
                 ?>
             <option value=<?php echo $patient[0]?>><?php echo $pat?></option>
     <?php
-            }             $_SESSION['patient']=$_POST['patient'];
+            }
 
             ?>
     </select>
