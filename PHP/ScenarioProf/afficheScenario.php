@@ -1128,6 +1128,11 @@ function affichage($bdd, $id){
     <?php
 }
 
+/**
+ * @param $bdd
+ * @param $id
+ * @return void
+ */
 function modifdonnees($bdd, $id)
 {
     $datespres = PourAvoirToutesLesDatesDeLaPresc($bdd,$id);

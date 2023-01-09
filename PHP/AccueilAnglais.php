@@ -23,7 +23,7 @@ $_SESSION['IdChat']=1;
         </form>
     </div>
     <a href="Accueil.php">
-        <img src="image/logoIFSI.png" width=150 height=150 alt="" >
+        <img src="image/logoIFSI.png"  width=234 height=125  alt="" >
     </a>
     <h1> Institute of Nursing Training </h1>
     <br><br>

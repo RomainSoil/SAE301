@@ -76,9 +76,9 @@ Create table Scenario (
 
 Create Table Note (
     email text references Etudiant on delete cascade,
-    idScenario int references Scenario on delete cascade,
-    note int not null,
-    primary key (email, idScenario)
+    idPatient int references Patient on delete cascade,
+    note float not null,
+    primary key (email, idPatient)
 );
 
 CREATE table Medicament(
@@ -295,6 +295,3 @@ Create table ReponseEtu(
 
 SELECT nom,prenom,DDN from groupescenario join groupeetudiant g on groupescenario.idgroupe = g.idgroupe join patient p on groupescenario.idpatient = p.idpatient  where email='mdangreaux11@gmail.com';
 
-ALTER TABLE groupescenario DROP constraint groupescenario_idpatient_fkey;
-
-ALTER TABLE groupescenario add FOREIGN KEY (idpatient) references patient on delete cascade;

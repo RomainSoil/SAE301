@@ -19,6 +19,10 @@ include('../ConnectionBDD.php');
 $pdo = ConnectionBDD::getInstance();
 $bdd = $pdo::getpdo();
 
+/**
+ * @param $bdd
+ * @return void
+ */
 function reponse($bdd){
         if (isset($_POST['Valider'])) {
             $sql = $bdd->prepare("INSERT INTO reponseetu (email, idpatient, texte) values (?,?,?)");

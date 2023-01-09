@@ -2,6 +2,10 @@
 $pdo = ConnectionBDD::getInstance();
 $bdd = $pdo::getpdo();
 
+/**
+ * @param $bdd
+ * @return void
+ */
 function effacer($bdd){
     if (isset($_POST['OuiSupp'])) {
         $patient = $bdd->prepare("Delete FROM patient where idpatient=?");
@@ -40,6 +44,11 @@ function affichersce()
         }
     }
 }
+
+/**
+ * @param $bdd
+ * @return void
+ */
 function creerGroupe($bdd){
     if (isset($_POST['Creer'])) {
         $creer = $bdd->prepare("INSERT INTO groupeclasse(nom) values (?)");
@@ -50,7 +59,13 @@ function creerGroupe($bdd){
 
     }}
 
-function EstDeJaDansLeGroupe($bdd,$groupe,$mail){
+/**
+ * @param $bdd
+ * @param $groupe
+ * @param $mail
+ * @return bool
+ */
+function EstDeJaDansLeGroupe($bdd, $groupe, $mail){
     $sql = $bdd->prepare("SELECT email FROM groupeetudiant where idgroupe=? ");
     $sql->bindParam(1,$groupe);
     $sql->execute();
@@ -63,6 +78,11 @@ function EstDeJaDansLeGroupe($bdd,$groupe,$mail){
     }
     return false;
 }
+
+/**
+ * @param $bdd
+ * @return void
+ */
 function ajoutEtu($bdd){
     if (isset($_POST['ajoutEtu']) && $_POST['grp2']!='!'&&$_POST['etud']!='!'){
         $groupe=@$_POST['grp2'];
@@ -82,12 +102,20 @@ function ajoutEtu($bdd){
 
     }}
 
+/**
+ * @param $bdd
+ * @return void
+ */
 function Scenario($bdd){
     if (isset($_POST['envoie']) && $_POST['GroupeScena']!="!" && $_POST['patientScena']!="!") {
         $ajout = $bdd->prepare("INSERT INTO groupescenario(idgroupe,idpatient) values (?,?)  ");
         $ajout->execute(array($_POST['GroupeScena'],$_POST['patientScena']));
     }}
 
+/**
+ * @param $bdd
+ * @return mixed
+ */
 function nomgrp($bdd)
 {
     $nomgrp = $bdd->prepare("SELECT nom FROM groupeclasse where idgroupe=?");
@@ -96,6 +124,11 @@ function nomgrp($bdd)
     $res = $nomgrp->fetch();
     return $res[0];
 }
+
+/**
+ * @param $bdd
+ * @return mixed
+ */
 function etugrp($bdd)
 {
     $grpetu=$_SESSION['grp'];
@@ -106,7 +139,12 @@ function etugrp($bdd)
     return $array;
 }
 
-function AvoirLaNoteDunEtu($bdd,$mail){
+/**
+ * @param $bdd
+ * @param $mail
+ * @return mixed|string
+ */
+function AvoirLaNoteDunEtu($bdd, $mail){
     $sql = $bdd->prepare("Select note from note where idpatient=? and email=?");
     $sql->bindParam(1,$_SESSION['patient']);
     $sql->bindParam(2,$mail);

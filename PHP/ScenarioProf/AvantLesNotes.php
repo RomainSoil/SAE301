@@ -13,7 +13,7 @@ session_start();
 </head>
 <body>
 <?php
-include('BarreScenarioEtu.html');
+include('BarreScenario.html');
 
 include('../ConnectionBDD.php');
 $pdo = ConnectionBDD::getInstance();
@@ -27,7 +27,7 @@ $patients = $bdd->prepare("SELECT * FROM patient where emailprof=?");
 $patients->bindParam(1,$_SESSION['email']);
 $patients->execute();
 ?>
-
+<h4>Notes des Scénarios</h4>
 <form method="post" action="Note.php">
     <select name="patient">
         <option value="2">Sélectionnez un patient</option>
@@ -49,3 +49,12 @@ $patients->execute();
         <button class="button-90" role="button" type="submit" name="note">Voir les notes </button>
 
     </form>
+<div class="footer-CreateScenario">
+
+    <br>
+    <form action="../BesoinAide.php" method="post">
+        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+    </form>
+</div>
+</body>
+</html>

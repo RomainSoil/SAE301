@@ -2,48 +2,48 @@
 session_start();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-    <link rel="stylesheet" href="SiteIFSI.css">
-    <script type="text/javascript" src="LesFonctionsJS.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <title>Connexion</title>
+        <link rel="stylesheet" href="SiteIFSI.css">
+        <script type="text/javascript" src="LesFonctionsJS.js"></script>
 
-</head>
+    </head>
 
-<body>
-<!--Le haut de la page avec l'image et le titre-->
+    <body>
+    <!--Le haut de la page avec l'image et le titre-->
 
-<header>
-    <div class="traduction">
-        <form action="LoginAnglais.php" method="post">
-            <input type="submit" value="Anglais">
-        </form>
-    </div>
-    <a href="Accueil.php">
-        <img src="image/logoIFSI.png" width=150 height=150 alt="" >
-    </a>
-    <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
-    <br><br>
-</header>
+    <header>
+        <div class="traduction">
+            <form action="Login.php" method="post">
+                <input type="submit" value="Francais">
+            </form>
+        </div>
+        <a href="Accueil.php">
+            <img src="image/logoIFSI.png" width=150 height=150 alt="" >
+        </a>
+        <h1>  Institute of Nursing Training</h1>
+        <br><br>
+    </header>
 
-<!--La fleche pour revenir sur la page accueil-->
+    <!--La fleche pour revenir sur la page accueil-->
 
 
 
-<!--La box de l'inscription-->
+    <!--La box de l'inscription-->
 
-<h2>INSCRIPTION IFSI</h2>
+    <h2>REGISTRATION IFSI</h2>
 
-<div class="inscription">
+    <div class="inscription">
         <form method="post">
-            <label>NOM</label>
+            <label>LAST NAME</label>
             <br>
             <input type="text" name="nom" id="nom" value="<?php echo @$_POST['nom']?>"  required>
             <br>
-            <label>PRENOM </label>
+            <label>FIRST NAME</label>
             <br>
             <input type="text" name="prenom" id="prenom" value="<?php echo @$_POST['prenom']?>" required>
             <br>
@@ -56,9 +56,9 @@ session_start();
             <!--le code peut être commun-->
             <input type="text" name="code" id="code" value="<?php echo @$_POST['code']?>"  required>
             <br>
-                <div>
-                    <p><a href="#" class="MDP">MOT DE PASSE<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
-                </div>
+            <div>
+                <p><a href="#" class="MDP">PASSWORD<span>&ensp;- min une majuscule &ensp;<br> &ensp;- min 8 caractères &ensp;<br>&ensp; - min un chiffre &ensp;</span></a>
+            </div>
             <label>
                 <input type="password" name="mdp" id="mdp" required>
             </label>
@@ -73,17 +73,16 @@ session_start();
             <button type="button" id="pass2" onclick="changer('mdp2')">O</button>
             <br>
 
-            <input type="submit" value="Valider" >
+            <input type="submit" value="Validate" >
         </form>
-</div>
+    </div>
 
 <br>
-<form action="BesoinAide.php" method="post">
-    <button class="button-28" role="button" type="submit">Besoin d'aide</button>
-</form>
-
-</body>
-</html>
+    <form action="BesoinAide.php" method="post">
+        <button class="button-28" role="button" type="submit">Need Help</button>
+    </form>
+    </body>
+    </html>
 
 
 
@@ -153,7 +152,7 @@ function bdd($mail, $mdp, $mdp2){
                     $req->bindParam('prenom',$prenom, PDO::PARAM_STR);
                     $req->bindParam('code',$code, PDO::PARAM_STR);
                     $_SESSION['page'] = true;
-                                }
+                }
                 $etu = $pdo->prepare("SELECT * FROM etudiant WHERE email=?");
                 $prof = $pdo->prepare("SELECT * FROM prof WHERE email=?");
                 $etu->execute(Array($mail));
@@ -169,7 +168,7 @@ function bdd($mail, $mdp, $mdp2){
                     echo '<script>alert("Le code n\'est pas valide.")</script>';
 
 
-                                }
+                }
 
                 if ($condition) {
                     try {
@@ -180,7 +179,7 @@ function bdd($mail, $mdp, $mdp2){
                         $add->execute(array($mail));
                     }
                     catch (PDOException $e) {
-                                        die ($e->getMessage());
+                        die ($e->getMessage());
                     }
                 }
                 header('Location: Accueil.php');
@@ -189,7 +188,7 @@ function bdd($mail, $mdp, $mdp2){
 
             }
 
-}}}
+        }}}
 @bdd($_POST['mail'],$_POST['mdp'],$_POST['mdp2']);
 
 ?>

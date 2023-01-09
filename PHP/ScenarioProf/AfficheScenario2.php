@@ -67,6 +67,11 @@ function affpatient($bdd, $id)
 
 require('../FonctionPhp.php');
 
+/**
+ * @param $bdd
+ * @param $id
+ * @return void
+ */
 function affichage($bdd, $id)
 {
     ?>
@@ -353,7 +358,11 @@ if ($var==1){
 }}
 
 
-
+/**
+ * @param $bdd
+ * @param $id
+ * @return void
+ */
 function modifdonnees($bdd, $id){
     $datespres = PourAvoirToutesLesDatesDeLaPresc($bdd,$id);
     $datesdiag = PourAvoirToutesLesDatesDeLaDiag($bdd, $id);

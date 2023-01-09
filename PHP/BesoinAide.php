@@ -4,10 +4,10 @@ require ('ConnectionBDD.php');
 $conn= ConnectionBDD::getInstance();
 $bdd=$conn::getpdo();
 $tous = $bdd->query("SELECT idba FROM BesoinDaide");
-$pseudo = $_SESSION['username'];
-$pseudo2 = $pseudo[0];
+@$pseudo = $_SESSION['username'];
+@$pseudo2 = $pseudo[0];
 $pseudo2 .= " ";
-$pseudo2 .= $pseudo[1];
+@$pseudo2 .= $pseudo[1];
 $_SESSION['PseudoChat']=$pseudo2;
 /* ce if sert a permettre d'envoyer des messages*/
 if (isset($_POST['message'])) {
@@ -30,7 +30,7 @@ if (isset($_POST['message'])) {
 <body>
 <header>
     <a href="Accueil.php">
-        <img src="image/logoIFSI.png" width=50 height=50 alt="" >
+        <img src="image/logoIFSI.png" width=234 height=125 alt="" >
     </a>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br>

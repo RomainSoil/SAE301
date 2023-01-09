@@ -30,12 +30,16 @@ $etudiants->bindParam(1,$leScenario);
 $etudiants->execute();
 $res=$etudiants->fetchAll();
 ?>
-
+<br>
+<button class="button-90" onclick="window.history.back()">Retour</button>
+<br>
+<br>
 <table>
   <thead>
     <tr>
-      <th>Étudiant</th>
-      <?php
+        <th><div class="title">Étudiant </div></th>
+
+        <?php
         {
           echo "<th> NOTE </th>";
         }
@@ -49,8 +53,8 @@ foreach ($res as $etu){
 
     ?>
         <tr>
-    <th> <?php echo $etu[0],$etu[1]?></th>
-    <th> <?php echo $note?></th>
+    <th> <?php echo $etu[0]," ",$etu[1]?></th>
+    <td> <?php echo $note?></td>
 
     </tr>
 <?php
@@ -60,6 +64,14 @@ foreach ($res as $etu){
 </tbody>
 </table>
 
+<div class="footer-CreateScenario">
+    <br>
+    <form action="../BesoinAide.php" method="post">
+        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+    </form>
+</div>
+</body>
+</html>
 
 
 

@@ -2,6 +2,10 @@
 $pdo = ConnectionBDD::getInstance();
 $bdd = $pdo::getpdo();
 
+/**
+ * @param $bdd
+ * @return mixed
+ */
 function PourConnaitreLeIdDeLaDonnee($bdd){
     $sql=$bdd->prepare("Select max(iddonnee) from donnee ");
     $sql->execute();
@@ -9,7 +13,13 @@ function PourConnaitreLeIdDeLaDonnee($bdd){
     return $array[0];
 }
 
-function ajoutDeDonneeAvecLesBooleans($bdd,$categorie,$column){
+/**
+ * @param $bdd
+ * @param $categorie
+ * @param $column
+ * @return void
+ */
+function ajoutDeDonneeAvecLesBooleans($bdd, $categorie, $column){
     $varOui = "x";
     $varNon= " ";
 
@@ -30,7 +40,14 @@ function ajoutDeDonneeAvecLesBooleans($bdd,$categorie,$column){
     $sql->execute();
 }
 
-function ajoutDeDonneeSansLesBooleans($bdd,$categorie,$column,$donnee){
+/**
+ * @param $bdd
+ * @param $categorie
+ * @param $column
+ * @param $donnee
+ * @return void
+ */
+function ajoutDeDonneeSansLesBooleans($bdd, $categorie, $column, $donnee){
 
 
     $sql=$bdd->prepare("Insert into donnee (date, nom, donnee,idpatient) VALUES (?,?,?,?)");
@@ -46,6 +63,10 @@ function ajoutDeDonneeSansLesBooleans($bdd,$categorie,$column,$donnee){
     $sql->execute();
 }
 
+/**
+ * @param $bdd
+ * @return mixed
+ */
 function AvoirLesDonneeDunPatient ($bdd){
     $sql=$bdd->prepare("Select c.nom, donnee.nom as type, donnee.donnee, date from donnee join categoriedonnee c on donnee.iddonnee = c.iddonnee join patient p on donnee.idpatient = p.idpatient join categorie c2 on c.nom = c2.nom 
         where p.idpatient=? order by (c.nom,donnee.nom,date)");
@@ -57,7 +78,12 @@ function AvoirLesDonneeDunPatient ($bdd){
 
 }
 
-function AvoirLeNombreDunType ($bdd,$nomCategorie){
+/**
+ * @param $bdd
+ * @param $nomCategorie
+ * @return int
+ */
+function AvoirLeNombreDunType ($bdd, $nomCategorie){
     $sql=$bdd->prepare("Select c.nom from donnee join categoriedonnee c on donnee.iddonnee = c.iddonnee join patient p on donnee.idpatient = p.idpatient join categorie c2 on c.nom = c2.nom 
         where p.idpatient=? and c.nom=? ");
     $sql->bindParam(1,$_SESSION['scenario']);
@@ -69,7 +95,13 @@ function AvoirLeNombreDunType ($bdd,$nomCategorie){
 
 }
 
-function AvoirLeNombreDeColoneDunType ($bdd,$nomCategorie,$nomtype){
+/**
+ * @param $bdd
+ * @param $nomCategorie
+ * @param $nomtype
+ * @return int
+ */
+function AvoirLeNombreDeColoneDunType ($bdd, $nomCategorie, $nomtype){
     $sql=$bdd->prepare("Select donnee.nom from donnee join categoriedonnee c on donnee.iddonnee = c.iddonnee join patient p on donnee.idpatient = p.idpatient join categorie c2 on c.nom = c2.nom 
         where p.idpatient=? and c.nom=? and donnee.nom=?");
     $sql->bindParam(1,$_SESSION['scenario']);
@@ -82,6 +114,11 @@ function AvoirLeNombreDeColoneDunType ($bdd,$nomCategorie,$nomtype){
 
 }
 
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
 function affDiag($bdd, $id)
 {
     $sql = $bdd->prepare("SELECT * FROM diagnostic where idpatient=? order by date");
@@ -90,18 +127,35 @@ function affDiag($bdd, $id)
     return $array;
 }
 
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
 function PourAvoirToutesLesDatesDeLaDiag($bdd, $id){
     $sql = $bdd->prepare("SELECT date FROM diagnostic where idpatient=? order by date");
     $sql->execute(array($id));
     $array = $sql->fetchAll();
     return $array;
 }
+
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
 function PourAvoirToutesLesDatesDeLaPresc($bdd, $id){
     $sql = $bdd->prepare("SELECT prise FROM prescription where idpatient=? order by prise");
     $sql->execute(array($id));
     $array = $sql->fetchAll();
     return $array;
 }
+
+/**
+ * @param $bdd
+ * @param $id
+ * @return mixed
+ */
 function affpresc($bdd, $id)
 {
     $sql = $bdd->prepare("SELECT * from prescription where idpatient=? order by prise");
