@@ -288,6 +288,7 @@ $max = count($donnee);
 $i = 0;
 $var=0;
 
+// tant qu'on a pas tout affiché on continue
 while ($i<$max){
 ?>
 <br>
@@ -363,6 +364,7 @@ if ($var==1){
 
 
 /**
+ * Cette fonction permet toutes les modifications des données de la matrice
  * @param $bdd
  * @param $id
  * @return void

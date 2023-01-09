@@ -1,4 +1,6 @@
 <?php
+// les pages transitions sont des pages qui permettent l'ajout dans la base de donnée des pages précédente et elles permettent de passer à la page d'apres
+
 session_start();
 require ("../ConnectionBDD.php");
 require("../FonctionPhp.php");
