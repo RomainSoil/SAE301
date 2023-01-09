@@ -21,7 +21,7 @@ $bdd = $pdo::getpdo();
 <?php
 include("BarreScenario.html");
 include("EnteteV2.html");
-
+/* on récupère les noms des catégories*/
 $categorie=$bdd->prepare("Select nom from categorie");
 $categorie->execute();
 

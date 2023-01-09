@@ -3,15 +3,15 @@ session_start();
 require ('ConnectionBDD.php');
 $conn= ConnectionBDD::getInstance();
 $bdd=$conn::getpdo();
-/* fonction qui permet de recuprer les id de la table BesoinDaide*/
+/* fonction qui permet de récupérer les id de la table BesoinDaide*/
 $tous = $bdd->query("SELECT idba FROM BesoinDaide");
-/*on recupere l'id de la personne qui est connecter */
+/*on récupère l'id de la personne qui est connecté */
 @$pseudo = $_SESSION['username'];
 @$pseudo2 = $pseudo[0];
 $pseudo2 .= " ";
 @$pseudo2 .= $pseudo[1];
 $_SESSION['PseudoChat']=$pseudo2;
-/* ce if sert a permettre d'envoyer des messages*/
+/* ce if permet d'envoyer des messages*/
 if (isset($_POST['message'])) {
     $message = nl2br(htmlspecialchars($_POST['message']));
     $pseudo = $_SESSION['Pseudo'];

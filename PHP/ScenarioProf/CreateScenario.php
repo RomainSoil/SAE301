@@ -37,13 +37,16 @@ include("BarreScenario.html");
 
     require('FonctionScenario.php');
 
-
+/* fonction qui nous oblige a selectionner un groupe pour accèder a la page d'affichage de groupe*/
     if (isset($_POST['affgrp']) && $_POST['grp2']!='!') {
         $_SESSION['grp']=$_POST['grp2'];
         header('Location: afficheGroupe.php');
 
 
     }
+
+    /* fonction qui nous oblige à sélectionner un patient pour accéder à la page de suppression de scenario*/
+
     if (isset($_POST['patient']) && $_POST['patient']!='2') {
         header('Location: Supprimer.php');
 

@@ -5,6 +5,7 @@ $bdd = $pdo::getpdo();
 /**
  * @param $bdd
  * @return void
+ * fonction qui permet de supprimer un patient et tout ce qui le concerne avec des delete cascade
  */
 function effacer($bdd){
     if (isset($_POST['OuiSupp'])) {
@@ -48,6 +49,7 @@ function affichersce()
 /**
  * @param $bdd
  * @return void
+ * fonction qui permet de creer un groupe d'eleve
  */
 function creerGroupe($bdd){
     if (isset($_POST['Creer'])) {
@@ -64,6 +66,7 @@ function creerGroupe($bdd){
  * @param $groupe
  * @param $mail
  * @return bool
+ * fonction qui permet de savoir si un étudiant et deja dans un groupe
  */
 function EstDeJaDansLeGroupe($bdd, $groupe, $mail){
     $sql = $bdd->prepare("SELECT email FROM groupeetudiant where idgroupe=? ");
@@ -82,6 +85,7 @@ function EstDeJaDansLeGroupe($bdd, $groupe, $mail){
 /**
  * @param $bdd
  * @return void
+ * ajoute un étudiant dans un groupe s'il n'est dans deja dans ce groupe
  */
 function ajoutEtu($bdd){
     if (isset($_POST['ajoutEtu']) && $_POST['grp2']!='!'&&$_POST['etud']!='!'){
@@ -105,6 +109,7 @@ function ajoutEtu($bdd){
 /**
  * @param $bdd
  * @return void
+ * fonction qui permet d'associer un scenario a un groupe d'etudiant
  */
 function Scenario($bdd){
     if (isset($_POST['envoie']) && $_POST['GroupeScena']!="!" && $_POST['patientScena']!="!") {
@@ -115,6 +120,7 @@ function Scenario($bdd){
 /**
  * @param $bdd
  * @return mixed
+ * fonction qui permet d'avoir les nom des groupes d'etudiants afin de les mettre dans une liste deroulante
  */
 function nomgrp($bdd)
 {
@@ -128,6 +134,7 @@ function nomgrp($bdd)
 /**
  * @param $bdd
  * @return mixed
+ * cette fonction renvoie les etudiants appartenants a un groupe afin de les mettre dans un tableau
  */
 function etugrp($bdd)
 {
@@ -143,6 +150,7 @@ function etugrp($bdd)
  * @param $bdd
  * @param $mail
  * @return mixed|string
+ * Cette fonction renvoie les notes d'un etudiant en fonction du scenario
  */
 function AvoirLaNoteDunEtu($bdd, $mail){
     $sql = $bdd->prepare("Select note from note where idpatient=? and email=?");

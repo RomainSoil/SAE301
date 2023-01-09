@@ -22,6 +22,7 @@ $bdd = $pdo::getpdo();
 /**
  * @param $bdd
  * @return void
+ * ajout de la reponse a la table en fonction de l'etudiant et du scenario
  */
 function reponse($bdd){
         if (isset($_POST['Valider'])) {
@@ -33,6 +34,7 @@ function reponse($bdd){
 
     }}
 
+/*Recupération des données des patients afin de l'afficher*/
     $nomscena = $bdd->prepare("SELECT nom,prenom,age FROM patient where idpatient=?");
     $nomscena->bindParam(1, $_SESSION['patient']);
     $nomscena->execute();

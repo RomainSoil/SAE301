@@ -32,7 +32,7 @@ $patients->execute();
     <select name="patient">
         <option value="2">Sélectionnez un patient</option>
             <?php
-
+/* liste deroulante qui nous permet de sélectionner un patient*/
             while ($patient = $patients->fetch()){
                 $pat = $patient[1];
                 $pat.=" ";

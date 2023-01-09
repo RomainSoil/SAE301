@@ -33,6 +33,7 @@ include("BarreScenario.html");
         <br></tr>
 
 <?php
+/* boucle qui permet d'afficher tous les étudiants d'un groupe dans un tableau*/
 $grp = etugrp($bdd)->fetchAll();
 for($i=0; $i<sizeof($grp); $i++){
     ?><tr><?php

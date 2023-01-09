@@ -25,6 +25,7 @@ require('FonctionScenario.php');
 $pdo = ConnectionBDD::getInstance();
 $bdd = $pdo::getpdo();
 
+/*on récupère les nom,prenom et email des étudiants afin de les afficher dans une liste déroulante*/
 $etudiants = $bdd->prepare("select nom,prenom,E.email from GroupeEtudiant join GroupeScenario using(idGroupe) join Etudiant E on GroupeEtudiant.email = E.email where idPatient = ?");
 $etudiants->bindParam(1,$leScenario);
 $etudiants->execute();
