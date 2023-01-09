@@ -58,7 +58,7 @@ session_start();
     <form action="Accueil.php" method="post">
         <input type="submit" value="Connexion">
     </form> <br>
-    <form action="" method="post">
+    <form action="BesoinAide.php" method="post">
         <input type="submit" value="Besoin d'aide ?">
     </form>
 </footer>
