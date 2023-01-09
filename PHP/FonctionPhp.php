@@ -1,34 +1,45 @@
 <?php
+
+// Obtient une instance de la connexion à la base de données
 $pdo = ConnectionBDD::getInstance();
+
+// Obtient l'objet PDO utilisé pour interagir avec la base de données
 $bdd = $pdo::getpdo();
 
 /**
- * @param $bdd
- * @return mixed
+ * Retourne l'ID de la dernière ligne insérée dans la table 'donnee'
+ * @param PDO $bdd L'objet PDO utilisé pour interagir avec la base de données
+ * @return mixed L'ID de la dernière ligne insérée
  */
 function PourConnaitreLeIdDeLaDonnee($bdd){
+    // Prépare une instruction SELECT pour obtenir la valeur maximale de la colonne 'iddonnee' dans la table 'donnee'
     $sql=$bdd->prepare("Select max(iddonnee) from donnee ");
     $sql->execute();
+    // Récupère le résultat sous forme de tableau
     $array = $sql->fetch();
     return $array[0];
 }
 
 /**
- * @param $bdd
- * @param $categorie
- * @param $column
+ * @param PDO $bdd L'objet PDO utilisé pour interagir avec la base de données
+ * @param string $categorie Le nom de la catégorie à insérer
+ * @param string $column Le nom de la colonne à insérer
  * @return void
  */
 function ajoutDeDonneeAvecLesBooleans($bdd, $categorie, $column){
+    // Définit des variables pour représenter des valeurs booléennes
     $varOui = "x";
     $varNon= " ";
 
+    // Prépare une instruction INSERT pour insérer une ligne dans la table 'donnee'
     $sql=$bdd->prepare("Insert into donnee (date, nom, donnee,idpatient) VALUES (?,?,?,?)");
+
+    // Lie les valeurs aux paramètres de l'instruction INSERT
     $sql->bindParam(1,$_SESSION['Date']);
     $sql->bindParam(2, $column);
-    if ($_POST[$column]=="oui")
+    if ($_POST[$column]=="oui") {
         $sql->bindParam(3,$varOui );
-    else {
+    } else {
         $sql->bindParam(3,$varNon );
     }
     $sql->bindParam(4,$_SESSION['patient']);
@@ -118,6 +129,7 @@ function AvoirLeNombreDeColoneDunType ($bdd, $nomCategorie, $nomtype){
  * @param $bdd
  * @param $id
  * @return mixed
+ * Cette fonction permet l'affichage des données de la table diagnostic, ce qui va nous permettre de les afficher dans un tableau
  */
 function affDiag($bdd, $id)
 {
@@ -131,6 +143,7 @@ function affDiag($bdd, $id)
  * @param $bdd
  * @param $id
  * @return mixed
+ * Cette fonction permet de récupérer les dates des diagnostics afin de les afficher dans le tableau
  */
 function PourAvoirToutesLesDatesDeLaDiag($bdd, $id){
     $sql = $bdd->prepare("SELECT date FROM diagnostic where idpatient=? order by date");
@@ -143,6 +156,8 @@ function PourAvoirToutesLesDatesDeLaDiag($bdd, $id){
  * @param $bdd
  * @param $id
  * @return mixed
+ *  * Cette fonction permet de récupérer les dates des prescriptions afin de les afficher dans le tableau
+
  */
 function PourAvoirToutesLesDatesDeLaPresc($bdd, $id){
     $sql = $bdd->prepare("SELECT prise FROM prescription where idpatient=? order by prise");
@@ -155,6 +170,8 @@ function PourAvoirToutesLesDatesDeLaPresc($bdd, $id){
  * @param $bdd
  * @param $id
  * @return mixed
+ *  * Cette fonction permet l'affichage des données de la table prescription, ce qui va nous permettre de les afficher dans un tableau
+
  */
 function affpresc($bdd, $id)
 {

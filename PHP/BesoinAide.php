@@ -3,7 +3,9 @@ session_start();
 require ('ConnectionBDD.php');
 $conn= ConnectionBDD::getInstance();
 $bdd=$conn::getpdo();
+/* fonction qui permet de recuprer les id de la table BesoinDaide*/
 $tous = $bdd->query("SELECT idba FROM BesoinDaide");
+/*on recupere l'id de la personne qui est connecter */
 @$pseudo = $_SESSION['username'];
 @$pseudo2 = $pseudo[0];
 $pseudo2 .= " ";
