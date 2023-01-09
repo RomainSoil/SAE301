@@ -85,6 +85,7 @@ function affichage($bdd, $id)
             var liste = document.cookie.split(';');
             for (var i = 0; i < liste.length; i++) {
                 var c = liste[i];
+                // ignorer les espaces en début de chaîne
                 while (c.charAt(0) == ' ') c = c.substring(1, c.length);
                 if (c.indexOf(nom) == 0) return c.substring(nom.length, c.length);
             }
@@ -99,6 +100,8 @@ function affichage($bdd, $id)
         }
 
         function change($i, $date, $do) {
+            // demander à l'utilisateur quelle donnée il souhaite mettre
+
             var $a = prompt("Quelle donnée voulez vous mettre?")
             var l = "";
             document.getElementsByTagName("td")[$i].innerHTML = $a;
@@ -120,6 +123,7 @@ function affichage($bdd, $id)
     <p id="idp"></p>
 
 <?php
+/// les trois variables suivantes permettent la modification du DPI
 @$_SESSION['coo'] = $_COOKIE['valid'];
 @$_SESSION['date']= $_COOKIE['date'];
 @$_SESSION['do'] = $_COOKIE['do'];
