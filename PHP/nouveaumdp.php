@@ -6,8 +6,8 @@ session_start();
 
 <head>
     <meta charset="UTF-8">
-    <title>Nouveau MDP</title>
-    <link rel="stylesheet" href="SiteIFSI.css">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="MotDePasseOublie.css">
     <script src="LesFonctionsJS.js"></script>
 </head>
 <body>
@@ -15,7 +15,7 @@ session_start();
 
 <header>
     <a href="Accueil.php">
-        <img src="../PHP/image/logoIFSI.png" width=150 height=150 alt="">
+        <img src="logoIFSI.png" width=150 height=150 alt="">
     </a>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br><br>
@@ -24,13 +24,13 @@ session_start();
 
 <!--box de milieu-->
 
-<h3>
+<div class="mess">
     Entrez votre nouveau mot de passe, <br>
-    Puis retournez vous connecter.
-</h3>
+        Puis retournez vous connecter.
+</div>
 <br>
 
-<div class ="inscription">
+<div class ="box">
 
     <form action="" method="post">
         <br>
@@ -71,13 +71,10 @@ require ('Connexion.php');
 require('email.php');
 require ('MotDePasse.php');
 require('ConnectionBDD.php');
-/**
- * @return void
- */
-function changemail()
+function pdemail()
 {
-    $conn = ConnectionBDD::getInstance();
-    $pdo = $conn::getpdo();
+    $conn = new ConnectionBDD();
+    $pdo = $conn->connexion();
     $MDP = new MotDePasse();
     $co = new Connexion();
 
@@ -87,6 +84,6 @@ function changemail()
             $MDP->changement($pdo, $_POST['mdp'], $co);
         }
 
-    }}
-changemail();
+}}
+pdemail();
 ?>

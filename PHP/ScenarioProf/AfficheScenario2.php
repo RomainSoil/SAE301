@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_COOKIE['fonction']=$_SESSION['fonction']
 
 
 ?>
@@ -46,7 +47,7 @@ if (@$_COOKIE['reload']==1){
     header('Refresh:0');
 }
 
-/* permet d'afficher les données du patient séléctionné*/
+/* permet d'afficher les données du pati    ent séléctionné*/
 /**
  * @param $bdd
  * @param $id
@@ -101,23 +102,25 @@ function affichage($bdd, $id)
 
         function change($i, $date, $do) {
             // demander à l'utilisateur quelle donnée il souhaite mettre
-
-            var $a = prompt("Quelle donnée voulez vous mettre?")
-            var l = "";
-            document.getElementsByTagName("td")[$i].innerHTML = $a;
-            l=l+"!";
-            l=l+$a;
-            l=l+"!";
-            l=l+$i;
-            console.log(l);
-            document.cookie = "valid = " + l;
-            document.cookie = "date = "+$date;
-            document.cookie = "do = "+$do;
-            document.cookie = 'reload = '+1;
-            location.reload();
-            return l;
-
+            var fonction =recupererCookie('fonction')
+            if (fonction=='prof') {
+                var $a = prompt("Quelle donnée voulez vous mettre?")
+                var l = "";
+                document.getElementsByTagName("td")[$i].innerHTML = $a;
+                l = l + "!";
+                l = l + $a;
+                l = l + "!";
+                l = l + $i;
+                console.log(l);
+                document.cookie = "valid = " + l;
+                document.cookie = "date = " + $date;
+                document.cookie = "do = " + $do;
+                document.cookie = 'reload = ' + 1;
+                location.reload();
+                return l;
+            }
         }
+
     </script>
 
     <p id="idp"></p>
@@ -265,6 +268,7 @@ function affichage($bdd, $id)
             <?php
             @$Diag=affDiag($bdd, $id);
             for ($i=0; $i<count($laListeDesDates); $i++){
+
                 ?>
                 <td onclick="change(<?php echo $i+12+(3*sizeof(PourAvoirToutesLesDatesDeLaPresc($bdd, $id)))+2*sizeof(PourAvoirToutesLesDatesDeLaDiag($bdd, $id))?>, 0, 0)"> <?php echo $Diag[$i][4]?> </td>
                 <?php
@@ -451,8 +455,9 @@ function modifdonnees($bdd, $id){
     }
 }
 
-
-@modifdonnees($bdd, $id);
+if ($_SESSION['fonction']=='prof') {
+    @modifdonnees($bdd, $id);
+}
 
 affichage($bdd, $id);
 ?>
