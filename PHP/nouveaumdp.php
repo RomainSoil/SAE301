@@ -32,7 +32,7 @@ session_start();
 
 <div class ="box">
 
-    <form action="" method="post">
+    <form method="post">
         <br>
         <label>Nouveau Mot de passe :</label>
         <br><br>
@@ -52,7 +52,7 @@ session_start();
 <!--Le bas de la page-->
 
 <footer>
-    <form action="" method="post">
+    <form method="post">
         <input type="submit" value="Créer un compte">
     </form> <br>
     <form action="Accueil.php" method="post">

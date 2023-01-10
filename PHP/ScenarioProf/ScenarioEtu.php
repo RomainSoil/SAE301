@@ -55,8 +55,8 @@ if (isset($_POST['patient']) && $_POST['patient'] != 2) {
 
         ?>
     </select>
-    <button class="button-90" role="button" type="submit" name="affiche">Afficher le scénario</button>
-    <button class="button-90" role="button" type="submit" name="reponse">Répondre au scénario</button>
+    <button class="button-90" type="submit" name="affiche">Afficher le scénario</button>
+    <button class="button-90" type="submit" name="reponse">Répondre au scénario</button>
 
 
 
@@ -64,7 +64,7 @@ if (isset($_POST['patient']) && $_POST['patient'] != 2) {
 </form>
 <div class="footer-CreateScenario">
     <form action="../BesoinAide.php" method="post">
-        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+        <button class="button-28" type="submit">Besoin d'aide</button>
     </form>
 </div>
     </body>

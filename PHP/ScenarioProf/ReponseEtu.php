@@ -47,7 +47,7 @@ reponse($bdd);
 ?>
 <br>
 <form action="ScenarioEtu.php" method="post">
-    <button class="button-90" role="button" >Retour</button>
+    <button class="button-90" >Retour</button>
 </form>
 <h4>Réponse au Scénario : <?php echo $res[0]," ",$res[1]," ",$res[2]," ans" ?>  </h4>
 

@@ -9,7 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <title>Connexion</title>
     <link rel="stylesheet" href="SiteIFSI.css">
-    <script type="text/javascript" src="LesFonctionsJS.js"></script>
+    <script src="LesFonctionsJS.js"></script>
 
 </head>
 
@@ -79,7 +79,7 @@ session_start();
 
 <br>
 <form action="BesoinAide.php" method="post">
-    <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+    <button class="button-28"  type="submit">Besoin d'aide</button>
 </form>
 
 </body>

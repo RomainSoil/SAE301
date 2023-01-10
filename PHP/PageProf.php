@@ -27,5 +27,4 @@ include('BarreScenarioAccueil.html');
 </body>
 </html>
 
-<?php
-?>
+

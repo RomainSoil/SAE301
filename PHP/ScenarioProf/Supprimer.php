@@ -11,7 +11,7 @@ require('FonctionScenario.php');
     <meta charset="UTF-8">
     <title>Supprimer</title>
     <link rel="stylesheet" href="../PageProf.css">
-    <script type="text/javascript" src="../LesFonctionsJS.js"></script>
+    <script src="../LesFonctionsJS.js"></script>
 
 </head>
 

@@ -24,7 +24,7 @@ include ('EnteteV2.html');
 <form action="Securite.php" method="post">
 
     Medicament :
-    <button type="button" onclick="afficher()">ajouter médicament</button>
+    <button onclick="afficher()">ajouter médicament</button>
     <br><br>
     <div class="button_Suivant">
         <input type="submit" name="Valider" value="Suivant">
@@ -49,7 +49,7 @@ include ('EnteteV2.html');
 
 <div class="footer-CreateScenario">
     <form action="../BesoinAide.php" method="post">
-        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+        <button class="button-28" type="submit">Besoin d'aide</button>
     </form>
 </div>
     </body>

@@ -46,14 +46,14 @@ $patients->execute();
 
             ?>
     </select>
-        <button class="button-90" role="button" type="submit" name="note">Voir les notes </button>
+        <button class="button-90" type="submit" name="note">Voir les notes </button>
 
     </form>
 <div class="footer-CreateScenario">
 
     <br>
     <form action="../BesoinAide.php" method="post">
-        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+        <button class="button-28" type="submit">Besoin d'aide</button>
     </form>
 </div>
 </body>
