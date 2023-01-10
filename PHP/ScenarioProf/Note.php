@@ -42,7 +42,7 @@ $res=$etudiants->fetchAll();
 
         <?php
         {
-          echo "<th> NOTE </th>";
+          echo "<th>NOTE</th>";
         }
       ?>
 </tr>
@@ -68,7 +68,7 @@ foreach ($res as $etu){
 <div class="footer-CreateScenario">
     <br>
     <form action="../BesoinAide.php" method="post">
-        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+        <button class="button-28" type="submit">Besoin d'aide</button>
     </form>
 </div>
 </body>

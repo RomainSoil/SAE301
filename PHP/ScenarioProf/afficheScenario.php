@@ -9,7 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <title>Scenario</title>
     <link rel="stylesheet" href="../PageProf.css">
-    <script type="text/javascript" src="../LesFonctionsJS.js"></script>
+    <script src="../LesFonctionsJS.js"></script>
 
 </head>
 

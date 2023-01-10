@@ -64,8 +64,8 @@ $_SESSION['PseudoChat']=$pseudo2;
     <form method="POST" >
         <textarea name="message" rows="10" cols="80"></textarea>
         <br>
-        <button class="button-90" role="button" type="submit" name="valider">Envoyer</button>
-        <button class="button-90" role="button" type="submit" name="suppmess">Supprimer</button>
+        <button class="button-90" type="submit" name="valider">Envoyer</button>
+        <button class="button-90" type="submit" name="suppmess">Supprimer</button>
 
     </form>
 </div>
@@ -151,7 +151,7 @@ function affichergrp($bdd){
     <!--Zone groupe-->
 
         <div class="Btn_Groupe">
-            <button class="button-90" role="button" type="submit" name="creer" id="creer" onclick="afficher()">Créer groupe</button>
+            <button class="button-90" type="submit" name="creer" id="creer" onclick="afficher()">Créer groupe</button>
             <form style="visibility: hidden" id="form" method="post">
 
                 <input type="text" placeholder="Nom du groupe" id="nomgrp" name="nomgrp">
@@ -302,7 +302,7 @@ if(isset($_POST['verif'])) {
 
 ?><div class="footer-CreateScenario">
         <form action="BesoinAide.php" method="post">
-            <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+            <button class="button-28" type="submit">Besoin d'aide</button>
         </form>
     </div>
 </body>

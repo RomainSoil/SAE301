@@ -59,7 +59,7 @@ $categorie->execute();
 </form>
 <div class="footer-CreateScenario">
     <form action="../BesoinAide.php" method="post">
-        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+        <button class="button-28" type="submit">Besoin d'aide</button>
     </form>
 </div>
 </body>

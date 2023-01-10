@@ -11,7 +11,7 @@ session_start();
     <meta charset="UTF-8">
     <title>Creation Scenario</title>
     <link rel="stylesheet" href="../PageProf.css">
-    <script type="text/javascript" src="../LesFonctionsJS.js"></script>
+    <script src="../LesFonctionsJS.js"></script>
 
 </head>
 
@@ -102,9 +102,9 @@ include("BarreScenario.html");
 
             ?>
     </select>
-        <button class="button-90" role="button" type="submit" name="Contrainte">Ajouter une contrainte</button>
-        <button class="button-90" role="button" type="submit" name="affiche">Afficher le scénario</button>
-        <button class="button-90" role="button" type="submit" name="Supprimer">Supprimer le patient</button>
+        <button class="button-90" type="submit" name="Contrainte">Ajouter une contrainte</button>
+        <button class="button-90" type="submit" name="affiche">Afficher le scénario</button>
+        <button class="button-90" type="submit" name="Supprimer">Supprimer le patient</button>
 
     </form>
 <br>
@@ -114,7 +114,7 @@ include("BarreScenario.html");
 <form method="post">
     <h4>Créer un groupe</h4>
     <input type="text" placeholder="Nom du groupe" name="grp">
-    <button class="button-90" role="button" type="submit" name="Creer">Créer le groupe</button>
+    <button class="button-90" type="submit" name="Creer">Créer le groupe</button>
     <br>
     <h4>Ajouter étudiant au groupe</h4>
     <select name="grp2">
@@ -131,7 +131,7 @@ include("BarreScenario.html");
 
         ?>
     </select>
-    <button class="button-90" role="button" type="submit" name="affgrp">Afficher le groupe</button>
+    <button class="button-90" type="submit" name="affgrp">Afficher le groupe</button>
 
 
     <select name="etud">
@@ -150,7 +150,7 @@ include("BarreScenario.html");
 
         ?>
     </select>
-    <button class="button-90" role="button" type="submit" name="ajoutEtu">Ajouter</button>
+    <button class="button-90" type="submit" name="ajoutEtu">Ajouter</button>
 
 
     <h4>Envoie du scénario</h4>
@@ -181,7 +181,7 @@ include("BarreScenario.html");
         }
         ?>
     </select>
-    <button class="button-90" role="button" type="submit" name="envoie">Envoyer</button>
+    <button class="button-90" type="submit" name="envoie">Envoyer</button>
 
 
 
@@ -190,11 +190,11 @@ include("BarreScenario.html");
 <!--Le bas de page avec le boutton si on a besoin d'aide et de création d'un nouveau patient-->
 <div class="footer-CreateScenario">
     <form action="Patient.php" method="post">
-        <button class="button-28" role="button" type="submit">Créer un patient</button>
+        <button class="button-28" type="submit">Créer un patient</button>
     </form>
     <br>
     <form action="../BesoinAide.php" method="post">
-        <button class="button-28" role="button" type="submit">Besoin d'aide</button>
+        <button class="button-28" type="submit">Besoin d'aide</button>
     </form>
 </div>
 </body>

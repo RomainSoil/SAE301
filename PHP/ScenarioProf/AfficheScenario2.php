@@ -11,7 +11,7 @@ session_start();
     <meta charset="UTF-8">
     <title>Scenario</title>
     <link rel="stylesheet" href="../PageProf.css">
-    <script type="text/javascript" src="../LesFonctionsJS.js"></script>
+    <script src="../LesFonctionsJS.js"></script>
 
 </head>
 
@@ -19,7 +19,7 @@ session_start();
 <body>  <!--Le haut de la page avec l'image et le titre-->
 <header>
     <a href="../Accueil.php">
-        <img src="../image/logoIFSI.png" width=50 height=50 alt="leLogo" >
+        <img src="../image/logoIFSI.png" width=234 height=125 alt="leLogo" >
     </a>
     <h1> Institut de Formation aux Soins Infirmiers (IFSI)</h1>
     <br>
